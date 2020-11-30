@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "打榜小程序",
+  "usingComponents": {
+    "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper",
+    "u-row": "/node-modules/uview-ui/components/u-row/u-row",
+    "u-col": "/node-modules/uview-ui/components/u-col/u-col",
+    "u-image": "/node-modules/uview-ui/components/u-image/u-image"
+  }
+}
