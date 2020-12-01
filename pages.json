@@ -14,6 +14,12 @@
             "style": {
                 "navigationBarTitleText": "搜索爱豆"
             }
+        },
+        {
+            "path": "pages/starDetail/starDetail",
+            "style": {
+                "navigationBarTitleText": "明星详细页"
+            }
         }
     ],
     "globalStyle": {

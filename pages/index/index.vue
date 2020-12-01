@@ -19,7 +19,7 @@
 			
 				<u-col span="6" class="guard-card" v-for="(item,index) in myGuardList" :key="index">
 					
-					<view class="demo-layout bg-purple-light">
+					<view @click="routerStarDetail" class="demo-layout bg-purple-light">
 						<u-image class="guard-img" width="100rpx" height="100rpx" :src="item.image" shape="circle"></u-image>
 						<view class="guard-name">邓超</view>
 						<view class="guard-btn">打榜</view>
@@ -204,7 +204,12 @@
 				uni.navigateTo({
 					url: '/pages/search/search'
 				});
-			}
+			},
+			routerStarDetail(){
+				uni.navigateTo({
+					url: '/pages/starDetail/starDetail'
+				});
+			},
 			
 		}
 	}

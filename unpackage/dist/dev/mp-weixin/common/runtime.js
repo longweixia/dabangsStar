@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-col/u-col":1,"node-modules/uview-ui/components/u-image/u-image":1,"node-modules/uview-ui/components/u-row/u-row":1,"node-modules/uview-ui/components/u-swiper/u-swiper":1,"components/zy-search/zy-search":1,"node-modules/uview-ui/components/u-icon/u-icon":1};
+/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-col/u-col":1,"node-modules/uview-ui/components/u-image/u-image":1,"node-modules/uview-ui/components/u-row/u-row":1,"node-modules/uview-ui/components/u-swiper/u-swiper":1,"components/zy-search/zy-search":1,"components/prize-wraw/prize-wraw":1,"components/resources/resources":1,"node-modules/uview-ui/components/u-icon/u-icon":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"node-modules/uview-ui/components/u-col/u-col":"node-modules/uview-ui/components/u-col/u-col","node-modules/uview-ui/components/u-image/u-image":"node-modules/uview-ui/components/u-image/u-image","node-modules/uview-ui/components/u-row/u-row":"node-modules/uview-ui/components/u-row/u-row","node-modules/uview-ui/components/u-swiper/u-swiper":"node-modules/uview-ui/components/u-swiper/u-swiper","components/zy-search/zy-search":"components/zy-search/zy-search","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"node-modules/uview-ui/components/u-col/u-col":"node-modules/uview-ui/components/u-col/u-col","node-modules/uview-ui/components/u-image/u-image":"node-modules/uview-ui/components/u-image/u-image","node-modules/uview-ui/components/u-row/u-row":"node-modules/uview-ui/components/u-row/u-row","node-modules/uview-ui/components/u-swiper/u-swiper":"node-modules/uview-ui/components/u-swiper/u-swiper","components/zy-search/zy-search":"components/zy-search/zy-search","components/prize-wraw/prize-wraw":"components/prize-wraw/prize-wraw","components/resources/resources":"components/resources/resources","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
