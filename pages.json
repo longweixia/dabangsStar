@@ -20,6 +20,18 @@
             "style": {
                 "navigationBarTitleText": "明星详细页"
             }
+        },
+        {
+            "path": "pages/starDetail/fanRanking",
+            "style": {
+                "navigationBarTitleText": "粉丝榜"
+            }
+        },
+        {
+            "path": "pages/starDetail/resourcesRanking",
+            "style": {
+                "navigationBarTitleText": "资源榜"
+            }
         }
     ],
     "globalStyle": {

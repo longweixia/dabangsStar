@@ -1,0 +1,1 @@
+<view class="btn-list data-v-5e84386a"><block wx:for="{{btnList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['changeBTn',[index]]]]]}}" class="{{['btn-nav data-v-5e84386a',(index==rankType)?'activated':'']}}" bindtap="__e">{{item}}</view></block></view>

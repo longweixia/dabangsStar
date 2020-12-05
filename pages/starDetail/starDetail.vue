@@ -25,7 +25,7 @@
                             <view class="num">{{index}}</view>
                     
                      </view>
-                    <view class="more">更多</view>   
+                    <view class="more" @click="routerFanRanking(0,123)">更多</view>   
                 </view>	
                 <view class="star-ranking">
                     <view>粉丝月榜</view>
@@ -35,14 +35,14 @@
                             <view class="num">{{index}}</view>
                     
                      </view>
-                    <view class="more">更多</view>   
+                    <view class="more"  @click="routerFanRanking(1,123)">更多</view>   
                 </view>	
             </view>
         </view>
         <!-- 抽奖互动 -->
         <prizePraw></prizePraw>
         <!-- 资源 -->
-        <resources></resources>
+        <resources id="1"></resources>
 
 	</view>
 </template>
@@ -63,7 +63,8 @@ import resources from '../../components/resources/resources.vue'
 						image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
 						num: '4',
 						name: '邓伦',
-						val: 500
+                        val: 500,
+                        id:1
                     }
                 ],
                 // 周榜/月榜
@@ -73,14 +74,16 @@ import resources from '../../components/resources/resources.vue'
 						image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
 						num: '4',
 						name: '邓伦',
-						val: 500
+                        val: 500,
+                        id:2
                     },
                     {
 						icon: '皇冠',
 						image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
 						num: '4',
 						name: '邓伦',
-						val: 500
+                        val: 500,
+                        id:3
                     },
                     {
 						icon: '皇冠',
@@ -93,9 +96,15 @@ import resources from '../../components/resources/resources.vue'
                 
 
 			}
-		},
+        },
+       
 		methods: {
-		
+            routerFanRanking(type,id){ //0是周榜，1是月榜
+                uni.navigateTo({
+					url: `/pages/starDetail/fanRanking?type=${type}&id=${id}`
+				});
+            },
+          
 		},
 	}
 </script>

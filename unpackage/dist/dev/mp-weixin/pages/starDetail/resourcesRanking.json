@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "资源榜",
+  "usingComponents": {
+    "ranking-list": "/components/ranking-list/ranking-list"
+  }
+}

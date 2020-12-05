@@ -1,0 +1,1 @@
+<view class="fan-ranking data-v-d06b0d98"><view class="list data-v-d06b0d98"><ranking-list vue-id="61852e52-1" rankingList="{{rankingList}}" class="data-v-d06b0d98" bind:__l="__l"></ranking-list></view></view>

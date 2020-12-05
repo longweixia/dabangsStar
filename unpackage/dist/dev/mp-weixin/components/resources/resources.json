@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "u-slider": "/node-modules/uview-ui/components/u-slider/u-slider",
     "u-image": "/node-modules/uview-ui/components/u-image/u-image"
   },
   "component": true

@@ -4,11 +4,13 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "touristappid",
+  "appid": "wx8a93893c751e3f4d",
   "projectname": "dabangStar",
   "condition": {
     "search": {

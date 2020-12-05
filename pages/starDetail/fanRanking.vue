@@ -1,0 +1,122 @@
+<template>
+  <view class="fan-ranking">
+    <!-- 导航栏 -->
+
+    <view class="nav-top">
+      <BtnNav :btnList="btnList" @changebtn="changebtn" :rankType="rankType"></BtnNav>
+    </view>
+    <!-- 排行榜 -->
+    <view class="list">
+        <RankingList :rankingList="rankingList"></RankingList>
+    </view>
+  </view>
+</template>
+
+<script>
+import BtnNav from "../../components/btn-nav/btn-nav.vue";
+import RankingList from "../../components/ranking-list/ranking-list.vue";
+export default {
+  components: {
+    BtnNav,
+    RankingList
+  },
+  data() {
+    return {
+      rankingList: [],
+      rankingList1: [
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "4",
+          name: "邓伦周榜",
+          val: 500
+        },
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "5",
+          name: "周超",
+          val: "+234234热力值"
+        },
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "6",
+          name: "黄晓明",
+          val: "+234234热力值"
+        },
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "7",
+          name: "黄晓明",
+          val: "+234234热力值"
+        }
+      ],
+      rankingList2: [
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "1",
+          name: "邓伦月榜",
+          val: "+234234热力值"
+        },
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "2",
+          name: "周超",
+          val: "+234234热力值"
+        },
+        {
+          icon: "皇冠",
+          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+          num: "3",
+          name: "黄晓明",
+          val: 100
+        }
+      ],
+      btnList: ["粉丝周榜", "粉丝月榜", "粉丝总榜"],
+      rankType: null, //显示周榜还是月榜,0是周榜，1是月榜
+    };
+  },
+  onLoad(option) {
+    this.rankType = Number(option.type);
+  },
+  mounted() {
+    this.changebtn(this.rankType);
+  },
+  methods: {
+    changebtn(index) {
+      console.log(index);
+      this.rankType = index
+      if (index === 0) {
+        this.rankingList = this.rankingList1;
+      } else if (index === 1) {
+        this.rankingList = this.rankingList2;
+      }
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.btns {
+  width: 100px;
+  height: 30px;
+  background: #000;
+  border-radius: 15px;
+}
+.flex-area {
+  //   display: flex;
+  //   align-items: center;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   padding-bottom: 20rpx;
+  //   padding-top: 20rpx;
+}
+.nav-top {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+</style>
