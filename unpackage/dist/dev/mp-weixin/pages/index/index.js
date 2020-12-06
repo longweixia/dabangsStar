@@ -97,13 +97,13 @@ var components = {
     return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */ "node-modules/uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 77))
   },
   uImage: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 98))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 84))
   },
   uRow: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-row/u-row */ "node-modules/uview-ui/components/u-row/u-row").then(__webpack_require__.bind(null, /*! uview-ui/components/u-row/u-row.vue */ 84))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-row/u-row */ "node-modules/uview-ui/components/u-row/u-row").then(__webpack_require__.bind(null, /*! uview-ui/components/u-row/u-row.vue */ 91))
   },
   uCol: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-col/u-col */ "node-modules/uview-ui/components/u-col/u-col").then(__webpack_require__.bind(null, /*! uview-ui/components/u-col/u-col.vue */ 91))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-col/u-col */ "node-modules/uview-ui/components/u-col/u-col").then(__webpack_require__.bind(null, /*! uview-ui/components/u-col/u-col.vue */ 98))
   }
 }
 var render = function() {
@@ -153,142 +153,127 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 105));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 112));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 119));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  name: "home",
+  components: {
+    rankingTabNo: rankingTabNo,
+    rankingTabHasText: rankingTabHasText,
+    starRankingList: starRankingList },
+
   data: function data() {
     return {
       // 轮播
@@ -375,21 +360,21 @@ var _default =
       // 榜单前三
       topThreeList: [
       {
-        icon: "皇冠",
+        icon: "../../static/home/AnCrown2.png",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
         num: "2",
         name: "邓伦",
         val: 500 },
 
       {
-        icon: "皇冠",
+        icon: "../../static/home/AnCrown1.png",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
         num: "1",
         name: "周超",
         val: 600 },
 
       {
-        icon: "皇冠",
+        icon: "../../static/home/AnCrown3.png",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
         num: "3",
         name: "黄晓明",
@@ -401,34 +386,31 @@ var _default =
       // }
       ],
       // 榜单前三以外
-      listFourTh: [
+      rankingList: [
       {
         icon: "皇冠",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        num: "4",
+        num: "1",
         name: "邓伦",
-        val: 500 },
+        val: "10872" },
 
       {
         icon: "皇冠",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        num: "5",
+        num: "2",
         name: "周超",
-        val: 600 },
+        val: "10872" },
 
       {
         icon: "皇冠",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        num: "6",
+        num: "3",
         name: "黄晓明",
-        val: 100 }
+        val: "24242" }],
 
-      // {
-      // 	image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-      // 	title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
-      // }
-      ] };
 
+      hasTagText: true //是否在个人中心设置明星tag文字
+    };
   },
   methods: {
     clickSwiper: function clickSwiper(index) {

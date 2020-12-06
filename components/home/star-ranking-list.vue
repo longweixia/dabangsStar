@@ -1,0 +1,95 @@
+<template>
+  <!-- 首页排行榜，第4名开始 -->
+  <view class="list-th">
+    <view class="list-row" v-for="(item, index) in rankingList" :key="index">
+      <view class="num-body">
+        <view class="num">{{ index + 1 }}</view>
+      </view>
+      <view class="img-body">
+        <u-image
+          class="img"
+          width="80rpx"
+          height="80rpx"
+          :src="item.image"
+          shape="circle"
+        ></u-image>
+      </view>
+      <view class="name">
+        {{ item.name }}
+      </view>
+      <view class="val">
+        {{ item.val }}
+      </view>
+      <view class="btn">
+        打榜
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+export default {
+  props: ["rankingList"],
+  data() {
+    return {};
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+// 榜单
+.list-th {
+  margin: 0 20rpx;
+}
+.list-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20rpx;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+  //   justify-content: space-around;
+}
+.num-body {
+  margin-right: 24rpx;
+  .num {
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+  }
+}
+.img-body {
+  margin-right: 22rpx;
+}
+.name {
+  width: 150rpx;
+  text-align: left;
+  color: #333333;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.val {
+  position: absolute;
+  right: 28rpx;
+  width: 200rpx;
+  font-size: 24rpx;
+  color: #333333;
+  font-size: 12px;
+}
+.btn {
+//   position: relative;
+//   top: -10rpx;
+   position: absolute;
+   right: 20rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  width: 110rpx;
+  padding: 0 10rpx;
+  border-radius: 23rpx;
+  text-align: center;
+  background: linear-gradient(to right, #f83a3a, #f7c18b);
+  color: #fff;
+}
+</style>

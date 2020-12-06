@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var BtnNav = function BtnNav() {__webpack_require__.e(/*! require.ensure | components/btn-nav/btn-nav */ "components/btn-nav/btn-nav").then((function () {return resolve(__webpack_require__(/*! ../../components/btn-nav/btn-nav.vue */ 126));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var RankingList = function RankingList() {__webpack_require__.e(/*! require.ensure | components/ranking-list/ranking-list */ "components/ranking-list/ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/ranking-list/ranking-list.vue */ 133));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var BtnNav = function BtnNav() {__webpack_require__.e(/*! require.ensure | components/btn-nav/btn-nav */ "components/btn-nav/btn-nav").then((function () {return resolve(__webpack_require__(/*! ../../components/btn-nav/btn-nav.vue */ 147));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var RankingList = function RankingList() {__webpack_require__.e(/*! require.ensure | components/ranking-list/ranking-list */ "components/ranking-list/ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/ranking-list/ranking-list.vue */ 154));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

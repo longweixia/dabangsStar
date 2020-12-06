@@ -136,8 +136,9 @@ export default {
   },
   methods: {
       routerResourcesRanking(resouceId){ 
+        let id = Number(this.id)
                 uni.navigateTo({
-					      url: `/pages/starDetail/resourcesRanking?id=${this.id}`
+					      url: `/pages/starDetail/resourcesRanking?id=${id}`
 				});
        },
   }
