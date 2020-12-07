@@ -64,20 +64,14 @@
           截至：10天9小时20分21秒
         </view>
       </view>
-      <u-row >
-        <u-col
-          span="4"
+      <view class="card-area">
+        <view
           class="guard-card"
-          text-align="center"
           v-for="(item, index) in topThreeList"
           :key="index"
           :class="'guard-card' + index"
         >
-          <!-- <view>{{ item.icon }}</view> -->
           <view class="img-area" :class="'img-area' + index">
-
-
-            
             <view class="num">{{ item.num }}</view>
             <img
               class="img-icon"
@@ -85,20 +79,23 @@
               :src="item.icon"
             />
             <img
+              class="img-star" v-if="index===1"
+              :src="item.star"
+            />
+            <img
               class="img-head"
               :class="'img-head' + index"
               :src="item.image"
             />
-            </view>
-     
+          </view>
 
           <view class="name">{{ item.name }}</view>
           <view class="val">{{ item.val }}</view>
           <view class="btn-area">
             <view class="btn">打榜</view>
           </view>
-        </u-col>
-      </u-row>
+        </view>
+      </view>
     </view>
     <!-- 榜单前三以外 -->
     <view class="list-four-th">
@@ -216,7 +213,8 @@ export default {
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "1",
           name: "周超",
-          val: 600
+          val: 600,
+          star:"../../static/home/oneStart.png"
         },
         {
           icon: "../../static/home/AnCrown3.png",
@@ -256,6 +254,11 @@ export default {
       ],
       hasTagText: true //是否在个人中心设置明星tag文字
     };
+  },
+  onLoad(){
+this.$u.post('/home/carousel/list').then(res => {
+				this.topThreeList = res.data;
+			})
   },
   methods: {
     clickSwiper(index) {
@@ -381,6 +384,8 @@ export default {
     background: linear-gradient(to bottom, #feecb3, #f64d71);
     border-top-right-radius: 20rpx;
     border-top-left-radius: 20rpx;
+    z-index: -2;
+
     .card-time {
       background: #feecca;
       width: 296rpx;
@@ -396,113 +401,98 @@ export default {
         font-size: 10px;
       }
     }
+    .card-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 80rpx;
+    }
     .guard-card {
       position: relative;
-      padding: 0 !important;
       color: #fff;
-      text-align: center;
       height: 260rpx;
-      .name{
+      width: 33%;
+      display: flex;
+      //  justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .name {
         font-weight: bold;
       }
       .img-area {
-        margin-right: 40rpx;
-        .num {
-          //  width: 18rpx;
-          //  height: 18rpx;;
-          transform: rotate(325deg);
-          font-size: 7px;
-          position: relative;
-          right: 24rpx;
-          top: 22rpx;
-          // font-weight: bold;
-          // margin-top: -20rpx;
-          z-index: 1000 !important;
-        }
-        .img-icon {
-          position: relative;
-          left: 34rpx;
-          top: -92rpx;
-          width: 46rpx;
-          height: 46rpx;
-        }
+         position: relative;
         .img-head {
-          position: relative;
-          // left: calc(50% - 50rpx);
           width: 118rpx;
           height: 118rpx;
           border-radius: 59rpx;
-          border: none;
+          z-index: 100;
         }
-        // .img-head1{
-        //   width: 118rpx;
-        //   height: 118rpx;
-        // }
+        .img-star{
+          position: absolute;
+           width: 222rpx;
+            height: 232rpx;
+            top: -40rpx;
+            left:-30rpx;
+            z-index: -1;
+        }
+        .num {
+            transform: rotate(325deg);
+            font-size: 7px;
+            position: absolute;
+           left: 8rpx;
+            top: -12rpx;
+            z-index: 1000 !important;
+          }
+          .img-icon {
+            position: absolute;
+            left: -12rpx;
+            top: -20rpx;
+            width: 46rpx;
+            height: 46rpx;
+          }
       }
       .img-area1 {
-        position: relative;
-        margin-right: 20rpx;
-        top: -40rpx;
-        .num {
-          //  width: 18rpx;
-          //  height: 18rpx;;
-          font-size: 7px;
-          position: relative;
-          right: 58rpx;
-          top: 26rpx;
-          // font-weight: bold;
-          // margin-top: -20rpx;
-          z-index: 1000 !important;
-        }
-        .img-icon {
-          position: relative;
-          left: 24rpx;
-          top: -136rpx;
-        }
         .img-head {
-          position: relative;
-          // left: calc(50% - 50rpx);
           width: 168rpx;
           height: 168rpx;
-          left:-20rpx;
           border-radius: 84rpx;
-          border: none;
         }
-//         .name{
-// top: -40rpx;
-//         }
-//         .btn-area{
-// top: -40rpx;
-//         }
+        .num {
+            transform: rotate(325deg);
+            font-size: 7px;
+            position: absolute;
+            left: 20rpx;
+            top: -6rpx;
+            z-index: 1000 !important;
+          }
+          .img-icon {
+            position: absolute;
+            left: -16rpx;
+            top: -32rpx;
+            width: 68rpx;
+            height: 68rpx;
+          }
       }
-      .btn-area {
-        text-align: center;
-        margin-top: 14rpx;
-        .btn {
-          margin: auto;
-          height: 46rpx;
-          line-height: 46rpx;
-          width: 110rpx;
-          padding: 0 10rpx;
-          border-radius: 23rpx;
+       .btn-area {
           text-align: center;
-          background: linear-gradient(to right, #f83a3a, #f7c18b);
-          color: #fff;
+          margin-top: 14rpx;
+          .btn {
+            height: 46rpx;
+            line-height: 46rpx;
+            width: 110rpx;
+            padding: 0 10rpx;
+            border-radius: 23rpx;
+            text-align: center;
+            background: linear-gradient(to right, #f83a3a, #f7c18b);
+            color: #fff;
+          }
         }
-      }
     }
-    .guard-card1 {
-    
-    //  top: -50rpx;
-     height: 308rpx;
-     .name, .val, .btn-area{
-         position: relative;
-     
-        top: -30rpx;
-     }
-   
+    .guard-card1{
+      top: -50rpx;
     }
   }
+
   // 榜单前三以外
   .list-four-th {
     // margin: 20rpx;

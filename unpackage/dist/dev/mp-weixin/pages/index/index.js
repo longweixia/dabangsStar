@@ -98,12 +98,6 @@ var components = {
   },
   uImage: function() {
     return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 84))
-  },
-  uRow: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-row/u-row */ "node-modules/uview-ui/components/u-row/u-row").then(__webpack_require__.bind(null, /*! uview-ui/components/u-row/u-row.vue */ 91))
-  },
-  uCol: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-col/u-col */ "node-modules/uview-ui/components/u-col/u-col").then(__webpack_require__.bind(null, /*! uview-ui/components/u-col/u-col.vue */ 98))
   }
 }
 var render = function() {
@@ -154,9 +148,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 105));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 112));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 119));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
 
 
 
@@ -371,7 +362,8 @@ __webpack_require__.r(__webpack_exports__);
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
         num: "1",
         name: "周超",
-        val: 600 },
+        val: 600,
+        star: "../../static/home/oneStart.png" },
 
       {
         icon: "../../static/home/AnCrown3.png",
@@ -411,6 +403,11 @@ __webpack_require__.r(__webpack_exports__);
 
       hasTagText: true //是否在个人中心设置明星tag文字
     };
+  },
+  onLoad: function onLoad() {var _this = this;
+    this.$u.post('/home/carousel/list').then(function (res) {
+      _this.topThreeList = res.data;
+    });
   },
   methods: {
     clickSwiper: function clickSwiper(index) {
