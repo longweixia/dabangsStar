@@ -1,7 +1,7 @@
 const install = (Vue, vm) => {
     // 此为自定义配置参数，具体参数见上方说明
     Vue.prototype.$u.http.setConfig({
-        baseUrl: '//123.207.120.31:18001',
+        baseUrl: 'http://123.207.120.31:18001',
         loadingText: '努力加载中~',
         loadingTime: 800,
         // ......
@@ -40,7 +40,7 @@ const install = (Vue, vm) => {
             // res为服务端返回值，可能有code，result等字段
             // 这里对res.result进行返回，将会在this.$u.post(url).then(res => {})的then回调中的res的到
             // 如果配置了originalData为true，请留意这里的返回值
-            return res.result;
+            return res.data;
         } else if (res.code == 201) {
             // 假设201为token失效，这里跳转登录
             vm.$u.toast('验证失败，请重新登录');

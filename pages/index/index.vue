@@ -9,7 +9,7 @@
         mode="dot"
         indicator-pos="bottomCenter"
         :autoplay="true"
-        interval="2000"
+        interval="2000" name="img"
       ></u-swiper>
       <img
         @click="routerSearch"
@@ -120,18 +120,18 @@ export default {
     return {
       // 轮播
       swiperList: [
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/1.jpg",
-          title: "昨夜星辰昨夜风，画楼西畔桂堂东"
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          title: "身无彩凤双飞翼，心有灵犀一点通"
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-          title: "谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳"
-        }
+        // {
+        //   image: "https://cdn.uviewui.com/uview/swiper/1.jpg",
+        //   title: "昨夜星辰昨夜风，画楼西畔桂堂东"
+        // },
+        // {
+        //   image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
+        //   title: "身无彩凤双飞翼，心有灵犀一点通"
+        // },
+        // {
+        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        //   title: "谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳"
+        // }
       ],
       // 我的守护
       myGuardList: [
@@ -256,9 +256,10 @@ export default {
     };
   },
   onLoad(){
-this.$u.post('/home/carousel/list').then(res => {
-				this.topThreeList = res.data;
-			})
+      this.$u.post('/home/carousel/list').then(res => {
+              // console.log(res,2111)
+              this.swiperList = res;
+            })
   },
   methods: {
     clickSwiper(index) {

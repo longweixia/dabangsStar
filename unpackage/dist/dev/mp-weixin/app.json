@@ -4,7 +4,11 @@
     "pages/search/search",
     "pages/starDetail/starDetail",
     "pages/starDetail/fanRanking",
-    "pages/starDetail/resourcesRanking"
+    "pages/starDetail/resourcesRanking",
+    "pages/center/center",
+    "pages/login/login",
+    "pages/login/forget",
+    "pages/login/register"
   ],
   "subPackages": [],
   "window": {
@@ -13,5 +17,32 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "tabBar": {
+    "color": "#2C405A",
+    "selectedColor": "#F0AD4E",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "position": "bottom",
+    "fontSize": "10px",
+    "iconWidth": "24px",
+    "spacing": "3px",
+    "height": "50px",
+    "midButton": {},
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "bar1"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "个人中心"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "登录"
+      }
+    ]
+  },
+  "secret": "af4a61ed135bee289857da945990a49f",
   "usingComponents": {}
 }

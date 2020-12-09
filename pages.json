@@ -32,8 +32,51 @@
             "style": {
                 "navigationBarTitleText": "资源榜"
             }
+        },
+        {
+            "path": "pages/center/center",
+            "style": {
+                "navigationBarTitleText": "个人中心"
+            }
+        },
+        {
+            "path": "pages/login/login",
+            "style": {}
+        }, {
+            "path": "pages/login/forget",
+            "style": {}
+        }, {
+            "path": "pages/login/register",
+            "style": {}
         }
     ],
+    "tabBar": {
+        "color": "#2C405A",
+        "selectedColor": "#F0AD4E",
+        "backgroundColor": "#FFFFFF",
+        "borderStyle": "black",
+        "position": "bottom",
+        "fontSize": "10px",
+        "iconWidth": "24px",
+        "spacing": "3px",
+        "height": "50px",
+        "midButton": {},
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "bar1"
+
+            }, {
+                "pagePath": "pages/login/login",
+                "text": "个人中心"
+
+            },
+            {
+                "pagePath": "pages/center/center",
+                "text": "登录"
+
+            }
+        ]
+    },
     "globalStyle": {
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "uni-app",

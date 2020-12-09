@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App'
 import uView from "uview-ui";
-
+// const vconsole = require('vconsole')
+// Vue.prototype.$vconsole = new vconsole() // 使用vconsole
 Vue.use(uView);
 Vue.config.productionTip = false
+
 
 App.mpType = 'app'
 
