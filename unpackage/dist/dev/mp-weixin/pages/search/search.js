@@ -141,23 +141,42 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
 {
   components: {
     zySearch: zySearch },
 
   data: function data() {
     return {
-      themeClass: 'block',
-      speechEngine: 'baidu', //语音识别引擎
-      hotList: ['栏目1', '栏目2', '栏目3', '栏目4'] //初始化推荐列表
-    };
+      themeClass: "block",
+      speechEngine: "baidu", //语音识别引擎
+      hotList: ["栏目1", "栏目2", "栏目3", "栏目4"], //初始化推荐列表
+      dataList: [
+      { "avatar": "string", "detailImg": "string", "hitPopupImg": "string", "name": "梁静茹", "thisMonthRank": 3, "thisWeekRank": 1 },
+      { "avatar": "string", "detailImg": "string", "hitPopupImg": "string", "name": "梁静茹", "thisMonthRank": 3, "thisWeekRank": 1 },
+      { "avatar": "string", "detailImg": "string", "hitPopupImg": "string", "name": "梁静茹", "thisMonthRank": 3, "thisWeekRank": 1 }] };
+
+
   },
   methods: {
     getSearchText: function getSearchText(e) {
       uni.showToast({
-        title: '回调的搜索信息: ' + e,
+        title: "回调的搜索信息: " + e,
         icon: "none" });
 
+      this.selectMyGuard(e);
+    },
+    selectMyGuard: function selectMyGuard(name) {var _this = this;
+      this.$u.get("/home/selectStarInfo", { name: name }).then(function (res) {
+        //  this.dataList = res || []
+        _this.dataList = [];
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

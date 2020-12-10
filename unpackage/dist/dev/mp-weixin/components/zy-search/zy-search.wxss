@@ -185,4 +185,21 @@
   -webkit-border-radius: 20rpx;
           border-radius: 20rpx;
 }
+.data-list.data-v-c880309c {
+  border: 1px solid #ddd;
+  margin: 20rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.data-list .data-row.data-v-c880309c {
+  margin: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-align-content: center;
+          align-content: center;
+}
 

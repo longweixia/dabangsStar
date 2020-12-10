@@ -27,6 +27,15 @@
 				<view v-for="(item,index) in hotList" :key="index" @click="keywordsClick(item)">{{item}}</view>
 			</view>
 		</view>
+		<view class="data-list">
+				<view v-for="(item,index) in dataList" :key="index" @click="keywordsClick(item)" class="data-row">
+					<view>{{item.name}}</view>
+					<view>查看</view>
+				</view>
+		</view>
+		<view class="data-list" v-if="!isNoData">
+				没有找到你搜的明星哦，是不是名字错了？
+		</view>
 	</view>
 </template>
 
@@ -55,12 +64,30 @@
 			speechEngine: { //语音引擎=>讯飞:iFly,百度:'baidu'
 				type: String,
 				default: 'baidu'
+			},
+			dataList:{ //语音引擎=>讯飞:iFly,百度:'baidu'
+				type: Array,
+				default: [
+					
+				]
 			}
 		},
+		watch:{
+			dataList: {
+    　　handler(newVal,oldVal) {
+      　　if(!newVal.length){
+				this.isNoData = false
+			}
+    　　},
+    　　immediate: true
+    }
+		},
+	
 		data() {
 			return {
 				searchText:'',								//搜索关键词
-				hList:uni.getStorageSync('search_cache')		//历史记录
+				hList:uni.getStorageSync('search_cache'),		//历史记录
+				isNoData: true, //默认有数据
 			};
 		},
 		methods: {
@@ -278,6 +305,18 @@
 				text-align: center;
 				border-radius: 20upx;
 			}
+		}
+	}
+	// 搜索结果列表
+	.data-list{
+		border: 1px solid #ddd;
+		margin: 20rpx;
+		border-radius: 10rpx;
+		.data-row{
+			margin: 20rpx;
+			display:flex;
+			justify-content: space-between;
+			align-content: center;
 		}
 	}
 </style>

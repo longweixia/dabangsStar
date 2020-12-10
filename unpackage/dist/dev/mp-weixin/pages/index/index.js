@@ -286,45 +286,42 @@ __webpack_require__.r(__webpack_exports__);
       myGuardList: [
       {
         image: "https://cdn.uviewui.com/uview/swiper/1.jpg",
-        title: "昨夜星辰昨夜风，画楼西畔桂堂东" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" },
+        name: "邓伦" },
 
       {
         image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-        title: "身无彩凤双飞翼，心有灵犀一点通" }
+        name: "邓伦" }],
 
-      // {
-      // 	image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-      // 	title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
-      // }
-      ],
+
+
       // 榜单tag
       raningTypeList: [
       {
@@ -382,21 +379,21 @@ __webpack_require__.r(__webpack_exports__);
       {
         icon: "皇冠",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        num: "1",
+        num: "4",
         name: "邓伦",
         val: "10872" },
 
       {
         icon: "皇冠",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        num: "2",
+        num: "5",
         name: "周超",
         val: "10872" },
 
       {
         icon: "皇冠",
         image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        num: "3",
+        num: "6",
         name: "黄晓明",
         val: "24242" }],
 
@@ -404,13 +401,24 @@ __webpack_require__.r(__webpack_exports__);
       hasTagText: true //是否在个人中心设置明星tag文字
     };
   },
-  onLoad: function onLoad() {var _this = this;
-    this.$u.post('/home/carousel/list').then(function (res) {
-      // console.log(res,2111)
-      _this.swiperList = res;
-    });
+  onLoad: function onLoad() {
+    this.carouselList();
+    this.selectMyGuard();
+
   },
   methods: {
+    // 获取我的守护
+    selectMyGuard: function selectMyGuard() {var _this = this;
+      this.$u.post('/home/selectMyGuard').then(function (res) {
+        _this.myGuardList = res.list; //　少了头像
+      });
+    },
+    // 获取轮播
+    carouselList: function carouselList() {var _this2 = this;
+      this.$u.post('/home/carousel/list').then(function (res) {
+        _this2.swiperList = res;
+      });
+    },
     clickSwiper: function clickSwiper(index) {
       console.log(index);
     },
@@ -419,9 +427,9 @@ __webpack_require__.r(__webpack_exports__);
         url: "/pages/search/search" });
 
     },
-    routerStarDetail: function routerStarDetail() {
+    routerStarDetail: function routerStarDetail(id) {
       uni.navigateTo({
-        url: "/pages/starDetail/starDetail" });
+        url: "/pages/starDetail/starDetail?id=".concat(id) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

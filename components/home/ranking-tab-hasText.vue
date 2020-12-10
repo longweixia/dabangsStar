@@ -6,7 +6,7 @@
         span="3"
         class="guard-card"
         v-for="(item, index) in raningTypeList"
-        :key="index"
+        :key="index" @click="changeTag(item)"
       >
         <view class="card-content" :class="'card-content' + index">
           <view class="card-left">
@@ -62,6 +62,38 @@ export default {
     };
   },
   methods: {
+    changeTag(){
+      // let params = {
+      //   endTime:"", //周结束时间
+      //   hitListType: 0,//榜单类型 0：周榜；1：月榜；2：总榜 --少了粉丝榜
+      //   listType:" ",
+      //   列表类型 默认空， 0：本周；1：近三个月周时间段；2：具体某个月份
+
+      //   monthNum	integer($int32)
+      //   具体月份值
+
+      //   pageNum	integer($int32)
+      //   example: 1
+      //   当前页码
+
+      //   pageSize	integer($int32)
+      //   example: 20
+      //   页面数量
+
+      //   sortType	integer($int32)
+      //   排序 0：正序；1：倒序；
+
+      //   starId	integer($int64)
+      //   明星ID
+
+      //   starName	string
+      //   明星姓名
+
+      //   startTime	string
+      //   周开始时间
+      // }
+
+    },
     routerStarDetail() {
       uni.navigateTo({
         url: "/pages/starDetail/starDetail"

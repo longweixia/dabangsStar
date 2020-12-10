@@ -1,12 +1,12 @@
 {
-  "description": "项目配置文件。",
+  "description": "项目配置文件",
   "packOptions": {
     "ignore": []
   },
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "enhance": true,
+    "enhance": false,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
@@ -39,9 +39,16 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "",
-  "appid": "wxcf8c06040676fecd",
-  "projectname": "dabangStar",
+  "libVersion": "2.14.1",
+  "appid": "wx8a93893c751e3f4d",
+  "projectname": "miniprogram-1",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []
@@ -50,6 +57,12 @@
       "list": []
     },
     "game": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {

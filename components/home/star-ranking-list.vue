@@ -3,7 +3,7 @@
   <view class="list-th">
     <view class="list-row" v-for="(item, index) in rankingList" :key="index">
       <view class="num-body">
-        <view class="num">{{ index + 1 }}</view>
+        <view class="num">{{ item.num }}</view>
       </view>
       <view class="img-body">
         <u-image

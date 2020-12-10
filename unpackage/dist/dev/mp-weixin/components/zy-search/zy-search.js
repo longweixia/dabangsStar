@@ -146,6 +146,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default2 =
 {
   name: "zy-search",
@@ -170,13 +179,31 @@ var _default2 =
 
     speechEngine: { //语音引擎=>讯飞:iFly,百度:'baidu'
       type: String,
-      default: 'baidu' } },
+      default: 'baidu' },
+
+    dataList: { //语音引擎=>讯飞:iFly,百度:'baidu'
+      type: Array,
+      default: [] } },
+
+
+
+
+  watch: {
+    dataList: {
+      handler: function handler(newVal, oldVal) {
+        if (!newVal.length) {
+          this.isNoData = false;
+        }
+      },
+      immediate: true } },
+
 
 
   data: function data() {
     return {
       searchText: '', //搜索关键词
-      hList: uni.getStorageSync('search_cache') //历史记录
+      hList: uni.getStorageSync('search_cache'), //历史记录
+      isNoData: true //默认有数据
     };
   },
   methods: {

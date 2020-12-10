@@ -10465,14 +10465,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var install = function install(Vue, vm) {
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var install = function install(Vue, vm) {var _Vue$prototype$$u$htt;
   // 此为自定义配置参数，具体参数见上方说明
-  Vue.prototype.$u.http.setConfig({
-    baseUrl: 'http://123.207.120.31:18001',
-    loadingText: '努力加载中~',
-    loadingTime: 800
-    // ......
-  });
+  Vue.prototype.$u.http.setConfig((_Vue$prototype$$u$htt = {
+    baseUrl: 'http://192.168.20.4:18001' }, _defineProperty(_Vue$prototype$$u$htt, "baseUrl",
+  'http://123.207.120.31:18001'), _defineProperty(_Vue$prototype$$u$htt, "loadingTime",
+
+  800), _Vue$prototype$$u$htt));
+
+
 
   // 请求拦截，配置Token等参数
   Vue.prototype.$u.http.interceptor.request = function (config) {
@@ -10489,9 +10490,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
     // 方式四，如果token放在了Storage本地存储中，拦截是每次请求都执行的
     // 所以哪怕您重新登录修改了Storage，下一次的请求将会是最新值
-    // const token = uni.getStorageSync('token');
-    // config.header.token = token;
-    config.header.Token = 'xxxxxx';
+    var token = uni.getStorageSync('Authorization');
+    config.header.Authorization = token;
+    // config.header.Token = 'xxxxxx';
 
     // 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
     if (config.url == '/user/login') config.header.noToken = true;
@@ -10526,6 +10527,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 {
   install: install };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 41 */,

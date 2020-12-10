@@ -154,22 +154,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // import { htxcx } from "@/store/api.js"
 // import { mapMutations } from 'vuex'
 var _default = {
   data: function data() {
     return {
-      code: "",
+      code: '',
       SessionKey: '',
-      encryptedData: "",
-      iv: "",
+      encryptedData: '',
+      iv: '',
       OpenId: '',
       nickName: null,
       avatarUrl: null,
       isCanUse: true,
-      rawData: "",
-      signature: "" };
+      rawData: '',
+      signature: '' };
 
   },
 
@@ -178,13 +209,35 @@ var _default = {
   },
   methods: {
     // ...mapMutations(["setName"]),
-    wxGetUserInfo: function wxGetUserInfo() {//第一授权获取用户信息===》按钮触发
+    // wxGetUserInfo(){
+
+    // },
+    getUserinfo: function getUserinfo() {
+      this.$u.
+      get("/personalCenter/personalCenterInfo").
+      then(function (res) {
+        console.log(res, "个人");
+
+        // this.swiperList = res;
+      });
+    },
+    getToken: function getToken() {
+      this.$u.
+      post("/common/testLogin?id=1").
+      then(function (res) {
+        console.log(res, "拿到token");
+        uni.setStorageSync("Authorization", res.token);
+        // this.swiperList = res;
+      });
+    },
+    wxGetUserInfo: function wxGetUserInfo() {
+      //第一授权获取用户信息===》按钮触发
       var _this = this;
       // 获取用户信息
       uni.getUserInfo({
         provider: 'weixin',
         success: function success(infoRes) {
-          console.log(infoRes, "用户信息");
+          console.log(infoRes, '用户信息');
           _this.encryptedData = infoRes.encryptedData;
           _this.iv = infoRes.iv;
           _this.rawData = infoRes.rawData;
@@ -193,14 +246,17 @@ var _default = {
           _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
           uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
           _this.updateUserInfo();
-        }, fail: function fail(_fail) {console.log("fail:", _fail);} });
+        },
+        fail: function fail(_fail) {
+          console.log('fail:', _fail);
+        } });
 
     },
     login: function login() {
       var _this = this;
-      uni.showLoading({
-        title: '登录中...' });
-
+      // uni.showLoading({
+      // 	title: '登录中...',
+      // })
 
       // 1.wx获取登录用户code
       uni.login({
@@ -212,8 +268,7 @@ var _default = {
             uni.getUserInfo({
               provider: 'weixin',
               success: function success(infoRes) {
-                console.log('login用户信息：', infoRes);
-                //获取用户信息后向调用信息更新方法
+                console.log('login用户信息：', infoRes); //获取用户信息后向调用信息更新方法
                 _this.nickName = infoRes.userInfo.nickName; //昵称
                 _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
                 _this.updateUserInfo(); //调用更新信息方法
@@ -225,25 +280,24 @@ var _default = {
           uni.hideLoading();
         } });
 
-
     },
-    updateUserInfo: function updateUserInfo() {//向后台更新信息
+    updateUserInfo: function updateUserInfo() {
+      //向后台更新信息
       // this.setName(this.nickName,this.avatarUrl)
       var _this = this;
       var obj = {
-        appid: "wx8a93893c751e3f4d",
-        secret: "af4a61ed135bee289857da945990a49f",
+        appid: 'wxcf8c06040676fecd',
+        secret: 'bfa8089fdfbb2addeb5de83af974561f',
         code: this.code };
 
       // 这个接口要在后端调用(https://api.weixin.qq.com无法加入白名单)
       // https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+code+"&grant_type=authorization_code
       // 请求微信端地址获取用户唯一标识的
 
-
       // htxcx(obj.appid,obj.secret,obj.code).then(res=>{
-      // 	console.log("res:",res)		
+      // 	console.log("res:",res)
       // 	res.data.openid // 唯一
-      // 	res.data.session_key 
+      // 	res.data.session_key
       // 	this.encryptedData
       // 	this.iv
       // 	uni.reLaunch({//信息更新成功后跳转到小程序首页
@@ -253,23 +307,18 @@ var _default = {
       // 	console.log("err:",err)
       // })
       var encryptedData = JSON.stringify(_this.encryptedData);
-      this.$u.post("/common/weiXinLong",
-      {
+      this.$u.
+      post("/common/weiXinLong", {
         code: _this.code,
         encrypteData: this.encryptedData,
         iv: this.iv,
         rawData: this.rawData,
         signature: this.signature }).
 
-
       then(function (res) {
-        console.log(res, 2111);
+        uni.setStorageSync("Authorization", res.token);
         // this.swiperList = res;
       });
-
-
-
-
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
