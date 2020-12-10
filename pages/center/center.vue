@@ -30,6 +30,13 @@
 				>
 					授权登录
 				</button> -->
+				<button
+					class="bottom"
+					type="primary"
+				@click="getUserinfo"
+				>
+					获取个人中心数据
+				</button>
 
 				<!-- <button class='bottom' type='primary' open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber">
 			  授权登录
@@ -66,6 +73,15 @@ export default {
         // wxGetUserInfo(){
 
         // },
+        getUserinfo(){
+            this.$u
+				.get(`/personalCenter/personalCenterInfo`)
+				.then((res) => {
+                    console.log(res, "个人")
+             
+					// this.swiperList = res;
+				})
+        },
 		wxGetUserInfo() {
 			//第一授权获取用户信息===》按钮触发
 			let _this = this
@@ -153,7 +169,7 @@ export default {
 				})
 				.then((res) => {
                     console.log(res, 2111)
-                    uni.setStorageSync("token", res.token)
+                    uni.setStorageSync("Authorization", res.token)
 					// this.swiperList = res;
 				})
 		},

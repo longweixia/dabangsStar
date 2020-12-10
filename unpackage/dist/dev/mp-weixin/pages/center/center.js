@@ -171,6 +171,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 // import { htxcx } from "@/store/api.js"
 // import { mapMutations } from 'vuex'
@@ -198,6 +205,15 @@ var _default = {
     // wxGetUserInfo(){
 
     // },
+    getUserinfo: function getUserinfo() {
+      this.$u.
+      get("/personalCenter/personalCenterInfo").
+      then(function (res) {
+        console.log(res, "个人");
+
+        // this.swiperList = res;
+      });
+    },
     wxGetUserInfo: function wxGetUserInfo() {
       //第一授权获取用户信息===》按钮触发
       var _this = this;
@@ -285,7 +301,7 @@ var _default = {
 
       then(function (res) {
         console.log(res, 2111);
-        uni.setStorageSync("token", res.token);
+        uni.setStorageSync("Authorization", res.token);
         // this.swiperList = res;
       });
     } } };exports.default = _default;
