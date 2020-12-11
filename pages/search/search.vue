@@ -22,7 +22,7 @@ export default {
     return {
       themeClass: "block",
       speechEngine: "baidu", //语音识别引擎
-	  hotList: ["栏目1", "栏目2", "栏目3", "栏目4"], //初始化推荐列表
+	  hotList: ["朱一龙", "朱一龙", "朱一龙", "朱一龙"], //初始化推荐列表
 	  dataList:[
 		  {"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
 					{"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
@@ -40,8 +40,8 @@ export default {
     },
     selectMyGuard(name) {
       this.$u.get("/home/selectStarInfo",{name:name}).then(res => {
-		//  this.dataList = res || []
-		 this.dataList = []
+		 this.dataList = res || []
+
       });
     }
   }

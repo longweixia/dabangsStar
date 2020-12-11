@@ -25,12 +25,12 @@
 /* 透明度 */
 /* 文章场景相关 */
 .search.data-v-c880309c {
-  width: 640rpx;
-  margin: 30rpx auto 0;
+  margin: 30rpx;
+  padding-right: 120rpx;
   position: relative;
 }
 .search input.data-v-c880309c {
-  background-color: #F7F7F7;
+  background-color: #F3F4F8;
   padding: 10rpx 74rpx;
   font-size: 28rpx;
   -webkit-border-radius: 50rpx;
@@ -39,20 +39,30 @@
 .search .voice-icon.data-v-c880309c {
   width: 36rpx;
   height: 36rpx;
+  line-height: 36rpx;
   padding: 16rpx 20rpx 16rpx 0;
   position: absolute;
-  left: 16rpx;
-  top: 4rpx;
+  right: 100rpx;
+  top: 104rpx;
   z-index: 10;
 }
 .search .search-icon.data-v-c880309c {
-  width: 36rpx;
-  height: 36rpx;
+  width: 30rpx;
+  height: 30rpx;
   padding: 16rpx 20rpx 16rpx 0;
   position: absolute;
-  right: 0;
+  left: 30rpx;
   top: -2rpx;
   z-index: 10;
+}
+.search .cancle.data-v-c880309c {
+  height: 32rpx;
+  line-height: 32rpx;
+  position: absolute;
+  right: 28rpx;
+  top: 16rpx;
+  z-index: 10;
+  font-size: 17px;
 }
 .s-block.data-v-c880309c {
   margin-top: 30rpx;
@@ -92,14 +102,13 @@
   text-overflow: ellipsis;
   background-color: #F7F7F7;
 }
-.s-circle.data-v-c880309c {
-  margin-top: 30rpx;
-}
 .s-circle .header.data-v-c880309c {
   font-size: 32rpx;
   padding: 30rpx;
   border-bottom: 2rpx solid #F9F9F9;
   position: relative;
+  font-weight: bold;
+  color: #333333;
 }
 .s-circle .header image.data-v-c880309c {
   width: 36rpx;
@@ -134,7 +143,7 @@
 }
 .wanted-block .header.data-v-c880309c {
   font-size: 32rpx;
-  padding: 30rpx;
+  padding: 0 30rpx 14rpx 30rpx;
 }
 .wanted-block .list.data-v-c880309c {
   display: -webkit-box;
@@ -142,21 +151,24 @@
   display: flex;
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
+  margin-left: 30rpx;
 }
 .wanted-block .list view.data-v-c880309c {
-  width: 50%;
-  color: #8A8A8A;
-  font-size: 28rpx;
+  width: 106rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  color: #333333;
+  font-size: 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-align: center;
-  padding: 20rpx 0;
-  border-top: 2rpx solid #FFF;
-  border-left: 2rpx solid #FFF;
-  background-color: #F7F7F7;
+  background-color: #FFEFEF;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-right: 20rpx;
 }
 .wanted-circle.data-v-c880309c {
   margin-top: 30rpx;
@@ -201,5 +213,12 @@
           justify-content: space-between;
   -webkit-align-content: center;
           align-content: center;
+}
+.data-no.data-v-c880309c {
+  font-size: 10px;
+  font-weight: bold;
+  color: #333333;
+  margin-left: 28rpx;
+  margin-top: 28rpx;
 }
 

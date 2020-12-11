@@ -155,6 +155,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default2 =
 {
   name: "zy-search",
@@ -192,7 +196,17 @@ var _default2 =
     dataList: {
       handler: function handler(newVal, oldVal) {
         if (!newVal.length) {
-          this.isNoData = false;
+          this.hasData = false;
+        } else {
+          this.hasData = true;
+        }
+      },
+      immediate: true },
+
+    searchText: {
+      handler: function handler(newVal, oldVal) {
+        if (!newVal) {
+          this.hasData = true;
         }
       },
       immediate: true } },
@@ -203,7 +217,7 @@ var _default2 =
     return {
       searchText: '', //搜索关键词
       hList: uni.getStorageSync('search_cache'), //历史记录
-      isNoData: true //默认有数据
+      hasData: true //默认有数据
     };
   },
   methods: {

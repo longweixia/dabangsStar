@@ -1,18 +1,22 @@
 <template name="zy-search">
 	<view>
 		<view class="search">
-			<!-- #ifdef APP-PLUS -->
-				<image src="../../static/zy-search/voice.svg" mode="aspectFit" @click="startRecognize()" class="voice-icon"></image>
-			<!-- #endif -->
+			
 			<template v-if="isFocus">
 				<input maxlength="20" focus type="text" value="" confirm-type="search" @confirm="searchStart()" placeholder="请输入关键词搜索" v-model.trim="searchText"/>
+				<view class="cancle">取消</view>
 			</template>
-			<template v-else>
+			<!-- #ifdef APP-PLUS -->
+			<!-- <image src="../../static/zy-search/voice.svg" mode="aspectFit" @click="startRecognize()" class="voice-icon"></image> -->
+			<!-- #endif -->
+			<!-- <template v-else>
 				<input maxlength="20" type="text" value="" confirm-type="search" @confirm="searchStart()" placeholder="请输入关键词搜索" v-model.trim="searchText"/>
-			</template>
+			</template> -->
 			<image src="../../static/zy-search/search.svg" mode="aspectFit" @click="searchStart()" class="search-icon"></image>
+			
 		</view>
-		<view :class="'s-' + theme" v-if="hList.length > 0">
+		<!-- <view :class="'s-' + theme" v-if="hList.length > 0　&&　hasData"> -->
+		<view :class="'s-' + theme" v-if="false">
 			<view class="header">
 				历史记录
 				<image src="../../static/zy-search/delete.svg" mode="aspectFit" @click="delhistory"></image>
@@ -21,19 +25,19 @@
 				<view v-for="(item,index) in hList" :key="index" @click="keywordsClick(item)">{{item}}</view>
 			</view>
 		</view>
-		<view :class="'wanted-' + theme" v-if="showWant">
-			<view class="header">猜你想搜的</view>
+		<view :class="'wanted-' + theme" v-if="hasData">
+			<view class="header">热门搜索</view>
 			<view class="list">
 				<view v-for="(item,index) in hotList" :key="index" @click="keywordsClick(item)">{{item}}</view>
 			</view>
 		</view>
-		<view class="data-list">
+		<view class="data-list" v-if="hasData">
 				<view v-for="(item,index) in dataList" :key="index" @click="keywordsClick(item)" class="data-row">
 					<view>{{item.name}}</view>
 					<view>查看</view>
 				</view>
 		</view>
-		<view class="data-list" v-if="!isNoData">
+		<view class="data-no" v-if="!hasData">
 				没有找到你搜的明星哦，是不是名字错了？
 		</view>
 	</view>
@@ -74,20 +78,30 @@
 		},
 		watch:{
 			dataList: {
-    　　handler(newVal,oldVal) {
-      　　if(!newVal.length){
-				this.isNoData = false
+		　　	handler(newVal,oldVal) {
+			　　if(!newVal.length){
+						this.hasData = false
+					}else{
+						this.hasData = true
+					}
+			　　},
+			　　immediate: true
+			},
+			searchText: {
+		　　	handler(newVal,oldVal) {
+			　　if(!newVal){
+						this.hasData = true
+					}
+			　　},
+			　　immediate: true
 			}
-    　　},
-    　　immediate: true
-    }
 		},
 	
 		data() {
 			return {
 				searchText:'',								//搜索关键词
 				hList:uni.getStorageSync('search_cache'),		//历史记录
-				isNoData: true, //默认有数据
+				hasData: true, //默认有数据
 			};
 		},
 		methods: {
@@ -166,47 +180,59 @@
 
 <style lang="scss" scoped>
 	.search{
-		width: 640upx;
-		margin: 30upx auto 0;
+		margin: 30rpx;
+		padding-right: 120rpx;
 		position: relative;
 		input{
-			background-color: #F7F7F7;
-			padding: 10upx 74upx;
-			font-size: 28upx;
-			border-radius: 50upx;
+			background-color: #F3F4F8;
+			padding: 10rpx 74rpx;
+			font-size: 28rpx;
+			border-radius: 50rpx;
 		}
 		.voice-icon{
-			width: 36upx;
-			height: 36upx;
-			padding: 16upx 20upx 16upx 0;
+			width: 36rpx;
+			height: 36rpx;
+			line-height: 36rpx;
+			padding: 16rpx 20rpx 16rpx 0;
 			position: absolute;
-			left: 16upx;
-			top: 4upx;
+			right: 100rpx;
+			top: 104rpx;
 			z-index: 10;
 		}
 		.search-icon{
-			width: 36upx;
-			height: 36upx;
-			padding: 16upx 20upx 16upx 0;
+			width: 30rpx;
+			height: 30rpx;
+			padding: 16rpx 20rpx 16rpx 0;
 			position: absolute;
-			right: 0;
-			top: -2upx;
+			left: 30rpx;
+			top: -2rpx;
 			z-index: 10;
+		}
+		.cancle{
+			height:32rpx;
+			line-height:32rpx;
+			position: absolute;
+			right: 28rpx;
+			top: 16rpx;
+			z-index: 10;
+			font-size: 17px;
+			// font-weight: bold;
+			// color: #000000;
 		}
 	}
 	.s-block{
-		margin-top: 30upx;
+		margin-top: 30rpx;
 		.header{
-			font-size: 32upx;
-			padding: 30upx;
+			font-size: 32rpx;
+			padding: 30rpx;
 			position: relative;
 			image{
-				width: 36upx;
-				height: 36upx;
-				padding: 10upx;
+				width: 36rpx;
+				height: 36rpx;
+				padding: 10rpx;
 				position: absolute;
-				right: 40upx;
-				top: 24upx;
+				right: 40rpx;
+				top: 24rpx;
 			}
 		}
 		.list{
@@ -215,12 +241,12 @@
 			view{
 				width: 50%;
 				color: #8A8A8A;
-				font-size: 28upx;
+				font-size: 28rpx;
 				box-sizing: border-box;
 				text-align: center;
-				padding: 20upx 0;
-				border-top: 2upx solid #FFF;
-    			border-left: 2upx solid #FFF;
+				padding: 20rpx 0;
+				border-top: 2rpx solid #FFF;
+    			border-left: 2rpx solid #FFF;
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
@@ -229,81 +255,87 @@
 		}
 	}
 	.s-circle{
-		margin-top: 30upx;
+		// margin-top: 30rpx;
 		.header{
-			font-size: 32upx;
-			padding: 30upx;
-			border-bottom: 2upx solid #F9F9F9;
+			font-size: 32rpx;
+			padding: 30rpx;
+			border-bottom: 2rpx solid #F9F9F9;
 			position: relative;
+			font-weight: bold;
+			color: #333333;
 			image{
-				width: 36upx;
-				height: 36upx;
-				padding: 10upx;
+				width: 36rpx;
+				height: 36rpx;
+				padding: 10rpx;
 				position: absolute;
-				right: 40upx;
-				top: 24upx;
+				right: 40rpx;
+				top: 24rpx;
 			}
 		}
 		.list{
 			display: flex;
 			flex-wrap: wrap;
-			padding: 0 30upx 20upx;
+			padding: 0 30rpx 20rpx;
 			view{
-				padding: 8upx 30upx;
-				margin: 20upx 30upx 0 0;
-				font-size: 28upx;
+				padding: 8rpx 30rpx;
+				margin: 20rpx 30rpx 0 0;
+				font-size: 28rpx;
 				color: #8A8A8A;
 				background-color: #F7F7F7;
 				box-sizing: border-box;
 				text-align: center;
-				border-radius: 20upx;
+				border-radius: 20rpx;
 			}
 		}
 	}
 	.wanted-block{
-		margin-top: 30upx;
+		margin-top: 30rpx;
 		.header{
-			font-size: 32upx;
-			padding: 30upx;
+			font-size: 32rpx;
+			padding: 0 30rpx 14rpx 30rpx;
 		}
 		.list{
 			display: flex;
 			flex-wrap: wrap;
+
+
+			margin-left:30rpx;
 			view{
-				width: 50%;
-				color: #8A8A8A;
-				font-size: 28upx;
+				width: 106rpx;
+				height:58rpx;
+				line-height:58rpx;
+				border-radius:10rpx;
+				color: #333333;
+				font-size: 12px;
 				box-sizing: border-box;
 				text-align: center;
-				padding: 20upx 0;
-				border-top: 2upx solid #FFF;
-				border-left: 2upx solid #FFF;
-				background-color: #F7F7F7;
+				background-color: #FFEFEF;
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
+				margin-right:20rpx;
 			}
 		}
 	}
 	.wanted-circle{
-		margin-top: 30upx;
+		margin-top: 30rpx;
 		.header{
-			font-size: 32upx;
-			padding: 30upx;
+			font-size: 32rpx;
+			padding: 30rpx;
 		}
 		.list{
 			display: flex;
 			flex-wrap: wrap;
-			padding: 0 30upx 20upx;
+			padding: 0 30rpx 20rpx;
 			view{
-				padding: 8upx 30upx;
-				margin: 20upx 30upx 0 0;
-				font-size: 28upx;
+				padding: 8rpx 30rpx;
+				margin: 20rpx 30rpx 0 0;
+				font-size: 28rpx;
 				color: #8A8A8A;
 				background-color: #F7F7F7;
 				box-sizing: border-box;
 				text-align: center;
-				border-radius: 20upx;
+				border-radius: 20rpx;
 			}
 		}
 	}
@@ -318,5 +350,13 @@
 			justify-content: space-between;
 			align-content: center;
 		}
+	}
+	// 搜索无结果
+	.data-no{
+		font-size: 10px;
+		font-weight: bold;
+		color: #333333;
+		margin-left: 28rpx;
+		margin-top: 28rpx;
 	}
 </style>
