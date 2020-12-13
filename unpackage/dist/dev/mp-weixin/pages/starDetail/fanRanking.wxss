@@ -32,7 +32,12 @@
           border-radius: 15px;
 }
 .nav-top.data-v-8237c074 {
+  text-align: center;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
+}
+.nodata.data-v-8237c074 {
+  text-align: center;
+  margin-top: 40rpx;
 }
 

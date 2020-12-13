@@ -173,23 +173,27 @@ export default {
         }
 
       ],
-      // 榜单tag
+      // 榜单tag 排名类型：0周榜；1月榜；2总榜
       raningTypeList: [
         {
           type: "周榜",
-          text: "我"
+          text: "我",
+          rankType: 0
         },
         {
           type: "月榜",
-          text: "爱"
+          text: "爱",
+           rankType: 1
         },
         {
           type: "粉丝榜",
-          text: "邓"
+          text: "邓",
+          rankType: 2
         },
         {
           type: "月总榜",
-          text: "伦"
+          text: "伦",
+          rankType: 3
         }
         // {
         // 	image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',

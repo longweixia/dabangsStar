@@ -25,15 +25,14 @@
 /* 透明度 */
 /* 文章场景相关 */
 .btn-list.data-v-5e84386a {
-  text-align: center;
   background: #FFE6E6;
-  width: 530rpx;
   margin: 0 auto;
+  display: inline-block;
   -webkit-border-radius: 30rpx;
           border-radius: 30rpx;
 }
 .btn-list .btn-nav.data-v-5e84386a {
-  width: 170rpx;
+  width: 180rpx;
   text-align: center;
   height: 60rpx;
   -webkit-border-radius: 30rpx;

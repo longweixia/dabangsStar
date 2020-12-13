@@ -10,6 +10,12 @@
             }
         },
         {
+            "path": "pages/index/rangkingList",
+            "style": {
+                "navigationBarTitleText": "榜单"
+            }
+        },
+        {
             "path": "pages/search/search",
             "style": {
                 "navigationBarTitleText": "搜索爱豆"

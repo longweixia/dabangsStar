@@ -42,8 +42,6 @@
   "libVersion": "",
   "appid": "wxcf8c06040676fecd",
   "projectname": "dabangStar",
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []

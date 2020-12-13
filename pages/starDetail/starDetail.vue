@@ -25,7 +25,7 @@
                             <view class="num">{{index}}</view>
                     
                      </view>
-                    <view class="more" @click="routerFanRanking(0,123)">更多</view>   
+                    <view class="more" @click="routerFanRanking(0)">更多</view>   
                 </view>	
                 <view class="star-ranking">
                     <view>粉丝月榜</view>
@@ -35,7 +35,7 @@
                             <view class="num">{{index}}</view>
                     
                      </view>
-                    <view class="more"  @click="routerFanRanking(1,123)">更多</view>   
+                    <view class="more"  @click="routerFanRanking(1)">更多</view>   
                 </view>	
             </view>
         </view>
@@ -93,15 +93,19 @@ import resources from '../../components/resources/resources.vue'
 						val: 500
                     },
                 ],
+                id:null,
                 
 
 			}
         },
+      onLoad(option) {
+    this.id = Number(option.id);
+  },
        
 		methods: {
-            routerFanRanking(type,id){ //0是周榜，1是月榜
+            routerFanRanking(type){ //0是周榜，1是月榜
                 uni.navigateTo({
-					url: `/pages/starDetail/fanRanking?type=${type}&id=${id}`
+					url: `/pages/starDetail/fanRanking?type=${type}&id=${this.id}`
 				});
             },
           

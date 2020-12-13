@@ -6,7 +6,7 @@
         span="3"
         class="guard-card"
         v-for="(item, index) in raningTypeList"
-        :key="index"
+        :key="index" @click="routerRangking(item.rankType)"
       >
         <view class="card-content">
           <view class="guard-type">{{ item.type }}</view>
@@ -26,32 +26,41 @@ export default {
   name: "ranking-tab-no",
   data() {
     return {
-      // 榜单tag
+      // 榜单tag  排名类型：0周榜；1月榜；2总榜
       raningTypeList: [
         {
           type: "周榜",
           text: "我",
-          img:"../../static/home/week.png"
+          img:"../../static/home/week.png",
+          rankType: 0
         },
         {
           type: "月榜",
           text: "爱",
-          img:"../../static/home/mouth.png"
+          img:"../../static/home/mouth.png",
+           rankType: 1
         },
         {
           type: "粉丝榜",
           text: "邓",
-          img:"../../static/home/fans.png"
+          img:"../../static/home/fans.png",
+           rankType: 3
         },
         {
           type: "总榜",
           text: "伦",
-          img:"../../static/home/total.png"
+          img:"../../static/home/total.png",
+           rankType: 2
         }
       ]
     };
   },
   methods: {
+    routerRangking(rankType) {
+      uni.navigateTo({
+        url: `/pages/index/rangkingList?type=${rankType}`
+      });
+    },
     routerStarDetail() {
       uni.navigateTo({
         url: "/pages/starDetail/starDetail"

@@ -85,8 +85,9 @@
   font-size: 28rpx;
 }
 .val.data-v-468d5fa4 {
+  text-align: right;
   position: absolute;
-  right: 20rpx;
+  right: 40rpx;
   width: 200rpx;
   font-size: 24rpx;
   color: #b5b5b5;

@@ -1,33 +1,81 @@
 <template>
-
-    <!-- 排行榜 -->
-    <view class="list-th">
-      <view class="list-row" v-for="(item, index) in rankingList" :key="index">
-        <view class="num-body">
-          <view class="num" :class="'num' + index">{{ index + 1 }}</view>
+<!-- 首页-粉丝-资源 用到的排名榜单 -->
+    <view>
+      <!-- 1.首页周日月排行榜 -->
+      <view class="list-th" v-if="listPage == 'home'">
+        <view class="list-row" v-for="(item, index) in rankingList" :key="index">
+          <view class="num-body">
+            <view class="num" :class="'num' + index">{{item.rank}}</view>
+          </view>
+          <view class="img-body">
+            <u-image
+              class="img"
+              width="80rpx"
+              height="80rpx"
+              :src="item.starAvatar"
+              shape="circle"
+            ></u-image>
+          </view>
+          <view class="name">
+            {{ item.starName }}
+          </view>
+          <view class="val">
+            {{ item.totalVigourVal }}
+          </view>
         </view>
-        <view class="img-body">
-          <u-image
-            class="img"
-            width="80rpx"
-            height="80rpx"
-            :src="item.image"
-            shape="circle"
-          ></u-image>
+    </view>
+      <!-- 2.粉丝排行榜 -->
+      <view class="list-th" v-if="listPage == 'starDetail'">
+        <view class="list-row" v-for="(item, index) in rankingList" :key="index">
+          <view class="num-body">
+            <view class="num" :class="'num' + index">{{index+1}}</view>
+          </view>
+          <view class="img-body">
+            <u-image
+              class="img"
+              width="80rpx"
+              height="80rpx"
+              :src="item.avatarUrl"
+              shape="circle"
+            ></u-image>
+          </view>
+          <view class="name">
+            {{ item.nickName }}
+          </view>
+          <view class="val">
+            +{{ item.vigourVal }}热力值
+          </view>
         </view>
-        <view class="name">
-          {{ item.name }}
+    </view>
+      <!-- 3.资源排行榜 -->
+      <view class="list-th" v-if="listPage == 'resourcesRanking'">
+        <view class="list-row" v-for="(item, index) in rankingList" :key="index">
+          <view class="num-body">
+            <view class="num" :class="'num' + index">{{index+1}}</view>
+          </view>
+          <view class="img-body">
+            <u-image
+              class="img"
+              width="80rpx"
+              height="80rpx"
+              :src="item.avatarUrl"
+              shape="circle"
+            ></u-image>
+          </view>
+          <view class="name">
+            {{ item.nickName }}
+          </view>
+          <view class="val">
+            已完成{{ item.completeNum }}次
+          </view>
         </view>
-        <view class="val">
-          {{ item.val }}
-        </view>
-      </view>
+    </view>
   </view>
 </template>
 
 <script>
 export default {
-  props:["rankingList"],
+  props:["rankingList","listPage"], //榜单数据，页面来源
   data() {
     return {
      
@@ -89,8 +137,9 @@ export default {
   font-size: 28rpx;
 }
 .val {
+  text-align: right;
   position: absolute;
-  right:20rpx;
+  right:40rpx;
   width: 200rpx;
   font-size: 24rpx;
   color: #b5b5b5;

@@ -6,7 +6,7 @@
         span="3"
         class="guard-card"
         v-for="(item, index) in raningTypeList"
-        :key="index" @click="changeTag(item)"
+        :key="index" @click="routerRangking(item.rankType)"
       >
         <view class="card-content" :class="'card-content' + index">
           <view class="card-left">
@@ -38,30 +38,39 @@ export default {
           type: "周榜",
           text: "我",
           img: "../../static/home/weekText.png",
-          icon:"../../static/home/starIcon.png"
+          icon:"../../static/home/starIcon.png",
+           rankType: 0
         },
         {
           type: "月榜",
           text: "爱",
           img: "../../static/home/mouthText.png",
-           icon:"../../static/home/starIcon.png"
+           icon:"../../static/home/starIcon.png",
+            rankType: 1
         },
         {
           type: "粉丝榜",
           text: "邓",
           img: "../../static/home/fansText.png",
-           icon:"../../static/home/starIcon.png"
+           icon:"../../static/home/starIcon.png",
+            rankType: 3
         },
         {
           type: "总榜",
           text: "伦",
           img: "../../static/home/totalText.png",
-           icon:"../../static/home/starIcon.png"
+           icon:"../../static/home/starIcon.png",
+            rankType: 2
         }
       ]
     };
   },
   methods: {
+     routerRangking(rankType) {
+      uni.navigateTo({
+        url: `/pages/index/rangkingList?type=${rankType}`
+      });
+    },
     changeTag(){
       // let params = {
       //   endTime:"", //周结束时间

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/rangkingList",
     "pages/search/search",
     "pages/starDetail/starDetail",
     "pages/starDetail/fanRanking",
@@ -44,6 +45,5 @@
     ]
   },
   "secret": "bfa8089fdfbb2addeb5de83af974561f",
-  "usingComponents": {},
-  "sitemapLocation": "sitemap81.json"
+  "usingComponents": {}
 }

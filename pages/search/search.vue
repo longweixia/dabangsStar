@@ -22,11 +22,11 @@ export default {
     return {
       themeClass: "block",
       speechEngine: "baidu", //语音识别引擎
-	  hotList: ["朱一龙", "朱一龙", "朱一龙", "朱一龙"], //初始化推荐列表
+	  hotList: ["梁静茹", "梁静茹1", "梁静茹2", "梁静茹3"], //初始化推荐列表
 	  dataList:[
-		  {"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
-					{"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
-					{"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1}
+		  // {"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
+			// 		{"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
+			// 		{"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1}
 	  ]
     };
   },

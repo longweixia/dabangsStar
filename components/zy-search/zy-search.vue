@@ -4,7 +4,7 @@
 			
 			<template v-if="isFocus">
 				<input maxlength="20" focus type="text" value="" confirm-type="search" @confirm="searchStart()" placeholder="请输入关键词搜索" v-model.trim="searchText"/>
-				<view class="cancle">取消</view>
+				<view class="cancle" @click="cancle">取消</view>
 			</template>
 			<!-- #ifdef APP-PLUS -->
 			<!-- <image src="../../static/zy-search/voice.svg" mode="aspectFit" @click="startRecognize()" class="voice-icon"></image> -->
@@ -16,7 +16,7 @@
 			
 		</view>
 		<!-- <view :class="'s-' + theme" v-if="hList.length > 0　&&　hasData"> -->
-		<view :class="'s-' + theme" v-if="false">
+		<view :class="'s-' + theme">
 			<view class="header">
 				历史记录
 				<image src="../../static/zy-search/delete.svg" mode="aspectFit" @click="delhistory"></image>
@@ -31,10 +31,12 @@
 				<view v-for="(item,index) in hotList" :key="index" @click="keywordsClick(item)">{{item}}</view>
 			</view>
 		</view>
+		<!-- 搜索结果 -->
 		<view class="data-list" v-if="hasData">
 				<view v-for="(item,index) in dataList" :key="index" @click="keywordsClick(item)" class="data-row">
-					<view>{{item.name}}</view>
-					<view>查看</view>
+					<img  :src="item.avatar=='string'? imgtext :item.avatar" />
+					<view class="name">{{item.name}}</view>
+					<view class="btn">查看</view>
 				</view>
 		</view>
 		<view class="data-no" v-if="!hasData">
@@ -99,12 +101,17 @@
 	
 		data() {
 			return {
+				imgtext:"https://cdn.uviewui.com/uview/swiper/1.jpg",
 				searchText:'',								//搜索关键词
 				hList:uni.getStorageSync('search_cache'),		//历史记录
 				hasData: true, //默认有数据
 			};
 		},
 		methods: {
+			// 取消
+			cancle(){
+				history.go(-1)
+			},
 			searchStart: function() {	//触发搜索
 				let _this = this;
 				if (_this.searchText == '') {
@@ -289,10 +296,12 @@
 		}
 	}
 	.wanted-block{
-		margin-top: 30rpx;
+		margin-top: 40rpx;
+		margin-bottom: 30rpx;
 		.header{
 			font-size: 32rpx;
 			padding: 0 30rpx 14rpx 30rpx;
+			margin-bottom: 10rpx;
 		}
 		.list{
 			display: flex;
@@ -341,14 +350,35 @@
 	}
 	// 搜索结果列表
 	.data-list{
-		border: 1px solid #ddd;
+		// border: 1px solid #ddd;
 		margin: 20rpx;
 		border-radius: 10rpx;
 		.data-row{
-			margin: 20rpx;
+			padding: 20rpx;
 			display:flex;
 			justify-content: space-between;
-			align-content: center;
+			align-items: center;
+			height: 124rpx;
+			line-height: 124rpx;
+			border: 2rpx solid #ddd;
+			border-radius: 10rpx;
+			// margin-bottom: 20rpx;
+			img{
+				width: 80rpx;
+				height: 80rpx;
+				border-radius: 40rpx;
+			}
+			.name{
+				position: absolute;
+				left: 150rpx;
+				font-size: 14px;
+				font-weight: bold;
+				color: #333333;
+			}
+			.btn{
+				font-size: 14px;
+				color: #E34C4C;
+			}
 		}
 	}
 	// 搜索无结果

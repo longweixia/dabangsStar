@@ -25,13 +25,14 @@ export default {
 
 <style lang="scss" scoped>
 .btn-list{
-    text-align: center;
+    // text-align: center;
     background: #FFE6E6;
-    width:530rpx;
+    // width:530rpx;
     margin: 0 auto;
+    display: inline-block;
     border-radius:  30rpx;
     .btn-nav {
-      width: 170rpx;
+      width: 180rpx;
       text-align: center;
       height: 60rpx;
       border-radius: 30rpx;
