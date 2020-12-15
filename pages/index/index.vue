@@ -101,6 +101,16 @@
     <view class="list-four-th">
       <starRankingList :rankingList="rankingList"></starRankingList>
     </view>
+  
+    <view class="home-bottom">
+      <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
+        <view class="my">
+          <view class="my-card" @click="routerToCenter">
+          <img class="my-img" src="../../static/home/my.png"/>
+          <view>我的</view>
+          </view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -285,6 +295,11 @@ export default {
     routerStarDetail(id) {
       uni.navigateTo({
         url: `/pages/starDetail/starDetail?id=${id}`
+      });
+    },
+    routerToCenter(){
+       uni.navigateTo({
+        url: `/pages/center/index`
       });
     }
   }
@@ -511,6 +526,7 @@ export default {
     // margin: 20rpx;
     position: relative;
     top: -100rpx;
+    margin-bottom: 80rpx;
   }
 }
 .wrap {
@@ -529,5 +545,40 @@ export default {
 
 .bg-purple-dark {
   background: #99a9bf;
+}
+
+.home-bottom{
+ position: relative;
+ height: 132rpx;
+  .home-bottom-img{
+    width: 100%;
+    height: 100%;
+  }
+  .my{
+  // background: #99a9bf;
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20rpx;
+  bottom: 150rpx;
+  .my-card{
+    width: 100rpx;
+    height: 100rpx;
+    padding: 10rpx;
+    background: #fff;
+    border-radius: 50rpx;
+    border: 2px solid #ddd;
+    color: #E34C4C;
+     .my-img{
+      width:30rpx;
+      height:30rpx;
+    }
+  }
+}
+
 }
 </style>

@@ -42,7 +42,13 @@
         {
             "path": "pages/center/center",
             "style": {
-                "navigationBarTitleText": "个人中心"
+                "navigationBarTitleText": "个人中心-测试"
+            }
+        },
+        {
+            "path": "pages/center/index",
+            "style": {
+                "navigationBarTitleText": "我"
             }
         },
         {

@@ -257,6 +257,7 @@
 .home-page .list-four-th.data-v-57280228 {
   position: relative;
   top: -100rpx;
+  margin-bottom: 80rpx;
 }
 .wrap.data-v-57280228 {
   padding: 40rpx;
@@ -272,5 +273,44 @@
 }
 .bg-purple-dark.data-v-57280228 {
   background: #99a9bf;
+}
+.home-bottom.data-v-57280228 {
+  position: relative;
+  height: 132rpx;
+}
+.home-bottom .home-bottom-img.data-v-57280228 {
+  width: 100%;
+  height: 100%;
+}
+.home-bottom .my.data-v-57280228 {
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: absolute;
+  right: 20rpx;
+  bottom: 150rpx;
+}
+.home-bottom .my .my-card.data-v-57280228 {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 10rpx;
+  background: #fff;
+  -webkit-border-radius: 50rpx;
+          border-radius: 50rpx;
+  border: 2px solid #ddd;
+  color: #E34C4C;
+}
+.home-bottom .my .my-card .my-img.data-v-57280228 {
+  width: 30rpx;
+  height: 30rpx;
 }
 
