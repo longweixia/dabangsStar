@@ -3,16 +3,24 @@
     <!-- 导航栏 -->
 
     <view class="nav-top">
-      <BtnNav :btnList="btnList" @changebtn="changebtn" :rankType="rankType"></BtnNav>
+      <BtnNav
+        :btnList="btnList"
+        @changebtn="changebtn"
+        :rankType="rankType"
+      ></BtnNav>
     </view>
     <!-- 排行榜 -->
     <view class="list">
-        <RankingList :rankingList="rankingList" v-if="hasData" listPage="starDetail"></RankingList>
-        <view v-if="!hasData" class="nodata">
-          当前榜单暂无数据，您可以查看其它榜单
-        </view>
+      <RankingList
+        :rankingList="rankingList"
+        v-if="hasData"
+        listPage="starDetail"
+      ></RankingList>
+      <view v-if="!hasData" class="nodata">
+        当前榜单暂无数据，您可以查看其它榜单
+      </view>
     </view>
-    	<u-toast ref="uToast" />
+    <u-toast ref="uToast" />
   </view>
 </template>
 
@@ -27,7 +35,7 @@ export default {
   data() {
     return {
       rankingList: [],
-      hasData: true,// 是否有数据，默认有数据
+      hasData: true, // 是否有数据，默认有数据
       rankingList1: [
         {
           icon: "皇冠",
@@ -49,8 +57,7 @@ export default {
           num: "4",
           nickName: "邓伦",
           vigourVal: 500
-        },
-        
+        }
       ],
       rankingList2: [
         {
@@ -76,7 +83,7 @@ export default {
         }
       ],
       btnList: ["粉丝周榜", "粉丝月榜", "粉丝总榜"],
-      rankType: null, //显示周榜还是月榜,0是周榜，1是月榜
+      rankType: null //显示周榜还是月榜,0是周榜，1是月榜
     };
   },
   onLoad(option) {
@@ -89,37 +96,38 @@ export default {
   methods: {
     changebtn(index) {
       console.log(index);
-      this.rankType = index
+      this.rankType = index;
       // if (index === 0) {
-        // this.rankingList = this.rankingList1;
+      // this.rankingList = this.rankingList1;
       // } else if (index === 1) {
       //   this.rankingList = this.rankingList2;
       // }
-        this.$u.post('/starDetail/selectFensRank',{
+      this.$u
+        .post("/starDetail/selectFensRank", {
           id: this.id,
-         pageNum: 1,
-         pageSize: 20,
-         rankType: index
-       }).then(res => {
-              this.rankingList = res.list;  //　少了头像
-              if(res.list&&res.list.length>0){
-                this.hasData = true
-              }else{
-                this.hasData = false
-              }
-        }).catch(res=>{
-         this.$refs.uToast.show({
+          pageNum: 1,
+          pageSize: 20,
+          rankType: index
+        })
+        .then(res => {
+          this.rankingList = res.list; //　少了头像
+          if (res.list && res.list.length > 0) {
+            this.hasData = true;
+          } else {
+            this.hasData = false;
+          }
+        })
+        .catch(res => {
+          this.$refs.uToast.show({
             title: res.message,
             // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-            type: 'error ', 
+            type: "error ",
             duration: 1000,
             // 如果不需要图标，请设置为false
             icon: true
-          })
-        })
-    },
-   
-
+          });
+        });
+    }
   }
 };
 </script>
@@ -140,12 +148,12 @@ export default {
   //   padding-top: 20rpx;
 }
 .nav-top {
-   text-align: center;
+  text-align: center;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
-.nodata{
-text-align:center;
-margin-top:40rpx
+.nodata {
+  text-align: center;
+  margin-top: 40rpx;
 }
 </style>

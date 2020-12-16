@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
+    "btn-nav": "/components/btn-nav/btn-nav",
+    "ranking-list": "/components/ranking-list/ranking-list"
+  }
+}

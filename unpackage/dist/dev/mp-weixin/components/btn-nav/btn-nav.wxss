@@ -32,7 +32,6 @@
           border-radius: 30rpx;
 }
 .btn-list .btn-nav.data-v-5e84386a {
-  width: 180rpx;
   text-align: center;
   height: 60rpx;
   -webkit-border-radius: 30rpx;

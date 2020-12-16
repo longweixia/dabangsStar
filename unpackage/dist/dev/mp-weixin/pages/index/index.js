@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uSwiper: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */ "node-modules/uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 122))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */ "node-modules/uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 134))
   },
   uImage: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 129))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 141))
   }
 }
 var render = function() {
@@ -106,9 +106,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   var m0 = __webpack_require__(/*! ../../static/home/searchBtn.png */ 45)
 
-  var m1 = __webpack_require__(/*! ../../static/home/homeBottom.png */ 47)
+  var m1 = __webpack_require__(/*! ../../static/home/homeBottom.png */ 46)
 
-  var m2 = __webpack_require__(/*! ../../static/home/my.png */ 46)
+  var m2 = __webpack_require__(/*! ../../static/home/my.png */ 47)
 
   _vm.$mp.data = Object.assign(
     {},
@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 143));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 150));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 148));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 155));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 162));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -450,6 +450,11 @@ __webpack_require__.r(__webpack_exports__);
     routerStarDetail: function routerStarDetail(id) {
       uni.navigateTo({
         url: "/pages/starDetail/starDetail?id=".concat(id) });
+
+    },
+    routerToCenter: function routerToCenter() {
+      uni.navigateTo({
+        url: "/pages/center/index" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

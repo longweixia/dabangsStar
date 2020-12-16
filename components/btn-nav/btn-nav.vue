@@ -32,7 +32,7 @@ export default {
     display: inline-block;
     border-radius:  30rpx;
     .btn-nav {
-      width: 180rpx;
+    //   width: 180rpx;
       text-align: center;
       height: 60rpx;
       border-radius: 30rpx;

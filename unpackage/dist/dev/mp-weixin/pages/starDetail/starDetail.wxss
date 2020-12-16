@@ -28,14 +28,6 @@
   height: 300rpx;
   width: 100%;
 }
-.top .bg-img.data-v-382f0766 {
-  width: 100%;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(https://cdn.uviewui.com/uview/swiper/1.jpg);
-}
 .star-card.data-v-382f0766 {
   margin: 20rpx;
 }

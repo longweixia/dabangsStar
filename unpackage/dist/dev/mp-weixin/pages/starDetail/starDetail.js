@@ -93,17 +93,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
+  uSwiper: function() {
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */ "node-modules/uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 134))
+  },
   uImage: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 129))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 141))
   },
   resources: function() {
-    return __webpack_require__.e(/*! import() | components/resources/resources */ "components/resources/resources").then(__webpack_require__.bind(null, /*! @/components/resources/resources.vue */ 185))
+    return __webpack_require__.e(/*! import() | components/resources/resources */ "components/resources/resources").then(__webpack_require__.bind(null, /*! @/components/resources/resources.vue */ 197))
   }
 }
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var m0 = __webpack_require__(/*! ../../static/home/searchBtn.png */ 45)
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        m0: m0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -137,7 +150,41 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var prizePraw = function prizePraw() {__webpack_require__.e(/*! require.ensure | components/prize-wraw/prize-wraw */ "components/prize-wraw/prize-wraw").then((function () {return resolve(__webpack_require__(/*! ../../components/prize-wraw/prize-wraw.vue */ 192));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var resources = function resources() {__webpack_require__.e(/*! require.ensure | components/resources/resources */ "components/resources/resources").then((function () {return resolve(__webpack_require__(/*! ../../components/resources/resources.vue */ 185));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var prizePraw = function prizePraw() {__webpack_require__.e(/*! require.ensure | components/prize-wraw/prize-wraw */ "components/prize-wraw/prize-wraw").then((function () {return resolve(__webpack_require__(/*! ../../components/prize-wraw/prize-wraw.vue */ 204));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var resources = function resources() {__webpack_require__.e(/*! require.ensure | components/resources/resources */ "components/resources/resources").then((function () {return resolve(__webpack_require__(/*! ../../components/resources/resources.vue */ 197));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,11 +244,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       // 当前明星数据
-      listFourTh: [{
-        icon: '皇冠',
-        image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-        num: '4',
-        name: '邓伦',
+      listFourTh: [
+      {
+        icon: "皇冠",
+        image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        num: "4",
+        name: "邓伦",
         val: 500,
         id: 1 }],
 
@@ -209,43 +257,77 @@ __webpack_require__.r(__webpack_exports__);
       // 周榜/月榜
       listWeek: [
       {
-        icon: '皇冠',
-        image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-        num: '4',
-        name: '邓伦',
+        icon: "皇冠",
+        image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        num: "4",
+        name: "邓伦",
         val: 500,
         id: 2 },
 
       {
-        icon: '皇冠',
-        image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-        num: '4',
-        name: '邓伦',
+        icon: "皇冠",
+        image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        num: "4",
+        name: "邓伦",
         val: 500,
         id: 3 },
 
       {
-        icon: '皇冠',
-        image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-        num: '4',
-        name: '邓伦',
+        icon: "皇冠",
+        image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        num: "4",
+        name: "邓伦",
         val: 500 }],
 
 
       id: null };
 
-
-
   },
   onLoad: function onLoad(option) {
     this.id = Number(option.id);
   },
+  mounted: function mounted() {
+    this.selectStarInfo();
+  },
 
   methods: {
-    routerFanRanking: function routerFanRanking(type) {//0是周榜，1是月榜
+    // 获取轮播
+    carouselList: function carouselList() {var _this = this;
+      this.$u.post('/home/carousel/list').then(function (res) {
+        _this.swiperList = res;
+      });
+    },
+    routerFanRanking: function routerFanRanking(type) {
+      //0是周榜，1是月榜
       uni.navigateTo({
         url: "/pages/starDetail/fanRanking?type=".concat(type, "&id=").concat(this.id) });
 
+    },
+    // 获取明星详情页明星信息
+    selectStarInfo: function selectStarInfo() {var _this2 = this;
+      this.rankingList = [];
+      this.$u.
+      get("/starDetail/selectStarInfo", {
+        id: this.id }).
+
+      then(function (res) {
+        _this2.rankingList = res.list; //　少了头像
+        if (res.list && res.list.length > 0) {
+          _this2.hasData = true;
+        } else {
+          _this2.hasData = false;
+        }
+      }).
+      catch(function (res) {
+        _this2.$refs.uToast.show({
+          title: res.message,
+          // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+          type: "error ",
+          duration: 1000,
+          // 如果不需要图标，请设置为false
+          icon: true });
+
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
