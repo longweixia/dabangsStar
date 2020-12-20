@@ -29,8 +29,8 @@
   -webkit-border-radius: 20rpx;
           border-radius: 20rpx;
   margin: 20rpx;
-  -webkit-box-shadow: 0 0 15rpx #E6E6E6;
-          box-shadow: 0 0 15rpx #E6E6E6;
+  -webkit-box-shadow: 0 0 15rpx #e6e6e6;
+          box-shadow: 0 0 15rpx #e6e6e6;
   padding: 10rpx;
 }
 .star-card .list-top.data-v-552bde50 {
@@ -200,7 +200,7 @@
   right: 0;
   top: 40rpx;
   font-size: 5px;
-  background: #E34C4C;
+  background: #e34c4c;
   color: #fff;
   width: 24rpx;
   height: 24rpx;
