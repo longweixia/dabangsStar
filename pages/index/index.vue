@@ -107,7 +107,6 @@
         <view class="my">
           <view class="my-card" @click="routerToCenter">
           <img class="my-img" src="../../static/home/my.png"/>
-          <view>我的</view>
           </view>
       </view>
     </view>
@@ -271,6 +270,9 @@ export default {
             this.selectMyGuard()
      
   },
+  mounted(){
+    this.$emit("footer",false)
+  },
   methods: {
     // 获取我的守护
     selectMyGuard(){
@@ -280,7 +282,7 @@ export default {
     },
     // 获取轮播
     carouselList(){
-     this.$u.post('/home/carousel/list').then(res => {
+     this.$u.get('/home/carousel/list').then(res => {
               this.swiperList = res;
             })
     },
@@ -556,8 +558,8 @@ export default {
   }
   .my{
   // background: #99a9bf;
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -565,17 +567,18 @@ export default {
   position: absolute;
   right: 20rpx;
   bottom: 150rpx;
+   font-size: 6px;
   .my-card{
     width: 100rpx;
     height: 100rpx;
-    padding: 10rpx;
-    background: #fff;
-    border-radius: 50rpx;
-    border: 2px solid #ddd;
-    color: #E34C4C;
+    // padding: 10rpx;
+    // background: #fff;
+    // border-radius: 40rpx;
+    // border: 2px solid #ddd;
+    // color: #E34C4C;
      .my-img{
-      width:30rpx;
-      height:30rpx;
+      width:100%;
+      height:100%;
     }
   }
 }

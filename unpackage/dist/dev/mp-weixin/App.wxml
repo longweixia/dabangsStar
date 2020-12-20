@@ -1,0 +1,1 @@
+<view id="app" class="_div"><router-view bind:footer="__e" vue-id="c31923fa-1" data-event-opts="{{[['^footer',[['footer']]]]}}" bind:__l="__l"></router-view><footer vue-id="c31923fa-2" bind:__l="__l"></footer></view>
