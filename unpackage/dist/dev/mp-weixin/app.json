@@ -8,6 +8,8 @@
     "pages/starDetail/resourcesRanking",
     "pages/center/center",
     "pages/center/index",
+    "pages/center/edit",
+    "pages/center/u-avatar-cropper",
     "pages/login/login",
     "pages/login/forget",
     "pages/login/register"

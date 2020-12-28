@@ -52,6 +52,19 @@
             }
         },
         {
+            "path": "pages/center/edit",
+            "style": {
+                "navigationBarTitleText": "我"
+            }
+        },
+        {
+            "path": "pages/center/u-avatar-cropper",
+            "style": {
+                "navigationBarTitleText": "头像裁剪",
+                "navigationBarBackgroundColor": "#000000"
+            }
+        },
+        {
             "path": "pages/login/login",
             "style": {}
         }, {

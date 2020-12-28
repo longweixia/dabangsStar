@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "我",
+  "usingComponents": {
+    "u-cell-group": "/node-modules/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell-item": "/node-modules/uview-ui/components/u-cell-item/u-cell-item",
+    "u-action-sheet": "/node-modules/uview-ui/components/u-action-sheet/u-action-sheet",
+    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal",
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input"
+  }
+}

@@ -13,7 +13,17 @@
             shape="circle"
           ></u-image>
           <view class="row-text">
-            <view class="name"> {{ myData.nickName }}</view>
+            <view class="name">
+              {{ myData.nickName }}
+              <u-icon
+                @click="routerPath('edit')"
+                name="edit-pen-fill"
+                color="#666"
+                size="28"
+                class="edit-btn"
+              ></u-icon
+            ></view>
+
             <view class="id"> id：{{ myData.fensId }}</view>
             <view class="hotVal">我的热力值：{{ myData.vigourVal }}</view>
           </view>
@@ -32,18 +42,14 @@
       <!-- 个人标语 -->
       <view class="slogan">
         <view class="row-text">
-          <view class="text"
-            >个人标语：{{
-              myData.slogan
-            }}</view
-          >
+          <view class="text">个人标语：{{ myData.slogan }}</view>
           <img class="btn-img" src="../../static/home/right.png" />
         </view>
       </view>
     </view>
     <view class="list">
       <List></List>
-       </view>
+    </view>
   </view>
 </template>
 
@@ -53,7 +59,7 @@ import List from "../../components/center/list.vue";
 export default {
   name: "BtnNav",
   components: {
-    List
+    List,
   },
   props: ["btnList", "rankType"],
   data() {
@@ -69,7 +75,7 @@ export default {
       //     id: 1
       //   }
       // ]
-      myData: {} //个人信息
+      myData: {}, //个人信息
     };
   },
   mounted() {
@@ -82,18 +88,24 @@ export default {
     getMyInfo() {
       this.$u
         .get("/personalCenter/personalCenterInfo")
-        .then(res => {
+        .then((res) => {
           this.myData = res;
         })
-        .catch(res => {});
-    }
-  }
+        .catch((res) => {});
+    },
+    routerPath(name) {
+      if (name == "edit") {
+        uni.navigateTo({
+          url: "/pages/center/edit",
+        });
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .content {
-  
   .top {
     position: relative;
 
@@ -215,10 +227,14 @@ export default {
   }
   .list {
     margin-left: 20rpx;
-  margin-right: 20rpx;
+    margin-right: 20rpx;
     margin-top: 100rpx;
     padding-top: 50rpx;
     border-top: 1px solid #000;
+  }
+  // 编辑
+  .edit-btn {
+    padding-left: 10rpx;
   }
 }
 </style>
