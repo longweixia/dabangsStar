@@ -58,6 +58,12 @@
             }
         },
         {
+            "path": "pages/center/slogan",
+            "style": {
+                "navigationBarTitleText": "个人标语"
+            }
+        },
+        {
             "path": "pages/center/u-avatar-cropper",
             "style": {
                 "navigationBarTitleText": "头像裁剪",

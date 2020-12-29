@@ -42,7 +42,7 @@
       <!-- 个人标语 -->
       <view class="slogan">
         <view class="row-text">
-          <view class="text">个人标语：{{ myData.slogan }}</view>
+          <view class="text" @click="routerPath('slogan')">个人标语：{{ myData.slogan }}</view>
           <img class="btn-img" src="../../static/home/right.png" />
         </view>
       </view>
@@ -97,6 +97,10 @@ export default {
       if (name == "edit") {
         uni.navigateTo({
           url: "/pages/center/edit",
+        });
+      }else{
+        uni.navigateTo({
+          url: "/pages/center/slogan",
         });
       }
     },

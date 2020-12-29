@@ -9,6 +9,7 @@
     "pages/center/center",
     "pages/center/index",
     "pages/center/edit",
+    "pages/center/slogan",
     "pages/center/u-avatar-cropper",
     "pages/login/login",
     "pages/login/forget",

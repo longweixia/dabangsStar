@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "个人标语",
+  "usingComponents": {
+    "u-cell-group": "/node-modules/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell-item": "/node-modules/uview-ui/components/u-cell-item/u-cell-item",
+    "u-switch": "/node-modules/uview-ui/components/u-switch/u-switch",
+    "u-form": "/node-modules/uview-ui/components/u-form/u-form",
+    "u-form-item": "/node-modules/uview-ui/components/u-form-item/u-form-item",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button"
+  }
+}
