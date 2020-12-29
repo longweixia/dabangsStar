@@ -24,9 +24,42 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.my-edit-slogan .tips {
-  color: #666;
+.my-edit-slogan .bg-img {
+  width: 100%;
+  height: 444rpx;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f64d71), to(#feecb3));
+  background: -webkit-linear-gradient(top, #f64d71, #feecb3);
+  background: linear-gradient(to bottom, #f64d71, #feecb3);
+}
+.my-edit-slogan .edit-card {
+  top: 20rpx;
+  position: absolute;
+  margin: 20rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+  -webkit-box-shadow: 0 0 20px rgba(134, 134, 134, 0.16);
+          box-shadow: 0 0 20px rgba(134, 134, 134, 0.16);
+}
+.my-edit-slogan .edit-card .card-content .u-cell-item-box {
+  padding: 20rpx !important;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.my-edit-slogan .tips-top {
+  color: #333;
   padding: 26rpx 34rpx;
+}
+.my-edit-slogan .tips-content {
+  color: #333;
+  text-align: center;
+  padding: 0 34rpx;
+}
+.my-edit-slogan .tips-content .tips-grey {
+  color: #999999;
+}
+.my-edit-slogan .home-tag {
+  top: 80rpx;
+  position: relative;
 }
 .my-edit-slogan .slogan-form {
   color: #666;
@@ -45,75 +78,30 @@
   text-align: center;
 }
 .my-edit-slogan .slogan-form .form-items .inp {
-  width: 80rpx;
-  height: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
   border: 1px solid #ddd;
   margin: 20rpx;
 }
-.my-edit-slogan .header-img {
-  width: 64rpx;
-  height: 64rpx;
-  -webkit-border-radius: 32rpx;
-          border-radius: 32rpx;
-  border: 1px solid #ddd;
-}
-.my-edit-slogan .cell-hover-class {
-  background-color: #ebedee;
-}
-.my-edit-slogan .wrap {
-  padding: 40rpx;
-}
-.my-edit-slogan .u-avatar-wrap {
-  margin-top: 80rpx;
-  overflow: hidden;
-  margin-bottom: 80rpx;
+.my-edit-slogan .btn-group {
   text-align: center;
 }
-.my-edit-slogan .u-avatar-demo {
-  width: 150rpx;
-  height: 150rpx;
-  -webkit-border-radius: 100rpx;
-          border-radius: 100rpx;
-}
-.my-edit-slogan .slot-content .title-modal .title {
-  color: red;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
-  background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
-  background: linear-gradient(to right, #f83a3a, #f7c18b);
-  height: 80rpx;
-  line-height: 80rpx;
-  position: relative;
+.my-edit-slogan .btn-group .btn {
+  margin-right: 50rpx;
+  margin-left: 50rpx;
+  display: inline-block;
+  width: 200rpx;
+  text-align: center;
+  height: 74rpx;
+  line-height: 74rpx;
+  padding: 0 20rpx;
+  -webkit-border-radius: 37rpx;
+          border-radius: 37rpx;
+  text-align: center;
+  background: #e1e1e1;
   color: #fff;
-  text-align: center;
 }
-.my-edit-slogan .slot-content .title-modal .body-area {
-  margin: 20rpx 80rpx;
-}
-.my-edit-slogan .slot-content .title-modal .body-area .btn-group {
-  margin-top: 40rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-}
-.my-edit-slogan .slot-content .title-modal .body-area .btn-group .btn {
-  right: 20rpx;
-  height: 46rpx;
-  line-height: 46rpx;
-  width: 110rpx;
-  padding: 0 10rpx;
-  -webkit-border-radius: 23rpx;
-          border-radius: 23rpx;
-  text-align: center;
+.my-edit-slogan .btn-group .btn1 {
   background: #e34c4c;
-  color: #fff;
-}
-.my-edit-slogan .slot-content .title-modal .body-area .btn-group .cancel-btn {
-  background: #8b8b8b;
 }
 

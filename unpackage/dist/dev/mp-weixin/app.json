@@ -49,5 +49,6 @@
     ]
   },
   "secret": "bfa8089fdfbb2addeb5de83af974561f",
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap2.json"
 }

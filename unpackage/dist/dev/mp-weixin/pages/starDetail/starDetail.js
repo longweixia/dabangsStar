@@ -94,13 +94,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uImage: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 153))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 170))
   },
   resources: function() {
-    return Promise.all(/*! import() | components/resources/resources */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/resources/resources")]).then(__webpack_require__.bind(null, /*! @/components/resources/resources.vue */ 209))
+    return Promise.all(/*! import() | components/resources/resources */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/resources/resources")]).then(__webpack_require__.bind(null, /*! @/components/resources/resources.vue */ 226))
   },
   uToast: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 181))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 198))
   }
 }
 var render = function() {
@@ -168,7 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var prizePraw = function prizePraw() {__webpack_require__.e(/*! require.ensure | components/prize-wraw/prize-wraw */ "components/prize-wraw/prize-wraw").then((function () {return resolve(__webpack_require__(/*! ../../components/prize-wraw/prize-wraw.vue */ 217));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var resources = function resources() {Promise.all(/*! require.ensure | components/resources/resources */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/resources/resources")]).then((function () {return resolve(__webpack_require__(/*! ../../components/resources/resources.vue */ 209));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var prizePraw = function prizePraw() {__webpack_require__.e(/*! require.ensure | components/prize-wraw/prize-wraw */ "components/prize-wraw/prize-wraw").then((function () {return resolve(__webpack_require__(/*! ../../components/prize-wraw/prize-wraw.vue */ 234));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var resources = function resources() {Promise.all(/*! require.ensure | components/resources/resources */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/resources/resources")]).then((function () {return resolve(__webpack_require__(/*! ../../components/resources/resources.vue */ 226));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
