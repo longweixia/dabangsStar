@@ -90,8 +90,12 @@ export default {
         .get("/personalCenter/personalCenterInfo")
         .then((res) => {
           this.myData = res;
+        
         })
-        .catch((res) => {});
+        .catch((res) => {
+          this.$toLogin(res)
+  
+        });
     },
     routerPath(name) {
       if (name == "edit") {

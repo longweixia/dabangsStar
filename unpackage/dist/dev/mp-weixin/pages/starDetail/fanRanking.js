@@ -254,13 +254,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         }
       }).
       catch(function (res) {
-        _this.$refs.uToast.show({
-          title: res.message,
-          // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-          type: "error ",
-          duration: 1000,
-          // 如果不需要图标，请设置为false
-          icon: true });
+        _this.$toLogin(res);
 
       });
     } } };exports.default = _default;

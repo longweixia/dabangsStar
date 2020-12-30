@@ -118,7 +118,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var BtnNav = function BtnNav() {__webpack_require__.e(/*! require.ensure | components/btn-nav/btn-nav */ "components/btn-nav/btn-nav").then((function () {return resolve(__webpack_require__(/*! ../../components/btn-nav/btn-nav.vue */ 205));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var RankingList = function RankingList() {__webpack_require__.e(/*! require.ensure | components/ranking-list/ranking-list */ "components/ranking-list/ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/ranking-list/ranking-list.vue */ 212));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var BtnNav = function BtnNav() {__webpack_require__.e(/*! require.ensure | components/btn-nav/btn-nav */ "components/btn-nav/btn-nav").then((function () {return resolve(__webpack_require__(/*! ../../components/btn-nav/btn-nav.vue */ 205));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var MycenterRankingList = function MycenterRankingList() {__webpack_require__.e(/*! require.ensure | components/ranking-list/mycenter-ranking-list */ "components/ranking-list/mycenter-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/ranking-list/mycenter-ranking-list.vue */ 415));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -150,22 +150,20 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   components: {
     BtnNav: BtnNav,
-    RankingList: RankingList },
+    MycenterRankingList: MycenterRankingList },
 
   data: function data() {
     return {
+
       rankingList: [],
       hasData: true, // 是否有数据，默认有数据
       btnList: ["我的守护", "热力获取记录", "打榜记录"],
-      rankType: null //显示周榜还是月榜,0是周榜，1是月榜
+      rankType: 0 //0我的守护，1热力值获取记录，2打榜记录
     };
   },
-  onLoad: function onLoad(option) {
-    this.rankType = Number(option.type);
-    this.id = Number(option.id);
-  },
+
   mounted: function mounted() {
-    this.changebtn(this.rankType);
+    this.changebtn(0);
   },
   methods: {
     changebtn: function changebtn(index) {
@@ -190,6 +188,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
       then(function (res) {
         _this.rankingList = res.list; //　少了头像
+        // this.rankingList = [
+        //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+        //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+        //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+        //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+        //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+        //   ]
         if (res.list && res.list.length > 0) {
           _this.hasData = true;
         } else {
@@ -197,13 +202,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         }
       }).
       catch(function (res) {
-        _this.$refs.uToast.show({
-          title: res.message,
-          // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-          type: "error ",
-          duration: 1000,
-          // 如果不需要图标，请设置为false
-          icon: true });
+        _this.$toLogin(res);
 
       });
     },
@@ -224,13 +223,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         }
       }).
       catch(function (res) {
-        _this2.$refs.uToast.show({
-          title: res.message,
-          // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-          type: "error ",
-          duration: 1000,
-          // 如果不需要图标，请设置为false
-          icon: true });
+        _this2.$toLogin(res);
 
       });
     },
@@ -251,13 +244,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         }
       }).
       catch(function (res) {
-        _this3.$refs.uToast.show({
-          title: res.message,
-          // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-          type: "error ",
-          duration: 1000,
-          // 如果不需要图标，请设置为false
-          icon: true });
+        _this3.$toLogin(res);
 
       });
     } } };exports.default = _default;

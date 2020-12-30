@@ -149,6 +149,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
 {
   components: {
     RankingList: RankingList },
@@ -228,10 +232,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
   methods: {
     loadData: function loadData(id) {var _this = this;
-      this.$u.post('/starDetail/selectResourcesRank', {
+      this.$u.
+      post("/starDetail/selectResourcesRank", {
         id: this.id,
         pageNum: 1,
         pageSize: 20 }).
+
       then(function (res) {
         _this.rankingList = res.list; //　少了头像
         // this.rankingList = this.rankingList1;  //　少了头像
@@ -240,15 +246,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         } else {
           _this.hasData = false;
         }
-      }).catch(function (res) {
-        _this.$refs.uToast.show({
-          title: res.message,
-          // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-          type: 'error ',
-          duration: 1000,
-          // 如果不需要图标，请设置为false
-          icon: true });
-
+      }).
+      catch(function (res) {
+        _this.$toLogin(res);
       });
     } } };exports.default = _default;
 

@@ -107,6 +107,9 @@ var components = {
   },
   uInput: function() {
     return Promise.all(/*! import() | node-modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-input/u-input.vue */ 283))
+  },
+  uToast: function() {
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 198))
   }
 }
 var render = function() {
@@ -152,6 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //
@@ -331,28 +335,46 @@ var _default =
           var imgData = JSON.parse(uploadFileRes.data);
           console.log(imgData.data);
           //   this.myData.avatarUrl = imgData.data;
-          _this3.changeAvatarUrlApi('avatarUrl', imgData.data);
+          _this3.changeAvatarUrlApi(imgData.data);
         } });
 
     },
     // 调用改变头像的接口
-    changeAvatarUrlApi: function changeAvatarUrlApi(name, data) {var _this4 = this;
+    changeAvatarUrlApi: function changeAvatarUrlApi(data) {var _this4 = this;
       this.$u.
-      get("/personalCenter/updatePersonalCenterInfo", {
-        avatarUrl: name == 'avatarUrl' ? data : '',
-        nickName: name == 'nickName' ? data : '',
-        slogan: "" }).
+      post("/personalCenter/updatePersonalCenterInfo", {
+        avatarUrl: data }).
+
 
       then(function (res) {
-        _this4.myData = res;
+
+        _this4.getMyInfo();
         _this4.showNameModal = false;
       }).
-      catch(function (res) {});
+      catch(function (res) {
+        _this4.$toLogin(res);
+
+      });
     },
-    confirm: function confirm() {var _this5 = this;
+    // 改变姓名
+    changeNamevalue: function changeNamevalue(data) {var _this5 = this;
+      this.$u.
+      post("/personalCenter/updatePersonalCenterInfo", {
+        nickName: data }).
+
+      then(function (res) {
+        _this5.showNameModal = false;
+        _this5.getMyInfo();
+      }).
+      catch(function (res) {
+        _this5.$toLogin(res);
+
+      });
+    },
+    confirm: function confirm() {var _this6 = this;
       setTimeout(function () {
         // 3秒后自动关闭
-        _this5.showNameModal = false;
+        _this6.showNameModal = false;
         // 如果不想关闭，而单是清除loading状态，需要通过ref手动调用方法
         // this.$refs.uModal.clearLoading();
       }, 3000);

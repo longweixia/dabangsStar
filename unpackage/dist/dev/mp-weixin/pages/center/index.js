@@ -248,8 +248,12 @@ __webpack_require__.r(__webpack_exports__);
       get("/personalCenter/personalCenterInfo").
       then(function (res) {
         _this.myData = res;
+
       }).
-      catch(function (res) {});
+      catch(function (res) {
+        _this.$toLogin(res);
+
+      });
     },
     routerPath: function routerPath(name) {
       if (name == "edit") {

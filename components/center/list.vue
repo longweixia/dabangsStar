@@ -11,11 +11,11 @@
     </view>
     <!-- 排行榜 -->
     <view class="list">
-      <RankingList
+      <MycenterRankingList
         :rankingList="rankingList"
         v-if="hasData"
-        listPage="starDetail"
-      ></RankingList>
+        :rankType="rankType"
+      ></MycenterRankingList>
       <view v-if="!hasData" class="nodata">
         当前榜单暂无数据，您可以查看其它榜单
       </view>
@@ -26,26 +26,24 @@
 
 <script>
 import BtnNav from "../../components/btn-nav/btn-nav.vue";
-import RankingList from "../../components/ranking-list/ranking-list.vue";
+import MycenterRankingList from "../../components/ranking-list/mycenter-ranking-list.vue";
 export default {
   components: {
     BtnNav,
-    RankingList
+    MycenterRankingList
   },
   data() {
     return {
+
       rankingList: [],
       hasData: true, // 是否有数据，默认有数据
       btnList: ["我的守护", "热力获取记录", "打榜记录"],
-      rankType: null //显示周榜还是月榜,0是周榜，1是月榜
+      rankType: 0 //0我的守护，1热力值获取记录，2打榜记录
     };
   },
-  onLoad(option) {
-    this.rankType = Number(option.type);
-    this.id = Number(option.id);
-  },
+ 
   mounted() {
-    this.changebtn(this.rankType);
+    this.changebtn(0);
   },
   methods: {
     changebtn(index) {
@@ -70,21 +68,22 @@ export default {
         })
         .then(res => {
           this.rankingList = res.list; //　少了头像
+          // this.rankingList = [
+          //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+          //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+          //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+          //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+          //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
+          //   ]
           if (res.list && res.list.length > 0) {
             this.hasData = true;
           } else {
             this.hasData = false;
           }
         })
-        .catch(res => {
-          this.$refs.uToast.show({
-            title: res.message,
-            // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-            type: "error ",
-            duration: 1000,
-            // 如果不需要图标，请设置为false
-            icon: true
-          });
+         .catch((res) => {
+          this.$toLogin(res)
+  
         });
     },
     //打榜记录
@@ -103,15 +102,9 @@ export default {
             this.hasData = false;
           }
         })
-        .catch(res => {
-          this.$refs.uToast.show({
-            title: res.message,
-            // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-            type: "error ",
-            duration: 1000,
-            // 如果不需要图标，请设置为false
-            icon: true
-          });
+          .catch((res) => {
+          this.$toLogin(res)
+  
         });
     },
     //热力获取记录
@@ -130,15 +123,9 @@ export default {
             this.hasData = false;
           }
         })
-        .catch(res => {
-          this.$refs.uToast.show({
-            title: res.message,
-            // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-            type: "error ",
-            duration: 1000,
-            // 如果不需要图标，请设置为false
-            icon: true
-          });
+        .catch((res) => {
+          this.$toLogin(res)
+  
         });
     }
   }

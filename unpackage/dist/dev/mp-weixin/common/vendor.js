@@ -13607,7 +13607,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var install = function install(Vue, vm) {
   // 此为自定义配置参数，具体参数见上方说明
   Vue.prototype.$u.http.setConfig({
-    // baseUrl: 'http://192.168.20.4:18001', //本地
+    // baseUrl: 'https://192.168.20.4:18001', //本地
     baseUrl: 'https://123.207.120.31:18001', //线上
     // loadingText: '努力加载中~',
     loadingTime: 800
@@ -13634,21 +13634,25 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     // config.header.Token = 'xxxxxx';
 
     // 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
-    if (config.url == '/user/login') config.header.noToken = true;
+    // if (config.url == '/user/login') config.header.noToken = true;
     // 最后需要将config进行return
     return config;
     // 如果return一个false值，则会取消本次请求
     // if(config.url == '/user/rest') return false; // 取消某次请求
   };
 
+
   // 响应拦截，判断状态码是否通过
   Vue.prototype.$u.http.interceptor.response = function (res) {
+
     if (res.code == 200) {
+
       // res为服务端返回值，可能有code，result等字段
       // 这里对res.result进行返回，将会在this.$u.post(url).then(res => {})的then回调中的res的到
       // 如果配置了originalData为true，请留意这里的返回值
       return res.data;
     } else if (res.code == 401) {
+
       // 假设201为token失效，这里跳转登录
       vm.$u.toast('验证失败，请重新登录');
       setTimeout(function () {
@@ -13656,15 +13660,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         vm.$u.route('/pages/user/login');
       }, 1500);
       return false;
-    } else if (res.code == '100001') {
-      // res为服务端返回值，可能有code，result等字段
-      // 这里对res.result进行返回，将会在this.$u.post(url).then(res => {})的then回调中的res的到
-      // 如果配置了originalData为true，请留意这里的返回值
-      vm.$u.toast(res.message);
-      return false;
+    } else {
 
-    } else
-    {
       // 如果返回false，则会调用Promise的reject回调，
       // 并将进入this.$u.post(url).then().catch(res=>{})的catch回调中，res为服务端的返回值
       return false;
@@ -13674,6 +13671,47 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 {
   install: install };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 414:
+/*!************************************************!*\
+  !*** D:/app/xcx/dabangsStar/common/methods.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(uni) {
+exports.toLogin = function (data) {
+  // console.log(data.data.code)
+  var datas = data.data;
+  // 如果401，登录失效，报错，跳转到登陆页
+  if (datas && datas.code == 401) {
+    uni.showModal({
+      title: '请登录',
+      content: '登录后可以获取更多功能',
+      success: function success(res) {
+        if (res.confirm) {
+          uni.navigateTo({
+            url: "/pages/center/center" });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      } });
+
+  } else {
+    uni.showToast({
+      title: data.message,
+      icon: 'none',
+      duration: 1000 });
+
+  }
+
+
+
+};
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

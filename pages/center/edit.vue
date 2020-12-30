@@ -195,15 +195,9 @@ export default {
           this.getMyInfo()
           this.showNameModal = false
         })
-        .catch((err) => {
-                	this.$refs.uToast.show({
-						title: err,
-						// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-						type: 'error ',
-						duration: 1000,
-						// 如果不需要图标，请设置为false
-						icon: true,
-					})
+          .catch((res) => {
+          this.$toLogin(res)
+  
         });
     },
     // 改变姓名
@@ -216,15 +210,9 @@ export default {
           this.showNameModal = false
           this.getMyInfo()
         })
-         .catch((err) => {
-              	this.$refs.uToast.show({
-						title: err,
-						// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-						type: 'error ',
-						duration: 1000,
-						// 如果不需要图标，请设置为false
-						icon: true,
-					})
+        .catch((res) => {
+          this.$toLogin(res)
+  
         });
     },
     confirm() {

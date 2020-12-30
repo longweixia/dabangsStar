@@ -30,34 +30,56 @@
 <script>
 export default {
   name: "ranking-tab-hasText",
+    props:{
+    tagList:{
+      type:Array,
+      default:[]
+    },
+  },
+    	watch:{
+			tagList: {
+		　　	handler(newVal,oldVal) {
+      // 如果有标语才显示，否则显示默认的
+			　　if(newVal.length){
+						newVal.forEach((item,i) => {
+              this.raningTypeList[i].text = item.text
+             
+            });
+          
+					}
+			　　},
+			　　immediate: true
+      },
+    },
   data() {
     return {
+
       // 榜单tag
       raningTypeList: [
         {
           type: "周榜",
-          text: "我",
+          text: "标",
           img: "../../static/home/weekText.png",
           icon:"../../static/home/starIcon.png",
            rankType: 0
         },
         {
           type: "月榜",
-          text: "爱",
+          text: "语",
           img: "../../static/home/mouthText.png",
            icon:"../../static/home/starIcon.png",
             rankType: 1
         },
         {
           type: "粉丝榜",
-          text: "邓",
+          text: "内",
           img: "../../static/home/fansText.png",
            icon:"../../static/home/starIcon.png",
             rankType: 3
         },
         {
           type: "总榜",
-          text: "伦",
+          text: "容",
           img: "../../static/home/totalText.png",
            icon:"../../static/home/starIcon.png",
             rankType: 2
@@ -65,7 +87,11 @@ export default {
       ]
     };
   },
+  mounted() {
+
+  },
   methods: {
+   
      routerRangking(rankType) {
       uni.navigateTo({
         url: `/pages/index/rangkingList?type=${rankType}`

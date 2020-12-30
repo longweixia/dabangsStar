@@ -2,12 +2,16 @@
   <view class="fan-ranking">
     <!-- 排行榜 -->
     <view class="list">
-        <RankingList :rankingList="rankingList" v-if="hasData" listPage="resourcesRanking"></RankingList>
-        <view v-if="!hasData" class="nodata">
-          当前榜单暂无数据，您可以查看其它榜单
-        </view>
+      <RankingList
+        :rankingList="rankingList"
+        v-if="hasData"
+        listPage="resourcesRanking"
+      ></RankingList>
+      <view v-if="!hasData" class="nodata">
+        当前榜单暂无数据，您可以查看其它榜单
+      </view>
     </view>
-    	<u-toast ref="uToast" />
+    <u-toast ref="uToast" />
   </view>
 </template>
 
@@ -15,47 +19,47 @@
 import RankingList from "../../components/ranking-list/ranking-list.vue";
 export default {
   components: {
-    RankingList
+    RankingList,
   },
   data() {
     return {
       rankingList: [],
-      hasData: true,// 是否有数据，默认有数据
+      hasData: true, // 是否有数据，默认有数据
       rankingList1: [
         {
           icon: "皇冠",
           avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           nickName: "邓伦",
-          completeNum: 500
+          completeNum: 500,
         },
         {
           icon: "皇冠",
           avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           nickName: "邓伦",
-          completeNum: 500
+          completeNum: 500,
         },
         {
           icon: "皇冠",
           avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           nickName: "邓伦",
-          completeNum: 500
+          completeNum: 500,
         },
         {
           icon: "皇冠",
           avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           nickName: "邓伦",
-          completeNum: 500
+          completeNum: 500,
         },
         {
           icon: "皇冠",
           avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           nickName: "邓伦",
-          completeNum: 500
+          completeNum: 500,
         },
       ],
       rankingList2: [
@@ -64,22 +68,22 @@ export default {
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "1",
           name: "邓伦月榜",
-          val: "已经完成30次"
+          val: "已经完成30次",
         },
         {
           icon: "皇冠",
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "2",
           name: "周超",
-          val: "已经完成30次"
+          val: "已经完成30次",
         },
         {
           icon: "皇冠",
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "3",
           name: "黄晓明",
-          val: "已经完成30次"
-        }
+          val: "已经完成30次",
+        },
       ],
       id: null,
     };
@@ -92,36 +96,32 @@ export default {
   },
   methods: {
     loadData(id) {
-      this.$u.post('/starDetail/selectResourcesRank',{
+      this.$u
+        .post("/starDetail/selectResourcesRank", {
           id: this.id,
           pageNum: 1,
-          pageSize: 20
-       }).then(res => {
-              this.rankingList = res.list;  //　少了头像
-              // this.rankingList = this.rankingList1;  //　少了头像
-              if(res.list&&res.list.length>0){
-                this.hasData = true
-              }else{
-                this.hasData = false
-              }
-        }).catch(res=>{
-         this.$refs.uToast.show({
-            title: res.message,
-            // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-            type: 'error ', 
-            duration: 1000,
-            // 如果不需要图标，请设置为false
-            icon: true
-          })
+          pageSize: 20,
         })
-    }
-  }
+        .then((res) => {
+          this.rankingList = res.list; //　少了头像
+          // this.rankingList = this.rankingList1;  //　少了头像
+          if (res.list && res.list.length > 0) {
+            this.hasData = true;
+          } else {
+            this.hasData = false;
+          }
+        })
+        .catch((res) => {
+          this.$toLogin(res);
+        });
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.nodata{
-text-align:center;
-margin-top:40rpx
+.nodata {
+  text-align: center;
+  margin-top: 40rpx;
 }
 </style>

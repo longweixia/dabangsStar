@@ -100,11 +100,6 @@
                 "pagePath": "pages/login/login",
                 "text": "个人中心"
 
-            },
-            {
-                "pagePath": "pages/center/center",
-                "text": "登录"
-
             }
         ]
     },

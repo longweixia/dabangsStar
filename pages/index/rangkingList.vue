@@ -129,16 +129,10 @@ export default {
               }else{
                 this.hasData = false
               }
-        }).catch(res=>{
-         this.$refs.uToast.show({
-            title: res.message,
-            // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
-            type: 'error ', 
-            duration: 1000,
-            // 如果不需要图标，请设置为false
-            icon: true
-          })
-        })
+        }).catch((res) => {
+          this.$toLogin(res)
+  
+        });
     }
   }
 };

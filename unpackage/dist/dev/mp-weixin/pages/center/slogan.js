@@ -96,12 +96,6 @@ var components = {
   uCellGroup: function() {
     return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-cell-group/u-cell-group */ "node-modules/uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! uview-ui/components/u-cell-group/u-cell-group.vue */ 255))
   },
-  uCellItem: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-cell-item/u-cell-item */ "node-modules/uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! uview-ui/components/u-cell-item/u-cell-item.vue */ 262))
-  },
-  uSwitch: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-switch/u-switch */ "node-modules/uview-ui/components/u-switch/u-switch").then(__webpack_require__.bind(null, /*! uview-ui/components/u-switch/u-switch.vue */ 291))
-  },
   uIcon: function() {
     return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 241))
   },
@@ -110,6 +104,9 @@ var components = {
   },
   uFormItem: function() {
     return Promise.all(/*! import() | node-modules/uview-ui/components/u-form-item/u-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-form-item/u-form-item")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-form-item/u-form-item.vue */ 305))
+  },
+  uToast: function() {
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 198))
   }
 }
 var render = function() {
@@ -149,7 +146,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var RankingTabSlogan = function RankingTabSlogan() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-slogan */ "components/home/ranking-tab-slogan").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-slogan.vue */ 422));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var RankingTabSlogan = function RankingTabSlogan() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-slogan */ "components/home/ranking-tab-slogan").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-slogan.vue */ 315));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -235,10 +233,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
 
   methods: {
-
     clearForm: function clearForm() {var _this = this;
       this.formArry.forEach(function (item, index) {
-        _this.formArry[index].value = '';
+        _this.formArry[index].value = "";
       });
     },
     submit: function submit() {
@@ -253,21 +250,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     // 调用改变标语的接口
     changeSlogan: function changeSlogan() {var _this2 = this;
       // 拼接入参
-      var str = '';
+      var str = "";
       this.formArry.forEach(function (item, index) {
         str = str + item.value;
       });
 
       this.$u.
-      get("/personalCenter/updatePersonalCenterInfo", {
-        avatarUrl: '',
-        nickName: '',
+      post("/personalCenter/updatePersonalCenterInfo", {
         slogan: str }).
 
       then(function (res) {
+        uni.showToast({
+          title: "修改成功",
+          icon: "none",
+          duration: 1000 });
+
+
         _this2.getMyInfo();
       }).
-      catch(function (res) {});
+      catch(function (res) {
+
+        _this2.$toLogin(res);
+      });
     },
     getMyInfo: function getMyInfo() {var _this3 = this;
       this.$u.
@@ -282,13 +286,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
           _this3.formArry.forEach(function (item, index) {
             _this3.formArry[index].value = res.slogan[index];
           });
+        } else {
         }
       }).
-      catch(function (res) {});
+      catch(function (res) {
+        _this3.$toLogin(res);
+      });
     },
     changeHeader: function changeHeader() {
       this.showChangeImg = true;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -30,6 +30,28 @@
 <script>
 export default {
   name: "ranking-tab-hasText",
+  props:{
+    // tagList:{
+    //   type:Array,
+    //   default:[]
+    // },
+    
+  },
+  	watch:{
+		// 	tagList: {
+		// 　　	handler(newVal,oldVal) {
+    //   // 如果有标语才显示，否则显示默认的
+		// 	　　if(newVal.length&&this.sloganFlag){
+		// 				newVal.forEach((item,i) => {
+    //           this.raningTypeList[i].text = item.value
+             
+    //         });
+          
+		// 			}
+		// 	　　},
+		// 	　　immediate: true
+    //   },
+    },
   data() {
     return {
       // 榜单tag
@@ -50,14 +72,14 @@ export default {
         },
         {
           type: "粉丝榜",
-          text: "容",
+          text: "内",
           img: "../../static/home/fansText.png",
            icon:"../../static/home/starIcon.png",
             rankType: 3
         },
         {
           type: "总榜",
-          text: "伦",
+          text: "容",
           img: "../../static/home/totalText.png",
            icon:"../../static/home/starIcon.png",
             rankType: 2

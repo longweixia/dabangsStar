@@ -9,7 +9,8 @@
         mode="dot"
         indicator-pos="bottomCenter"
         :autoplay="true"
-        interval="2000" name="img"
+        interval="2000"
+        name="img"
       ></u-swiper>
       <img
         @click="routerSearch"
@@ -27,9 +28,7 @@
     </view> -->
     <!-- 我的守护 -->
     <view class="home-my-guard">
-      <text class="guard-title">
-        我的守护
-      </text>
+      <text class="guard-title"> 我的守护 </text>
       <view class="guard-list" align="center">
         <view
           class="guard-card"
@@ -45,7 +44,7 @@
             shape="circle"
           ></u-image>
           <view class="guard-right">
-            <view class="guard-name">{{item.name}}</view>
+            <view class="guard-name">{{ item.name }}</view>
             <view class="guard-btn">打榜</view>
           </view>
         </view>
@@ -54,15 +53,13 @@
 
     <!-- 榜单tag -->
     <view class="home-tag">
-      <rankingTabHasText v-if="hasTagText"></rankingTabHasText>
-      <rankingTabNo v-if="!hasTagText"></rankingTabNo>
+      <rankingTabHasText v-if="sloganTextFlag" :tagList='tagList'></rankingTabHasText>
+      <rankingTabNo v-if="!sloganTextFlag"></rankingTabNo>
     </view>
     <!-- 榜单前三 -->
     <view class="list-top-three">
       <view class="card-time">
-        <view class="time-text">
-          截至：10天9小时20分21秒
-        </view>
+        <view class="time-text"> 截至：10天9小时20分21秒 </view>
       </view>
       <view class="card-area">
         <view
@@ -78,10 +75,7 @@
               :class="'img-head' + index"
               :src="item.icon"
             />
-            <img
-              class="img-star" v-if="index===1"
-              :src="item.star"
-            />
+            <img class="img-star" v-if="index === 1" :src="item.star" />
             <img
               class="img-head"
               :class="'img-head' + index"
@@ -101,15 +95,16 @@
     <view class="list-four-th">
       <starRankingList :rankingList="rankingList"></starRankingList>
     </view>
-  
+
     <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
-        <view class="my">
-          <view class="my-card" @click="routerToCenter">
-          <img class="my-img" src="../../static/home/my.png"/>
-          </view>
+      <view class="my">
+        <view class="my-card" @click="routerToCenter">
+          <img class="my-img" src="../../static/home/my.png" />
+        </view>
       </view>
     </view>
+    <u-toast ref="uToast" />
   </view>
 </template>
 
@@ -123,7 +118,7 @@ export default {
   components: {
     rankingTabNo,
     rankingTabHasText,
-    starRankingList
+    starRankingList,
   },
   data() {
     return {
@@ -146,64 +141,63 @@ export default {
       myGuardList: [
         {
           image: "https://cdn.uviewui.com/uview/swiper/1.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
+          name: "邓伦",
         },
         {
           image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦"
-        }
-
+          name: "邓伦",
+        },
       ],
       // 榜单tag 排名类型：0周榜；1月榜；2总榜
       raningTypeList: [
         {
           type: "周榜",
           text: "我",
-          rankType: 0
+          rankType: 0,
         },
         {
           type: "月榜",
           text: "爱",
-           rankType: 1
+          rankType: 1,
         },
         {
           type: "粉丝榜",
           text: "邓",
-          rankType: 2
+          rankType: 2,
         },
         {
           type: "月总榜",
           text: "伦",
-          rankType: 3
-        }
+          rankType: 3,
+        },
         // {
         // 	image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
         // 	title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
@@ -216,7 +210,7 @@ export default {
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "2",
           name: "邓伦",
-          val: 500
+          val: 500,
         },
         {
           icon: "../../static/home/AnCrown1.png",
@@ -224,15 +218,15 @@ export default {
           num: "1",
           name: "周超",
           val: 600,
-          star:"../../static/home/oneStart.png"
+          star: "../../static/home/oneStart.png",
         },
         {
           icon: "../../static/home/AnCrown3.png",
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "3",
           name: "黄晓明",
-          val: 100
-        }
+          val: 100,
+        },
         // {
         // 	image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
         // 	title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
@@ -245,66 +239,103 @@ export default {
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           name: "邓伦",
-          val: "10872"
+          val: "10872",
         },
         {
           icon: "皇冠",
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "5",
           name: "周超",
-          val: "10872"
+          val: "10872",
         },
         {
           icon: "皇冠",
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "6",
           name: "黄晓明",
-          val: "24242"
-        }
+          val: "24242",
+        },
       ],
-      hasTagText: true //是否在个人中心设置明星tag文字
+      tagList: [
+        {
+          text: "",
+        },
+        {
+          text: "",
+        },
+        {
+          text: "",
+        },
+        {
+          text: "",
+        },
+      ],
+       sloganTextFlag: false, //是否在个人中心设置明星tag文字
     };
   },
-  onLoad(){
-      this.carouselList()
-            this.selectMyGuard()
-     
+  onLoad() {
+    this.carouselList();
+    this.selectMyGuard();
   },
-  mounted(){
-    this.$emit("footer",false)
+  mounted() {
+    this.$emit("footer", false);
+    this.getMyInfo();
   },
   methods: {
+    getMyInfo() {
+      this.$u
+        .get("/personalCenter/personalCenterInfo")
+        .then((res) => {
+          // 回显标语
+          if (res.slogan) {
+            this.sloganTextFlag = true; //有标语
+            this.tagList.forEach((item, index) => {
+              this.tagList[index].text = res.slogan[index];
+            });
+          } else {
+            this.sloganFlag = false; //有标语
+          }
+        })
+        .catch((res) => {
+          this.$toLogin(res);
+        });
+    },
     // 获取我的守护
-    selectMyGuard(){
-       this.$u.post('/home/selectMyGuard').then(res => {
-              this.myGuardList = res.list;  //　少了头像
-            })
+    selectMyGuard() {
+      this.$u
+        .post("/home/selectMyGuard")
+        .then((res) => {
+          this.myGuardList = res.list; //　少了头像
+        })
+        .catch((res) => {
+          this.$toLogin(res);
+        });
     },
     // 获取轮播
-    carouselList(){
-     this.$u.get('/home/carousel/list').then(res => {
-              this.swiperList = res;
-            })
+    carouselList() {
+      this.$u.get("/home/carousel/list").then((res) => {
+        this.swiperList = res;
+      });
     },
     clickSwiper(index) {
       console.log(index);
     },
     routerSearch() {
       uni.navigateTo({
-        url: "/pages/search/search"
+        url: "/pages/search/search",
       });
     },
     routerStarDetail(id) {
       uni.navigateTo({
-        url: `/pages/starDetail/starDetail?id=${id}`
+        url: `/pages/starDetail/starDetail?id=${id}`,
       });
     },
-    routerToCenter(){
-       uni.navigateTo({
-        url: `/pages/center/index`
+    routerToCenter() {
+      uni.navigateTo({
+        url: `/pages/center/index`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -450,36 +481,36 @@ export default {
         font-weight: bold;
       }
       .img-area {
-         position: relative;
+        position: relative;
         .img-head {
           width: 118rpx;
           height: 118rpx;
           border-radius: 59rpx;
           z-index: 100;
         }
-        .img-star{
+        .img-star {
           position: absolute;
-           width: 222rpx;
-            height: 232rpx;
-            top: -40rpx;
-            left:-30rpx;
-            z-index: -1;
+          width: 222rpx;
+          height: 232rpx;
+          top: -40rpx;
+          left: -30rpx;
+          z-index: -1;
         }
         .num {
-            transform: rotate(325deg);
-            font-size: 7px;
-            position: absolute;
-           left: 8rpx;
-            top: -12rpx;
-            z-index: 1000 !important;
-          }
-          .img-icon {
-            position: absolute;
-            left: -12rpx;
-            top: -20rpx;
-            width: 46rpx;
-            height: 46rpx;
-          }
+          transform: rotate(325deg);
+          font-size: 7px;
+          position: absolute;
+          left: 8rpx;
+          top: -12rpx;
+          z-index: 1000 !important;
+        }
+        .img-icon {
+          position: absolute;
+          left: -12rpx;
+          top: -20rpx;
+          width: 46rpx;
+          height: 46rpx;
+        }
       }
       .img-area1 {
         .img-head {
@@ -488,37 +519,37 @@ export default {
           border-radius: 84rpx;
         }
         .num {
-            transform: rotate(325deg);
-            font-size: 7px;
-            position: absolute;
-            left: 20rpx;
-            top: -6rpx;
-            z-index: 1000 !important;
-          }
-          .img-icon {
-            position: absolute;
-            left: -16rpx;
-            top: -32rpx;
-            width: 68rpx;
-            height: 68rpx;
-          }
-      }
-       .btn-area {
-          text-align: center;
-          margin-top: 14rpx;
-          .btn {
-            height: 46rpx;
-            line-height: 46rpx;
-            width: 110rpx;
-            padding: 0 10rpx;
-            border-radius: 23rpx;
-            text-align: center;
-            background: linear-gradient(to right, #f83a3a, #f7c18b);
-            color: #fff;
-          }
+          transform: rotate(325deg);
+          font-size: 7px;
+          position: absolute;
+          left: 20rpx;
+          top: -6rpx;
+          z-index: 1000 !important;
         }
+        .img-icon {
+          position: absolute;
+          left: -16rpx;
+          top: -32rpx;
+          width: 68rpx;
+          height: 68rpx;
+        }
+      }
+      .btn-area {
+        text-align: center;
+        margin-top: 14rpx;
+        .btn {
+          height: 46rpx;
+          line-height: 46rpx;
+          width: 110rpx;
+          padding: 0 10rpx;
+          border-radius: 23rpx;
+          text-align: center;
+          background: linear-gradient(to right, #f83a3a, #f7c18b);
+          color: #fff;
+        }
+      }
     }
-    .guard-card1{
+    .guard-card1 {
       top: -50rpx;
     }
   }
@@ -549,39 +580,38 @@ export default {
   background: #99a9bf;
 }
 
-.home-bottom{
- position: relative;
- height: 132rpx;
-  .home-bottom-img{
+.home-bottom {
+  position: relative;
+  height: 132rpx;
+  .home-bottom-img {
     width: 100%;
     height: 100%;
   }
-  .my{
-  // background: #99a9bf;
-  width: 100rpx;
-  height: 100rpx;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 20rpx;
-  bottom: 150rpx;
-   font-size: 6px;
-  .my-card{
+  .my {
+    // background: #99a9bf;
     width: 100rpx;
     height: 100rpx;
-    // padding: 10rpx;
-    // background: #fff;
-    // border-radius: 40rpx;
-    // border: 2px solid #ddd;
-    // color: #E34C4C;
-     .my-img{
-      width:100%;
-      height:100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 20rpx;
+    bottom: 150rpx;
+    font-size: 6px;
+    .my-card {
+      width: 100rpx;
+      height: 100rpx;
+      // padding: 10rpx;
+      // background: #fff;
+      // border-radius: 40rpx;
+      // border: 2px solid #ddd;
+      // color: #E34C4C;
+      .my-img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
-}
-
 }
 </style>

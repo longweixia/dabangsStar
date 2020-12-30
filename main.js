@@ -7,6 +7,11 @@ Vue.use(uView);
 Vue.config.productionTip = false
 
 
+import global from './common/methods.js'
+Object.keys(global).forEach(key => {
+    Vue.prototype["$" + key] = global[key];
+})
+
 App.mpType = 'app'
 
 const app = new Vue({

@@ -3,6 +3,7 @@
   "usingComponents": {
     "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper",
     "u-image": "/node-modules/uview-ui/components/u-image/u-image",
+    "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
     "ranking-tab-no": "/components/home/ranking-tab-no",
     "ranking-tab-has-text": "/components/home/ranking-tab-hasText",
     "star-ranking-list": "/components/home/star-ranking-list"

@@ -98,6 +98,9 @@ var components = {
   },
   uImage: function() {
     return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 170))
+  },
+  uToast: function() {
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 198))
   }
 }
 var render = function() {
@@ -154,11 +157,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 177));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 184));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 191));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
-
-
 
 
 
@@ -336,7 +334,6 @@ __webpack_require__.r(__webpack_exports__);
         name: "邓伦" }],
 
 
-
       // 榜单tag 排名类型：0周榜；1月榜；2总榜
       raningTypeList: [
       {
@@ -417,28 +414,65 @@ __webpack_require__.r(__webpack_exports__);
         val: "24242" }],
 
 
-      hasTagText: true //是否在个人中心设置明星tag文字
+      tagList: [
+      {
+        text: "" },
+
+      {
+        text: "" },
+
+      {
+        text: "" },
+
+      {
+        text: "" }],
+
+
+      sloganTextFlag: false //是否在个人中心设置明星tag文字
     };
   },
   onLoad: function onLoad() {
     this.carouselList();
     this.selectMyGuard();
-
   },
   mounted: function mounted() {
     this.$emit("footer", false);
+    this.getMyInfo();
   },
   methods: {
+    getMyInfo: function getMyInfo() {var _this = this;
+      this.$u.
+      get("/personalCenter/personalCenterInfo").
+      then(function (res) {
+        // 回显标语
+        if (res.slogan) {
+          _this.sloganTextFlag = true; //有标语
+          _this.tagList.forEach(function (item, index) {
+            _this.tagList[index].text = res.slogan[index];
+          });
+        } else {
+          _this.sloganFlag = false; //有标语
+        }
+      }).
+      catch(function (res) {
+        _this.$toLogin(res);
+      });
+    },
     // 获取我的守护
-    selectMyGuard: function selectMyGuard() {var _this = this;
-      this.$u.post('/home/selectMyGuard').then(function (res) {
-        _this.myGuardList = res.list; //　少了头像
+    selectMyGuard: function selectMyGuard() {var _this2 = this;
+      this.$u.
+      post("/home/selectMyGuard").
+      then(function (res) {
+        _this2.myGuardList = res.list; //　少了头像
+      }).
+      catch(function (res) {
+        _this2.$toLogin(res);
       });
     },
     // 获取轮播
-    carouselList: function carouselList() {var _this2 = this;
-      this.$u.get('/home/carousel/list').then(function (res) {
-        _this2.swiperList = res;
+    carouselList: function carouselList() {var _this3 = this;
+      this.$u.get("/home/carousel/list").then(function (res) {
+        _this3.swiperList = res;
       });
     },
     clickSwiper: function clickSwiper(index) {
