@@ -28,6 +28,12 @@
             }
         },
         {
+            "path": "pages/starDetail/choujiang",
+            "style": {
+                "navigationBarTitleText": "抽奖"
+            }
+        },
+        {
             "path": "pages/starDetail/fanRanking",
             "style": {
                 "navigationBarTitleText": "粉丝榜"

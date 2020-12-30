@@ -9,7 +9,7 @@
         <view class="name"> {{ item.name }}</view>
         <view class="tip">{{ item.tips }} </view>
       </view>
-      <view class="btn">{{ item.name }}</view>
+      <view class="btn" @click="clickBtn(index)">{{ item.name }}</view>
     </view>
   </view>
 </template>
@@ -53,7 +53,16 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    clickBtn(i){
+      if(i===0){//抽奖
+        uni.navigateTo({
+        url: "/pages/starDetail/choujiang",
+      });
+    }
+    }
+  }
+  
 };
 </script>
 <style lang="scss" scoped>

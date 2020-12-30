@@ -4,6 +4,7 @@
     "pages/index/rangkingList",
     "pages/search/search",
     "pages/starDetail/starDetail",
+    "pages/starDetail/choujiang",
     "pages/starDetail/fanRanking",
     "pages/starDetail/resourcesRanking",
     "pages/center/center",
