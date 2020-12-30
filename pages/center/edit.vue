@@ -53,7 +53,7 @@
               placeholder="请输入姓名"
             />
             <view class="btn-group">
-              <view class="btn" @click="changeAvatarUrlApi('nickName',valueName)"> 确定 </view>
+              <view class="btn" @click="changeNamevalue(valueName)"> 确定 </view>
               <view class="btn cancel-btn" @click="showNameModal = false">
                 取消
               </view>
@@ -62,6 +62,7 @@
         </view>
       </view>
     </u-modal>
+    	<u-toast ref="uToast" />
   </view>
 </template>
 
@@ -178,23 +179,53 @@ export default {
           let imgData = JSON.parse(uploadFileRes.data);
           console.log(imgData.data);
           //   this.myData.avatarUrl = imgData.data;
-          this.changeAvatarUrlApi('avatarUrl',imgData.data);
+          this.changeAvatarUrlApi(imgData.data);
         },
       });
     },
     // 调用改变头像的接口
-    changeAvatarUrlApi(name,data) {
+    changeAvatarUrlApi(data) {
       this.$u
-        .get("/personalCenter/updatePersonalCenterInfo", {
-          avatarUrl: name=='avatarUrl'?data:'',
-          nickName: name=='nickName'?data:'',
-          slogan: "",
+        .post("/personalCenter/updatePersonalCenterInfo", {
+          avatarUrl: data
+        
         })
         .then((res) => {
-          this.myData = res;
+            
+          this.getMyInfo()
           this.showNameModal = false
         })
-        .catch((res) => {});
+        .catch((err) => {
+                	this.$refs.uToast.show({
+						title: err,
+						// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+						type: 'error ',
+						duration: 1000,
+						// 如果不需要图标，请设置为false
+						icon: true,
+					})
+        });
+    },
+    // 改变姓名
+    changeNamevalue(data) {
+      this.$u
+        .post("/personalCenter/updatePersonalCenterInfo", {
+          nickName: data
+        })
+        .then((res) => {
+          this.showNameModal = false
+          this.getMyInfo()
+        })
+         .catch((err) => {
+              	this.$refs.uToast.show({
+						title: err,
+						// 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+						type: 'error ',
+						duration: 1000,
+						// 如果不需要图标，请设置为false
+						icon: true,
+					})
+        });
     },
     confirm() {
       setTimeout(() => {
