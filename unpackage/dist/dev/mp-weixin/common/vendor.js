@@ -904,7 +904,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1935,54 +1935,10 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 106:
-/*!*******************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/centerbg.png ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 107:
-/*!***************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/kefu.png ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAA3UlEQVQoU43RPyvGURgG4OseMFt8AGWS941ieiefwKgYlVUyMVpsSsmCzcIXkJJBrPInPoMyS6Sjo99bv6Q4wxmec3XfT51oTillHOvo4BMF59hK8lJZ6lVKmccKVpNcN7MBzGEDi0ke0iQeYDbJa7+p1TiGY/QqPsJuP/EnblrW8FbxfZKJ31ArfRTbFd8kmfwD1/3P/oWbVS4qfscTBrGTZK9Vv49p1OTniu+SdEopdXCVZKaFb5N0SylDOK34EVMYxkmSXgvXxi5GcFjxEhbwgc0kly28jPph329f2txrDHYuyEEAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ 108:
-/*!****************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/jiang.png ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAyUlEQVQoU83RIS/GcRTF8c9F8AJ05hXYBDabIEiiTSA8hU0xVVAIJtARzASJZkMm2zSboguyx1y79jP/l+DGc7737NzdyMwRnOITQ7jGEZax1PRhrEVmzmA1InqZOYBNTOMZOxHRz8x9PBR8gB7ecYs+1nHSUucwiuOCL7DlbwZxj9m2+OvsFnyGjQ5cvZ8wgY+OfljwFcbx2IzAIi7x1bRJvBQ8hYWI2C4jM6vGawVExE9yZu7h5h/BYzjHW+fAedxV3abVl1e+AdEqcOvDi6AtAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 109:
-/*!****************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/right.png ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAMCAYAAACulacQAAAA0ElEQVQoU3WQsUrDABiE7/5gWkqjS7W+WHGtLoWEoEOsQ2kJAZ+ogrh2L7g5qOAotBqHTkmTk2pbmoq33sdxd/zyr19L4T6TkvZpc844LrEWUz9KAPYIjg8Mo0ar8b4BOLvoe46rgIZA0iRHMTxpH72tAArgZxh6ltXP4eAS0HTJctA6PnzhKv4XiD3kizMz9AU8lVje/Ji7gFMsOgJvJT3umaHnFLWq+W/stlBe68J4VSm0mQJDgP0pH36UGNgDcOcah5UTUj96lvSQiX/u+wbFfHrzEusvSgAAAABJRU5ErkJggg=="
-
-/***/ }),
-
 /***/ 11:
-/*!*************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/index.js ***!
-  \*************************************************************/
+/*!*********************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/index.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2131,10 +2087,54 @@ var install = function install(Vue) {
 
 /***/ }),
 
+/***/ 115:
+/*!***************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/centerbg.png ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 116:
+/*!***********************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/kefu.png ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAA3UlEQVQoU43RPyvGURgG4OseMFt8AGWS941ieiefwKgYlVUyMVpsSsmCzcIXkJJBrPInPoMyS6Sjo99bv6Q4wxmec3XfT51oTillHOvo4BMF59hK8lJZ6lVKmccKVpNcN7MBzGEDi0ke0iQeYDbJa7+p1TiGY/QqPsJuP/EnblrW8FbxfZKJ31ArfRTbFd8kmfwD1/3P/oWbVS4qfscTBrGTZK9Vv49p1OTniu+SdEopdXCVZKaFb5N0SylDOK34EVMYxkmSXgvXxi5GcFjxEhbwgc0kly28jPph329f2txrDHYuyEEAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ 117:
+/*!************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/jiang.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAyUlEQVQoU83RIS/GcRTF8c9F8AJ05hXYBDabIEiiTSA8hU0xVVAIJtARzASJZkMm2zSboguyx1y79jP/l+DGc7737NzdyMwRnOITQ7jGEZax1PRhrEVmzmA1InqZOYBNTOMZOxHRz8x9PBR8gB7ecYs+1nHSUucwiuOCL7DlbwZxj9m2+OvsFnyGjQ5cvZ8wgY+OfljwFcbx2IzAIi7x1bRJvBQ8hYWI2C4jM6vGawVExE9yZu7h5h/BYzjHW+fAedxV3abVl1e+AdEqcOvDi6AtAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 118:
+/*!************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/right.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAMCAYAAACulacQAAAA0ElEQVQoU3WQsUrDABiE7/5gWkqjS7W+WHGtLoWEoEOsQ2kJAZ+ogrh2L7g5qOAotBqHTkmTk2pbmoq33sdxd/zyr19L4T6TkvZpc844LrEWUz9KAPYIjg8Mo0ar8b4BOLvoe46rgIZA0iRHMTxpH72tAArgZxh6ltXP4eAS0HTJctA6PnzhKv4XiD3kizMz9AU8lVje/Ji7gFMsOgJvJT3umaHnFLWq+W/stlBe68J4VSm0mQJDgP0pH36UGNgDcOcah5UTUj96lvSQiX/u+wbFfHrzEusvSgAAAABJRU5ErkJggg=="
+
+/***/ }),
+
 /***/ 12:
-/*!************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/mixin/mixin.js ***!
-  \************************************************************************/
+/*!********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/mixin/mixin.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2192,9 +2192,9 @@ var install = function install(Vue) {
 /***/ }),
 
 /***/ 13:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/request/index.js ***!
-  \**************************************************************************/
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/request/index.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2372,10 +2372,51 @@ new Request();exports.default = _default;
 
 /***/ }),
 
-/***/ 136:
-/*!********************************************************!*\
-  !*** D:/app/xcx/dabangsStar/pages/center/weCropper.js ***!
-  \********************************************************/
+/***/ 14:
+/*!***************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepMerge.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _deepClone = _interopRequireDefault(__webpack_require__(/*! ./deepClone */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+// JS对象深度合并
+function deepMerge() {var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  target = (0, _deepClone.default)(target);
+  if (typeof target !== 'object' || typeof source !== 'object') return false;
+  for (var prop in source) {
+    if (!source.hasOwnProperty(prop)) continue;
+    if (prop in target) {
+      if (typeof target[prop] !== 'object') {
+        target[prop] = source[prop];
+      } else {
+        if (typeof source[prop] !== 'object') {
+          target[prop] = source[prop];
+        } else {
+          if (target[prop].concat && source[prop].concat) {
+            target[prop] = target[prop].concat(source[prop]);
+          } else {
+            target[prop] = deepMerge(target[prop], source[prop]);
+          }
+        }
+      }
+    } else {
+      target[prop] = source[prop];
+    }
+  }
+  return target;
+}var _default =
+
+deepMerge;exports.default = _default;
+
+/***/ }),
+
+/***/ 145:
+/*!****************************************************!*\
+  !*** D:/xcx/dabangsStar/pages/center/weCropper.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3637,55 +3678,14 @@ new Request();exports.default = _default;
   return WeCropper;
 
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! (webpack)/buildin/global.js */ 3)))
-
-/***/ }),
-
-/***/ 14:
-/*!*******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepMerge.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _deepClone = _interopRequireDefault(__webpack_require__(/*! ./deepClone */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-// JS对象深度合并
-function deepMerge() {var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  target = (0, _deepClone.default)(target);
-  if (typeof target !== 'object' || typeof source !== 'object') return false;
-  for (var prop in source) {
-    if (!source.hasOwnProperty(prop)) continue;
-    if (prop in target) {
-      if (typeof target[prop] !== 'object') {
-        target[prop] = source[prop];
-      } else {
-        if (typeof source[prop] !== 'object') {
-          target[prop] = source[prop];
-        } else {
-          if (target[prop].concat && source[prop].concat) {
-            target[prop] = target[prop].concat(source[prop]);
-          } else {
-            target[prop] = deepMerge(target[prop], source[prop]);
-          }
-        }
-      }
-    } else {
-      target[prop] = source[prop];
-    }
-  }
-  return target;
-}var _default =
-
-deepMerge;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./../../../../unapp/HBuilderX.2.8.13.20200927.full/HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 3)))
 
 /***/ }),
 
 /***/ 15:
-/*!*******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepClone.js ***!
-  \*******************************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepClone.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3717,9 +3717,9 @@ deepClone;exports.default = _default;
 /***/ }),
 
 /***/ 16:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/test.js ***!
-  \**************************************************************************/
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/test.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3959,9 +3959,9 @@ function code(value) {var len = arguments.length > 1 && arguments[1] !== undefin
 /***/ }),
 
 /***/ 17:
-/*!*********************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/queryParams.js ***!
-  \*********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/queryParams.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4028,17 +4028,17 @@ queryParams;exports.default = _default;
 /***/ }),
 
 /***/ 18:
-/*!***************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/route.js ***!
-  \***************************************************************************/
+/*!***********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/route.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 并且带有路由拦截功能
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */var
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * 并且带有路由拦截功能
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     */var
 
 Router = /*#__PURE__*/function () {
   function Router() {_classCallCheck(this, Router);
@@ -4923,13 +4923,11 @@ Dep.SharedObject.targetStack = [];
 function pushTarget (target) {
   Dep.SharedObject.targetStack.push(target);
   Dep.SharedObject.target = target;
-  Dep.target = target;
 }
 
 function popTarget () {
   Dep.SharedObject.targetStack.pop();
   Dep.SharedObject.target = Dep.SharedObject.targetStack[Dep.SharedObject.targetStack.length - 1];
-  Dep.target = Dep.SharedObject.target;
 }
 
 /*  */
@@ -9698,7 +9696,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9719,14 +9717,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9770,14 +9768,13 @@ function cloneWithData(vm) {
   }, ret);
 
   // vue-composition-api
-  var compositionApiState = vm.__composition_api_state__ || vm.__secret_vfa_state__;
-  var rawBindings = compositionApiState && compositionApiState.rawBindings;
+  var rawBindings = vm.__secret_vfa_state__ && vm.__secret_vfa_state__.rawBindings;
   if (rawBindings) {
     Object.keys(rawBindings).forEach(function (key) {
       ret[key] = vm[key];
     });
   }
-
+  
   //TODO 需要把无用数据处理掉，比如 list=>l0 则 list 需要移除，否则多传输一份数据
   Object.assign(ret, vm.$mp.data || {});
   if (
@@ -9812,7 +9809,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -11000,9 +10997,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 22:
-/*!********************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFormat.js ***!
-  \********************************************************************************/
+/*!****************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFormat.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11061,21 +11058,10 @@ timeFormat;exports.default = _default;
 
 /***/ }),
 
-/***/ 229:
-/*!********************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/moreWhite.png ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAADWUlEQVRYR82YvW/TQBTAfVaccxvb9UdC449KCSsSMCAESjdGvhkQGwKJPwAx8LHzIRCwMxRGBBK0wMwAKt8SCImpQxLFsaMkTlzbaW0nspErGpU0aZy0aXvj3bv3fvfu7t17B5ABWqFQEAEAJzEMy2AYtg9F0TQAIBao8H2/4Xlettls/mk2m/MQwjeJREIJqx6EEZRl+QiO49chhCdwHI9EIpENp7VaLcS27ZbjOG9t274vSdKXfnY2BMlms6lYLPaIoqgzEMJQ0J0GHcfxLct6bZrmtXQ6nesF1FO5LMvnKYp6QhDEBABDMbRt+r6PWJa1aBjGFUmSXnaD6WpBUZQbDMPcwXF8cwQdFm3b9nVdv87z/INOmHWGSqXSDZqm70II+23rUOOO4yC1Wu2mIAj31ir4D0RV1fMMwzwf9jyEJfvnmQs8z79YndMGyefzexmG+UmSJBVW4WbkTNM0lpaWDiaTyWygpw1SrVbnWJY9tdmDGRYuOMCapgWx5nQbpFgsZjiO+zjqLel2tTVNmxZF8dOKR6rV6izHcStk2900TZuNx+NnwcLCQkIQhOL4+Di23RCBvUaj0TRNUwSyLF/kef4piqJbGjPCLsrzPF9V1UugXC7PJBKJS2EnjkKuUqk8Bbquf52YmDg8CgNhdeq6/g0sLi6WKYpKhJ00CjnDMMrAMAybJMm+8TyXyyHFYhERRRFJpVJtnkH7uy0kYAgNMj8/j3ieh6AoimQymba+Qfu7gZim6QRbU6EoKt7P5YOuvJd8D49UQL1e/07T9KF+IKMcr9VqP3bF9S2Xy892T0ArlUp7CIKQY7HYjoV4VVXF3fDozcXj8TMrIPl8fnpycvLDjqcBAUylUpnjOG5nE6MAJJfLpVmW/bWdqWKj0TjA8/xKrbMueaZp+vlWlxGdMWjD5HlVWFGUWyzL3h5lOaHr+s1kMtm7nFgDM7ICq16v3+qsadZtzVoXKopyjiCIma0sOS3LuiwIwqtuz8WG6aGqqikMwx6TJHk6Go0OlUq6rusbhjFnWdbVoYrwtdSyLB8dGxu7BiE8CSGMhvmWcF3XsW373fLy8kNJkj73ezQHWmWhUGABAMej0eixSCSyv9tHTavV+u267nvf999NTU3V+gGsjv8Fl6rLp1gio7IAAAAASUVORK5CYII="
-
-/***/ }),
-
 /***/ 23:
-/*!******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFrom.js ***!
-  \******************************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFrom.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11130,10 +11116,21 @@ timeFrom;exports.default = _default;
 
 /***/ }),
 
+/***/ 238:
+/*!****************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/moreWhite.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAADWUlEQVRYR82YvW/TQBTAfVaccxvb9UdC449KCSsSMCAESjdGvhkQGwKJPwAx8LHzIRCwMxRGBBK0wMwAKt8SCImpQxLFsaMkTlzbaW0nspErGpU0aZy0aXvj3bv3fvfu7t17B5ABWqFQEAEAJzEMy2AYtg9F0TQAIBao8H2/4Xlettls/mk2m/MQwjeJREIJqx6EEZRl+QiO49chhCdwHI9EIpENp7VaLcS27ZbjOG9t274vSdKXfnY2BMlms6lYLPaIoqgzEMJQ0J0GHcfxLct6bZrmtXQ6nesF1FO5LMvnKYp6QhDEBABDMbRt+r6PWJa1aBjGFUmSXnaD6WpBUZQbDMPcwXF8cwQdFm3b9nVdv87z/INOmHWGSqXSDZqm70II+23rUOOO4yC1Wu2mIAj31ir4D0RV1fMMwzwf9jyEJfvnmQs8z79YndMGyefzexmG+UmSJBVW4WbkTNM0lpaWDiaTyWygpw1SrVbnWJY9tdmDGRYuOMCapgWx5nQbpFgsZjiO+zjqLel2tTVNmxZF8dOKR6rV6izHcStk2900TZuNx+NnwcLCQkIQhOL4+Di23RCBvUaj0TRNUwSyLF/kef4piqJbGjPCLsrzPF9V1UugXC7PJBKJS2EnjkKuUqk8Bbquf52YmDg8CgNhdeq6/g0sLi6WKYpKhJ00CjnDMMrAMAybJMm+8TyXyyHFYhERRRFJpVJtnkH7uy0kYAgNMj8/j3ieh6AoimQymba+Qfu7gZim6QRbU6EoKt7P5YOuvJd8D49UQL1e/07T9KF+IKMcr9VqP3bF9S2Xy892T0ArlUp7CIKQY7HYjoV4VVXF3fDozcXj8TMrIPl8fnpycvLDjqcBAUylUpnjOG5nE6MAJJfLpVmW/bWdqWKj0TjA8/xKrbMueaZp+vlWlxGdMWjD5HlVWFGUWyzL3h5lOaHr+s1kMtm7nFgDM7ICq16v3+qsadZtzVoXKopyjiCIma0sOS3LuiwIwqtuz8WG6aGqqikMwx6TJHk6Go0OlUq6rusbhjFnWdbVoYrwtdSyLB8dGxu7BiE8CSGMhvmWcF3XsW373fLy8kNJkj73ezQHWmWhUGABAMej0eixSCSyv9tHTavV+u267nvf999NTU3V+gGsjv8Fl6rLp1gio7IAAAAASUVORK5CYII="
+
+/***/ }),
+
 /***/ 24:
-/*!***********************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/colorGradient.js ***!
-  \***********************************************************************************/
+/*!*******************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/colorGradient.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11275,9 +11272,9 @@ function colorToRgba(color) {var alpha = arguments.length > 1 && arguments[1] !=
 /***/ }),
 
 /***/ 25:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/guid.js ***!
-  \**************************************************************************/
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/guid.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11326,10 +11323,67 @@ guid;exports.default = _default;
 
 /***/ }),
 
+/***/ 255:
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/components/SJ-LotteryDraw/SJ-LotteryDraw.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+function LotteryDraw(obj, callback) {
+  this.timer = null; //计时器
+  this.startIndex = obj.startIndex - 1 || 0; //从第几个位置开始抽奖 [默认为零]
+  this.count = 0; //计数，跑的圈数
+  this.winingIndex = obj.winingIndex || 0; //获奖的位置
+  this.totalCount = obj.totalCount || 6; //抽奖跑的圈数
+  this.speed = obj.speed || 100;
+  this.domData = obj.domData;
+  this.rollFn();
+  this.callback = callback;
+}
+
+LotteryDraw.prototype = {
+  rollFn: function rollFn() {
+    var that = this;
+    // console.log(`获奖位置：${this.winingIndex}`)
+    // 活动index值增加，即移动到下一个格子
+    this.startIndex++;
+
+    //startIndex是最后一个时一圈走完，重新开始
+    if (this.startIndex >= this.domData.length - 1) {
+      this.startIndex = 0;
+      this.count++;
+    }
+
+    // 当跑的圈数等于设置的圈数，且活动的index值是奖品的位置时停止
+    if (this.count >= this.totalCount && this.startIndex === this.winingIndex) {
+      if (typeof this.callback === 'function') {
+        setTimeout(function () {
+          that.callback(that.startIndex, that.count); //执行回调函数，抽奖完成的相关操作
+        }, 400);
+      }
+      clearInterval(this.timer);
+    } else {//重新开始一圈
+      if (this.count >= this.totalCount - 1) {
+        this.speed += 30;
+      }
+      this.timer = setTimeout(function () {
+        that.callback(that.startIndex, that.count);
+        that.rollFn();
+      }, this.speed);
+    }
+  } };
+
+
+module.exports = LotteryDraw;
+
+/***/ }),
+
 /***/ 26:
-/*!***************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/color.js ***!
-  \***************************************************************************/
+/*!***********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/color.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11375,9 +11429,9 @@ color;exports.default = _default;
 /***/ }),
 
 /***/ 27:
-/*!*******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/type2icon.js ***!
-  \*******************************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/type2icon.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11421,9 +11475,9 @@ type2icon;exports.default = _default;
 /***/ }),
 
 /***/ 28:
-/*!*********************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/randomArray.js ***!
-  \*********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/randomArray.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11438,10 +11492,81 @@ randomArray;exports.default = _default;
 
 /***/ }),
 
-/***/ 288:
+/***/ 29:
 /*!*************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/util/emitter.js ***!
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/addUnit.js ***!
   \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = addUnit;var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+// 添加单位，如果有rpx，%，px等单位结尾或者值为auto，直接返回，否则加上rpx单位结尾
+function addUnit() {var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'auto';var unit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'rpx';
+  value = String(value);
+  // 用uView内置验证规则中的number判断是否为数值
+  return _test.default.number(value) ? "".concat(value).concat(unit) : value;
+}
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 30:
+/*!************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/random.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function random(min, max) {
+  if (min >= 0 && max > 0 && max >= min) {
+    var gab = max - min + 1;
+    return Math.floor(Math.random() * gab + min);
+  } else {
+    return 0;
+  }
+}var _default =
+
+random;exports.default = _default;
+
+/***/ }),
+
+/***/ 305:
+/*!*********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/util/emitter.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11498,81 +11623,10 @@ function _broadcast(componentName, eventName, params) {
 
 /***/ }),
 
-/***/ 29:
-/*!*****************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/addUnit.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = addUnit;var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-// 添加单位，如果有rpx，%，px等单位结尾或者值为auto，直接返回，否则加上rpx单位结尾
-function addUnit() {var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'auto';var unit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'rpx';
-  value = String(value);
-  // 用uView内置验证规则中的number判断是否为数值
-  return _test.default.number(value) ? "".concat(value).concat(unit) : value;
-}
-
-/***/ }),
-
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 30:
-/*!****************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/random.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function random(min, max) {
-  if (min >= 0 && max > 0 && max >= min) {
-    var gab = max - min + 1;
-    return Math.floor(Math.random() * gab + min);
-  } else {
-    return 0;
-  }
-}var _default =
-
-random;exports.default = _default;
-
-/***/ }),
-
 /***/ 31:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/trim.js ***!
-  \**************************************************************************/
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/trim.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11595,10 +11649,31 @@ trim;exports.default = _default;
 
 /***/ }),
 
-/***/ 310:
-/*!*********************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/util/async-validator.js ***!
-  \*********************************************************************************/
+/***/ 32:
+/*!***********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/toast.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function toast(title) {var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1500;
+  uni.showToast({
+    title: title,
+    icon: 'none',
+    duration: duration });
+
+}var _default =
+
+toast;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 320:
+/*!*****************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/util/async-validator.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11625,7 +11700,7 @@ trim;exports.default = _default;
 var formatRegExp = /%[sdj%]/g;
 var warning = function warning() {}; // don't print warning message when in production env or node runtime
 
-if (typeof process !== 'undefined' && Object({"NODE_ENV":"development","VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
+if (typeof process !== 'undefined' && Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
 'undefined' && typeof document !== 'undefined') {
   warning = function warning(type, errors) {
     if (typeof console !== 'undefined' && console.warn) {
@@ -12958,11 +13033,11 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 311)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../unapp/HBuilderX.2.8.13.20200927.full/HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 321)))
 
 /***/ }),
 
-/***/ 311:
+/***/ 321:
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -12993,7 +13068,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 312);
+        if (!path) path = __webpack_require__(/*! path */ 322);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -13007,7 +13082,7 @@ exports.features = {};
 
 /***/ }),
 
-/***/ 312:
+/***/ 322:
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -13317,35 +13392,14 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 311)))
-
-/***/ }),
-
-/***/ 32:
-/*!***************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/toast.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function toast(title) {var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1500;
-  uni.showToast({
-    title: title,
-    icon: 'none',
-    duration: duration });
-
-}var _default =
-
-toast;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 321)))
 
 /***/ }),
 
 /***/ 33:
-/*!*******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/getParent.js ***!
-  \*******************************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/getParent.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13401,9 +13455,9 @@ function getParent(name, keys) {
 /***/ }),
 
 /***/ 34:
-/*!*****************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/$parent.js ***!
-  \*****************************************************************************/
+/*!*************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/$parent.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13430,9 +13484,9 @@ function $parent() {var name = arguments.length > 0 && arguments[0] !== undefine
 /***/ }),
 
 /***/ 35:
-/*!*************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/sys.js ***!
-  \*************************************************************************/
+/*!*********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/sys.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13449,9 +13503,9 @@ function sys() {
 /***/ }),
 
 /***/ 36:
-/*!******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/debounce.js ***!
-  \******************************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/debounce.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13489,9 +13543,9 @@ debounce;exports.default = _default;
 /***/ }),
 
 /***/ 37:
-/*!******************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/throttle.js ***!
-  \******************************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/throttle.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13532,9 +13586,9 @@ throttle;exports.default = _default;
 /***/ }),
 
 /***/ 38:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/config/config.js ***!
-  \**************************************************************************/
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/config/config.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13556,9 +13610,9 @@ var version = '1.8.2';var _default =
 /***/ }),
 
 /***/ 39:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/config/zIndex.js ***!
-  \**************************************************************************/
+/*!**********************************************************************!*\
+  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/config/zIndex.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13586,9 +13640,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 4:
-/*!*****************************************!*\
-  !*** D:/app/xcx/dabangsStar/pages.json ***!
-  \*****************************************/
+/*!*************************************!*\
+  !*** D:/xcx/dabangsStar/pages.json ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13597,9 +13651,50 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 40:
-/*!*********************************************************!*\
-  !*** D:/app/xcx/dabangsStar/common/http.interceptor.js ***!
-  \*********************************************************/
+/*!********************************************!*\
+  !*** D:/xcx/dabangsStar/common/methods.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(uni) {
+exports.toLogin = function (data) {
+  // console.log(data.data.code)
+  var datas = data.data;
+  // 如果401，登录失效，报错，跳转到登陆页
+  if (datas && datas.code == 401) {
+    uni.showModal({
+      title: '请登录',
+      content: '登录后可以获取更多功能',
+      success: function success(res) {
+        if (res.confirm) {
+          uni.navigateTo({
+            url: "/pages/center/center" });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      } });
+
+  } else {
+    uni.showToast({
+      title: data.message,
+      icon: 'none',
+      duration: 1000 });
+
+  }
+
+
+
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 41:
+/*!*****************************************************!*\
+  !*** D:/xcx/dabangsStar/common/http.interceptor.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13607,8 +13702,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var install = function install(Vue, vm) {
   // 此为自定义配置参数，具体参数见上方说明
   Vue.prototype.$u.http.setConfig({
-    // baseUrl: 'https://192.168.20.4:18001', //本地
-    baseUrl: 'https://123.207.120.31:18001', //线上
+    baseUrl: 'https://192.168.20.4:18001', //本地
+    // baseUrl: 'https://123.207.120.31:18001', //线上
     // loadingText: '努力加载中~',
     loadingTime: 800
     // ......
@@ -13675,108 +13770,21 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 414:
-/*!************************************************!*\
-  !*** D:/app/xcx/dabangsStar/common/methods.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(uni) {
-exports.toLogin = function (data) {
-  // console.log(data.data.code)
-  var datas = data.data;
-  // 如果401，登录失效，报错，跳转到登陆页
-  if (datas && datas.code == 401) {
-    uni.showModal({
-      title: '请登录',
-      content: '登录后可以获取更多功能',
-      success: function success(res) {
-        if (res.confirm) {
-          uni.navigateTo({
-            url: "/pages/center/center" });
-
-        } else if (res.cancel) {
-          console.log('用户点击取消');
-        }
-      } });
-
-  } else {
-    uni.showToast({
-      title: data.message,
-      icon: 'none',
-      duration: 1000 });
-
-  }
-
-
-
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
-/***/ 437:
-/*!**************************************************************************!*\
-  !*** D:/app/xcx/dabangsStar/components/SJ-LotteryDraw/SJ-LotteryDraw.js ***!
-  \**************************************************************************/
+/***/ 441:
+/*!***********************************************!*\
+  !*** D:/xcx/dabangsStar/static/choujiang.png ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-
-function LotteryDraw(obj, callback) {
-  this.timer = null; //计时器
-  this.startIndex = obj.startIndex - 1 || 0; //从第几个位置开始抽奖 [默认为零]
-  this.count = 0; //计数，跑的圈数
-  this.winingIndex = obj.winingIndex || 0; //获奖的位置
-  this.totalCount = obj.totalCount || 6; //抽奖跑的圈数
-  this.speed = obj.speed || 100;
-  this.domData = obj.domData;
-  this.rollFn();
-  this.callback = callback;
-}
-
-LotteryDraw.prototype = {
-  rollFn: function rollFn() {
-    var that = this;
-    // console.log(`获奖位置：${this.winingIndex}`)
-    // 活动index值增加，即移动到下一个格子
-    this.startIndex++;
-
-    //startIndex是最后一个时一圈走完，重新开始
-    if (this.startIndex >= this.domData.length - 1) {
-      this.startIndex = 0;
-      this.count++;
-    }
-
-    // 当跑的圈数等于设置的圈数，且活动的index值是奖品的位置时停止
-    if (this.count >= this.totalCount && this.startIndex === this.winingIndex) {
-      if (typeof this.callback === 'function') {
-        setTimeout(function () {
-          that.callback(that.startIndex, that.count); //执行回调函数，抽奖完成的相关操作
-        }, 400);
-      }
-      clearInterval(this.timer);
-    } else {//重新开始一圈
-      if (this.count >= this.totalCount - 1) {
-        this.speed += 30;
-      }
-      this.timer = setTimeout(function () {
-        that.callback(that.startIndex, that.count);
-        that.rollFn();
-      }, this.speed);
-    }
-  } };
-
-
-module.exports = LotteryDraw;
+module.exports = "/static/choujiang.png";
 
 /***/ }),
 
-/***/ 45:
-/*!********************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/searchBtn.png ***!
-  \********************************************************/
+/***/ 46:
+/*!****************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/searchBtn.png ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13784,10 +13792,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 46:
-/*!*********************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/homeBottom.png ***!
-  \*********************************************************/
+/***/ 47:
+/*!*****************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/homeBottom.png ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13795,10 +13803,10 @@ module.exports = "/static/home/homeBottom.png";
 
 /***/ }),
 
-/***/ 47:
-/*!*************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/my.png ***!
-  \*************************************************/
+/***/ 48:
+/*!*********************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/my.png ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13806,10 +13814,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAe
 
 /***/ }),
 
-/***/ 70:
-/*!*******************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/starCard.png ***!
-  \*******************************************************/
+/***/ 71:
+/*!***************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/starCard.png ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13817,10 +13825,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW0AAADfCAYAAAA9
 
 /***/ }),
 
-/***/ 71:
-/*!******************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/leftRow.png ***!
-  \******************************************************/
+/***/ 72:
+/*!**************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/leftRow.png ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13828,10 +13836,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAZCAYAAACr
 
 /***/ }),
 
-/***/ 72:
-/*!*******************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/rightRow.png ***!
-  \*******************************************************/
+/***/ 73:
+/*!***************************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/rightRow.png ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13839,10 +13847,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAZCAYAAACr
 
 /***/ }),
 
-/***/ 73:
-/*!***************************************************!*\
-  !*** D:/app/xcx/dabangsStar/static/home/more.png ***!
-  \***************************************************/
+/***/ 74:
+/*!***********************************************!*\
+  !*** D:/xcx/dabangsStar/static/home/more.png ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

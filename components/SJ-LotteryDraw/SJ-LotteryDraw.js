@@ -18,7 +18,7 @@ LotteryDraw.prototype = {
 		// 活动index值增加，即移动到下一个格子
 		this.startIndex++;
 		
-		//startIndex是最后一个时一圈走完，重新开始
+        //startIndex是最后一个时一圈走完，重新开始
 		if (this.startIndex >= this.domData.length - 1) {
 			this.startIndex = 0;
 			this.count++;
