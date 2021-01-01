@@ -40,7 +40,7 @@
             class="guard-img"
             width="80rpx"
             height="80rpx"
-            :src="item.image"
+            :src="item.avatar"
             shape="circle"
           ></u-image>
           <view class="guard-right">

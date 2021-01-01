@@ -50,7 +50,7 @@
             </view>
             <view class="btn">
               <img src="../../static/home/rightRow.png" />
-              <view class="btn-text btn-text2">粉丝周榜</view>
+              <view class="btn-text btn-text2">粉丝月榜</view>
             </view>
           </view>
           <!-- 底部排名 -->
