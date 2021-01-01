@@ -23,28 +23,7 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "tabBar": {
-    "color": "#2C405A",
-    "selectedColor": "#F0AD4E",
-    "backgroundColor": "#FFFFFF",
-    "borderStyle": "black",
-    "position": "bottom",
-    "fontSize": "10px",
-    "iconWidth": "24px",
-    "spacing": "3px",
-    "height": "50px",
-    "midButton": {},
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "bar1"
-      },
-      {
-        "pagePath": "pages/login/login",
-        "text": "个人中心"
-      }
-    ]
-  },
+  "tabBar": {},
   "secret": "bfa8089fdfbb2addeb5de83af974561f",
   "usingComponents": {}
 }

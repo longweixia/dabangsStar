@@ -5,6 +5,7 @@
     "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
         {
             "path": "pages/index/index",
+            "name":"index",
             "style": {
                 "navigationBarTitleText": "打榜小程序"
             }
@@ -48,7 +49,7 @@
         {
             "path": "pages/center/center",
             "style": {
-                "navigationBarTitleText": "个人中心-测试"
+                "navigationBarTitleText": "登录"
             }
         },
         {
@@ -88,26 +89,26 @@
         }
     ],
     "tabBar": {
-        "color": "#2C405A",
-        "selectedColor": "#F0AD4E",
-        "backgroundColor": "#FFFFFF",
-        "borderStyle": "black",
-        "position": "bottom",
-        "fontSize": "10px",
-        "iconWidth": "24px",
-        "spacing": "3px",
-        "height": "50px",
-        "midButton": {},
-        "list": [{
-                "pagePath": "pages/index/index",
-                "text": "bar1"
+        // "color": "#2C405A",
+        // "selectedColor": "#F0AD4E",
+        // "backgroundColor": "#FFFFFF",
+        // "borderStyle": "black",
+        // "position": "bottom",
+        // "fontSize": "10px",
+        // "iconWidth": "24px",
+        // "spacing": "3px",
+        // "height": "50px",
+        // "midButton": {},
+        // "list": [{
+        //         "pagePath": "pages/index/index",
+        //         "text": "bar1"
 
-            }, {
-                "pagePath": "pages/login/login",
-                "text": "个人中心"
+        //     }, {
+        //         "pagePath": "pages/login/login",
+        //         "text": "个人中心"
 
-            }
-        ]
+        //     }
+        // ]
     },
     "globalStyle": {
         "navigationBarTextStyle": "black",
