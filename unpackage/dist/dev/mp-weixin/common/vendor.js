@@ -904,7 +904,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1936,9 +1936,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!*********************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/index.js ***!
-  \*********************************************************/
+/*!*************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/index.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2088,9 +2088,9 @@ var install = function install(Vue) {
 /***/ }),
 
 /***/ 115:
-/*!***************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/centerbg.png ***!
-  \***************************************************/
+/*!*******************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/centerbg.png ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2099,9 +2099,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAADeCAYAAADG
 /***/ }),
 
 /***/ 116:
-/*!***********************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/kefu.png ***!
-  \***********************************************/
+/*!***************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/kefu.png ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2110,9 +2110,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACp
 /***/ }),
 
 /***/ 117:
-/*!************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/jiang.png ***!
-  \************************************************/
+/*!****************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/jiang.png ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2121,9 +2121,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACp
 /***/ }),
 
 /***/ 118:
-/*!************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/right.png ***!
-  \************************************************/
+/*!****************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/right.png ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2132,9 +2132,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAMCAYAAACu
 /***/ }),
 
 /***/ 12:
-/*!********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/mixin/mixin.js ***!
-  \********************************************************************/
+/*!************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/mixin/mixin.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2192,9 +2192,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAMCAYAAACu
 /***/ }),
 
 /***/ 13:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/request/index.js ***!
-  \**********************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/request/index.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2373,9 +2373,9 @@ new Request();exports.default = _default;
 /***/ }),
 
 /***/ 14:
-/*!***************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepMerge.js ***!
-  \***************************************************************************/
+/*!*******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepMerge.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2414,9 +2414,9 @@ deepMerge;exports.default = _default;
 /***/ }),
 
 /***/ 145:
-/*!****************************************************!*\
-  !*** D:/xcx/dabangsStar/pages/center/weCropper.js ***!
-  \****************************************************/
+/*!********************************************************!*\
+  !*** D:/app/xcx/dabangsStar/pages/center/weCropper.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3678,14 +3678,14 @@ deepMerge;exports.default = _default;
   return WeCropper;
 
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./../../../../unapp/HBuilderX.2.8.13.20200927.full/HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 3)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! (webpack)/buildin/global.js */ 3)))
 
 /***/ }),
 
 /***/ 15:
-/*!***************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepClone.js ***!
-  \***************************************************************************/
+/*!*******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/deepClone.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3717,9 +3717,9 @@ deepClone;exports.default = _default;
 /***/ }),
 
 /***/ 16:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/test.js ***!
-  \**********************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/test.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3959,9 +3959,9 @@ function code(value) {var len = arguments.length > 1 && arguments[1] !== undefin
 /***/ }),
 
 /***/ 17:
-/*!*****************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/queryParams.js ***!
-  \*****************************************************************************/
+/*!*********************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/queryParams.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4028,17 +4028,17 @@ queryParams;exports.default = _default;
 /***/ }),
 
 /***/ 18:
-/*!***********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/route.js ***!
-  \***********************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/route.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * 并且带有路由拦截功能
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     */var
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 并且带有路由拦截功能
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */var
 
 Router = /*#__PURE__*/function () {
   function Router() {_classCallCheck(this, Router);
@@ -4923,11 +4923,13 @@ Dep.SharedObject.targetStack = [];
 function pushTarget (target) {
   Dep.SharedObject.targetStack.push(target);
   Dep.SharedObject.target = target;
+  Dep.target = target;
 }
 
 function popTarget () {
   Dep.SharedObject.targetStack.pop();
   Dep.SharedObject.target = Dep.SharedObject.targetStack[Dep.SharedObject.targetStack.length - 1];
+  Dep.target = Dep.SharedObject.target;
 }
 
 /*  */
@@ -9696,7 +9698,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9717,14 +9719,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9768,13 +9770,14 @@ function cloneWithData(vm) {
   }, ret);
 
   // vue-composition-api
-  var rawBindings = vm.__secret_vfa_state__ && vm.__secret_vfa_state__.rawBindings;
+  var compositionApiState = vm.__composition_api_state__ || vm.__secret_vfa_state__;
+  var rawBindings = compositionApiState && compositionApiState.rawBindings;
   if (rawBindings) {
     Object.keys(rawBindings).forEach(function (key) {
       ret[key] = vm[key];
     });
   }
-  
+
   //TODO 需要把无用数据处理掉，比如 list=>l0 则 list 需要移除，否则多传输一份数据
   Object.assign(ret, vm.$mp.data || {});
   if (
@@ -9809,7 +9812,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -10997,9 +11000,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 22:
-/*!****************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFormat.js ***!
-  \****************************************************************************/
+/*!********************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFormat.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11059,9 +11062,9 @@ timeFormat;exports.default = _default;
 /***/ }),
 
 /***/ 23:
-/*!**************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFrom.js ***!
-  \**************************************************************************/
+/*!******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/timeFrom.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11117,9 +11120,9 @@ timeFrom;exports.default = _default;
 /***/ }),
 
 /***/ 238:
-/*!****************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/moreWhite.png ***!
-  \****************************************************/
+/*!********************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/moreWhite.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -11128,9 +11131,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6
 /***/ }),
 
 /***/ 24:
-/*!*******************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/colorGradient.js ***!
-  \*******************************************************************************/
+/*!***********************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/colorGradient.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11272,9 +11275,9 @@ function colorToRgba(color) {var alpha = arguments.length > 1 && arguments[1] !=
 /***/ }),
 
 /***/ 25:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/guid.js ***!
-  \**********************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/guid.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11323,10 +11326,21 @@ guid;exports.default = _default;
 
 /***/ }),
 
-/***/ 255:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/components/SJ-LotteryDraw/SJ-LotteryDraw.js ***!
-  \**********************************************************************/
+/***/ 253:
+/*!***************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/choujiang.png ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/choujiang.png";
+
+/***/ }),
+
+/***/ 256:
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/components/SJ-LotteryDraw/SJ-LotteryDraw.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -11381,9 +11395,9 @@ module.exports = LotteryDraw;
 /***/ }),
 
 /***/ 26:
-/*!***********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/color.js ***!
-  \***********************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/color.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11429,9 +11443,9 @@ color;exports.default = _default;
 /***/ }),
 
 /***/ 27:
-/*!***************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/type2icon.js ***!
-  \***************************************************************************/
+/*!*******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/type2icon.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11475,9 +11489,9 @@ type2icon;exports.default = _default;
 /***/ }),
 
 /***/ 28:
-/*!*****************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/randomArray.js ***!
-  \*****************************************************************************/
+/*!*********************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/randomArray.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11493,9 +11507,9 @@ randomArray;exports.default = _default;
 /***/ }),
 
 /***/ 29:
-/*!*************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/addUnit.js ***!
-  \*************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/addUnit.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11543,9 +11557,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 30:
-/*!************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/random.js ***!
-  \************************************************************************/
+/*!****************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/random.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11563,10 +11577,10 @@ random;exports.default = _default;
 
 /***/ }),
 
-/***/ 305:
-/*!*********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/util/emitter.js ***!
-  \*********************************************************************/
+/***/ 306:
+/*!*************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/util/emitter.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11624,9 +11638,9 @@ function _broadcast(componentName, eventName, params) {
 /***/ }),
 
 /***/ 31:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/trim.js ***!
-  \**********************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/trim.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11650,9 +11664,9 @@ trim;exports.default = _default;
 /***/ }),
 
 /***/ 32:
-/*!***********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/toast.js ***!
-  \***********************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/toast.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11670,10 +11684,10 @@ toast;exports.default = _default;
 
 /***/ }),
 
-/***/ 320:
-/*!*****************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/util/async-validator.js ***!
-  \*****************************************************************************/
+/***/ 328:
+/*!*********************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/util/async-validator.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11700,7 +11714,7 @@ toast;exports.default = _default;
 var formatRegExp = /%[sdj%]/g;
 var warning = function warning() {}; // don't print warning message when in production env or node runtime
 
-if (typeof process !== 'undefined' && Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
+if (typeof process !== 'undefined' && Object({"VUE_APP_NAME":"dabangStar","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
 'undefined' && typeof document !== 'undefined') {
   warning = function warning(type, errors) {
     if (typeof console !== 'undefined' && console.warn) {
@@ -13033,11 +13047,11 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../unapp/HBuilderX.2.8.13.20200927.full/HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 321)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 329)))
 
 /***/ }),
 
-/***/ 321:
+/***/ 329:
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -13068,7 +13082,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 322);
+        if (!path) path = __webpack_require__(/*! path */ 330);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -13082,7 +13096,65 @@ exports.features = {};
 
 /***/ }),
 
-/***/ 322:
+/***/ 33:
+/*!*******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/getParent.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = getParent; // 获取父组件的参数，因为支付宝小程序不支持provide/inject的写法
+// this.$parent在非H5中，可以准确获取到父组件，但是在H5中，需要多次this.$parent.$parent.xxx
+function getParent(name, keys) {
+  var parent = this.$parent;
+  // 通过while历遍，这里主要是为了H5需要多层解析的问题
+  while (parent) {
+    // 父组件
+    if (parent.$options.name !== name) {
+      // 如果组件的name不相等，继续上一级寻找
+      parent = parent.$parent;
+    } else {var _ret = function () {
+        var data = {};
+        // 判断keys是否数组，如果传过来的是一个数组，那么直接使用数组元素值当做键值去父组件寻找
+        if (Array.isArray(keys)) {
+          keys.map(function (val) {
+            data[val] = parent[val] ? parent[val] : '';
+          });
+        } else {
+          // 历遍传过来的对象参数
+          for (var i in keys) {
+            // 如果子组件有此值则用，无此值则用父组件的值
+            // 判断是否空数组，如果是，则用父组件的值，否则用子组件的值
+            if (Array.isArray(keys[i])) {
+              if (keys[i].length) {
+                data[i] = keys[i];
+              } else {
+                data[i] = parent[i];
+              }
+            } else if (keys[i].constructor === Object) {
+              // 判断是否对象，如果是对象，且有属性，那么使用子组件的值，否则使用父组件的值
+              if (Object.keys(keys[i]).length) {
+                data[i] = keys[i];
+              } else {
+                data[i] = parent[i];
+              }
+            } else {
+              // 只要子组件有传值，即使是false值，也是“传值”了，也需要覆盖父组件的同名参数
+              data[i] = keys[i] || keys[i] === false ? keys[i] : parent[i];
+            }
+          }
+        }
+        return { v: data };}();if (typeof _ret === "object") return _ret.v;
+    }
+  }
+
+  return {};
+}
+
+/***/ }),
+
+/***/ 330:
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -13392,72 +13464,14 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 321)))
-
-/***/ }),
-
-/***/ 33:
-/*!***************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/getParent.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = getParent; // 获取父组件的参数，因为支付宝小程序不支持provide/inject的写法
-// this.$parent在非H5中，可以准确获取到父组件，但是在H5中，需要多次this.$parent.$parent.xxx
-function getParent(name, keys) {
-  var parent = this.$parent;
-  // 通过while历遍，这里主要是为了H5需要多层解析的问题
-  while (parent) {
-    // 父组件
-    if (parent.$options.name !== name) {
-      // 如果组件的name不相等，继续上一级寻找
-      parent = parent.$parent;
-    } else {var _ret = function () {
-        var data = {};
-        // 判断keys是否数组，如果传过来的是一个数组，那么直接使用数组元素值当做键值去父组件寻找
-        if (Array.isArray(keys)) {
-          keys.map(function (val) {
-            data[val] = parent[val] ? parent[val] : '';
-          });
-        } else {
-          // 历遍传过来的对象参数
-          for (var i in keys) {
-            // 如果子组件有此值则用，无此值则用父组件的值
-            // 判断是否空数组，如果是，则用父组件的值，否则用子组件的值
-            if (Array.isArray(keys[i])) {
-              if (keys[i].length) {
-                data[i] = keys[i];
-              } else {
-                data[i] = parent[i];
-              }
-            } else if (keys[i].constructor === Object) {
-              // 判断是否对象，如果是对象，且有属性，那么使用子组件的值，否则使用父组件的值
-              if (Object.keys(keys[i]).length) {
-                data[i] = keys[i];
-              } else {
-                data[i] = parent[i];
-              }
-            } else {
-              // 只要子组件有传值，即使是false值，也是“传值”了，也需要覆盖父组件的同名参数
-              data[i] = keys[i] || keys[i] === false ? keys[i] : parent[i];
-            }
-          }
-        }
-        return { v: data };}();if (typeof _ret === "object") return _ret.v;
-    }
-  }
-
-  return {};
-}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 329)))
 
 /***/ }),
 
 /***/ 34:
-/*!*************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/$parent.js ***!
-  \*************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/$parent.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13484,9 +13498,9 @@ function $parent() {var name = arguments.length > 0 && arguments[0] !== undefine
 /***/ }),
 
 /***/ 35:
-/*!*********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/sys.js ***!
-  \*********************************************************************/
+/*!*************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/sys.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13503,9 +13517,9 @@ function sys() {
 /***/ }),
 
 /***/ 36:
-/*!**************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/debounce.js ***!
-  \**************************************************************************/
+/*!******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/debounce.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13543,9 +13557,9 @@ debounce;exports.default = _default;
 /***/ }),
 
 /***/ 37:
-/*!**************************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/function/throttle.js ***!
-  \**************************************************************************/
+/*!******************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/function/throttle.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13586,9 +13600,9 @@ throttle;exports.default = _default;
 /***/ }),
 
 /***/ 38:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/config/config.js ***!
-  \**********************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/config/config.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13610,9 +13624,9 @@ var version = '1.8.2';var _default =
 /***/ }),
 
 /***/ 39:
-/*!**********************************************************************!*\
-  !*** D:/xcx/dabangsStar/node_modules/uview-ui/libs/config/zIndex.js ***!
-  \**********************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/app/xcx/dabangsStar/node_modules/uview-ui/libs/config/zIndex.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13640,9 +13654,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 4:
-/*!*************************************!*\
-  !*** D:/xcx/dabangsStar/pages.json ***!
-  \*************************************/
+/*!*****************************************!*\
+  !*** D:/app/xcx/dabangsStar/pages.json ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13651,9 +13665,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 40:
-/*!********************************************!*\
-  !*** D:/xcx/dabangsStar/common/methods.js ***!
-  \********************************************/
+/*!************************************************!*\
+  !*** D:/app/xcx/dabangsStar/common/methods.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13692,9 +13706,9 @@ exports.toLogin = function (data) {
 /***/ }),
 
 /***/ 41:
-/*!*****************************************************!*\
-  !*** D:/xcx/dabangsStar/common/http.interceptor.js ***!
-  \*****************************************************/
+/*!*********************************************************!*\
+  !*** D:/app/xcx/dabangsStar/common/http.interceptor.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13702,8 +13716,8 @@ exports.toLogin = function (data) {
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var install = function install(Vue, vm) {
   // 此为自定义配置参数，具体参数见上方说明
   Vue.prototype.$u.http.setConfig({
-    baseUrl: 'https://192.168.20.4:18001', //本地
-    // baseUrl: 'https://123.207.120.31:18001', //线上
+    // baseUrl: 'https://192.168.20.4:18001', //本地
+    baseUrl: 'https://123.207.120.31:18001', //线上
     // loadingText: '努力加载中~',
     loadingTime: 800
     // ......
@@ -13770,21 +13784,10 @@ exports.toLogin = function (data) {
 
 /***/ }),
 
-/***/ 441:
-/*!***********************************************!*\
-  !*** D:/xcx/dabangsStar/static/choujiang.png ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/choujiang.png";
-
-/***/ }),
-
 /***/ 46:
-/*!****************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/searchBtn.png ***!
-  \****************************************************/
+/*!********************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/searchBtn.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13793,9 +13796,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 /***/ }),
 
 /***/ 47:
-/*!*****************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/homeBottom.png ***!
-  \*****************************************************/
+/*!*********************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/homeBottom.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13804,9 +13807,9 @@ module.exports = "/static/home/homeBottom.png";
 /***/ }),
 
 /***/ 48:
-/*!*********************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/my.png ***!
-  \*********************************************/
+/*!*************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/my.png ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13815,9 +13818,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAe
 /***/ }),
 
 /***/ 71:
-/*!***************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/starCard.png ***!
-  \***************************************************/
+/*!*******************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/starCard.png ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13826,9 +13829,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW0AAADfCAYAAAA9
 /***/ }),
 
 /***/ 72:
-/*!**************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/leftRow.png ***!
-  \**************************************************/
+/*!******************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/leftRow.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13837,9 +13840,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAZCAYAAACr
 /***/ }),
 
 /***/ 73:
-/*!***************************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/rightRow.png ***!
-  \***************************************************/
+/*!*******************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/rightRow.png ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13848,9 +13851,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAZCAYAAACr
 /***/ }),
 
 /***/ 74:
-/*!***********************************************!*\
-  !*** D:/xcx/dabangsStar/static/home/more.png ***!
-  \***********************************************/
+/*!***************************************************!*\
+  !*** D:/app/xcx/dabangsStar/static/home/more.png ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
