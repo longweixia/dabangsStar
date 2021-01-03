@@ -36,7 +36,7 @@
 				<view v-for="(item,index) in dataList" :key="index" @click="keywordsClick(item)" class="data-row">
 					<img  :src="item.avatar=='string'? imgtext :item.avatar" />
 					<view class="name">{{item.name}}</view>
-					<view class="btn">查看</view>
+					<view class="btn" @click='seeSater(item)'>查看</view>
 				</view>
 		</view>
 		<view class="data-no" v-if="!hasData">
@@ -108,6 +108,12 @@
 			};
 		},
 		methods: {
+			// 明星详情
+			seeSater(item){
+   uni.navigateTo({
+        url: `/pages/starDetail/starDetail?id=${item.id}`,
+      });
+			},
 			// 取消
 			cancle(){
 				history.go(-1)

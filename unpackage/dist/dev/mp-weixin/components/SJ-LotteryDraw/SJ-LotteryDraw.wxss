@@ -63,10 +63,8 @@
   width: 530rpx;
   height: 530rpx;
   position: relative;
-  -webkit-border-radius: 12rpx;
-          border-radius: 12rpx;
-  -webkit-box-shadow: 0rpx 12rpx 0rpx 0rpx #89bbf7;
-          box-shadow: 0rpx 12rpx 0rpx 0rpx #89bbf7;
+  border-radius: 12rpx;
+  box-shadow: 0rpx 12rpx 0rpx 0rpx #89bbf7;
 }
 .grid_wrap .lottery_wrap_border.data-v-b808f338 {
     position: absolute;
@@ -88,8 +86,7 @@
               justify-content: center;
 }
 .grid_wrap .lottery_wrap_border ._ul ._li.data-v-b808f338 {
-        -webkit-border-radius: 50%;
-                border-radius: 50%;
+        border-radius: 50%;
         width: 17rpx;
         height: 17rpx;
         background-color: #bce0e9;
@@ -162,8 +159,7 @@
     height: 460rpx;
     font-size: 14rpx;
     background-color: #61a2fc;
-    -webkit-border-radius: 12rpx;
-            border-radius: 12rpx;
+    border-radius: 12rpx;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -195,10 +191,8 @@
         float: left;
         position: absolute;
         background-color: #ffffff;
-        -webkit-border-radius: 12rpx;
-                border-radius: 12rpx;
-        -webkit-box-shadow: 0rpx 8rpx 0rpx 0rpx #9cd2ff;
-                box-shadow: 0rpx 8rpx 0rpx 0rpx #9cd2ff;
+        border-radius: 12rpx;
+        box-shadow: 0rpx 8rpx 0rpx 0rpx #9cd2ff;
         color: #708abf;
         white-space: nowrap;
         overflow: hidden;
@@ -211,8 +205,7 @@
 }
 .grid_wrap .lottery_wrap .lottery_grid .active.data-v-b808f338 {
         background: #ff3a59;
-        -webkit-box-shadow: 0rpx 8rpx 0rpx 0rpx #ea0125;
-                box-shadow: 0rpx 8rpx 0rpx 0rpx #ea0125;
+        box-shadow: 0rpx 8rpx 0rpx 0rpx #ea0125;
         color: #ffffff;
 }
 .grid_wrap .lottery_wrap .lottery_grid ._li.data-v-b808f338:nth-of-type(1) {
@@ -252,8 +245,7 @@
         top: 166.6666666667rpx;
         cursor: pointer;
         background: #ff3a59;
-        -webkit-box-shadow: 0rpx 8rpx 0rpx 0rpx #ea0125;
-                box-shadow: 0rpx 8rpx 0rpx 0rpx #ea0125;
+        box-shadow: 0rpx 8rpx 0rpx 0rpx #ea0125;
         color: #ffffff;
         font-size: 40rpx;
         font-weight: bolder;
@@ -313,8 +305,7 @@ to {
   top: -150rpx;
   padding: 20rpx;
   margin: 0 auto;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   width: 500rpx;
   background: #FDF9ED;
   color: #333333;

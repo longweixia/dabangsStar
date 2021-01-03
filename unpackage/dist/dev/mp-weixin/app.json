@@ -11,10 +11,7 @@
     "pages/center/index",
     "pages/center/edit",
     "pages/center/slogan",
-    "pages/center/u-avatar-cropper",
-    "pages/login/login",
-    "pages/login/forget",
-    "pages/login/register"
+    "pages/center/u-avatar-cropper"
   ],
   "subPackages": [],
   "window": {
@@ -23,7 +20,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "tabBar": {},
   "secret": "bfa8089fdfbb2addeb5de83af974561f",
   "usingComponents": {}
 }

@@ -12,7 +12,7 @@
               class="img"
               width="80rpx"
               height="80rpx"
-              :src="item.starAvatar"
+              :src="item.starName"
               shape="circle"
             ></u-image>
           </view>

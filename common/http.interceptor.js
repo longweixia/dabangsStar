@@ -38,7 +38,7 @@ const install = (Vue, vm) => {
 
     // 响应拦截，判断状态码是否通过
     Vue.prototype.$u.http.interceptor.response = (res) => {
-
+console.log(res)
         if (res.code == 200) {
         
             // res为服务端返回值，可能有code，result等字段
@@ -46,14 +46,28 @@ const install = (Vue, vm) => {
             // 如果配置了originalData为true，请留意这里的返回值
             return res.data;
         } else if (res.code == 401) {
+            debugger
        
-            // 假设201为token失效，这里跳转登录
-            vm.$u.toast('验证失败，请重新登录');
-            setTimeout(() => {
-                // 此为uView的方法，详见路由相关文档
-                vm.$u.route('/pages/user/login')
-            }, 1500)
-            return false;
+            // // 假设201为token失效，这里跳转登录
+            // vm.$u.toast('验证失败，请重新登录');
+            // setTimeout(() => {
+            //     // 此为uView的方法，详见路由相关文档
+            //     vm.$u.route('/pages/user/login')
+            // }, 1500)
+            // return false;
+            uni.showModal({
+                title: '请登录',
+                content: '登录后可以获取更多功能',
+                success: (res)=> {
+                    if (res.confirm) {
+                        uni.navigateTo({
+                            url: "/pages/center/center"
+                          });
+                    } else if (res.cancel) {
+                        console.log('用户点击取消');
+                    }
+                }
+            });
         } else {
          
             // 如果返回false，则会调用Promise的reject回调，

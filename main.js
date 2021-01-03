@@ -5,12 +5,15 @@ import uView from "uview-ui";
 // Vue.prototype.$vconsole = new vconsole() // 使用vconsole
 Vue.use(uView);
 Vue.config.productionTip = false
+let mpShare = require('uview-ui/libs/mixin/mpShare.js');
+Vue.mixin(mpShare)
 
 
 import global from './common/methods.js'
 Object.keys(global).forEach(key => {
     Vue.prototype["$" + key] = global[key];
 })
+
 
 App.mpType = 'app'
 

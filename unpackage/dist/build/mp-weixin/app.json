@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/rangkingList",
+    "pages/search/search",
+    "pages/starDetail/starDetail",
+    "pages/starDetail/choujiang",
+    "pages/starDetail/fanRanking",
+    "pages/starDetail/resourcesRanking",
+    "pages/center/center",
+    "pages/center/index",
+    "pages/center/edit",
+    "pages/center/slogan",
+    "pages/center/u-avatar-cropper"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {},
+  "secret": "bfa8089fdfbb2addeb5de83af974561f",
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

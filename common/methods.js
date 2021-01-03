@@ -21,7 +21,8 @@ exports.toLogin =  (data) =>{
         uni.showToast({
             title: data.message,
             icon:'none',
-            duration: 1000
+            duration: 1000,
+      
         });
     }
    

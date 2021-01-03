@@ -2,37 +2,67 @@
   <!-- 首页排行榜，第4名开始 -->
   <view class="list-th">
     <view class="list-row" v-for="(item, index) in rankingList" :key="index">
-      <view class="num-body">
-        <view class="num">{{ item.num }}</view>
+      <view class="num-body" @click="routerStarDetail(item.starId)">
+        <view class="num">{{ index+4 }}</view>
       </view>
-      <view class="img-body">
+      <view class="img-body" @click="routerStarDetail(item.starId)">
         <u-image
           class="img"
           width="80rpx"
           height="80rpx"
-          :src="item.image"
+          :src="item.starAvatar"
           shape="circle"
         ></u-image>
       </view>
-      <view class="name">
-        {{ item.name }}
+      <view class="name" @click="routerStarDetail(item.starId)">
+        {{ item.starName }}
       </view>
-      <view class="val">
-        {{ item.val }}
+      <view class="val" @click="routerStarDetail(item.starId)">
+        {{ item.totalVigourVal }}
       </view>
-      <view class="btn">
+      <view class="btn"  @click="dabang(item.starId)">
         打榜
       </view>
+    </view>
+        <view v-if="showModal">
+      <DabangModal :showModal="showModal" :starId="starId"  @closeDabang="closeDabang"></DabangModal>
     </view>
   </view>
 </template>
 
 <script>
+import DabangModal from "./../../components/dabangModal/index.vue";
+
 export default {
   props: ["rankingList"],
+    components: {
+
+    DabangModal,
+
+  },
   data() {
-    return {};
-  }
+    return {
+       starId:'',//明星id
+      showModal: false,//打榜弹窗
+    };
+  },
+  methods: {
+      // 打榜弹窗
+    dabang(id){
+      console.log(id,'ui')
+      this.starId = id
+      this.showModal = true
+    },
+       closeDabang(){
+
+      this.showModal = false
+    },
+        routerStarDetail(id) {
+      uni.navigateTo({
+        url: `/pages/starDetail/starDetail?id=${id}`,
+      });
+    },
+  },
 };
 </script>
 

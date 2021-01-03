@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "搜索爱豆",
+  "usingComponents": {
+    "zy-search": "/components/zy-search/zy-search"
+  }
+}

@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/home/ranking-tab-no"],{"106b":function(t,n,e){"use strict";e.r(n);var a=e("1696"),u=e("f02a");for(var o in u)"default"!==o&&function(t){e.d(n,t,(function(){return u[t]}))}(o);e("25c1");var i,r=e("f0c5"),c=Object(r["a"])(u["default"],a["b"],a["c"],!1,null,"5ba9fb1e",null,!1,a["a"],i);n["default"]=c.exports},1696:function(t,n,e){"use strict";e.d(n,"b",(function(){return u})),e.d(n,"c",(function(){return o})),e.d(n,"a",(function(){return a}));var a={uRow:function(){return e.e("node-modules/uview-ui/components/u-row/u-row").then(e.bind(null,"5a60"))},uCol:function(){return e.e("node-modules/uview-ui/components/u-col/u-col").then(e.bind(null,"e689"))}},u=function(){var t=this,n=t.$createElement;t._self._c},o=[]},"25c1":function(t,n,e){"use strict";var a=e("d35a"),u=e.n(a);u.a},d35a:function(t,n,e){},efce:function(t,n,e){"use strict";(function(t){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var e={name:"ranking-tab-no",data:function(){return{raningTypeList:[{type:"周榜",text:"我",img:"../../static/home/week.png",rankType:0},{type:"月榜",text:"爱",img:"../../static/home/mouth.png",rankType:1},{type:"粉丝榜",text:"邓",img:"../../static/home/fans.png",rankType:3},{type:"总榜",text:"伦",img:"../../static/home/total.png",rankType:2}]}},methods:{routerRangking:function(n){t.navigateTo({url:"/pages/index/rangkingList?type=".concat(n)})},routerStarDetail:function(){t.navigateTo({url:"/pages/starDetail/starDetail"})}}};n.default=e}).call(this,e("543d")["default"])},f02a:function(t,n,e){"use strict";e.r(n);var a=e("efce"),u=e.n(a);for(var o in a)"default"!==o&&function(t){e.d(n,t,(function(){return a[t]}))}(o);n["default"]=u.a}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/home/ranking-tab-no-create-component',
+    {
+        'components/home/ranking-tab-no-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('543d')['createComponent'](__webpack_require__("106b"))
+        })
+    },
+    [['components/home/ranking-tab-no-create-component']]
+]);

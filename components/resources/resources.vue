@@ -85,7 +85,7 @@
 <script>
 export default {
   name: "resources",
-  props: ["id"],
+  props: ["ids"],
   components: {},
   data() {
     return {
@@ -199,7 +199,7 @@ export default {
   },
   methods: {
     routerResourcesRanking(resouceId) {
-      let id = Number(this.id);
+      let id = Number(this.ids);
       uni.navigateTo({
         url: `/pages/starDetail/resourcesRanking?id=${id}`
       });
@@ -208,7 +208,7 @@ export default {
     selectResources(name) {
       this.$u
         .post("/starDetail/selectResources", {
-          id: this.id,
+          id: this.ids,
           pageNum: 1,
           pageSize: 20,
           name: name

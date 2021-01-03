@@ -17,13 +17,13 @@
     </view>
 
     <!-- 当前明星 -->
-    <view class="star-card">
-      <view class="card-img">
+    <view class="star-card" style="z-index:10000">
+      <view class="card-img" style="z-index:10000">
         <img src="../../static/home/starCard.png" class="bg-img" />
 
         <!-- 明星信息 -->
-        <view class="card--content">
-          <view class="list-top">
+        <view class="card--content" style="z-index:10000">
+          <view class="list-top" style="z-index:10000">
             <u-image
               class="img"
               width="100rpx"
@@ -38,8 +38,8 @@
                 <text>本月排名：{{ starInfo.thisMonthRank }}</text>
               </view>
             </view>
-            <view class="btn-group">
-              <view class="btn"> 为{{ starInfo.name }}打榜 </view>
+            <view class="btn-group" style="z-index:10000">
+              <view class="btn" @click="dabang(starInfo.id)" style="z-index:10000"> 为{{ starInfo.name }}打榜 </view>
             </view>
           </view>
           <!-- 中间按钮 -->
@@ -102,7 +102,7 @@
     <!-- 抽奖互动 -->
     <prizePraw></prizePraw>
     <!-- 资源 -->
-    <resources :id="id" style="margin-top:20rpx;"></resources>
+    <resources :ids="id" style="margin-top:20rpx;"></resources>
     <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       <view class="my">
@@ -113,19 +113,25 @@
       </view>
     </view>
     <u-toast ref="uToast" />
+     <view v-if="showModal">
+      <DabangModal :showModal="showModal" :starId="id"  @closeDabang="closeDabang"></DabangModal>
+    </view>
   </view>
 </template>
 
 <script>
 import prizePraw from "../../components/prize-wraw/prize-wraw.vue";
 import resources from "../../components/resources/resources.vue";
+import DabangModal from "./../../components/dabangModal/index.vue";
 export default {
   components: {
     prizePraw,
-    resources
+    resources,
+    DabangModal
   },
   data() {
     return {
+      showModal:false,
       starInfo: {}, // 明星详情数据
       detailImg: "", //顶部明星图
       // 当前明星数据
@@ -165,7 +171,7 @@ export default {
           val: 500
         }
       ],
-      id: null,
+      ids: null,
       StarGuardList: {}, //明星打榜弹窗
       rankingListWeek: [], //粉丝周榜
       rankingListMouth: [], //粉丝月榜
@@ -173,7 +179,7 @@ export default {
     };
   },
   onLoad(option) {
-    this.id = Number(option.id);
+    this.ids = Number(option.id);
   },
   mounted() {
     // 明星详情
@@ -188,6 +194,16 @@ export default {
   },
 
   methods: {
+      closeDabang(){
+
+      this.showModal = false
+    },
+      // 打榜弹窗
+    dabang(id){
+  
+      this.ids = id
+      this.showModal = true
+    },
     routerToCenter() {
       uni.navigateTo({
         url: `/pages/center/index`
@@ -202,7 +218,7 @@ export default {
     routerFanRanking(type) {
       //0是周榜，1是月榜
       uni.navigateTo({
-        url: `/pages/starDetail/fanRanking?type=${type}&id=${this.id}`
+        url: `/pages/starDetail/fanRanking?type=${type}&id=${this.ids}`
       });
     },
     // 获取明星详情页明星信息
@@ -210,7 +226,7 @@ export default {
       this.rankingList = [];
       this.$u
         .get("/starDetail/selectStarInfo", {
-          id: this.id
+          id: this.ids
         })
         .then(res => {
           this.starInfo = res; //　少了头像
@@ -236,7 +252,7 @@ export default {
     selectStarGuardList() {
       this.$u
         .get("/starDetail/selectStarGuardList", {
-          starId: this.id
+          starId: this.ids
         })
         .then(res => {
           this.StarGuardList = res;
@@ -261,7 +277,7 @@ export default {
      getrankList(name) {
       this.$u
         .post("/starDetail/selectFensRank", {
-          id: this.id,
+          id: this.ids,
           pageNum: 1,
           pageSize: 20,
           rankType: name
@@ -473,6 +489,8 @@ export default {
   position: relative;
   height: 132rpx;
   top: 100rpx;
+    margin-left: 20rpx;
+  margin-right: 20rpx;
   .home-bottom-img {
     width: 100%;
     height: 100%;

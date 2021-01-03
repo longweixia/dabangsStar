@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal",
+    "u-row": "/node-modules/uview-ui/components/u-row/u-row",
+    "u-col": "/node-modules/uview-ui/components/u-col/u-col",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "binglyric": "/components/bing-lyric/bing-lyric"
+  }
+}

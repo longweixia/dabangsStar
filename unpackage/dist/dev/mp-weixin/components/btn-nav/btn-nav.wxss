@@ -28,14 +28,12 @@
   background: #FFE6E6;
   margin: 0 auto;
   display: inline-block;
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
+  border-radius: 30rpx;
 }
 .btn-list .btn-nav.data-v-5e84386a {
   text-align: center;
   height: 60rpx;
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
+  border-radius: 30rpx;
   line-height: 60rpx;
   color: #F97777;
   position: relative;
@@ -49,9 +47,7 @@
   margin-right: 10rpx;
 }
 .btn-list .activated.data-v-5e84386a {
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
-  background: -webkit-gradient(linear, left top, right top, from(#F83A3A), to(#F7C18B));
+  border-radius: 30rpx;
   background: -webkit-linear-gradient(left, #F83A3A, #F7C18B);
   background: linear-gradient(to right, #F83A3A, #F7C18B);
   color: #fff;

@@ -82,10 +82,10 @@ export default {
     getToken() {
       this.$u.post(`/common/testLogin?id=1`).then((res) => {
         console.log(res, "拿到token");
-		uni.setStorageSync("Authorization", res.token);
-		 uni.navigateTo({
-        url: "/pages/index/index",
-      });
+        uni.setStorageSync("Authorization", res.token);
+        uni.navigateTo({
+          url: "/pages/index/index",
+        });
         // this.swiperList = res;
       });
     },

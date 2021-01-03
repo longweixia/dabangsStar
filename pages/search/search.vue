@@ -5,7 +5,7 @@
 			:theme="themeClass"
 			:show-want="true"
 			:speechEngine="speechEngine"
-			:hot-list="hotList"
+			:hotList="hotList"
 			:dataList="dataList"
 			@getSearchText="getSearchText"
 		></zy-search>
@@ -22,7 +22,7 @@ export default {
 		return {
 			themeClass: 'block',
 			speechEngine: 'baidu', //语音识别引擎
-			hotList: ['梁静茹', '梁静茹1', '梁静茹2', '梁静茹3'], //初始化推荐列表
+			hotList: [], //初始化推荐列表
 			dataList: [
 				// {"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
 				// 		{"avatar":"string","detailImg":"string","hitPopupImg":"string","name":"梁静茹","thisMonthRank":3,"thisWeekRank":1},
@@ -35,10 +35,10 @@ export default {
     },
 	methods: {
 		getSearchText(e) {
-			uni.showToast({
-				title: '回调的搜索信息: ' + e,
-				icon: 'none',
-			})
+			// uni.showToast({
+			// 	title: '回调的搜索信息: ' + e,
+			// 	icon: 'none',
+			// })
 			this.selectMyGuard(e)
 		},
 		selectMyGuard(name) {
@@ -50,7 +50,8 @@ export default {
 			this.$u
 				.get('/home/hotSearch')
 				.then((res) => {
-					this.hotList = res.list //　少了头像
+					this.hotList = res //　少了头像
+					
 				})
 				.catch((res) => {
 					this.$toLogin(res)

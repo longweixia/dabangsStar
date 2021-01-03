@@ -93,31 +93,11 @@ export default {
     this.changebtn(this.rankType);
   },
   methods: {
-    // formatRankType(index){
-    //   let text = index
-    //   if(index==2){
-    //     text=3
-    //   }else if(index==3){
-    //     text=3
-    //   }
-    //   return text
-    // },
+
     changebtn(index) {
       console.log(index);
       this.rankType = index
 
-      // if (index === 0) {
-      //   this.rankingList = this.rankingList1;
-      // } 
-      // else if (index === 1) {
-      //   this.rankingList = this.rankingList2;
-      // }
-      // else if (index === 2) {
-      //   this.rankingList = this.rankingList2;
-      // }
-      // else if (index === 3) {
-      //   this.rankingList = this.rankingList2;
-      // }
        this.$u.post('/home/weekRank/list',{
          "pageNum": 1,
          "pageSize": 20,
@@ -146,12 +126,7 @@ export default {
   border-radius: 15px;
 }
 .flex-area {
-  //   display: flex;
-  //   align-items: center;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-  //   padding-bottom: 20rpx;
-  //   padding-top: 20rpx;
+
 }
 .nav-top {
   text-align: center;

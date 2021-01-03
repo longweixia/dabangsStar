@@ -33,12 +33,10 @@
   position: relative;
 }
 .list-ranking-type .guard-list .guard-card .card-content.data-v-04e6ee96 {
-  background: -webkit-gradient(linear, left top, left bottom, from(#feecb3), to(#f64d71));
   background: -webkit-linear-gradient(top, #feecb3, #f64d71);
   background: linear-gradient(to bottom, #feecb3, #f64d71);
   color: #fff;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   height: 80rpx;
   line-height: 80rpx;
   display: -webkit-box;
