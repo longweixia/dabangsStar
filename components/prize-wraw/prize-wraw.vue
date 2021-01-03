@@ -7,9 +7,10 @@
         <view class="name"> {{ item.name }}</view>
         <view class="tip">{{ item.tips }} </view>
       </view>
-      <view class="btn" style="z-index: 100" @click="clickBtn(index)">{{
+      <view  v-if="index!==3" class="btn" style="z-index: 100" @click="clickBtn(index)">{{
         item.name
       }}</view>
+       <button v-if="index==3"  class="btn-share btn" open-type="share">立即分享</button>
     </view>
   </view>
 </template>
@@ -17,6 +18,9 @@
 <script>
 export default {
   name: "prize-wraw",
+
+
+  onLoad(){},
   components: {},
   data() {
     return {
@@ -51,8 +55,18 @@ export default {
           val: 500,
         },
       ],
+        //设置默认的分享参数
+            share:{
+                title:'ALAPI',
+                path:'/pages/index/index',
+                imageUrl:'',
+                desc:'',
+                content:''
+            }
     };
   },
+ 
+    
   methods: {
     clickBtn(i) {
       if (i === 0) {
@@ -61,21 +75,22 @@ export default {
           url: "/pages/starDetail/choujiang",
         });
       } else if (i === 3) {
-        //分享
-        console.log(i,'upi')
-        this.$u.mpShare = {
-          title: "打榜小程序", // 默认为小程序名称，可自定义
-          path: "", // 默认为当前页面路径，一般无需修改，QQ小程序不支持
-          // 分享图标，路径可以是本地文件路径、代码包文件路径或者网络图片路径。
-          // 支持PNG及JPG，默认为当前页面的截图
-          imageUrl: "",
-        };
+ 
+      
       }
     },
   },
 };
 </script>
 <style lang="scss" scoped>
+.btn-share{
+  margin-right: 0!important;
+  right: 0!important;
+  height: 60rpx;
+  line-height: 50rpx;
+     
+  font-size: 30rpx!important;
+}
 // 当前明星卡片
 .star-card {
   margin: 20rpx;

@@ -1,5 +1,5 @@
 <template>
-  <view style="background: #F5F8FF;padding-bottom:20rpx">
+  <view style="background: #f5f8ff; padding-bottom: 20rpx">
     <view class="detail-bg-img">
       <img class="img" :src="detailImg" />
       <!-- 打榜弹窗 -->
@@ -11,19 +11,17 @@
           >热力值</view
         >
       </view>
-      <view class="detail-title">
-        为爱豆加油
-      </view>
+      <view class="detail-title"> 为爱豆加油 </view>
     </view>
 
     <!-- 当前明星 -->
-    <view class="star-card" style="z-index:10000">
-      <view class="card-img" style="z-index:10000">
+    <view class="star-card" style="z-index: 10000">
+      <view class="card-img" style="z-index: 10000">
         <img src="../../static/home/starCard.png" class="bg-img" />
 
         <!-- 明星信息 -->
-        <view class="card--content" style="z-index:10000">
-          <view class="list-top" style="z-index:10000">
+        <view class="card--content" style="z-index: 10000">
+          <view class="list-top" style="z-index: 10000">
             <u-image
               class="img"
               width="100rpx"
@@ -38,8 +36,14 @@
                 <text>本月排名：{{ starInfo.thisMonthRank }}</text>
               </view>
             </view>
-            <view class="btn-group" style="z-index:10000">
-              <view class="btn" @click="dabang(starInfo.id)" style="z-index:10000"> 为{{ starInfo.name }}打榜 </view>
+            <view class="btn-group" style="z-index: 10000">
+              <view
+                class="btn"
+                @click="dabang(starInfo.id)"
+                style="z-index: 10000"
+              >
+                为{{ starInfo.name }}打榜
+              </view>
             </view>
           </view>
           <!-- 中间按钮 -->
@@ -69,7 +73,7 @@
                   shape="circle"
                 >
                 </u-image>
-                <view class="num">{{ index+1 }}</view>
+                <view class="num">{{ index + 1 }}</view>
               </view>
               <view class="more" @click="routerFanRanking(0)">
                 <img src="../../static/home/more.png" />
@@ -89,7 +93,7 @@
                   shape="circle"
                 >
                 </u-image>
-                <view class="num">{{ index+1 }}</view>
+                <view class="num">{{ index + 1 }}</view>
               </view>
               <view class="more" @click="routerFanRanking(1)">
                 <img src="../../static/home/more.png" />
@@ -102,7 +106,7 @@
     <!-- 抽奖互动 -->
     <prizePraw></prizePraw>
     <!-- 资源 -->
-    <resources :ids="id" style="margin-top:20rpx;"></resources>
+    <resources :ids="id" style="margin-top: 20rpx"></resources>
     <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       <view class="my">
@@ -113,8 +117,12 @@
       </view>
     </view>
     <u-toast ref="uToast" />
-     <view v-if="showModal">
-      <DabangModal :showModal="showModal" :starId="id"  @closeDabang="closeDabang"></DabangModal>
+    <view v-if="showModal">
+      <DabangModal
+        :showModal="showModal"
+        :starId="id"
+        @closeDabang="closeDabang"
+      ></DabangModal>
     </view>
   </view>
 </template>
@@ -127,11 +135,46 @@ export default {
   components: {
     prizePraw,
     resources,
-    DabangModal
+    DabangModal,
+  },
+  onShareAppMessage: function (res) {
+      setTimeout(() => {
+           uni.showToast({
+          title: `分享获得热力值`,
+          icon: "none",
+          duration: 2000,
+        });
+      }, 2000);
+    // return eventHandler接收到的分享参数
+    return {
+      title: "打榜小程序", // 分享名称
+      path: "pages/index/index", // 这里写你这个页面的路径
+      imageUrl:
+        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg", //这个是显示的图片，不写就默认当前页面的截图
+      // success: function (shareTickets) {
+      //   console.log(shareTickets + "成功");
+      //   uni.showToast({
+      //     title: `恭喜你，抽中`,
+      //     icon: "none",
+      //     duration: 2000,
+      //   });
+      //   alert(0);
+      //   // 转发成功
+      // },
+      // fail: function (res) {
+      //   console.log(res + "失败");
+      //   // 转发失败
+      //   alert(1);
+      // },
+      // complete: function (res) {
+      //   // 不管成功失败都会执行
+      //   alert(2);
+      // },
+    };
   },
   data() {
     return {
-      showModal:false,
+      showModal: false,
       starInfo: {}, // 明星详情数据
       detailImg: "", //顶部明星图
       // 当前明星数据
@@ -142,8 +185,8 @@ export default {
           num: "4",
           name: "邓伦",
           val: 500,
-          id: 1
-        }
+          id: 1,
+        },
       ],
       // 周榜/月榜
       listWeek: [
@@ -153,7 +196,7 @@ export default {
           num: "4",
           name: "邓伦",
           val: 500,
-          id: 2
+          id: 2,
         },
         {
           icon: "皇冠",
@@ -161,21 +204,20 @@ export default {
           num: "4",
           name: "邓伦",
           val: 500,
-          id: 3
+          id: 3,
         },
         {
           icon: "皇冠",
           image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
           num: "4",
           name: "邓伦",
-          val: 500
-        }
+          val: 500,
+        },
       ],
       ids: null,
       StarGuardList: {}, //明星打榜弹窗
       rankingListWeek: [], //粉丝周榜
       rankingListMouth: [], //粉丝月榜
-      
     };
   },
   onLoad(option) {
@@ -188,37 +230,34 @@ export default {
     this.selectStarGuardList();
     // 粉丝周榜
     this.getrankList(0);
-     // 粉丝周榜
+    // 粉丝周榜
     this.getrankList(1);
-  
   },
 
   methods: {
-      closeDabang(){
-
-      this.showModal = false
+    closeDabang() {
+      this.showModal = false;
     },
-      // 打榜弹窗
-    dabang(id){
-  
-      this.ids = id
-      this.showModal = true
+    // 打榜弹窗
+    dabang(id) {
+      this.ids = id;
+      this.showModal = true;
     },
     routerToCenter() {
       uni.navigateTo({
-        url: `/pages/center/index`
+        url: `/pages/center/index`,
       });
     },
     // 获取轮播
     carouselList() {
-      this.$u.post("/home/carousel/list").then(res => {
+      this.$u.post("/home/carousel/list").then((res) => {
         this.swiperList = res;
       });
     },
     routerFanRanking(type) {
       //0是周榜，1是月榜
       uni.navigateTo({
-        url: `/pages/starDetail/fanRanking?type=${type}&id=${this.ids}`
+        url: `/pages/starDetail/fanRanking?type=${type}&id=${this.ids}`,
       });
     },
     // 获取明星详情页明星信息
@@ -226,9 +265,9 @@ export default {
       this.rankingList = [];
       this.$u
         .get("/starDetail/selectStarInfo", {
-          id: this.ids
+          id: this.ids,
         })
-        .then(res => {
+        .then((res) => {
           this.starInfo = res; //　少了头像
           this.detailImg = res.detailImg;
           // if (res.list && res.list.length > 0) {
@@ -237,14 +276,14 @@ export default {
           //   this.hasData = false;
           // }
         })
-        .catch(res => {
+        .catch((res) => {
           this.$refs.uToast.show({
             title: res.message,
             // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
             type: "error ",
             duration: 1000,
             // 如果不需要图标，请设置为false
-            icon: true
+            icon: true,
           });
         });
     },
@@ -252,9 +291,9 @@ export default {
     selectStarGuardList() {
       this.$u
         .get("/starDetail/selectStarGuardList", {
-          starId: this.ids
+          starId: this.ids,
         })
-        .then(res => {
+        .then((res) => {
           this.StarGuardList = res;
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
@@ -262,40 +301,36 @@ export default {
           //   this.hasData = false;
           // }
         })
-        .catch(res => {
+        .catch((res) => {
           this.$refs.uToast.show({
             title: res.message,
             // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
             type: "error ",
             duration: 1000,
             // 如果不需要图标，请设置为false
-            icon: true
+            icon: true,
           });
         });
     },
     // 粉丝周榜/月榜
-     getrankList(name) {
+    getrankList(name) {
       this.$u
         .post("/starDetail/selectFensRank", {
           id: this.ids,
           pageNum: 1,
           pageSize: 20,
-          rankType: name
+          rankType: name,
         })
-        .then(res => {
-          
-          if (name===0) {
-           this.rankingListWeek = res.list; 
-          } else if(name===1){
+        .then((res) => {
+          if (name === 0) {
+            this.rankingListWeek = res.list;
+          } else if (name === 1) {
             this.rankingListMouth = res.list;
           }
         })
-        .catch(res => {
-
-        });
+        .catch((res) => {});
     },
-    
-  }
+  },
 };
 </script>
 
@@ -489,7 +524,7 @@ export default {
   position: relative;
   height: 132rpx;
   top: 100rpx;
-    margin-left: 20rpx;
+  margin-left: 20rpx;
   margin-right: 20rpx;
   .home-bottom-img {
     width: 100%;
