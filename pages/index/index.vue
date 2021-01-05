@@ -168,6 +168,7 @@
 
  
     <!-- 打榜弹窗 -->
+    <a href="https://123.207.120.31:18001/common/testLogin?id=1">点击接口点击接口点击接口点击接口点击接口</a>
   </view>
 </template>
 
@@ -309,9 +310,7 @@ export default {
         uni.setStorageSync("Authorization", res.token);
       });
     },
-    	   colrdo(){ //插入一条弹幕
-        this.$refs.lffBarrage.add({item:'王明 打榜了20热力值'});
-    },
+   
     closeDabang(){
 
       this.showModal = false

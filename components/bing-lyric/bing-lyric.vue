@@ -1,155 +1,240 @@
-<template>
-  <div class="demo-comment-container">
-    <div class="scroll-container" :style="{ height: `${height / 100}rem` }">
-      <ul
-        class="scroll-ul"
-        :style="{
-          transform: `translate3d(0, ${y / 100}rem, 0)`,
-          transition: `${transition}`,
-        }"
+<template v-for="(item,index) in info" :key="index">
+  <view>
+
+    <view
+      ref="ani"
+      :animation="animationData"
+      class="message"
+      :style="{ top: top + 'px', left: left + 'px' }"
+      v-if="show"
+    >
+      <view
+        class="round bg-gradual-orange flex justify-start shadow"
+        style="padding: 3px" v-for="(item,index) in info" :key="index"
       >
-        <div
-          v-for="(item, index) in list"
-          :key="index"
-         
-          :bgColor="baseStyle.style.bgColor__bg"
-          :style="[{ color: rgba(baseStyle.color__nf) },baseStyle.style]"
-          :class="['c-item-bg', 'c-item', !item.content && 'empty']"
+        <view
+          class="cu-avatar cu-a-sm round"
+          :style="{ backgroundImage: `url(${item.avatarUrl})` }"
         >
-          <li class="c-item">
-            <div class="avatar">
-              <img v-if="item.content" class="avatar-item" :src="item.photo" />
-            </div>
-            <div v-if="item.content" class="c-content" v-html="item.content" />
-          </li>
-        </div>
-      </ul>
-    </div>
-    <div class="comment-entry">
-      <div class="f">
-        <div class="text-c">
-          <span v-if="entry.type === 1" class="text" v-text="entry.text" />
-          <div v-else class="img-container">
-            <img :src="entry.image" />
-          </div>
-          <i v-if="count" class="c-c">{{ count }}</i>
-        </div>
-        <div>
-          <span class="fake-input">来发表你的看法吧~</span>
-        </div>
-      </div>
-    </div>
-  </div>
+          <!-- <image :src="item.img" class="avatarimg"></image> -->
+        </view>
+        <view class="padding-lr-sm flex align-center">
+          <text class="text-sm">{{item.nickName}}：打榜了{{ item.vigourVal }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
-<script >
+
+<script>
+// #ifdef APP-NVUE
+const animation = uni.requireNativePlugin("animation");
+// #endif
 export default {
-  inject: ["rgba"],
+  name: "Pengpai-FadeInOut",
   props: {
-    urlConfig: {
-      type: Object,
-      default: function () {
-        return {};
-      },
-    },
-    type: {
-      type: String,
-      default: "hot",
-    },
-    pageSize: {
+    //持续时间
+    duration: {
       type: Number,
-      default: 50,
+      default: 100000,
     },
-    open: {
-      type: Boolean,
-      default: true,
-    },
-    entry: {
-      type: Object,
-      default: function () {
-        return {
-          type: 1, // 1 文字 2 自定义
-          text: "",
-          image: "",
-        };
-      },
-    },
-    number: {
+    //停留时间
+    wait: {
       type: Number,
-      default: 2,
+      default: 3000,
+    },
+    //顶部距离px
+    top: {
+      type: Number,
+      default: 350,
+    },
+    //左边距离px
+    left: {
+      type: Number,
+      default: 10,
+    },
+    //动画半径
+    radius: {
+      type: Number,
+      default: 30,
+    },
+    //数据
+    info: {
+      type: [Array, Object],
+      default: () => {
+        return
+        {
+          
+        }
+      },
     },
   },
   data() {
     return {
-      count: 2334,
-      dom: null,
-      height: 0, // 单项高度
-      y: 0, // 每次移动距离
-      list: [], // 接口列表
-      originLength: 0, // 原始数组长度
-      transition: "ease all .4s",
-      round: 0, // 需要滚动多少轮
+      animationData: {},
+      animationNumber: {},
+      show: true,
     };
   },
-  created() {
-    this.getCommentList();
-  },
   mounted() {
-    this.dom = document.querySelector(".c-item");
-    // 计算可视区域高度
-    this.height = 64 * this.number + 12 * (this.number - 1);
+    this.donghua();
+  },
+  watch: {
+        info: {
+      handler(newVal, oldVal) {
+      this.info = newVal
+      },
+      immediate: true,
+      deep: true
+    },
   },
   methods: {
-    getCommentList() {
-      // 接口数据
-      const _list = [];
-      this.originLength = _list.length;
-      const mod = this.originLength % this.number;
-      let need =
-        this.originLength < this.number
-          ? this.number - this.originLength
-          : mod > 0
-          ? this.number - mod
-          : 0; // 计算出要添加的空白元素个数
-      this.list = _list;
+    donghua() {
+      //进入
+      // #ifndef APP-NVUE
+      this.animationData = uni
+        .createAnimation({
+          duration: this.duration / 2,
+          timingFunction: "ease",
+        })
+        .top(this.top - this.radius)
+        .opacity(0.9)
+        .step()
+        .export();
+      // #endif
 
-      // set empty item
-      const empty = JSON.parse(JSON.stringify(_list[0]));
-      empty.content = "";
+      // #ifdef APP-NVUE
+      if (!this.$refs["ani"]) return;
+      animation.transition(this.$refs["ani"].ref, {
+        styles: {
+          transform: `translateY(-${this.radius / 2}px)`,
+          opacity: 1,
+        },
+        duration: this.duration / 2,
+        timingFunction: "linear",
+        needLayout: false,
+        delay: 0,
+      });
+      // #endif
 
-      // 补齐空白元素
-      while (need) {
-        this.list.push(empty);
-        need--;
-      }
+      //停留
+      setTimeout(() => {
+        //消失
+        // #ifndef APP-NVUE
+        this.animationData = uni
+          .createAnimation({
+            duration: this.duration / 2,
+            timingFunction: "ease",
+          })
+          .top(this.top - this.radius * 2)
+          .opacity(0)
+          .step()
+          .export();
+        // #endif
 
-      // 填充重复元素
-      let repeat = this.number;
-      let index = 0;
-      while (repeat) {
-        this.list.push(_list[index]);
-        index++;
-        repeat--;
-      }
-
-      this.round = this.list.length / this.number;
-
-      this.scroll();
-    },
-    scroll() {
-      let count = 1;
-      setInterval(() => {
-        count++;
-        this.y -= this.height + 12; // 移动可视区域高度 + 最后一个 item 的 margin-bottom
-        this.transition = ".4s ease all";
-        setTimeout(() => {
-          if (count === this.round) {
-            count = 1;
-            this.transition = "";
-            this.y = 0;
-          }
-        }, 800);
-      }, 2000);
+        // #ifdef APP-NVUE
+        if (!this.$refs["ani"]) return;
+        animation.transition(this.$refs["ani"].ref, {
+          styles: {
+            transform: `translateY(-${this.radius}px)`,
+            opacity: 0,
+          },
+          duration: this.duration / 2,
+          timingFunction: "linear",
+          needLayout: false,
+          delay: 0,
+        });
+        // #endif
+      }, this.wait);
     },
   },
 };
 </script>
+
+<style scoped>
+.message {
+  position: fixed;
+  z-index: 99999;
+  opacity: 0;
+}
+.round {
+  border-radius: 5000px;
+}
+.bg-gradual-orange {
+  /* #ifndef APP-NVUE */
+  background-image: linear-gradient(45deg, #ff9700, #ed1c24);
+  /* #endif */
+  /* #ifdef APP-NVUE */
+  background-image: linear-gradient(to bottom right, #ff9700, #ed1c24);
+  /* #endif */
+  color: #ffffff;
+}
+.shadow {
+  box-shadow: 4px 4px 5px rgba(217, 109, 26, 0.2);
+}
+.flex {
+  /* #ifndef APP-NVUE */
+  display: flex;
+  /* #endif */
+  flex-direction: row;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.cu-avatar {
+  /* #ifndef APP-NVUE */
+  font-variant: small-caps;
+  display: inline-flex;
+  white-space: nowrap;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+  /* #endif */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  color: #ffffff;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5em;
+}
+
+/* #ifdef APP-NVUE */
+.avatarimg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+/* #endif */
+
+.cu-a-sm {
+  width: 30px;
+  height: 30px;
+  font-size: 1em;
+}
+.padding-lr-sm {
+  padding-left: 20upx;
+  padding-right: 20upx;
+}
+.align-center {
+  align-items: center;
+}
+.margin-left-xs {
+  margin-left: 10upx;
+}
+.text-bold {
+  font-weight: bold;
+}
+.margin-lr-sm {
+  margin-left: 20upx;
+  margin-right: 20upx;
+}
+.text-sm {
+  font-size: 15px;
+  color: #ffffff;
+}
+</style>

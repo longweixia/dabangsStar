@@ -8,13 +8,14 @@
     ref="uModal"
     class="dabang-modal"
   >
-  <Binglyric ref="lffBarrage"></Binglyric>
+    <Binglyric ref="lffBarrage" :info="dabangInfo"></Binglyric>
+
     <view class="slot-content">
       <view class="title-modal">
         <view class="detail-bg-img">
           <img class="img" :src="detailImg" />
           <!--  -->
-        
+
           <!-- 打榜弹窗 -->
           <view class="toast-db">
             <img class="imgs" :src="StarGuardList.avatarUrl" />
@@ -37,7 +38,12 @@
                 <view class="slice" @click="add('jian')">-</view>
                 <input v-model="inpValue" type="number" class="inp-num" />
                 <view class="add" @click="add('jia')">+</view>
-                <u-button class="btn" @click="add('btn')">打榜+99</u-button>
+                 
+                <u-button class="btn" @click="add('btn')">打榜+99
+
+                     <Dianzan ref="dianzan"></Dianzan>
+                </u-button>
+                
               </view>
               <view class="col-top col-top2">
                 <view class="hot">我的热力值：{{ myInfo.vigourVal }}</view>
@@ -62,15 +68,16 @@
 </template>
 
 <script>
-
 // import RankingTabSlogan from '../../components/home/ranking-tab-slogan.vue'
-import Binglyric from './../bing-lyric/bing-lyric.vue'
+import Binglyric from "./../bing-lyric/bing-lyric.vue";
+import Dianzan from "./dianzan.vue";
 
 export default {
   name: "BtnNav",
   components: {
-	// 00,
-	Binglyric
+    // 00,
+    Binglyric,
+    Dianzan
   },
   props: ["showModal", "rankType", "starId"],
   watch: {
@@ -83,8 +90,8 @@ export default {
     show: {
       handler(newVal, oldVal) {
         if (!newVal) {
-		  this.$emit("closeDabang");
-		  clearInterval(this.danmu)
+          this.$emit("closeDabang");
+          clearInterval(this.danmu);
         }
       },
       immediate: true,
@@ -92,13 +99,13 @@ export default {
   },
   data() {
     return {
-		danmu:"",
-		lists: [
-					'寒雨连江夜入吴',
-					'平明送客楚山孤',
-					'洛阳亲友如相问',
-					'一片冰心在玉壶'
-				],
+      danmu: "",
+      lists: [
+        "寒雨连江夜入吴",
+        "平明送客楚山孤",
+        "洛阳亲友如相问",
+        "一片冰心在玉壶",
+      ],
       myInfo: {},
       inpValue: 0,
       show: this.showModal,
@@ -160,6 +167,24 @@ export default {
       StarGuardList: [], //打榜弹窗数据
       detailImg: "",
       starInfo: [],
+      dabangInfo: [
+        {
+          title: "踮起脚尖走向阳光 刚刚浏览本店",
+          avatarUrl: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
+        },
+        // {
+        //   title: "sb",
+        //   img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
+        // },
+        // {
+        //   title: "sb1",
+        //   img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
+        // },
+        // {
+        //   title: "sb1",
+        //   img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
+        // },
+      ],
     };
   },
   mounted() {
@@ -168,16 +193,36 @@ export default {
     // 获取明星详情页明星信息
     this.selectStarInfo();
     // 获取我的热力值
-	this.selectFensInfo();
-	this.danmu = setInterval((()=>{
-		this.colrdo()
-	}),2000)
-	// this.colrdo()
+    this.selectFensInfo();
+
+    // this.colrdo()
   },
 
   methods: {
-	   colrdo(){ //插入一条弹幕
-        this.$refs.lffBarrage &&this.$refs.lffBarrage.add({item:'你好呀小伙子'});
+    colrdo() {
+     this.dabangInfo =this.dabangInfo.concat(this.StarGuardList[0])
+      // for (let i = 0; i < this.StarGuardList.length; i++) {
+      //   ( (j) =>{
+      //     this.danmu = setTimeout( ()=> {
+      //       // console.log(i)
+      //     this.dabangInfo =this.dabangInfo.concat(this.StarGuardList[i]);
+      //     }, 1000);
+      //   })(i);
+      // }
+
+      //插入一条弹幕
+      // this.StarGuardList.forEach((e, i) => {
+      //   var pre = Date.now();
+
+      //   // this.dabangInfo = this.dabangInfo.concat(e);
+      //   // this.throttle(this.dabangInfo.concat(e),1000)
+      //   this.danmu = setInterval((()=>{
+      //      var now = Date.now();
+      //     if (now - pre >= 1000) {
+      //   this.dabangInfo = this.dabangInfo.concat(e);
+      //   }
+      //   }),500)
+      // });
     },
     //   加减input
     add(name) {
@@ -191,9 +236,11 @@ export default {
         this.myInfo.vigourVal = this.myInfo.vigourVal + this.inpValue;
       } else if (name == "btn") {
         this.myInfo.vigourVal = this.myInfo.vigourVal + Number(this.inpValue);
+        this.$refs.dianzan.handleClick()
       }
       this.hit();
     },
+
     //明星打榜弹窗
     selectStarGuardList() {
       this.$u
@@ -202,11 +249,7 @@ export default {
         })
         .then((res) => {
           this.StarGuardList = res;
-          // if (res.list && res.list.length > 0) {
-          //   this.hasData = true;
-          // } else {
-          //   this.hasData = false;
-          // }
+          this.colrdo();
         })
         .catch((res) => {});
     },
@@ -265,7 +308,6 @@ export default {
         url: `/pages/starDetail/starDetail?id=${this.starId}`,
       });
     },
-   
   },
 };
 </script>
@@ -404,5 +446,4 @@ export default {
     }
   }
 }
-
 </style>
