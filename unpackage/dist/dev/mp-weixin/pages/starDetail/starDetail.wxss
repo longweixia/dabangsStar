@@ -119,7 +119,7 @@
   font-size: 14px;
 }
 .star-card .card--content .list-top .row-text .rank-text.data-v-382f0766 {
-  font-size: 10rpx;
+  font-size: 10px;
   color: #e34c4c;
 }
 .star-card .card--content .center-btn.data-v-382f0766 {

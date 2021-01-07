@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/kaiping",
     "pages/index/index",
     "pages/index/rangkingList",
     "pages/search/search",
@@ -10,8 +11,7 @@
     "pages/center/center",
     "pages/center/index",
     "pages/center/edit",
-    "pages/center/slogan",
-    "pages/center/u-avatar-cropper"
+    "pages/center/slogan"
   ],
   "subPackages": [],
   "window": {
@@ -21,6 +21,5 @@
     "backgroundColor": "#F8F8F8"
   },
   "secret": "bfa8089fdfbb2addeb5de83af974561f",
-  "usingComponents": {},
-  "sitemapLocation": "sitemap55.json"
+  "usingComponents": {}
 }

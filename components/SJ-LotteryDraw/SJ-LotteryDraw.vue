@@ -1,7 +1,7 @@
 <template>
 <view class="chou-jiang-area">
     <view class="top-img">
-        <img class="img-area" src="../../static/choujiang.png" />
+        <img class="img-area" src="./choujiang.png" />
     </view>
 	<view class="lottery_container">
 		<view class="grid_wrap">
@@ -122,7 +122,7 @@
  @import './SJ-LotteryDraw.css';
     .top-img{
         width: 100%;
-        /* height: 464rpx; */
+        height: 464rpx; 
     }
     .img-area{
         width: 100%;

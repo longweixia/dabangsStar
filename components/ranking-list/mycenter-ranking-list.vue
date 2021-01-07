@@ -19,7 +19,7 @@
           <view class="row-text">
             <view class="name">
             
-             {{item.name}}胡歌
+             {{item.name}}
             </view>
 
             
@@ -28,7 +28,7 @@
         </view>
 
         <view class="btn-group">
-          <view class="btn btn1">
+          <view class="btn btn1" @click="dabang(item.id)">
             打榜
           </view>
           <view class="btn btn2">
@@ -55,7 +55,7 @@
           <view class="row-text">
             <view class="name">
             
-             {{item.type | typeVal}}胡歌
+             {{item.type | typeVal}}
             </view>
 
             
@@ -86,7 +86,7 @@
           <view class="row-text">
             <view class="name">
             
-             {{item.name}}胡歌
+             {{item.name}}
             </view>
 
             
@@ -99,11 +99,22 @@
         <view class="val"> +{{ item.vigourVal }} </view>
       </view>
     </view>
+     <view v-if="showModal">
+      <DabangModal :showModal="showModal" :starId="starId"  @closeDabang="closeDabang"></DabangModal>
+      
+    </view>
   </view>
 </template>
 
 <script>
+import DabangModal from "./../../components/dabangModal/index.vue";
+
 export default {
+    components: {
+   
+    DabangModal,
+
+  },
   props: ["rankingList", "rankType"], //0我的守护，1热力值获取记录，2打榜记录
   filters: {
   typeVal: (b) =>{
@@ -115,9 +126,23 @@ export default {
 },
   data() {
     return {
-      myData:{}
+      myData:{},
+       showModal: false,//打榜弹窗
     };
   },
+   methods: {
+         closeDabang(){
+
+      this.showModal = false
+    },
+    // 打榜弹窗
+    dabang(id){
+      console.log(id,'ui')
+      this.starId = id
+      this.showModal = true
+    },
+   }
+   
 };
 </script>
 

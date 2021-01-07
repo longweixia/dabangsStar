@@ -84,7 +84,7 @@
             <img
               class="img-head"
               :class="'img-head' + index"
-              :src="item.starAvatar"
+              :src="item.starAvatar" style="border: 1px solid #ddd;"
             />
           </view>
 
@@ -106,37 +106,42 @@
         >
           <view class="img-area" :class="'img-area' + index" style="z-index:10000" @click="routerStarDetail(item.starId)">
             <view class="num">{{ item.rank }}</view>
+           <!-- 第二名 -->
             <img
               v-if="index === 0"
               class="img-icon"
               :class="'img-head' + index"
               :src="iconList.icon1"
             />
+            <!-- 第一名 -->
             <img
               v-if="index === 1"
               class="img-icon"
               :class="'img-head' + index"
               :src="iconList.icon2"
             />
+            <!-- 第三名 -->
             <img
               v-if="index === 2"
               class="img-icon"
               :class="'img-head' + index"
               :src="iconList.icon3"
             />
+            <!-- 第一名的背景五角星 -->
             <img
               class="img-star"
               v-if="index === 1"
               src="../../static/home/oneStart.png"
             />
+            <!-- 头像 -->
             <img
               class="img-head"
               :class="'img-head' + index"
-              :src="item.starAvatar"
+              :src="item.starAvatar" style="border: 1px solid #ddd;"
             />
           </view>
 
-          <view class="name" @click="routerStarDetail(item.starId)">{{ item.starName }}</view>
+          <view class="name" @click="routerStarDetail(item.starId)">{{ item.starName||'无' }}</view>
           <view class="val" @click="routerStarDetail(item.starId)">{{ item.totalVigourVal }}</view>
           <view class="btn-area" style="z-index:10000"  @click="dabang(item.starId)">
             <view class="btn" style="z-index:10000">打榜</view>
@@ -161,6 +166,7 @@
    
     <view v-if="showModal">
       <DabangModal :showModal="showModal" :starId="starId"  @closeDabang="closeDabang"></DabangModal>
+      
     </view>
        <!-- <button class="bottom" type="primary" @click="getToken">
           （浏览器）登录
@@ -168,7 +174,6 @@
 
  
     <!-- 打榜弹窗 -->
-    <a href="https://123.207.120.31:18001/common/testLogin?id=1">点击接口点击接口点击接口点击接口点击接口</a>
   </view>
 </template>
 
@@ -197,42 +202,10 @@ export default {
       ],
       // 我的守护
       myGuardList: [
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/1.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
-        {
-          image: "https://cdn.uviewui.com/uview/swiper/2.jpg",
-          name: "邓伦",
-        },
+        // {
+        //   image: "https://cdn.uviewui.com/uview/swiper/1.jpg",
+        //   name: "邓伦",
+        // }
       ],
       // 榜单tag 排名类型：0周榜；1月榜；2总榜
       raningTypeList: [
@@ -360,46 +333,22 @@ export default {
           pageSize: 20,
           rankType: 2,
         })
-        .then((res1) => {
-          let res = {
-            list: [
-              {
-                weekTime: null,
-                month: null,
-                starName: "test0",
-                starAvatar:
-                  "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg",
-                starId: "1",
-                rank: 1,
-                totalVigourVal: "20",
-                sortType: 0,
-              },
-              {
-                weekTime: null,
-                month: null,
-                starName: "test1",
-                starAvatar:
-                  "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg",
-                starId: "1",
-                rank: 2,
-                totalVigourVal: "20",
-                sortType: 0,
-              },
-              {
-                weekTime: null,
-                month: null,
-                starName: "test2",
-                starAvatar:
-                  "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg",
-                starId: "1",
-                rank: 3,
-                totalVigourVal: "20",
-                sortType: 0,
-              },
-               {"weekTime":null,"month":null,"starName":"test3","starAvatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","starId":"1","rank":1,"totalVigourVal":"20","sortType":0},
-               {"weekTime":null,"month":null,"starName":"test4","starAvatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","starId":"1","rank":1,"totalVigourVal":"20","sortType":0},
-            ],
-          };
+        .then((res) => {
+          // let res = {
+          //   list: [
+          //     {
+          //       weekTime: null,
+          //       month: null,
+          //       starName: "test0",
+          //       starAvatar:
+          //         "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg",
+          //       starId: "1",
+          //       rank: 1,
+          //       totalVigourVal: "20",
+          //       sortType: 0,
+          //     }
+          //   ],
+          // };
           // 按原型图，第一名在第二的位置，所以要把第一名和第二名换一下
           // 处理排名前三的明星
           let list = res.list.slice(0, 3);

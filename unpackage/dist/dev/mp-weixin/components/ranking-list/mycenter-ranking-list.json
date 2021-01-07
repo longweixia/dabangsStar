@@ -1,6 +1,7 @@
 {
+  "component": true,
   "usingComponents": {
-    "u-image": "/node-modules/uview-ui/components/u-image/u-image"
-  },
-  "component": true
+    "u-image": "/node-modules/uview-ui/components/u-image/u-image",
+    "dabang-modal": "/components/dabangModal/index"
+  }
 }

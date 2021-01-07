@@ -1,16 +1,15 @@
-<template v-for="(item,index) in info" :key="index">
+<template>
   <view>
-
     <view
       ref="ani"
       :animation="animationData"
-      class="message"
+      class="message" :class="'message'+index"
       :style="{ top: top + 'px', left: left + 'px' }"
-      v-if="show"
+      v-for="(item,index) in info" :key="index"
     >
       <view
         class="round bg-gradual-orange flex justify-start shadow"
-        style="padding: 3px" v-for="(item,index) in info" :key="index"
+        style="padding: 3px"
       >
         <view
           class="cu-avatar cu-a-sm round"
@@ -36,12 +35,12 @@ export default {
     //持续时间
     duration: {
       type: Number,
-      default: 100000,
+      default: 2000,
     },
     //停留时间
     wait: {
       type: Number,
-      default: 3000,
+      default: 20000,
     },
     //顶部距离px
     top: {
@@ -80,9 +79,10 @@ export default {
     this.donghua();
   },
   watch: {
-        info: {
+    info: {
       handler(newVal, oldVal) {
       this.info = newVal
+        //  this.donghua();
       },
       immediate: true,
       deep: true
@@ -90,6 +90,7 @@ export default {
   },
   methods: {
     donghua() {
+   
       //进入
       // #ifndef APP-NVUE
       this.animationData = uni
@@ -115,6 +116,8 @@ export default {
         needLayout: false,
         delay: 0,
       });
+
+
       // #endif
 
       //停留
@@ -131,7 +134,8 @@ export default {
           .step()
           .export();
         // #endif
-
+     this.$emit("loopDanmu")
+        // this.donghua()
         // #ifdef APP-NVUE
         if (!this.$refs["ani"]) return;
         animation.transition(this.$refs["ani"].ref, {
@@ -144,6 +148,7 @@ export default {
           needLayout: false,
           delay: 0,
         });
+           
         // #endif
       }, this.wait);
     },
@@ -156,9 +161,11 @@ export default {
   position: fixed;
   z-index: 99999;
   opacity: 0;
+   
 }
 .round {
   border-radius: 5000px;
+
 }
 .bg-gradual-orange {
   /* #ifndef APP-NVUE */
@@ -198,43 +205,44 @@ export default {
   background-color: #ccc;
   color: #ffffff;
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 30rpx;
+  height: 30rpx;
   font-size: 1.5em;
 }
 
 /* #ifdef APP-NVUE */
 .avatarimg {
-  width: 30px;
-  height: 30px;
-  border-radius: 50px;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50rpx;
 }
 /* #endif */
 
 .cu-a-sm {
-  width: 30px;
-  height: 30px;
+  width: 30rpx;
+  height: 30rpx;
   font-size: 1em;
 }
 .padding-lr-sm {
-  padding-left: 20upx;
-  padding-right: 20upx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  bottom: 250rpx;
 }
 .align-center {
   align-items: center;
 }
 .margin-left-xs {
-  margin-left: 10upx;
+  margin-left: 10rpx;
 }
 .text-bold {
   font-weight: bold;
 }
 .margin-lr-sm {
-  margin-left: 20upx;
-  margin-right: 20upx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
 }
 .text-sm {
-  font-size: 15px;
+  font-size: 15rpx;
   color: #ffffff;
 }
 </style>

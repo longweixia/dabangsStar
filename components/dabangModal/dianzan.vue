@@ -7,13 +7,18 @@
             <view class="line" v-for="(item, index) in 80" :key="index">
               <view class="spark">
                 <view class="fire"> </view>
-                
+
                 <!-- <view style="position:absolute;right:-20px"> 好棒！你为爱豆增加了XX热力值，爱你哦！</view> -->
               </view>
             </view>
-            <view v-if="showText" style="position:absolute;right:-20px">
-                  好棒！你为爱豆增加了XX热力值，爱你哦！</view
-                >
+            <view v-if="showText" class="dabang-text">
+              <view class="contain">
+                  <view class="text">好棒！你为爱豆增加了{{ dabangVal }}热力值，爱你哦！</view> 
+                <view class="right"></view>
+                <view class="left"></view>
+              </view>
+             
+            </view>
           </view>
         </view>
       </view>
@@ -23,6 +28,7 @@
 
 <script>
 export default {
+  props: ["dabangVal"],
   data() {
     return {
       //   yanhuaList:[]
@@ -51,20 +57,57 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-body {
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  height: 100vh;
-  overflow: hidden;
-  display: -webkit-box;
-  display: flex;
-  font-family: "Anton", sans-serif;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-perspective: 600px;
-  perspective: 600px;
+.text{
+    position: relative;
+    top: 200rpx;
+    z-index:100;
+    width:200rpx;
 }
+.contain {
+    position:absolute;
+    top:-300rpx;
+    right:-100rpx;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 100rpx auto;
+}
+.left {
+  float: left;
+  width: 150rpx;
+  height: 228rpx;
+ background: linear-gradient(to bottom, #f83a3a, #f7c18b);
+  border-radius: 100rpx 100rpx 0 0;
+  transform: translateX(-95rpx) rotate(45deg);
+}
+.right {
+  float: left;
+  width: 150rpx;
+  height: 228rpx;
+   background: linear-gradient(to bottom, #f83a3a, #f7c18b);
+  border-radius: 100rpx 100rpx 0 0;
+  transform: rotate(-45deg);
+}
+.dabang-text {
+  position: absolute;
+  right: -20px;
+  font-size: 16px;
+  //   width: 200rpx;
+  //   background: blue;
+}
+// body {
+//   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+//   height: 100vh;
+//   overflow: hidden;
+//   display: -webkit-box;
+//   display: flex;
+//   font-family: "Anton", sans-serif;
+//   -webkit-box-pack: center;
+//   justify-content: center;
+//   -webkit-box-align: center;
+//   align-items: center;
+//   -webkit-perspective: 600px;
+//   perspective: 600px;
+// }
 
 view {
   -webkit-transform-style: preserve-3d;

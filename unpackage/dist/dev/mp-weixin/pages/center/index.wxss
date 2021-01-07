@@ -105,6 +105,31 @@
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .top .list-top .btn-group .btn button.data-v-0f3320de {
+  position: relative;
+  display: inline-block;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 54rpx;
+  overflow: hidden;
+  color: #fff;
+  background: none;
+}
+.content .top .list-top .btn-group .btn uni-button.data-v-0f3320de:after {
+  border: none;
 }
 .content .top .list-top .btn-group .btn .btn-img.data-v-0f3320de {
   padding-right: 10rpx;

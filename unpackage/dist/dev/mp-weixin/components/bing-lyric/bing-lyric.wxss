@@ -60,18 +60,19 @@
   background-color: #ccc;
   color: #ffffff;
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 30rpx;
+  height: 30rpx;
   font-size: 1.5em;
 }
 .cu-a-sm.data-v-1d3c6484 {
-  width: 30px;
-  height: 30px;
+  width: 30rpx;
+  height: 30rpx;
   font-size: 1em;
 }
 .padding-lr-sm.data-v-1d3c6484 {
   padding-left: 20rpx;
   padding-right: 20rpx;
+  bottom: 250rpx;
 }
 .align-center.data-v-1d3c6484 {
   -webkit-box-align: center;
@@ -89,7 +90,7 @@
   margin-right: 20rpx;
 }
 .text-sm.data-v-1d3c6484 {
-  font-size: 15px;
+  font-size: 15rpx;
   color: #ffffff;
 }
 

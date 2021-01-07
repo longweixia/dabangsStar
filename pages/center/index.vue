@@ -31,7 +31,8 @@
 
         <view class="btn-group">
           <view class="btn">
-            <img class="btn-img" src="../../static/home/kefu.png" />联系客服
+            <img class="btn-img" src="../../static/home/kefu.png" />
+            <button open-type="contact">联系客服</button>
           </view>
           <view class="btn btn2">
             <img class="btn-img" src="../../static/home/jiang.png" />
@@ -42,7 +43,9 @@
       <!-- 个人标语 -->
       <view class="slogan">
         <view class="row-text">
-          <view class="text" @click="routerPath('slogan')">个人标语：{{ myData.slogan }}</view>
+          <view class="text" @click="routerPath('slogan')">个人标语：
+            <text v-if="myData.sloganOpen==1">{{ myData.slogan }}</text>
+            </view>
           <img class="btn-img" src="../../static/home/right.png" />
         </view>
       </view>
@@ -187,6 +190,31 @@ export default {
           text-align: center;
           background: linear-gradient(to right, #f83a3a, #f7c18b);
           color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          button{
+               position: relative; 
+               display: inline-block; 
+           
+               padding-left: 0; 
+              padding-right: 0; 
+          
+              font-size: 16px;
+               text-align: center; 
+              text-decoration: none; 
+              line-height:  54rpx;
+     
+      
+              overflow: hidden; 
+              color: #fff; 
+              background: none; 
+              
+          
+          }
+          uni-button:after{
+            border: none;
+          }
           .btn-img {
             padding-right: 10rpx;
             width: 22rpx;

@@ -417,7 +417,7 @@ export default {
           font-size: 14px;
         }
         .rank-text {
-          font-size: 10rpx;
+          font-size: 10px;
           color: #e34c4c;
         }
       }

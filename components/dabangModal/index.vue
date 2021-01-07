@@ -8,7 +8,14 @@
     ref="uModal"
     class="dabang-modal"
   >
-    <Binglyric ref="lffBarrage" :info="dabangInfo"></Binglyric>
+    <view class="close-btn" @click='close'>
+      x
+    </view>
+    <Binglyric
+      ref="lffBarrage"
+      :info="dabangInfo"
+      @loopDanmu="loopDanmu" style="bottom: 50rpx;position:relative"
+    ></Binglyric>
 
     <view class="slot-content">
       <view class="title-modal">
@@ -17,18 +24,18 @@
           <!--  -->
 
           <!-- 打榜弹窗 -->
-          <view class="toast-db">
+          <!-- <view class="toast-db">
             <img class="imgs" :src="StarGuardList.avatarUrl" />
             <view class="text">
               {{ StarGuardList.nickName }}打榜<text class="red-num">
                 {{ StarGuardList.vigourVal }}</text
               >热力值</view
             >
-          </view>
+          </view> -->
         </view>
 
         <view class="body-area">
-          <u-row gutter="16">
+          <u-row gutter="16" style="margin-top:20rpx">
             <u-col span="4">
               <view class="title"> 为朱一龙打榜</view>
             </u-col>
@@ -38,12 +45,15 @@
                 <view class="slice" @click="add('jian')">-</view>
                 <input v-model="inpValue" type="number" class="inp-num" />
                 <view class="add" @click="add('jia')">+</view>
-                 
-                <u-button class="btn" @click="add('btn')">打榜+99
 
-                     <Dianzan ref="dianzan"></Dianzan>
-                </u-button>
-                
+                <view class="btn" @click="add('btn')"
+                  >打榜+99
+                  <Dianzan
+                    ref="dianzan"
+                    :dabangVal="inpValue"
+                    style="position: relative; top: -80rpx"
+                  ></Dianzan>
+                </view>
               </view>
               <view class="col-top col-top2">
                 <view class="hot">我的热力值：{{ myInfo.vigourVal }}</view>
@@ -56,14 +66,15 @@
           </u-row>
           <u-row gutter="16" class="row-bottom">
             <u-col span="3" v-for="(item, index) in dabangValList" :key="index">
-              <u-button class="btn" @click="addBtn(item.value)"
-                >+{{ item.value }}</u-button
+              <view class="btn" @click="addBtn(item.value)"
+                >+{{ item.value }}</view
               >
             </u-col>
           </u-row>
         </view>
       </view>
     </view>
+
   </u-modal>
 </template>
 
@@ -77,7 +88,7 @@ export default {
   components: {
     // 00,
     Binglyric,
-    Dianzan
+    Dianzan,
   },
   props: ["showModal", "rankType", "starId"],
   watch: {
@@ -99,6 +110,7 @@ export default {
   },
   data() {
     return {
+      showInfo: false,
       danmu: "",
       lists: [
         "寒雨连江夜入吴",
@@ -170,7 +182,8 @@ export default {
       dabangInfo: [
         {
           title: "踮起脚尖走向阳光 刚刚浏览本店",
-          avatarUrl: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
+          avatarUrl:
+            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg",
         },
         // {
         //   title: "sb",
@@ -199,16 +212,24 @@ export default {
   },
 
   methods: {
+    close(){
+      this.$emit("closeDabang");
+    },
+    loopDanmu() {
+      this.dabangInfo = this.dabangInfo.concat(this.StarGuardList);
+    },
     colrdo() {
-     this.dabangInfo =this.dabangInfo.concat(this.StarGuardList[0])
-      // for (let i = 0; i < this.StarGuardList.length; i++) {
-      //   ( (j) =>{
-      //     this.danmu = setTimeout( ()=> {
-      //       // console.log(i)
-      //     this.dabangInfo =this.dabangInfo.concat(this.StarGuardList[i]);
-      //     }, 1000);
-      //   })(i);
-      // }
+      //  this.dabangInfo =this.dabangInfo.concat(
+      //     this.StarGuardList
+      //  )
+      for (let i = 0; i < this.StarGuardList.length; i++) {
+        ((j) => {
+          this.danmu = setTimeout(() => {
+            // console.log(i)
+            this.dabangInfo = this.dabangInfo.concat(this.StarGuardList[i]);
+          }, 1000 * i);
+        })(i);
+      }
 
       //插入一条弹幕
       // this.StarGuardList.forEach((e, i) => {
@@ -229,14 +250,23 @@ export default {
       if (name == "jian") {
         if (Number(this.inpValue)) {
           this.inpValue = Number(this.inpValue) - 1;
-          this.myInfo.vigourVal = this.myInfo.vigourVal - this.inpValue;
+          this.myInfo.vigourVal =this.inpValue;
         }
       } else if (name == "jia") {
         this.inpValue = Number(this.inpValue) + 1;
-        this.myInfo.vigourVal = this.myInfo.vigourVal + this.inpValue;
+        this.myInfo.vigourVal =-this.inpValue;
       } else if (name == "btn") {
-        this.myInfo.vigourVal = this.myInfo.vigourVal + Number(this.inpValue);
-        this.$refs.dianzan.handleClick()
+        if (this.inpValue == 0) {
+          uni.showToast({
+            title: "请先选中对应的热力值",
+            icon: "none",
+            duration: 2000,
+          });
+          return false;
+        }
+        this.myInfo.vigourVal =  Number(this.inpValue);
+
+        this.$refs.dianzan.handleClick();
       }
       this.hit();
     },
@@ -248,6 +278,7 @@ export default {
           starId: this.starId,
         })
         .then((res) => {
+          // this.showInfo =true
           this.StarGuardList = res;
           this.colrdo();
         })
@@ -261,7 +292,8 @@ export default {
           vigourVal: this.myInfo.vigourVal,
         })
         .then((res) => {
-          this.StarGuardList = res;
+          // this.StarGuardList = res;
+
           this.selectFensInfo();
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
@@ -280,6 +312,7 @@ export default {
         .then((res) => {
           this.starInfo = res; //　少了头像
           this.detailImg = res.detailImg;
+
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
           // } else {
@@ -300,6 +333,7 @@ export default {
         .post("/home/fens")
         .then((res) => {
           this.myInfo = res; //　少了头像
+          //  this.inpValue=0
         })
         .catch((res) => {});
     },
@@ -317,6 +351,27 @@ export default {
   border-radius: 0 !important;
 }
 .dabang-modal {
+   position: relative;
+
+    position: relative;
+    .close-btn {
+        text-align: center;
+        position: absolute;
+        color: #fff;
+        width: 40rpx;
+        margin: 0 auto;
+        height: 40rpx;
+        line-height: 40rpx;
+        margin: 0 auto;
+        border-radius: 20rpx;
+        border: 1px solid #fff;
+        right: 0;
+        top: 0;
+      
+      z-index: 10000;
+    }
+  
+
   // 顶部背景图
   .detail-bg-img {
     width: 100%;
@@ -353,6 +408,7 @@ export default {
     display: flex;
     align-items: center;
     opacity: 0.6;
+    border: none;
     .imgs {
       width: 40rpx;
       height: 40rpx;
@@ -413,6 +469,9 @@ export default {
         .btn {
           width: 100rpx;
           height: 40rpx;
+          text-align: center;
+          line-height: 40rpx;
+          border-radius: 10rpx;
           font-size: 10px;
           background: #e34c4c;
           color: #fff;
@@ -433,16 +492,18 @@ export default {
         margin-top: 10rpx;
       }
     }
-    .row-bottom {
-      .btn {
-        width: 140rpx;
-        height: 64rpx;
-        line-height: 64rpx;
-        color: #fff;
-        margin-top: 20rpx;
-        margin-bottom: 20rpx;
-        background: linear-gradient(to right, #f83a3a, #f7c18b);
-      }
+  }
+  .row-bottom {
+    .btn {
+      width: 140rpx;
+      height: 64rpx;
+      line-height: 64rpx;
+      text-align: center;
+      border-radius: 10rpx;
+      color: #fff;
+      margin-top: 20rpx;
+      margin-bottom: 20rpx;
+      background: linear-gradient(to right, #f83a3a, #f7c18b);
     }
   }
 }

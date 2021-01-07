@@ -4,12 +4,21 @@
     },
     "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
         {
+            "path": "pages/index/kaiping",
+            "name":"kaiping",
+            "style": {
+                "navigationBarTitleText": "开屏"
+            }
+        },
+        {
             "path": "pages/index/index",
             "name":"index",
             "style": {
                 "navigationBarTitleText": "打榜小程序"
             }
         },
+       
+      
         {
             "path": "pages/index/rangkingList",
             "style": {
@@ -68,13 +77,6 @@
             "path": "pages/center/slogan",
             "style": {
                 "navigationBarTitleText": "个人标语"
-            }
-        },
-        {
-            "path": "pages/center/u-avatar-cropper",
-            "style": {
-                "navigationBarTitleText": "头像裁剪",
-                "navigationBarBackgroundColor": "#000000"
             }
         }
     ],

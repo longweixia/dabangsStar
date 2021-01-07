@@ -27,6 +27,25 @@
 .u-mode-center-box {
   border-radius: 0 !important;
 }
+.dabang-modal {
+  position: relative;
+  position: relative;
+}
+.dabang-modal .close-btn {
+  text-align: center;
+  position: absolute;
+  color: #fff;
+  width: 40rpx;
+  margin: 0 auto;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  border: 1px solid #fff;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+}
 .dabang-modal .detail-bg-img {
   width: 100%;
   height: 280rpx;
@@ -62,6 +81,7 @@
   -webkit-align-items: center;
           align-items: center;
   opacity: 0.6;
+  border: none;
 }
 .dabang-modal .toast-db .imgs {
   width: 40rpx;
@@ -126,6 +146,9 @@
 .dabang-modal .body-area .right-btn .col-top .btn {
   width: 100rpx;
   height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 10rpx;
   font-size: 10px;
   background: #e34c4c;
   color: #fff;
@@ -144,10 +167,12 @@
 .dabang-modal .body-area .right-btn .col-top2 {
   margin-top: 10rpx;
 }
-.dabang-modal .body-area .row-bottom .btn {
+.dabang-modal .row-bottom .btn {
   width: 140rpx;
   height: 64rpx;
   line-height: 64rpx;
+  text-align: center;
+  border-radius: 10rpx;
   color: #fff;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
