@@ -82,7 +82,7 @@ export default {
           }
         })
          .catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     },
@@ -103,7 +103,7 @@ export default {
           }
         })
           .catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     },

@@ -310,7 +310,7 @@ export default {
           }
         })
         .catch((res) => {
-          this.$toLogin(res);
+        //   this.$toLogin(res);
         });
     },
     // 获取我的守护
@@ -321,7 +321,7 @@ export default {
           this.myGuardList = res.list;
         })
         .catch((res) => {
-          this.$toLogin(res);
+        //   this.$toLogin(res);
         });
     },
     // 获取明星榜单--总榜

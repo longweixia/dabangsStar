@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "抽奖",
   "usingComponents": {
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "lottery-draw": "/components/SJ-LotteryDraw/SJ-LotteryDraw"
   }
 }

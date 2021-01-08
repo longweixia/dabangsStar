@@ -1,5 +1,6 @@
 <template>
 	<view class="chou-jiang-page">
+                <u-navbar title="抽奖"></u-navbar>
 		<LotteryDraw
 			@get_winingIndex="get_winingIndex"
 			@luck_draw_finish="luck_draw_finish"

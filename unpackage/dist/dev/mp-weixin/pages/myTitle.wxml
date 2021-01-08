@@ -1,0 +1,1 @@
+<view class="{{['my-title-area',classType]}}"><text class="icon-left"></text><text class="text">111</text></view>

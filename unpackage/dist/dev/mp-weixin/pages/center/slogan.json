@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "个人标语",
   "usingComponents": {
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "u-cell-group": "/node-modules/uview-ui/components/u-cell-group/u-cell-group",
     "u-cell-item": "/node-modules/uview-ui/components/u-cell-item/u-cell-item",
     "u-switch": "/node-modules/uview-ui/components/u-switch/u-switch",

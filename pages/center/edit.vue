@@ -1,5 +1,6 @@
 <template>
   <view class="my-edit">
+            <u-navbar title="修改资料"></u-navbar>
     <u-cell-group>
       <u-cell-item
         title="头像"
@@ -196,7 +197,7 @@ export default {
           this.showNameModal = false
         })
           .catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     },
@@ -211,7 +212,7 @@ export default {
           this.getMyInfo()
         })
         .catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     },

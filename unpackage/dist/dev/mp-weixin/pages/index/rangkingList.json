@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "榜单",
   "usingComponents": {
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
     "btn-nav": "/components/btn-nav/btn-nav",
     "ranking-list": "/components/ranking-list/ranking-list"

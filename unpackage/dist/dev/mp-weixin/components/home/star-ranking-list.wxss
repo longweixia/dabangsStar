@@ -77,8 +77,10 @@
   line-height: 46rpx;
   width: 110rpx;
   padding: 0 10rpx;
-  border-radius: 23rpx;
+  -webkit-border-radius: 23rpx;
+          border-radius: 23rpx;
   text-align: center;
+  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;

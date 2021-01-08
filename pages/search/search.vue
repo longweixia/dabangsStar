@@ -1,5 +1,6 @@
 <template>
 	<view>
+        <u-navbar title="搜索明星"></u-navbar>
 		<zy-search
 			:is-focus="true"
 			:theme="themeClass"
@@ -54,7 +55,7 @@ export default {
 					
 				})
 				.catch((res) => {
-					this.$toLogin(res)
+					// this.$toLogin(res)
 				})
 		},
 	},

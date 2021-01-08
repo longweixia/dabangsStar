@@ -1,5 +1,7 @@
 <template>
 	<view class="my-edit-slogan">
+              <u-navbar title="修改标语"></u-navbar>
+
 		<view class="bg-img"></view>
 		<view class="edit-card">
 			<u-cell-group class="card-content">
@@ -139,7 +141,7 @@ export default {
 					this.getMyInfo()
 				})
 				.catch((res) => {
-					this.$toLogin(res)
+					// this.$toLogin(res)
 				})
 		},
 		getMyInfo() {
@@ -164,7 +166,7 @@ export default {
 					}
 				})
 				.catch((res) => {
-					this.$toLogin(res)
+					// this.$toLogin(res)
 				})
 		},
 		changeHeader() {

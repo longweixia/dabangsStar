@@ -1,5 +1,8 @@
 <template>
-  <view class="content">
+  <view class="my-center-content">
+      <!-- <MyTitle classType="center"></MyTitle> -->
+      <u-navbar title="个人中心" :background="background" title-color="#fff" back-icon-color="#fff"></u-navbar>
+      <view class="content">
     <!-- 个人中心顶部 -->
     <view class="top">
       <img src="../../static/home/centerbg.png" class="bg-img" />
@@ -54,19 +57,33 @@
       <List></List>
     </view>
   </view>
+  </view>
 </template>
 
 <script>
 import List from "../../components/center/list.vue";
+import MyTitle from "./../myTitle.vue";
 
 export default {
   name: "BtnNav",
   components: {
     List,
+    MyTitle
   },
   props: ["btnList", "rankType"],
   data() {
     return {
+        background: {
+					backgroundColor: '#f64d71',
+					
+					// 导航栏背景图
+					// background: 'url(https://cdn.uviewui.com/uview/swiper/1.jpg) no-repeat',
+					// 还可以设置背景图size属性
+					// backgroundSize: 'cover',
+					
+					// 渐变色
+					// backgroundImage: 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))'
+				},
       // 当前明星数据
       // listFourTh: [
       //   {
@@ -96,7 +113,7 @@ export default {
         
         })
         .catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     },
@@ -116,7 +133,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.my-center-content {
+   
+
+.content{
+     position: relative;
+    top: -10px;
   .top {
     position: relative;
 
@@ -196,10 +218,8 @@ export default {
           button{
                position: relative; 
                display: inline-block; 
-           
                padding-left: 0; 
-              padding-right: 0; 
-          
+               padding-right: 0; 
               font-size: 16px;
                text-align: center; 
               text-decoration: none; 
@@ -272,5 +292,6 @@ export default {
   .edit-btn {
     padding-left: 10rpx;
   }
+}
 }
 </style>

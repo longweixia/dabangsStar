@@ -1,6 +1,7 @@
 <template>
   <view class="fan-ranking">
     <!-- 排行榜 -->
+     <u-navbar title="资源榜"></u-navbar>
     <view class="list">
       <RankingList
         :rankingList="rankingList"
@@ -112,7 +113,7 @@ export default {
           }
         })
         .catch((res) => {
-          this.$toLogin(res);
+        //   this.$toLogin(res);
         });
     },
   },

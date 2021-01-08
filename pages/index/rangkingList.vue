@@ -1,6 +1,7 @@
 <template>
 <!-- 榜单-周榜，月榜，粉丝榜，总榜 -->
   <view class="fan-ranking">
+              <u-navbar title="榜单"></u-navbar>
     <!-- 导航栏 -->
 
     <view class="nav-top">
@@ -110,7 +111,7 @@ export default {
                 this.hasData = false
               }
         }).catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     }

@@ -167,7 +167,7 @@ export default {
        this.$u.post('/home/selectMyGuard').then(res => {
               this.myGuardList = res.list;  //　少了头像
             }).catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     },

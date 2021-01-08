@@ -591,6 +591,6 @@ export default {
   color: #fff;
   font-weight: bold;
   font-size: 17px;
-  top: 20rpx;
+  top: 60rpx;
 }
 </style>

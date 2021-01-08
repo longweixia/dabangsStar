@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "搜索爱豆",
   "usingComponents": {
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "zy-search": "/components/zy-search/zy-search"
   }
 }

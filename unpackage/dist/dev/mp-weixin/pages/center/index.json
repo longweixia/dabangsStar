@@ -1,8 +1,10 @@
 {
   "navigationBarTitleText": "我",
   "usingComponents": {
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "u-image": "/node-modules/uview-ui/components/u-image/u-image",
     "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
-    "list": "/components/center/list"
+    "list": "/components/center/list",
+    "my-title": "/pages/myTitle"
   }
 }

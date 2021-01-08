@@ -1,5 +1,6 @@
 <template>
-  <view>
+  <view class="center-info">
+          <u-navbar title="授权登录"></u-navbar>
     <view>
       <view>
         <view class="header">
@@ -33,9 +34,9 @@
         <!-- <button class="bottom" type="primary" @click="getUserinfo">
           获取个人中心数据
         </button> -->
-        <button class="bottom" type="primary" @click="getToken">
+        <!-- <button class="bottom" type="primary" @click="getToken">
           （浏览器）登录
-        </button>
+        </button> -->
 
         <!-- <button class='bottom' type='primary' open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber">
 			  授权登录
@@ -176,6 +177,20 @@ export default {
         })
         .then((res) => {
           uni.setStorageSync("Authorization", res.token);
+        uni.showToast({
+            title: "登录成功",
+            icon:'none',
+            duration: 1000,
+        });
+        	var timer = setTimeout(() => {
+				clearTimeout(timer)
+		     uni.navigateTo({
+        url: `/pages/index/index`,
+      });
+			
+			}, 1000)
+
+
           // this.swiperList = res;
         });
     },
@@ -183,7 +198,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.center-info{
+
+
 .header {
   margin: 90rpx 0 90rpx 50rpx;
   border-bottom: 1px solid #ccc;
@@ -213,5 +231,6 @@ export default {
   border-radius: 80rpx;
   margin: 70rpx 50rpx;
   font-size: 35rpx;
+}
 }
 </style>

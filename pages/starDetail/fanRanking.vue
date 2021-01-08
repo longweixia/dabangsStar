@@ -1,7 +1,7 @@
 <template>
   <view class="fan-ranking">
     <!-- 导航栏 -->
-
+  <u-navbar title="粉丝榜"></u-navbar>
     <view class="nav-top">
       <BtnNav
         :btnList="btnList"
@@ -118,7 +118,7 @@ export default {
           }
         })
          .catch((res) => {
-          this.$toLogin(res)
+        //   this.$toLogin(res)
   
         });
     }
