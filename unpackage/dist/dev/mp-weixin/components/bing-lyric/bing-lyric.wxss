@@ -5,8 +5,7 @@
   opacity: 0;
 }
 .round.data-v-1d3c6484 {
-  -webkit-border-radius: 5000px;
-          border-radius: 5000px;
+  border-radius: 5000px;
 }
 .bg-gradual-orange.data-v-1d3c6484 {
 
@@ -17,12 +16,10 @@
 
 
 
-
   color: #ffffff;
 }
 .shadow.data-v-1d3c6484 {
-  -webkit-box-shadow: 4px 4px 5px rgba(217, 109, 26, 0.2);
-          box-shadow: 4px 4px 5px rgba(217, 109, 26, 0.2);
+  box-shadow: 4px 4px 5px rgba(217, 109, 26, 0.2);
 }
 .flex.data-v-1d3c6484 {
 

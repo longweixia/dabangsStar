@@ -104,9 +104,9 @@
       </view>
     </view>
     <!-- 抽奖互动 -->
-    <prizePraw></prizePraw>
+    <prizePraw :starId="ids" @getmyInfo="selectStarInfo"></prizePraw>
     <!-- 资源 -->
-    <resources :ids="id" style="margin-top: 20rpx"></resources>
+    <resources :ids="ids" style="margin-top: 20rpx"></resources>
     <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       <view class="my">
@@ -120,7 +120,7 @@
     <view v-if="showModal">
       <DabangModal
         :showModal="showModal"
-        :starId="id"
+        :starId="ids"
         @closeDabang="closeDabang"
       ></DabangModal>
     </view>
@@ -139,11 +139,7 @@ export default {
   },
   onShareAppMessage: function (res) {
       setTimeout(() => {
-           uni.showToast({
-          title: `分享获得热力值`,
-          icon: "none",
-          duration: 2000,
-        });
+          this.shareinfo()
       }, 2000);
     // return eventHandler接收到的分享参数
     return {
@@ -222,6 +218,7 @@ export default {
   },
   onLoad(option) {
     this.ids = Number(option.id);
+    console.log(this.ids)
   },
   mounted() {
     // 明星详情
@@ -235,6 +232,32 @@ export default {
   },
 
   methods: {
+      // 分享接口
+    shareinfo() {
+      let params = {
+        starId: this.ids,
+        type:4//任务类型 1-签到 2-抽奖 3-看视频 4-分享
+      }
+      this.$u
+        .post("/starDetail/getVigourVal",params)
+        .then((res) => {
+             uni.showToast({
+            title: "分享成功，获得30热力值",
+            icon:'none',
+            duration: 1000
+        
+        });   
+        this.selectStarInfo()
+        })
+        .catch((res) => {
+            uni.showToast({
+            title: res.message,
+            icon:'none',
+            duration: 1000,
+      
+        });
+        });
+    },
     closeDabang() {
       this.showModal = false;
     },

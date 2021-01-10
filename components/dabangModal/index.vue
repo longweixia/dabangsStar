@@ -8,6 +8,7 @@
     ref="uModal"
     class="dabang-modal"
   >
+  {{starId}}
     <view class="close-btn" @click='close'>
       x
     </view>
@@ -90,7 +91,7 @@ export default {
     Binglyric,
     Dianzan,
   },
-  props: ["showModal", "rankType", "starId"],
+  props: ["showModal", "rankType"],
   watch: {
     showModal: {
       handler(newVal, oldVal) {
@@ -98,6 +99,7 @@ export default {
       },
       immediate: true,
     },
+  
     show: {
       handler(newVal, oldVal) {
         if (!newVal) {
@@ -110,6 +112,7 @@ export default {
   },
   data() {
     return {
+      starId:null,
       showInfo: false,
       danmu: "",
       lists: [
@@ -210,8 +213,12 @@ export default {
 
     // this.colrdo()
   },
+ onLoad(option) {
+    this.starId = Number(option.id);
 
+  },
   methods: {
+   
     close(){
       this.$emit("closeDabang");
     },

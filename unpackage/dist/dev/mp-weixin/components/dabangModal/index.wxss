@@ -25,8 +25,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .u-mode-center-box {
-  -webkit-border-radius: 0 !important;
-          border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 .dabang-modal {
   position: relative;
@@ -41,8 +40,7 @@
   height: 40rpx;
   line-height: 40rpx;
   margin: 0 auto;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   border: 1px solid #fff;
   right: 0;
   top: 0;
@@ -88,8 +86,7 @@
 .dabang-modal .toast-db .imgs {
   width: 40rpx;
   height: 40rpx;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   display: inline-block;
   background: #fff;
 }
@@ -131,8 +128,7 @@
   height: 34rpx;
   line-height: 34rpx;
   text-align: center;
-  -webkit-border-radius: 17rpx;
-          border-radius: 17rpx;
+  border-radius: 17rpx;
   margin-left: 10rpx;
   margin-right: 10rpx;
 }
@@ -152,8 +148,7 @@
   height: 40rpx;
   text-align: center;
   line-height: 40rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   font-size: 10px;
   background: #e34c4c;
   color: #fff;
@@ -177,12 +172,10 @@
   height: 64rpx;
   line-height: 64rpx;
   text-align: center;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   color: #fff;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
 }

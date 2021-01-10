@@ -46,8 +46,7 @@
   margin-top: 40rpx;
 }
 .center-info .bottom.data-v-2fc1a426 {
-  -webkit-border-radius: 80rpx;
-          border-radius: 80rpx;
+  border-radius: 80rpx;
   margin: 70rpx 50rpx;
   font-size: 35rpx;
 }

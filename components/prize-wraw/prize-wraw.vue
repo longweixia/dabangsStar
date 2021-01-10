@@ -18,6 +18,7 @@
 <script>
 export default {
   name: "prize-wraw",
+  props:["starId"],
 
 
   onLoad(){},
@@ -74,10 +75,38 @@ export default {
         uni.navigateTo({
           url: "/pages/starDetail/choujiang",
         });
-      } else if (i === 3) {
+      } else if (i === 1) {
+        // 签到
+        this.signiIn()
  
       
       }
+    },
+    // 签到
+    signiIn() {
+      let params = {
+        starId: this.starId,
+        type:1//任务类型 1-签到 2-抽奖 3-看视频 4-分享
+      }
+      this.$u
+        .post("/starDetail/getVigourVal",params)
+        .then((res) => {
+             uni.showToast({
+            title: "签到成功，获得20热力值",
+            icon:'none',
+            duration: 1000
+        
+        });   
+         this.$emit("getmyInfo")
+        })
+        .catch((res) => {
+            uni.showToast({
+            title: res.message,
+            icon:'none',
+            duration: 1000,
+      
+        });
+        });
     },
   },
 };

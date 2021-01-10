@@ -42,11 +42,9 @@
   top: -100rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(233, 233, 234, 0.36)), to(rgba(233, 233, 234, 0.16)));
   background: -webkit-linear-gradient(top, rgba(233, 233, 234, 0.36), rgba(233, 233, 234, 0.16));
   background: linear-gradient(to bottom, rgba(233, 233, 234, 0.36), rgba(233, 233, 234, 0.16));
-  -webkit-border-top-right-radius: 10rpx;
-          border-top-right-radius: 10rpx;
+  border-top-right-radius: 10rpx;
   padding-bottom: 20rpx;
 }
 .home-page .home-my-guard .guard-title.data-v-57280228 {
@@ -58,10 +56,8 @@
   background: rgba(233, 233, 234, 0.26);
   padding: 10rpx 20rpx 0 20rpx;
   padding-bottom: 0;
-  -webkit-border-top-left-radius: 20rpx;
-          border-top-left-radius: 20rpx;
-  -webkit-border-top-right-radius: 20rpx;
-          border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
   font-size: 22rpx;
   font-weight: bold;
 }
@@ -77,12 +73,10 @@
   height: 100rpx;
   margin-left: 20rpx;
   height: 150rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   background: #fff;
   margin-top: 24rpx;
-  -webkit-box-shadow: 0 0 12px rgba(177, 177, 177, 0.16);
-          box-shadow: 0 0 12px rgba(177, 177, 177, 0.16);
+  box-shadow: 0 0 12px rgba(177, 177, 177, 0.16);
 }
 .home-page .home-my-guard .guard-list .guard-card .guard-img.data-v-57280228 {
   display: inline-block;
@@ -106,10 +100,8 @@
   line-height: 46rpx;
   width: 100rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 23rpx;
-          border-radius: 23rpx;
+  border-radius: 23rpx;
   text-align: center;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -125,13 +117,10 @@
   margin-right: 20rpx;
   position: relative;
   top: -100rpx;
-  background: -webkit-gradient(linear, left top, left bottom, from(#feecb3), to(#f64d71));
   background: -webkit-linear-gradient(top, #feecb3, #f64d71);
   background: linear-gradient(to bottom, #feecb3, #f64d71);
-  -webkit-border-top-right-radius: 20rpx;
-          border-top-right-radius: 20rpx;
-  -webkit-border-top-left-radius: 20rpx;
-          border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
   z-index: -2;
 }
 .home-page .list-top-three .card-time.data-v-57280228 {
@@ -141,8 +130,7 @@
   line-height: 42rpx;
   text-align: center;
   margin-bottom: 40rpx;
-  -webkit-border-radius: 21rpx;
-          border-radius: 21rpx;
+  border-radius: 21rpx;
   margin-left: 26rpx;
 }
 .home-page .list-top-three .card-time .time-text.data-v-57280228 {
@@ -193,8 +181,7 @@
 .home-page .list-top-three .guard-card .img-area .img-head.data-v-57280228 {
   width: 118rpx;
   height: 118rpx;
-  -webkit-border-radius: 59rpx;
-          border-radius: 59rpx;
+  border-radius: 59rpx;
   z-index: 100;
 }
 .home-page .list-top-three .guard-card .img-area .img-star.data-v-57280228 {
@@ -232,8 +219,7 @@
 .home-page .list-top-three .guard-card .img-area1 .img-head.data-v-57280228 {
   width: 168rpx;
   height: 168rpx;
-  -webkit-border-radius: 84rpx;
-          border-radius: 84rpx;
+  border-radius: 84rpx;
 }
 .home-page .list-top-three .guard-card .img-area1 .num.data-v-57280228 {
   -webkit-transform: rotate(325deg);
@@ -260,10 +246,8 @@
   line-height: 46rpx;
   width: 110rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 23rpx;
-          border-radius: 23rpx;
+  border-radius: 23rpx;
   text-align: center;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -277,10 +261,8 @@
   line-height: 46rpx;
   width: 110rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 23rpx;
-          border-radius: 23rpx;
+  border-radius: 23rpx;
   text-align: center;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
