@@ -140,6 +140,11 @@
   width: 22rpx;
   height: 22rpx;
 }
+.my-center-content .content .top .list-top .btn-group .no-login.data-v-0f3320de {
+  background: #E34C4C;
+  width: 80%;
+  margin-left: 20rpx;
+}
 .my-center-content .content .top .list-top .btn-group .btn2.data-v-0f3320de {
   margin-top: 10rpx;
 }

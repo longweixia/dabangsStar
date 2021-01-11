@@ -290,7 +290,7 @@ export default {
     },
     // 打榜弹窗
     dabang(id){
-      console.log(id,'ui')
+      console.log(id,'当前id是')
       this.starId = id
       this.showModal = true
     },

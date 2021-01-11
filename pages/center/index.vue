@@ -15,7 +15,8 @@
             :src="myData.avatarUrl"
             shape="circle"
           ></u-image>
-          <view class="row-text">
+          <!-- 登录后 -->
+          <view class="row-text" v-if="myData.nickName">
             <view class="name">
               {{ myData.nickName }}
               <u-icon
@@ -30,6 +31,13 @@
             <view class="id"> id：{{ myData.fensId }}</view>
             <view class="hotVal">我的热力值：{{ myData.vigourVal }}</view>
           </view>
+          <!-- 登录前 -->
+           <view class="btn-group" v-if="!myData.nickName">
+          <view class="btn no-login" >
+            <view @click="goLogin">请登录</view>
+          </view>
+         
+        </view>
         </view>
 
         <view class="btn-group">
@@ -128,6 +136,11 @@ export default {
         });
       }
     },
+    goLogin(){
+       uni.navigateTo({
+          url: "/pages/center/center",
+        });
+    }
   },
 };
 </script>
@@ -240,6 +253,11 @@ export default {
             width: 22rpx;
             height: 22rpx;
           }
+        }
+        .no-login{
+          background: #E34C4C;
+          width:80%;
+          margin-left: 20rpx;
         }
         .btn2 {
           margin-top: 10rpx;

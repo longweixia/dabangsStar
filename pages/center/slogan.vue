@@ -135,7 +135,7 @@ export default {
 					uni.showToast({
 						title: '修改成功',
 						icon: 'none',
-						duration: 1000,
+						duration: 2000,
 					})
 
 					this.getMyInfo()
@@ -184,7 +184,7 @@ export default {
 		background: linear-gradient(to bottom, #f64d71, #feecb3);
 	}
 	.edit-card {
-		top: 20rpx;
+		top: 140rpx;
 		position: absolute;
 		margin: 20rpx;
 		border-radius: 10rpx;

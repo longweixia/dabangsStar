@@ -8,14 +8,12 @@
     ref="uModal"
     class="dabang-modal"
   >
-  {{starId}}
-    <view class="close-btn" @click='close'>
-      x
-    </view>
+    <view class="close-btn" @click="close"> x </view>
     <Binglyric
       ref="lffBarrage"
       :info="dabangInfo"
-      @loopDanmu="loopDanmu" style="bottom: 50rpx;position:relative"
+      @loopDanmu="loopDanmu"
+      style="bottom: 50rpx; position: relative"
     ></Binglyric>
 
     <view class="slot-content">
@@ -36,9 +34,9 @@
         </view>
 
         <view class="body-area">
-          <u-row gutter="16" style="margin-top:20rpx">
+          <u-row gutter="16" style="margin-top: 20rpx">
             <u-col span="4">
-              <view class="title"> 为朱一龙打榜</view>
+              <view class="title"> 为{{ starName }}打榜</view>
             </u-col>
 
             <u-col span="8" class="right-btn">
@@ -75,7 +73,6 @@
         </view>
       </view>
     </view>
-
   </u-modal>
 </template>
 
@@ -91,7 +88,7 @@ export default {
     Binglyric,
     Dianzan,
   },
-  props: ["showModal", "rankType"],
+  props: ["showModal", "rankType", "starId"],
   watch: {
     showModal: {
       handler(newVal, oldVal) {
@@ -99,7 +96,7 @@ export default {
       },
       immediate: true,
     },
-  
+
     show: {
       handler(newVal, oldVal) {
         if (!newVal) {
@@ -112,15 +109,8 @@ export default {
   },
   data() {
     return {
-      starId:null,
       showInfo: false,
       danmu: "",
-      lists: [
-        "寒雨连江夜入吴",
-        "平明送客楚山孤",
-        "洛阳亲友如相问",
-        "一片冰心在玉壶",
-      ],
       myInfo: {},
       inpValue: 0,
       show: this.showModal,
@@ -176,6 +166,7 @@ export default {
           value: 9999,
         },
       ],
+      starName: "", //明星名字
 
       myData: {}, //个人信息
       checked: false, //默认没选中
@@ -213,13 +204,11 @@ export default {
 
     // this.colrdo()
   },
- onLoad(option) {
+  onLoad(option) {
     this.starId = Number(option.id);
-
   },
   methods: {
-   
-    close(){
+    close() {
       this.$emit("closeDabang");
     },
     loopDanmu() {
@@ -257,11 +246,11 @@ export default {
       if (name == "jian") {
         if (Number(this.inpValue)) {
           this.inpValue = Number(this.inpValue) - 1;
-          this.myInfo.vigourVal =this.inpValue;
+          // this.myInfo.vigourVal =this.inpValue;
         }
       } else if (name == "jia") {
         this.inpValue = Number(this.inpValue) + 1;
-        this.myInfo.vigourVal =-this.inpValue;
+        // this.myInfo.vigourVal =-this.inpValue;
       } else if (name == "btn") {
         if (this.inpValue == 0) {
           uni.showToast({
@@ -271,11 +260,10 @@ export default {
           });
           return false;
         }
-        this.myInfo.vigourVal =  Number(this.inpValue);
-
-        this.$refs.dianzan.handleClick();
+        // this.myInfo.vigourVal =  Number(this.inpValue);
+        this.hit();
+       
       }
-      this.hit();
     },
 
     //明星打榜弹窗
@@ -296,11 +284,11 @@ export default {
       this.$u
         .post("/home/hit", {
           starId: this.starId,
-          vigourVal: this.myInfo.vigourVal,
+          vigourVal: Number(this.inpValue),
         })
         .then((res) => {
           // this.StarGuardList = res;
-
+ this.$refs.dianzan.handleClick();
           this.selectFensInfo();
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
@@ -319,6 +307,7 @@ export default {
         .then((res) => {
           this.starInfo = res; //　少了头像
           this.detailImg = res.detailImg;
+          this.starName = res.name;
 
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
@@ -329,9 +318,14 @@ export default {
         .catch((res) => {});
     },
     addBtn(val) {
-      // if(val>this.myInfo.vigourVal){
-      // 	return false
-      // }
+      if (val > this.myInfo.vigourVal) {
+        uni.showToast({
+          title: "您的热力值不足哦！",
+          icon: "none",
+          duration: 2000,
+        });
+        return false;
+      }
       this.inpValue = val;
     },
     // 获取我的信息
@@ -358,26 +352,25 @@ export default {
   border-radius: 0 !important;
 }
 .dabang-modal {
-   position: relative;
+  position: relative;
 
-    position: relative;
-    .close-btn {
-        text-align: center;
-        position: absolute;
-        color: #fff;
-        width: 40rpx;
-        margin: 0 auto;
-        height: 40rpx;
-        line-height: 40rpx;
-        margin: 0 auto;
-        border-radius: 20rpx;
-        border: 1px solid #fff;
-        right: 0;
-        top: 0;
-      
-      z-index: 10000;
-    }
-  
+  position: relative;
+  .close-btn {
+    text-align: center;
+    position: absolute;
+    color: #fff;
+    width: 40rpx;
+    margin: 0 auto;
+    height: 40rpx;
+    line-height: 40rpx;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    border: 1px solid #fff;
+    right: 0;
+    top: 0;
+
+    z-index: 10000;
+  }
 
   // 顶部背景图
   .detail-bg-img {

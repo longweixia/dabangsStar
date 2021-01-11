@@ -30,28 +30,28 @@ export default {
         {
           tips: "100%中热力值",
           image: "../../static/home/choujiang.png",
-          num: "4",
+     
           name: "抽奖",
           val: 500,
         },
         {
           tips: "签到获得20热力值",
           image: "../../static/home/choujiang.png",
-          num: "4",
+  
           name: "签到",
           val: 500,
         },
         {
           tips: "观看视频获得30热力值",
           image: "../../static/home/bofang.png",
-          num: "4",
+  
           name: "看视频",
           val: 500,
         },
         {
           tips: "分享获得30热力值",
           image: "../../static/home/share.png",
-          num: "4",
+
           name: "分享",
           val: 500,
         },
@@ -81,6 +81,54 @@ export default {
  
       
       }
+    },
+    // 签到
+    signiIn() {
+      let params = {
+        starId: this.starId,
+        type:1//任务类型 1-签到 2-抽奖 3-看视频 4-分享
+      }
+      this.$u
+        .post("/starDetail/getVigourVal",params)
+        .then((res) => {
+             uni.showToast({
+            title: "签到成功，获得20热力值",
+            icon:'none',
+            duration: 1000
+        
+        });   
+         this.$emit("getmyInfo")
+        })
+        .catch((res) => {
+            uni.showToast({
+            title: res.message,
+            icon:'none',
+            duration: 1000,
+      
+        });
+        });
+    },
+    // 获取热力值设置
+    getHitSettings() {
+      let params = {
+        starId: this.starId
+      }
+      this.$u
+        .get("/starDetail/selectHitSettings",params)
+        .then((res) => {
+          // 抽奖
+           this.prizeWrawList[0].tips= "100%中热力值"
+          // 签到
+           this.prizeWrawList[1].tips= `签到获得${res.data.vigourSignNum}热力值`
+        })
+        .catch((res) => {
+            uni.showToast({
+            title: res.message,
+            icon:'none',
+            duration: 1000,
+      
+        });
+        });
     },
     // 签到
     signiIn() {

@@ -16,8 +16,11 @@
         v-if="hasData"
         :rankType="rankType"
       ></MycenterRankingList>
-      <view v-if="!hasData" class="nodata">
+      <view v-if="!hasData&&isLogin" class="nodata">
         当前榜单暂无数据，您可以查看其它榜单
+      </view>
+      <view v-if="!hasData&&!isLogin" class="nodata">
+        请登录后查看
       </view>
     </view>
     <u-toast ref="uToast" />
@@ -34,7 +37,7 @@ export default {
   },
   data() {
     return {
-
+isLogin:false,// 未登录
       rankingList: [],
       hasData: true, // 是否有数据，默认有数据
       btnList: ["我的守护", "热力获取记录", "打榜记录"],
@@ -67,6 +70,7 @@ export default {
           pageSize: 20
         })
         .then(res => {
+          this.isLogin = true
           this.rankingList = res.list; //　少了头像
           // this.rankingList = [
           //   {"id":"1","name":"","avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg","hotNums":10},
@@ -82,7 +86,15 @@ export default {
           }
         })
          .catch((res) => {
-        //   this.$toLogin(res)
+
+            this.hasData = false;
+          // this.$toLogin(res)
+          if( res&&res.data.code ==401){
+            this.isLogin = false
+          }else{
+             this.isLogin = true
+          }
+         
   
         });
     },
@@ -124,7 +136,7 @@ export default {
           }
         })
         .catch((res) => {
-          this.$toLogin(res)
+          // this.$toLogin(res)
   
         });
     }

@@ -19,7 +19,7 @@
           lang="zh_CN"
           @getuserinfo="wxGetUserInfo"
         >
-          （微信）授权登录
+          授权登录
         </button>
         <!-- <button
 					class="bottom"
@@ -34,9 +34,9 @@
         <!-- <button class="bottom" type="primary" @click="getUserinfo">
           获取个人中心数据
         </button> -->
-        <!-- <button class="bottom" type="primary" @click="getToken">
+        <button class="bottom" type="primary" @click="getToken">
           （浏览器）登录
-        </button> -->
+        </button>
 
         <!-- <button class='bottom' type='primary' open-type="getPhoneNumber"  @getphonenumber="getPhoneNumber">
 			  授权登录
