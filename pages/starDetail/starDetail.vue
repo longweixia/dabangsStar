@@ -175,40 +175,40 @@ export default {
       detailImg: "", //顶部明星图
       // 当前明星数据
       listFourTh: [
-        {
-          icon: "皇冠",
-          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-          num: "4",
-          name: "邓伦",
-          val: 500,
-          id: 1,
-        },
+        // {
+        //   icon: "皇冠",
+        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        //   num: "4",
+        //   name: "邓伦",
+        //   val: 500,
+        //   id: 1,
+        // },
       ],
       // 周榜/月榜
       listWeek: [
-        {
-          icon: "皇冠",
-          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-          num: "4",
-          name: "邓伦",
-          val: 500,
-          id: 2,
-        },
-        {
-          icon: "皇冠",
-          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-          num: "4",
-          name: "邓伦",
-          val: 500,
-          id: 3,
-        },
-        {
-          icon: "皇冠",
-          image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-          num: "4",
-          name: "邓伦",
-          val: 500,
-        },
+        // {
+        //   icon: "皇冠",
+        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        //   num: "4",
+        //   name: "邓伦",
+        //   val: 500,
+        //   id: 2,
+        // },
+        // {
+        //   icon: "皇冠",
+        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        //   num: "4",
+        //   name: "邓伦",
+        //   val: 500,
+        //   id: 3,
+        // },
+        // {
+        //   icon: "皇冠",
+        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
+        //   num: "4",
+        //   name: "邓伦",
+        //   val: 500,
+        // },
       ],
       ids: null,
       StarGuardList: {}, //明星打榜弹窗
@@ -217,7 +217,7 @@ export default {
     };
   },
   onLoad(option) {
-    this.ids = Number(option.id);
+    this.ids =option.id;
     console.log(this.ids)
   },
   mounted() {
@@ -280,7 +280,7 @@ export default {
     routerFanRanking(type) {
       //0是周榜，1是月榜
       uni.navigateTo({
-        url: `/pages/starDetail/fanRanking?type=${type}&id=${this.ids}`,
+        url: `/pages/starDetail/fanRanking?type=${type}&id=${this.ids}&name=${this.starInfo.name}`,
       });
     },
     // 获取明星详情页明星信息

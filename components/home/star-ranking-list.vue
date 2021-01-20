@@ -75,11 +75,14 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-top: 20rpx;
-  border-bottom: 2px solid #ddd;
+  // margin-top: 20rpx;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 20rpx;
   padding-top: 20rpx;
   //   justify-content: space-around;
+}
+.list-row:last-child{
+  border: none;
 }
 .num-body {
   margin-right: 24rpx;
@@ -112,7 +115,7 @@ export default {
 //   position: relative;
 //   top: -10rpx;
    position: absolute;
-   right: 20rpx;
+   right: 40rpx;
   height: 46rpx;
   line-height: 46rpx;
   width: 110rpx;

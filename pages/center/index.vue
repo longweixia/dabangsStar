@@ -107,8 +107,12 @@ export default {
     };
   },
   mounted() {
-    this.getMyInfo();
+    
   },
+  // 返回上一页刷新
+onShow() {
+  this.getMyInfo();
+},
   methods: {
     changeBTn(index) {
       this.$emit("changebtn", index);

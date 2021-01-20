@@ -54,7 +54,7 @@
     <view class="home-tag">
       <rankingTabHasText
         v-if="sloganTextFlag"
-        :tagList="tagList"
+        :tagList="tagList" @getRankTypeIndex="getRankTypeIndex"
       ></rankingTabHasText>
       <rankingTabNo v-if="!sloganTextFlag"></rankingTabNo>
     </view>
@@ -71,7 +71,7 @@
           :key="index"
           :class="'guard-card' + index" 
         >
-          <view class="img-area img-area1" @click="routerStarDetail(item.starId)">
+          <view class="img-area img-area1" @click="routerStarDetail(item.id)">
             <view class="num">{{ item.rank }}</view>
 
             <img
@@ -88,8 +88,8 @@
             />
           </view>
 
-          <view class="name" @click="routerStarDetail(item.starId)">{{ item.starName }}</view>
-          <view class="val" @click="routerStarDetail(item.starId)">{{ item.totalVigourVal }}</view>
+          <view class="name" @click="routerStarDetail(item.id)">{{ item.starName }}</view>
+          <view class="val" @click="routerStarDetail(item.id)">{{ item.totalVigourVal }}</view>
           <view class="btn-area">
             <view class="btn" @click="dabang(item.starId)">打榜</view>
           </view>
@@ -104,7 +104,7 @@
           :key="index"
           :class="'guard-card' + index" style="z-index:10000"
         >
-          <view class="img-area" :class="'img-area' + index" style="z-index:10000" @click="routerStarDetail(item.starId)">
+          <view class="img-area" :class="'img-area' + index" style="z-index:10000" @click="routerStarDetail(item.id)">
             <view class="num">{{ item.rank }}</view>
            <!-- 第二名 -->
             <img
@@ -141,8 +141,8 @@
             />
           </view>
 
-          <view class="name" @click="routerStarDetail(item.starId)">{{ item.starName||'无' }}</view>
-          <view class="val" @click="routerStarDetail(item.starId)">{{ item.totalVigourVal }}</view>
+          <view class="name" @click="routerStarDetail(item.id)">{{ item.starName||'无' }}</view>
+          <view class="val" @click="routerStarDetail(item.id)">{{ item.totalVigourVal }}</view>
           <view class="btn-area" style="z-index:10000"  @click="dabang(item.starId)">
             <view class="btn" style="z-index:10000">打榜</view>
           </view>
@@ -151,17 +151,18 @@
     </view>
     <!-- 榜单前三以外 -->
     <view class="list-four-th">
-      <starRankingList :rankingList="rankingList"></starRankingList>
+      <starRankingList :rankingList="rankingList" style="background:#fff;padding-left:10rpx;padding-right:10rpx"></starRankingList>
     </view>
 
-    <view class="home-bottom">
+    <!-- <view class="home-bottom" >
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
-      <view class="my">
-        <view class="my-card" @click="routerToCenter">
-          <img class="my-img" src="../../static/home/my.png" />
-        </view>
+      
+    </view> -->
+    <view class="my">
+      
+          <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" />
+       
       </view>
-    </view>
     <u-toast ref="uToast" />
    
     <view v-if="showModal">
@@ -207,33 +208,7 @@ export default {
         //   name: "邓伦",
         // }
       ],
-      // 榜单tag 排名类型：0周榜；1月榜；2总榜
-      raningTypeList: [
-        {
-          type: "周榜",
-          text: "我",
-          rankType: 0,
-        },
-        {
-          type: "月榜",
-          text: "爱",
-          rankType: 1,
-        },
-        {
-          type: "粉丝榜",
-          text: "邓",
-          rankType: 2,
-        },
-        {
-          type: "月总榜",
-          text: "伦",
-          rankType: 3,
-        },
-        // {
-        // 	image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-        // 	title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
-        // }
-      ],
+
       // 榜单前三
       iconList: {
         icon3: "../../static/home/AnCrown3.png",
@@ -269,8 +244,8 @@ export default {
     this.$emit("footer", false);
     // 个人信息-标语
     this.getMyInfo();
-    // 明星排行榜
-    this.getRankList();
+    // 明星排行榜,默认查总榜
+    this.getRankList(2);
     // 轮播图
     this.carouselList();
     // 我的守护
@@ -300,13 +275,14 @@ export default {
         .get("/personalCenter/personalCenterInfo")
         .then((res) => {
           // 回显标语
-          if (res.slogan) {
+        
+          if (res.slogan&&res.openFlag) {
             this.sloganTextFlag = true; //有标语
             this.tagList.forEach((item, index) => {
               this.tagList[index].text = res.slogan[index];
             });
           } else {
-            this.sloganFlag = false; //有标语
+            this.sloganFlag = false; //无标语
           }
         })
         .catch((res) => {
@@ -324,31 +300,21 @@ export default {
         //   this.$toLogin(res);
         });
     },
+    // 点击周榜/月榜
+    getRankTypeIndex(data){
+      this.rankingList = []
+      this.getRankList(data)
+    },
     // 获取明星榜单--总榜
     // 0周榜；1月榜；2总榜
-    getRankList() {
+    getRankList(data) {
       this.$u
         .post("/home/weekRank/list", {
           pageNum: 1,
           pageSize: 20,
-          rankType: 2,
+          rankType: data,
         })
         .then((res) => {
-          // let res = {
-          //   list: [
-          //     {
-          //       weekTime: null,
-          //       month: null,
-          //       starName: "test0",
-          //       starAvatar:
-          //         "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1743749179,750499312&fm=26&gp=0.jpg",
-          //       starId: "1",
-          //       rank: 1,
-          //       totalVigourVal: "20",
-          //       sortType: 0,
-          //     }
-          //   ],
-          // };
           // 按原型图，第一名在第二的位置，所以要把第一名和第二名换一下
           // 处理排名前三的明星
           let list = res.list.slice(0, 3);
@@ -396,6 +362,7 @@ export default {
 
 <style lang="scss" scoped>
 .home-page {
+  background: #F5F8FF;
   // 轮播区
   .home-swiper {
     position: relative;
@@ -416,11 +383,13 @@ export default {
     position: relative;
     top: -100rpx;
     margin-left: 20rpx;
+    z-index: 10000;
     margin-right: 20rpx;
     background: linear-gradient(
       to bottom,
-      rgba(233, 233, 234, 0.36),
-      rgba(233, 233, 234, 0.16)
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 1)
     );
     // box-shadow: 0px 0px 6px rgba(177, 177, 177, 0.16);
     border-top-right-radius: 10rpx;
@@ -449,11 +418,12 @@ export default {
         width: 240rpx;
         height: 100rpx;
         margin-left: 20rpx;
-        height: 150rpx;
+        height: 130rpx;
         border-radius: 10rpx;
         background: #fff;
         margin-top: 24rpx;
-        box-shadow: 0 0 12px rgba(177, 177, 177, 0.16);
+        margin-bottom: 5rpx;
+        box-shadow: 0 0 12px rgba(105, 105, 105, 0.16);
         .guard-img {
           display: inline-block;
           margin-top: 25rpx;
@@ -675,31 +645,27 @@ export default {
     width: 100%;
     height: 100%;
   }
+
+}
   .my {
+    position: fixed;
     // background: #99a9bf;
     width: 100rpx;
     height: 100rpx;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 20rpx;
-    bottom: 150rpx;
+    // text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // position: absolute;
+    right: 10rpx;
+    bottom: 50rpx;
     font-size: 6px;
-    .my-card {
-      width: 100rpx;
-      height: 100rpx;
-      // padding: 10rpx;
-      // background: #fff;
-      // border-radius: 40rpx;
-      // border: 2px solid #ddd;
-      // color: #E34C4C;
+    z-index: 100000;
+   
       .my-img {
-        width: 100%;
-        height: 100%;
+        width: 100rpx;
+      height: 100rpx;
       }
-    }
+    
   }
-}
 </style>

@@ -14,7 +14,7 @@
       <MycenterRankingList
         :rankingList="rankingList"
         v-if="hasData"
-        :rankType="rankType"
+        :rankType="rankType" @getmyGuard="myGuard"
       ></MycenterRankingList>
       <view v-if="!hasData&&isLogin" class="nodata">
         当前榜单暂无数据，您可以查看其它榜单
@@ -61,6 +61,7 @@ isLogin:false,// 未登录
           this.selectVigourLog()
       }
     },
+   
     //我的守护
     myGuard(){
          this.rankingList = []

@@ -137,8 +137,8 @@ export default {
 						icon: 'none',
 						duration: 2000,
 					})
-
-					this.getMyInfo()
+					// 修改成功，返回上一页
+					wx.navigateBack()
 				})
 				.catch((res) => {
 					// this.$toLogin(res)

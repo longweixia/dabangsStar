@@ -38,10 +38,12 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
           flex-direction: row;
-  margin-top: 20rpx;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 20rpx;
   padding-top: 20rpx;
+}
+.list-row.data-v-4ac4053b:last-child {
+  border: none;
 }
 .num-body.data-v-4ac4053b {
   margin-right: 24rpx;
@@ -72,7 +74,7 @@
 }
 .btn.data-v-4ac4053b {
   position: absolute;
-  right: 20rpx;
+  right: 40rpx;
   height: 46rpx;
   line-height: 46rpx;
   width: 110rpx;

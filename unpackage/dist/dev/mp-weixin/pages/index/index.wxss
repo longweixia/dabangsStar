@@ -24,6 +24,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.home-page.data-v-57280228 {
+  background: #F5F8FF;
+}
 .home-page .home-swiper.data-v-57280228 {
   position: relative;
 }
@@ -41,9 +44,10 @@
   position: relative;
   top: -100rpx;
   margin-left: 20rpx;
+  z-index: 10000;
   margin-right: 20rpx;
-  background: -webkit-linear-gradient(top, rgba(233, 233, 234, 0.36), rgba(233, 233, 234, 0.16));
-  background: linear-gradient(to bottom, rgba(233, 233, 234, 0.36), rgba(233, 233, 234, 0.16));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6), white);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6), white);
   border-top-right-radius: 10rpx;
   padding-bottom: 20rpx;
 }
@@ -72,11 +76,12 @@
   width: 240rpx;
   height: 100rpx;
   margin-left: 20rpx;
-  height: 150rpx;
+  height: 130rpx;
   border-radius: 10rpx;
   background: #fff;
   margin-top: 24rpx;
-  box-shadow: 0 0 12px rgba(177, 177, 177, 0.16);
+  margin-bottom: 5rpx;
+  box-shadow: 0 0 12px rgba(105, 105, 105, 0.16);
 }
 .home-page .home-my-guard .guard-list .guard-card .guard-img.data-v-57280228 {
   display: inline-block;
@@ -300,30 +305,17 @@
   width: 100%;
   height: 100%;
 }
-.home-bottom .my.data-v-57280228 {
+.my.data-v-57280228 {
+  position: fixed;
   width: 100rpx;
   height: 100rpx;
-  text-align: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-  position: absolute;
-  right: 20rpx;
-  bottom: 150rpx;
+  right: 10rpx;
+  bottom: 50rpx;
   font-size: 6px;
+  z-index: 100000;
 }
-.home-bottom .my .my-card.data-v-57280228 {
+.my .my-img.data-v-57280228 {
   width: 100rpx;
   height: 100rpx;
-}
-.home-bottom .my .my-card .my-img.data-v-57280228 {
-  width: 100%;
-  height: 100%;
 }
 

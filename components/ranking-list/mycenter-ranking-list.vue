@@ -31,7 +31,7 @@
           <view class="btn btn1" @click="dabang(item.id)">
             打榜
           </view>
-          <view class="btn btn2">
+          <view class="btn btn2" @click="removeMyGuard(item.id)">
             退出守护
           </view>
         </view>
@@ -128,9 +128,29 @@ export default {
     return {
       myData:{},
        showModal: false,//打榜弹窗
+       starId:""
     };
   },
    methods: {
+    //  推出守护
+     removeMyGuard(id){
+        this.$u
+        .get("/personalCenter/removeMyGuard", {
+          starId: id,
+        })
+        .then((res) => {
+            uni.showToast({
+            title: "退出成功",
+            icon: "none",
+            duration: 2000,
+          });
+          this.$emit("getmyGuard");
+          // this.showInfo =true
+          // this.StarGuardList = res;
+          
+        })
+        .catch((res) => {});
+     },
          closeDabang(){
 
       this.showModal = false

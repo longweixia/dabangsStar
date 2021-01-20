@@ -24,18 +24,29 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.btns.data-v-8237c074 {
+.fan-ranking-area {
+  background: #F5F8FF;
+  height: 100vh;
+}
+.fan-ranking-area .list {
+  background: #fff;
+  margin: 20rpx;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  padding: 20rpx;
+}
+.fan-ranking-area .btns {
   width: 100px;
   height: 30px;
   background: #000;
   border-radius: 15px;
 }
-.nav-top.data-v-8237c074 {
+.fan-ranking-area .nav-top {
   text-align: center;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
-.nodata.data-v-8237c074 {
+.fan-ranking-area .nodata {
   text-align: center;
   margin-top: 40rpx;
 }

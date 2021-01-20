@@ -6,7 +6,7 @@
         span="3"
         class="guard-card"
         v-for="(item, index) in raningTypeList"
-        :key="index" @click="routerRangking(item.rankType)"
+        :key="index" @click="routerRangking(item.rankType,index)"
       >
         <view class="card-content">
           <view class="guard-type">{{ item.type }}</view>
@@ -56,7 +56,12 @@ export default {
     };
   },
   methods: {
-    routerRangking(rankType) {
+    routerRangking(rankType,index) {
+        //  点击周榜和月榜
+       if(index<2){
+         this.$emit("getRankTypeIndex",index)
+         return false
+       }
       uni.navigateTo({
         url: `/pages/index/rangkingList?type=${rankType}`
       });
