@@ -45,6 +45,7 @@
   top: -100rpx;
   margin-left: 20rpx;
   z-index: 10000;
+  min-height: 100rpx;
   margin-right: 20rpx;
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6), white);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6), white);

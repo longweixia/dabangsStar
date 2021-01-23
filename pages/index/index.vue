@@ -22,7 +22,6 @@
 
     <!--       
     <view class="home-search">
-
       <u-search shape="round" :clearabled="true" placeholder="搜索爱豆" action-text=" "></u-search>
       <view @click="routerSearch">搜索</view>
     </view> -->
@@ -149,6 +148,7 @@
         </view>
       </view>
     </view>
+    <view @click="routerTExt" style="height:100px;width:100px"> 去测试数据</view>
     <!-- 榜单前三以外 -->
     <view class="list-four-th">
       <starRankingList :rankingList="rankingList" style="background:#fff;padding-left:10rpx;padding-right:10rpx"></starRankingList>
@@ -183,7 +183,6 @@ import rankingTabNo from "../../components/home/ranking-tab-no.vue";
 import rankingTabHasText from "../../components/home/ranking-tab-hasText.vue";
 import starRankingList from "../../components/home/star-ranking-list.vue";
 import DabangModal from "./../../components/dabangModal/index.vue";
-
 export default {
   name: "home",
   components: {
@@ -191,10 +190,10 @@ export default {
     rankingTabHasText,
     starRankingList,
     DabangModal,
-
   },
   data() {
     return {
+        sloganOpen:false,
       starId:'',//明星id
       showModal: false,//打榜弹窗
       // 轮播
@@ -208,7 +207,6 @@ export default {
         //   name: "邓伦",
         // }
       ],
-
       // 榜单前三
       iconList: {
         icon3: "../../static/home/AnCrown3.png",
@@ -216,11 +214,9 @@ export default {
         icon2: "../../static/home/AnCrown1.png",
       },
       topThreeList: [
-
       ],
       // 榜单前三以外
       rankingList: [
-
       ],
       tagList: [
         {
@@ -239,17 +235,19 @@ export default {
       sloganTextFlag: false, //是否在个人中心设置明星tag文字
     };
   },
-
   mounted() {
     this.$emit("footer", false);
-    // 个人信息-标语
-    this.getMyInfo();
+   
     // 明星排行榜,默认查总榜
     this.getRankList(2);
     // 轮播图
     this.carouselList();
     // 我的守护
     this.selectMyGuard();
+  },
+  onShow(){
+ // 个人信息-标语
+    this.getMyInfo();
   },
   methods: {
      getToken() {
@@ -260,7 +258,6 @@ export default {
     },
    
     closeDabang(){
-
       this.showModal = false
     },
     // 打榜弹窗
@@ -275,14 +272,16 @@ export default {
         .get("/personalCenter/personalCenterInfo")
         .then((res) => {
           // 回显标语
-        
-          if (res.slogan&&res.openFlag) {
+        // 如果有标语且开启了就显示带icon的tag
+          if (res.slogan&&res.sloganOpen) {
+              this.sloganOpen = true
             this.sloganTextFlag = true; //有标语
             this.tagList.forEach((item, index) => {
               this.tagList[index].text = res.slogan[index];
             });
           } else {
-            this.sloganFlag = false; //无标语
+            //   否则显示原有的icon
+            this.sloganOpen = false; //无标语
           }
         })
         .catch((res) => {
@@ -356,6 +355,11 @@ export default {
         url: `/pages/center/index`,
       });
     },
+    routerTExt() {
+      uni.navigateTo({
+        url: `/pages/index/test`,
+      });
+    },
   },
 };
 </script>
@@ -384,6 +388,7 @@ export default {
     top: -100rpx;
     margin-left: 20rpx;
     z-index: 10000;
+    min-height: 100rpx;
     margin-right: 20rpx;
     background: linear-gradient(
       to bottom,
@@ -473,7 +478,6 @@ export default {
     border-top-right-radius: 20rpx;
     border-top-left-radius: 20rpx;
     z-index: -2;
-
     .card-time {
       background: #feecca;
       width: 296rpx;
@@ -481,7 +485,6 @@ export default {
       line-height: 42rpx;
       text-align: center;
       margin-bottom: 40rpx;
-
       border-radius: 21rpx;
       margin-left: 26rpx;
       .time-text {
@@ -609,7 +612,6 @@ export default {
       top: -50rpx;
     }
   }
-
   // 榜单前三以外
   .list-four-th {
     // margin: 20rpx;
@@ -627,15 +629,12 @@ export default {
 .bg-purple {
   background: #d3dce6;
 }
-
 .bg-purple-light {
   background: #e5e9f2;
 }
-
 .bg-purple-dark {
   background: #99a9bf;
 }
-
 .home-bottom {
   position: relative;
   margin-left: 20rpx;
@@ -645,7 +644,6 @@ export default {
     width: 100%;
     height: 100%;
   }
-
 }
   .my {
     position: fixed;

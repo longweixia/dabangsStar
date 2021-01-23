@@ -2,12 +2,14 @@
   "pages": [
     "pages/index/kaiping",
     "pages/index/index",
+    "pages/index/test",
     "pages/index/rangkingList",
     "pages/search/search",
     "pages/starDetail/starDetail",
     "pages/starDetail/choujiang",
     "pages/starDetail/fanRanking",
     "pages/starDetail/resourcesRanking",
+    "pages/center/LlistAwards",
     "pages/center/center",
     "pages/center/index",
     "pages/center/edit",
@@ -25,6 +27,5 @@
     "transparentTitle": "none"
   },
   "secret": "bfa8089fdfbb2addeb5de83af974561f",
-  "usingComponents": {},
-  "sitemapLocation": "sitemap84.json"
+  "usingComponents": {}
 }

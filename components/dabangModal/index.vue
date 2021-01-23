@@ -15,6 +15,12 @@
       @loopDanmu="loopDanmu"
       style="bottom: 50rpx; position: relative"
     ></Binglyric>
+    <Test
+      ref="lffBarrage"
+      :info="dabangInfo"
+      @loopDanmu="loopDanmu"
+      style="bottom: 50rpx; position: relative"
+    ></Test>
 
     <view class="slot-content">
       <view class="title-modal">
@@ -79,6 +85,7 @@
 <script>
 // import RankingTabSlogan from '../../components/home/ranking-tab-slogan.vue'
 import Binglyric from "./../bing-lyric/bing-lyric.vue";
+import Test from "./test.vue";
 import Dianzan from "./dianzan.vue";
 
 export default {
@@ -87,6 +94,7 @@ export default {
     // 00,
     Binglyric,
     Dianzan,
+    Test
   },
   props: ["showModal", "rankType", "starId"],
   watch: {

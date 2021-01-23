@@ -1,7 +1,7 @@
 const install = (Vue, vm) => {
     // 此为自定义配置参数，具体参数见上方说明
     Vue.prototype.$u.http.setConfig({
-        // baseUrl: 'https://192.168.20.4:18001', //本地
+        // baseUrl: 'http://192.168.20.4:18001', //本地
         // baseUrl: 'https://123.207.120.31:18001', //线上
         baseUrl: 'http://123.207.120.31:18001', //线上
         // loadingText: '努力加载中~',

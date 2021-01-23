@@ -2,10 +2,10 @@
   <!-- 首页排行榜，第4名开始 -->
   <view class="list-th">
     <view class="list-row" v-for="(item, index) in rankingList" :key="index">
-      <view class="num-body" @click="routerStarDetail(item.starId)">
+      <view class="num-body" @click="routerStarDetail(item.id)">
         <view class="num">{{ index+4 }}</view>
       </view>
-      <view class="img-body" @click="routerStarDetail(item.starId)">
+      <view class="img-body" @click="routerStarDetail(item.id)">
         <u-image
           class="img"
           width="80rpx"
@@ -14,13 +14,13 @@
           shape="circle"
         ></u-image>
       </view>
-      <view class="name" @click="routerStarDetail(item.starId)">
+      <view class="name" @click="routerStarDetail(item.id)">
         {{ item.starName }}
       </view>
-      <view class="val" @click="routerStarDetail(item.starId)">
+      <view class="val" @click="routerStarDetail(item.id)">
         {{ item.totalVigourVal }}
       </view>
-      <view class="btn"  @click="dabang(item.starId)">
+      <view class="btn"  @click="dabang(item.id)">
         打榜
       </view>
     </view>
@@ -32,13 +32,10 @@
 
 <script>
 import DabangModal from "./../../components/dabangModal/index.vue";
-
 export default {
   props: ["rankingList"],
     components: {
-
     DabangModal,
-
   },
   data() {
     return {
@@ -54,7 +51,6 @@ export default {
       this.showModal = true
     },
        closeDabang(){
-
       this.showModal = false
     },
         routerStarDetail(id) {

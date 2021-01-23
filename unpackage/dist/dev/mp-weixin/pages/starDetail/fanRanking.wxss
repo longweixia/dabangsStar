@@ -48,6 +48,5 @@
 }
 .fan-ranking-area .nodata {
   text-align: center;
-  margin-top: 40rpx;
 }
 

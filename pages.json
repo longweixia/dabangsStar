@@ -18,6 +18,13 @@
                 "navigationBarTitleText": "打榜小程序"
             }
         },
+        {
+            "path": "pages/index/test",
+            "name":"test",
+            "style": {
+                "navigationBarTitleText": "测试消息"
+            }
+        },
        
       
         {
@@ -54,6 +61,12 @@
             "path": "pages/starDetail/resourcesRanking",
             "style": {
                 "navigationBarTitleText": "资源榜"
+            }
+        },
+        {
+            "path": "pages/center/LlistAwards",
+            "style": {
+                "navigationBarTitleText": "榜单奖励"
             }
         },
         {

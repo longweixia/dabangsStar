@@ -45,7 +45,7 @@
             <img class="btn-img" src="../../static/home/kefu.png" />
             <button open-type="contact">联系客服</button>
           </view>
-          <view class="btn btn2">
+          <view class="btn btn2" @click="routerPath('LlistAwards')" v-if="awardsList.length>1"> 
             <img class="btn-img" src="../../static/home/jiang.png" />
             榜单有奖
           </view>
@@ -71,7 +71,6 @@
 <script>
 import List from "../../components/center/list.vue";
 import MyTitle from "./../myTitle.vue";
-
 export default {
   name: "BtnNav",
   components: {
@@ -81,6 +80,7 @@ export default {
   props: ["btnList", "rankType"],
   data() {
     return {
+        awardsList:[],
         background: {
 					backgroundColor: '#f64d71',
 					
@@ -107,13 +107,25 @@ export default {
     };
   },
   mounted() {
-    
+    this.getAwards()
   },
   // 返回上一页刷新
 onShow() {
   this.getMyInfo();
+  
 },
   methods: {
+      //获取周榜月榜奖励
+        getAwards() {
+			this.$u
+				.get('/personalCenter/listAward')
+				.then((res) => {
+          
+                    this.awardsList = res
+                    
+				})
+				.catch((res) => {})
+		},
     changeBTn(index) {
       this.$emit("changebtn", index);
     },
@@ -134,12 +146,19 @@ onShow() {
         uni.navigateTo({
           url: "/pages/center/edit",
         });
-      }else{
+      }else if(name=='LlistAwards'){
+        uni.navigateTo({
+          url: "/pages/center/LlistAwards",
+        });
+      }
+      else{
         uni.navigateTo({
           url: "/pages/center/slogan",
         });
+      
       }
     },
+  
     goLogin(){
        uni.navigateTo({
           url: "/pages/center/center",
@@ -152,13 +171,11 @@ onShow() {
 <style lang="scss" scoped>
 .my-center-content {
    
-
 .content{
      position: relative;
     top: -10px;
   .top {
     position: relative;
-
     .bg-img {
       position: absolute;
       z-index: -1;
@@ -168,7 +185,6 @@ onShow() {
     .list-top {
       margin: 20rpx;
       margin-top: 0;
-
       //   background-image:url()
       background: #fff;
       display: flex;
@@ -216,7 +232,6 @@ onShow() {
         // margin:0 auto;
         // position: absolute;
         // right: 10px;
-
         .btn {
           text-align: center;
           //   position: absolute;

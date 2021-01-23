@@ -70,10 +70,10 @@
                   width="60rpx"
                   height="60rpx"
                   :src="item.avatarUrl"
-                  shape="circle"
+                  shape="circle" v-if="index<3"
                 >
                 </u-image>
-                <view class="num">{{ index + 1 }}</view>
+                <view class="num" v-if="index<3">{{ index + 1 }}</view>
               </view>
               <view class="more" @click="routerFanRanking(0)">
                 <img src="../../static/home/more.png" />
@@ -90,10 +90,10 @@
                   width="60rpx"
                   height="60rpx"
                   :src="item.avatarUrl"
-                  shape="circle"
+                  shape="circle" v-if="index<3"
                 >
                 </u-image>
-                <view class="num">{{ index + 1 }}</view>
+                <view class="num" v-if="index<3">{{ index + 1 }}</view>
               </view>
               <view class="more" @click="routerFanRanking(1)">
                 <img src="../../static/home/more.png" />
@@ -106,16 +106,17 @@
     <!-- 抽奖互动 -->
     <prizePraw :starId="ids" @getmyInfo="selectStarInfo"></prizePraw>
     <!-- 资源 -->
-    <resources :ids="ids" style="margin-top: 20rpx"></resources>
-    <view class="home-bottom">
+    <resources :ids="ids" style="margin-top: 20rpx" :starName="starInfo.name"></resources>
+    <!-- <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       <view class="my">
         <view class="my-card" @click="routerToCenter">
           <img class="my-img" src="../../static/home/my.png" />
-          <!-- <view>我的</view> -->
+          <view>我的</view>
         </view>
       </view>
-    </view>
+    </view> -->
+      
     <u-toast ref="uToast" />
     <view v-if="showModal">
       <DabangModal
@@ -124,6 +125,11 @@
         @closeDabang="closeDabang"
       ></DabangModal>
     </view>
+      <view class="my">
+      
+          <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" />
+       
+      </view>
   </view>
 </template>
 
@@ -230,7 +236,6 @@ export default {
     // 粉丝周榜
     this.getrankList(1);
   },
-
   methods: {
       // 分享接口
     shareinfo() {
@@ -371,7 +376,6 @@ export default {
     border-bottom-right-radius: 20rpx;
   }
 }
-
 // 当前明星卡片
 .star-card {
   margin-top: -60rpx;
@@ -416,7 +420,6 @@ export default {
       .btn-group {
         display: inline-block;
         // width: 180rpx;
-
         .btn {
           text-align: center;
           height: 54rpx;
@@ -445,7 +448,6 @@ export default {
         }
       }
     }
-
     //中间按钮
     .center-btn {
       margin-top: 30rpx;
@@ -491,6 +493,7 @@ export default {
       justify-content: space-between;
       padding-bottom: 20rpx;
       padding-top: 20rpx;
+      margin-right: -60rpx;
       .star-ranking {
         width: 50%;
         text-align: left;
@@ -543,43 +546,6 @@ export default {
     // }
   }
 }
-.home-bottom {
-  position: relative;
-  height: 132rpx;
-  top: 100rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  .home-bottom-img {
-    width: 100%;
-    height: 100%;
-  }
-  .my {
-    // background: #99a9bf;
-    width: 100rpx;
-    height: 100rpx;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 20rpx;
-    bottom: 150rpx;
-    font-size: 6px;
-    .my-card {
-      width: 100rpx;
-      height: 100rpx;
-      // padding: 10rpx;
-      // background: #fff;
-      // border-radius: 40rpx;
-      // border: 2px solid #ddd;
-      // color: #E34C4C;
-      .my-img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-}
 // 打榜弹窗
 .toast-db {
   position: absolute;
@@ -616,4 +582,37 @@ export default {
   font-size: 17px;
   top: 60rpx;
 }
+.home-bottom {
+  position: relative;
+  height: 132rpx;
+  top: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  .home-bottom-img {
+    width: 100%;
+    height: 100%;
+  }
+   
+}
+.my {
+    position: fixed;
+    // background: #99a9bf;
+    width: 100rpx;
+    height: 100rpx;
+    // text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // position: absolute;
+    right: 10rpx;
+    bottom: 50rpx;
+    font-size: 6px;
+    z-index: 100000;
+   
+      .my-img {
+        width: 100rpx;
+       height: 100rpx;
+      }
+    
+  }
 </style>

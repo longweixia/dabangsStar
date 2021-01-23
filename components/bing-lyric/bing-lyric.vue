@@ -40,12 +40,12 @@ export default {
     //停留时间
     wait: {
       type: Number,
-      default: 20000,
+      default: 2000,
     },
     //顶部距离px
     top: {
       type: Number,
-      default: 350,
+      default: 200,
     },
     //左边距离px
     left: {
@@ -96,7 +96,7 @@ export default {
       this.animationData = uni
         .createAnimation({
           duration: this.duration / 2,
-          timingFunction: "ease",
+          timingFunction: "linear",
         })
         .top(this.top - this.radius)
         .opacity(0.9)

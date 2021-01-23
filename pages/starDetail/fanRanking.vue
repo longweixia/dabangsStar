@@ -44,52 +44,8 @@ export default {
           backgroundColor: '#F5F8FF'
       },
       hasData: true, // 是否有数据，默认有数据
-      rankingList1: [
-        // {
-        //   icon: "皇冠",
-        //   avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        //   num: "4",
-        //   nickName: "邓伦",
-        //   vigourVal: 500
-        // },
-        // {
-        //   icon: "皇冠",
-        //   avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        //   num: "4",
-        //   nickName: "邓伦",
-        //   vigourVal: 500
-        // },
-        // {
-        //   icon: "皇冠",
-        //   avatarUrl: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        //   num: "4",
-        //   nickName: "邓伦",
-        //   vigourVal: 500
-        // }
-      ],
-      rankingList2: [
-        // {
-        //   icon: "皇冠",
-        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        //   num: "1",
-        //   name: "邓伦月榜",
-        //   val: "+234234热力值"
-        // },
-        // {
-        //   icon: "皇冠",
-        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        //   num: "2",
-        //   name: "周超",
-        //   val: "+234234热力值"
-        // },
-        // {
-        //   icon: "皇冠",
-        //   image: "https://cdn.uviewui.com/uview/swiper/3.jpg",
-        //   num: "3",
-        //   name: "黄晓明",
-        //   val: 100
-        // }
-      ],
+     
+     
       btnList: ["粉丝周榜", "粉丝月榜", "粉丝总榜"],
       rankType: null, //显示周榜还是月榜,0是周榜，1是月榜
       titles:"",//标题
@@ -107,11 +63,7 @@ export default {
     changebtn(index) {
       console.log(index);
       this.rankType = index;
-      // if (index === 0) {
-      // this.rankingList = this.rankingList1;
-      // } else if (index === 1) {
-      //   this.rankingList = this.rankingList2;
-      // }
+    
       this.$u
         .post("/starDetail/selectFensRank", {
           id: this.id,
@@ -140,7 +92,6 @@ export default {
 .fan-ranking-area{
   background: #F5F8FF;
   height: 100vh;
-
   .list{
     background: #fff;
     margin: 20rpx;
@@ -148,7 +99,6 @@ export default {
     padding: 10rpx;
     padding: 20rpx;
   }
-
 .btns {
   width: 100px;
   height: 30px;
@@ -170,7 +120,7 @@ export default {
 }
 .nodata {
   text-align: center;
-  margin-top: 40rpx;
+//   margin-top: 40rpx;
 }
 }
 </style>

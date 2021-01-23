@@ -5,6 +5,7 @@
     "u-row": "/node-modules/uview-ui/components/u-row/u-row",
     "u-col": "/node-modules/uview-ui/components/u-col/u-col",
     "binglyric": "/components/bing-lyric/bing-lyric",
-    "dianzan": "/components/dabangModal/dianzan"
+    "dianzan": "/components/dabangModal/dianzan",
+    "test": "/components/dabangModal/test"
   }
 }

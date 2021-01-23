@@ -1,7 +1,7 @@
 <template>
 <!-- 榜单-周榜，月榜，粉丝榜，总榜 -->
-  <view class="fan-ranking">
-              <u-navbar title="榜单"></u-navbar>
+  <view class="fan-ranking-area">
+              <u-navbar title="榜单"  :background="background" title-size='34' :title-bold="true"></u-navbar>
     <!-- 导航栏 -->
 
     <view class="nav-top">
@@ -9,7 +9,7 @@
     </view>
     <!-- 排行榜 -->
     <view class="list">
-        <RankingList v-if="hasData" :rankingList="rankingList" listPage="home"></RankingList>
+        <RankingList v-if="hasData" :rankingList="rankingList" :listPage="listPage"></RankingList>
         <view v-if="!hasData" class="nodata">
           当前榜单暂无数据，您可以查看其它榜单
         </view>
@@ -30,6 +30,9 @@ export default {
     return {
       hasData: true,// 是否有数据，默认有数据
       rankingList: [],
+        background: {
+          backgroundColor: '#F5F8FF'
+      },
       rankingList1: [
         {
           icon: "皇冠",
@@ -94,12 +97,40 @@ export default {
     this.changebtn(this.rankType);
   },
   methods: {
-
     changebtn(index) {
       console.log(index);
       this.rankType = index
-
-       this.$u.post('/home/weekRank/list',{
+    //   粉丝榜调用新接口
+      if(index===3){
+  
+          this.listPage = "starDetail"
+            this.$u
+        .post("/home/selectHomeFensRank", {
+          pageNum: 1,
+          pageSize: 10
+        })
+        .then(res => {
+        //   this.rankingList = res.list; //　少了头像
+        //   if (res.list && res.list.length > 0) {
+        //     this.hasData = true;
+        //   } else {
+        //     this.hasData = false;
+        //   }
+         this.rankingList = res.list;  //　少了头像
+              if(res.list&&res.list.length>0){
+                this.hasData = true
+              }else{
+                this.hasData = false
+              }
+        })
+         .catch((res) => {
+        //   this.$toLogin(res)
+        this.rankingList = []
+  
+        });
+      }else{
+            this.listPage = "home"
+          this.$u.post('/home/weekRank/list',{
          "pageNum": 1,
          "pageSize": 20,
           "rankType": index
@@ -112,14 +143,27 @@ export default {
               }
         }).catch((res) => {
         //   this.$toLogin(res)
+         this.rankingList = []
   
         });
+      }
+       
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.fan-ranking-area{
+  background: #F5F8FF;
+  height: 100vh;
+  .list{
+    background: #fff;
+    margin: 20rpx;
+    border-radius: 10rpx;
+    padding: 10rpx;
+    padding: 20rpx;
+  }
 .btns {
   width: 100px;
   height: 30px;
@@ -127,15 +171,21 @@ export default {
   border-radius: 15px;
 }
 .flex-area {
-
+  //   display: flex;
+  //   align-items: center;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   padding-bottom: 20rpx;
+  //   padding-top: 20rpx;
 }
 .nav-top {
   text-align: center;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
-.nodata{
-text-align:center;
-margin-top:40rpx
+.nodata {
+  text-align: center;
+//   margin-top: 20rpx;
+}
 }
 </style>
