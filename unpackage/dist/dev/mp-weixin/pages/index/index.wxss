@@ -24,8 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.data-v-57280228 .u-countdown-item {
+  background: none !important;
+}
 .home-page.data-v-57280228 {
-  background: #F5F8FF;
+  background: #f5f8ff;
 }
 .home-page .home-swiper.data-v-57280228 {
   position: relative;
@@ -131,7 +134,7 @@
 }
 .home-page .list-top-three .card-time.data-v-57280228 {
   background: #feecca;
-  width: 296rpx;
+  width: 350rpx;
   height: 42rpx;
   line-height: 42rpx;
   text-align: center;
@@ -308,15 +311,19 @@
 }
 .my.data-v-57280228 {
   position: fixed;
-  width: 100rpx;
-  height: 100rpx;
-  right: 10rpx;
+  width: 40px;
+  height: 40px;
+  right: 20rpx;
   bottom: 50rpx;
   font-size: 6px;
   z-index: 100000;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+  text-align: center;
 }
-.my .my-img.data-v-57280228 {
-  width: 100rpx;
-  height: 100rpx;
+.my .my-text.data-v-57280228 {
+  color: #e34c4c;
+  font-size: 12px;
+  margin-top: -2px;
 }
 

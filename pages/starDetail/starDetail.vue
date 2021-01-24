@@ -3,14 +3,14 @@
     <view class="detail-bg-img">
       <img class="img" :src="detailImg" />
       <!-- 打榜弹窗 -->
-      <view class="toast-db">
+      <!-- <view class="toast-db">
         <img class="imgs" :src="StarGuardList.avatarUrl" />
         <view class="text">
           {{ StarGuardList.nickName }}打榜<text class="red-num">
             {{ StarGuardList.vigourVal }}</text
           >热力值</view
         >
-      </view>
+      </view> -->
       <view class="detail-title"> 为爱豆加油 </view>
     </view>
 
@@ -106,7 +106,7 @@
     <!-- 抽奖互动 -->
     <prizePraw :starId="ids" @getmyInfo="selectStarInfo"></prizePraw>
     <!-- 资源 -->
-    <resources :ids="ids" style="margin-top: 20rpx" :starName="starInfo.name"></resources>
+    <resources :ids="ids" style="margin-top: 20rpx" :starName="starName" @getstarName="selectStarInfo"></resources>
     <!-- <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       <view class="my">
@@ -125,11 +125,14 @@
         @closeDabang="closeDabang"
       ></DabangModal>
     </view>
-      <view class="my">
-      
-          <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" />
-       
-      </view>
+      <view class="my" @click="routerToCenter">
+    
+        <u-icon name="account-fill" color="#E34C4C" size="40"></u-icon>
+        <view class="my-text">我的</view>
+     
+
+      <!-- <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" /> -->
+    </view>
   </view>
 </template>
 
@@ -151,10 +154,9 @@ export default {
     return {
       title: "打榜小程序", // 分享名称
       path: "pages/index/index", // 这里写你这个页面的路径
-      imageUrl:
-        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg", //这个是显示的图片，不写就默认当前页面的截图
+      imageUrl:"./shareWechart.png", //这个是显示的图片，不写就默认当前页面的截图
       // success: function (shareTickets) {
-      //   console.log(shareTickets + "成功");
+    
       //   uni.showToast({
       //     title: `恭喜你，抽中`,
       //     icon: "none",
@@ -164,7 +166,7 @@ export default {
       //   // 转发成功
       // },
       // fail: function (res) {
-      //   console.log(res + "失败");
+  
       //   // 转发失败
       //   alert(1);
       // },
@@ -176,6 +178,7 @@ export default {
   },
   data() {
     return {
+      starName:"",
       showModal: false,
       starInfo: {}, // 明星详情数据
       detailImg: "", //顶部明星图
@@ -224,7 +227,17 @@ export default {
   },
   onLoad(option) {
     this.ids =option.id;
-    console.log(this.ids)
+
+  },
+  watch:{
+    starInfo: {
+      handler(newVal, oldVal) {
+        this.starName = newVal.name;
+        //  this.donghua();
+      },
+      immediate: true,
+      deep: true,
+    }
   },
   mounted() {
     // 明星详情
@@ -392,11 +405,11 @@ export default {
   }
   //   明星信息
   .card--content {
-    width: 600rpx;
+    width: calc(100% - 80rpx);
     margin-left: 20rpx;
     margin-right: 20rpx;
-    height: 60rpx;
-    line-height: 60rpx;
+    // height: 60rpx;
+    // line-height: 60rpx;
     position: absolute;
     top: 20rpx;
     z-index: 10;
@@ -425,7 +438,7 @@ export default {
           height: 54rpx;
           line-height: 54rpx;
           //   width: 100%;
-          padding: 0 10rpx;
+          padding: 0 20rpx;
           border-radius: 27rpx;
           text-align: center;
           background: linear-gradient(to right, #f83a3a, #f7c18b);
@@ -595,24 +608,21 @@ export default {
    
 }
 .my {
-    position: fixed;
-    // background: #99a9bf;
-    width: 100rpx;
-    height: 100rpx;
-    // text-align: center;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // position: absolute;
-    right: 10rpx;
-    bottom: 50rpx;
-    font-size: 6px;
-    z-index: 100000;
-   
-      .my-img {
-        width: 100rpx;
-       height: 100rpx;
-      }
-    
-  }
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 20rpx;
+  bottom: 50rpx;
+  font-size: 6px;
+  z-index: 100000;
+  border-radius: 20px;
+  
+box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+  text-align: center;
+    .my-text{
+      color:#E34C4C;
+      font-size: 12px;
+      margin-top:-2px;
+    }
+}
 </style>

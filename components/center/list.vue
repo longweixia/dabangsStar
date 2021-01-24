@@ -50,7 +50,7 @@ isLogin:false,// 未登录
   },
   methods: {
     changebtn(index) {
-      console.log(index);
+ 
       this.rankType = index;
       if(index===0){
           this.myGuard()

@@ -95,7 +95,7 @@
 				if (index == 8) {
 					// 点击抽奖之后知道获奖位置，修改父组件中lottery_draw_param的值
 					this.$emit('get_winingIndex', function(res){
-						console.log(res);
+				
 						let lottery_draw_param=res;
 						let win = new LotteryDraw({
 								domData: that.grid_info,
@@ -106,7 +106,7 @@
 					
 								if (lottery_draw_param.winingIndex == index && lottery_draw_param.totalCount == count) {
 									that.$emit('luck_draw_finish', that.grid_info[index])
-									// console.log('抽到了')
+									
 								}
 							}
 						);

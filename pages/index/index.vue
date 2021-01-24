@@ -33,17 +33,21 @@
           class="guard-card"
           v-for="(item, index) in myGuardList"
           :key="index"
-          
         >
           <u-image
             class="guard-img"
             width="80rpx"
             height="80rpx"
             :src="item.avatar"
-            shape="circle" @click="routerStarDetail(item.id)"
+            shape="circle"
+            @click="routerStarDetail(item.id, item.name)"
           ></u-image>
           <view class="guard-right">
-            <view class="guard-name" @click="routerStarDetail(item.id)">{{ item.name }}</view>
+            <view
+              class="guard-name"
+              @click="routerStarDetail(item.id, item.name)"
+              >{{ item.name }}</view
+            >
             <view class="guard-btn" @click="dabang(item.id)">打榜</view>
           </view>
         </view>
@@ -53,14 +57,27 @@
     <view class="home-tag">
       <rankingTabHasText
         v-if="sloganTextFlag"
-        :tagList="tagList" @getRankTypeIndex="getRankTypeIndex"
+        :tagList="tagList"
+        @getRankTypeIndex="getRankTypeIndex"
       ></rankingTabHasText>
       <rankingTabNo v-if="!sloganTextFlag"></rankingTabNo>
     </view>
     <!-- 榜单前三 -->
-    <view class="list-top-three" style="z-index:10000">
+    <view class="list-top-three" style="z-index: 10000">
       <view class="card-time">
-        <view class="time-text"> 截至：10天9小时20分21秒 </view>
+        <view class="time-text">
+          截至：
+          <u-count-down
+            color="#e34c4c"
+            border-color="#909399"
+            :show-days="true"
+            :timestamp="timesecond"
+            separator="zh"
+            separator-size="14"
+            font-size="14"
+            separator-color="#606266"
+          ></u-count-down>
+        </view>
       </view>
       <!-- 只有一个明星数据 -->
       <view class="card-area card-area1" v-if="topThreeList.length == 1">
@@ -68,9 +85,12 @@
           class="guard-card"
           v-for="(item, index) in topThreeList"
           :key="index"
-          :class="'guard-card' + index" 
+          :class="'guard-card' + index"
         >
-          <view class="img-area img-area1" @click="routerStarDetail(item.id)">
+          <view
+            class="img-area img-area1"
+            @click="routerStarDetail(item.id, item.name)"
+          >
             <view class="num">{{ item.rank }}</view>
 
             <img
@@ -83,29 +103,44 @@
             <img
               class="img-head"
               :class="'img-head' + index"
-              :src="item.starAvatar" style="border: 1px solid #ddd;"
+              :src="item.starAvatar"
+              style="border: 1px solid #ddd"
             />
           </view>
 
-          <view class="name" @click="routerStarDetail(item.id)">{{ item.starName }}</view>
-          <view class="val" @click="routerStarDetail(item.id)">{{ item.totalVigourVal }}</view>
+          <view class="name" @click="routerStarDetail(item.id, item.name)">{{
+            item.starName
+          }}</view>
+          <view class="val" @click="routerStarDetail(item.id, item.name)">{{
+            item.totalVigourVal
+          }}</view>
           <view class="btn-area">
             <view class="btn" @click="dabang(item.starId)">打榜</view>
           </view>
         </view>
       </view>
-      
+
       <!--有2个以上明星数据 -->
-      <view class="card-area" v-if="topThreeList.length > 1" style="z-index:10000">
+      <view
+        class="card-area"
+        v-if="topThreeList.length > 1"
+        style="z-index: 10000"
+      >
         <view
           class="guard-card"
           v-for="(item, index) in topThreeList"
           :key="index"
-          :class="'guard-card' + index" style="z-index:10000"
+          :class="'guard-card' + index"
+          style="z-index: 10000"
         >
-          <view class="img-area" :class="'img-area' + index" style="z-index:10000" @click="routerStarDetail(item.id)">
+          <view
+            class="img-area"
+            :class="'img-area' + index"
+            style="z-index: 10000"
+            @click="routerStarDetail(item.id, item.name)"
+          >
             <view class="num">{{ item.rank }}</view>
-           <!-- 第二名 -->
+            <!-- 第二名 -->
             <img
               v-if="index === 0"
               class="img-icon"
@@ -136,44 +171,59 @@
             <img
               class="img-head"
               :class="'img-head' + index"
-              :src="item.starAvatar" style="border: 1px solid #ddd;"
+              :src="item.starAvatar"
+              style="border: 1px solid #ddd"
             />
           </view>
 
-          <view class="name" @click="routerStarDetail(item.id)">{{ item.starName||'无' }}</view>
-          <view class="val" @click="routerStarDetail(item.id)">{{ item.totalVigourVal }}</view>
-          <view class="btn-area" style="z-index:10000"  @click="dabang(item.starId)">
-            <view class="btn" style="z-index:10000">打榜</view>
+          <view class="name" @click="routerStarDetail(item.id, item.name)">{{
+            item.starName || "无"
+          }}</view>
+          <view class="val" @click="routerStarDetail(item.id, item.name)">{{
+            item.totalVigourVal
+          }}</view>
+          <view
+            class="btn-area"
+            style="z-index: 10000"
+            @click="dabang(item.id)"
+          >
+            <view class="btn" style="z-index: 10000">打榜</view>
           </view>
         </view>
       </view>
     </view>
-    <view @click="routerTExt" style="height:100px;width:100px"> 去测试数据</view>
+    <!-- <view @click="routerTExt" style="height:100px;width:100px"> 去测试数据</view> -->
     <!-- 榜单前三以外 -->
     <view class="list-four-th">
-      <starRankingList :rankingList="rankingList" style="background:#fff;padding-left:10rpx;padding-right:10rpx"></starRankingList>
+      <starRankingList
+        :rankingList="rankingList"
+        style="background: #fff; padding-left: 10rpx; padding-right: 10rpx"
+      ></starRankingList>
     </view>
 
     <!-- <view class="home-bottom" >
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       
     </view> -->
-    <view class="my">
-      
-          <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" />
-       
-      </view>
-    <u-toast ref="uToast" />
-   
-    <view v-if="showModal">
-      <DabangModal :showModal="showModal" :starId="starId"  @closeDabang="closeDabang"></DabangModal>
-      
+    <view class="my" @click="routerToCenter">
+      <u-icon name="account-fill" color="#E34C4C" size="40"></u-icon>
+      <view class="my-text">我的</view>
+
+      <!-- <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" /> -->
     </view>
-       <!-- <button class="bottom" type="primary" @click="getToken">
+    <u-toast ref="uToast" />
+
+    <view v-if="showModal">
+      <DabangModal
+        :showModal="showModal"
+        :starId="starId"
+        @closeDabang="closeDabang"
+      ></DabangModal>
+    </view>
+    <!-- <button class="bottom" type="primary" @click="getToken">
           （浏览器）登录
         </button> -->
 
- 
     <!-- 打榜弹窗 -->
   </view>
 </template>
@@ -193,13 +243,11 @@ export default {
   },
   data() {
     return {
-        sloganOpen:false,
-      starId:'',//明星id
-      showModal: false,//打榜弹窗
+      sloganOpen: false,
+      starId: "", //明星id
+      showModal: false, //打榜弹窗
       // 轮播
-      swiperList: [
-   
-      ],
+      swiperList: [],
       // 我的守护
       myGuardList: [
         // {
@@ -213,11 +261,9 @@ export default {
         icon1: "../../static/home/AnCrown2.png",
         icon2: "../../static/home/AnCrown1.png",
       },
-      topThreeList: [
-      ],
+      topThreeList: [],
       // 榜单前三以外
-      rankingList: [
-      ],
+      rankingList: [],
       tagList: [
         {
           text: "",
@@ -232,12 +278,34 @@ export default {
           text: "",
         },
       ],
+      timeVal: "",
       sloganTextFlag: false, //是否在个人中心设置明星tag文字
+      timesecond: 0,
+      flagWeek: 0, //当前点击的是周榜
     };
   },
+
+  watch: {
+    flagWeek: {
+      handler(newVal, oldVal) {
+        if (newVal) {
+          //  月榜
+          this.getDaojishiMouth();
+        } else if (newVal === 0) {
+          //  周榜
+          this.getDaojishiWeek();
+        }
+      },
+      // immediate: true,
+      deep: true,
+    },
+  },
+
   mounted() {
+    this.getDaojishiWeek();
+
     this.$emit("footer", false);
-   
+
     // 明星排行榜,默认查总榜
     this.getRankList(2);
     // 轮播图
@@ -245,26 +313,103 @@ export default {
     // 我的守护
     this.selectMyGuard();
   },
-  onShow(){
- // 个人信息-标语
+  onShow() {
+    // 个人信息-标语
     this.getMyInfo();
   },
   methods: {
-     getToken() {
-      this.$u.post(`https://123.207.120.31:18001/common/testLogin?id=1`).then((res) => {
-        console.log(res, "拿到token");
-        uni.setStorageSync("Authorization", res.token);
-      });
+    // 获取当前月的最后一天时间
+    getlastMoutnTime() {
+      var date = new Date();
+      ///获取当前月份
+      var currentmonth = date.getMonth();
+      //获取下一个月份
+      var nextmonth = currentmonth + 1;
+      //获取下一月份的第一天
+      var nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
+      //一天的毫秒数
+      var oneday = 1 * 24 * 3600 * 1000;
+      //下一个月的第一天减去一天时间就是当前月份的最后一天时间
+      var lasttime = new Date(nextmonthfirstday - oneday).getTime();
+      return lasttime;
     },
-   
-    closeDabang(){
-      this.showModal = false
+    getDaojishiMouth() {
+      let times = this.getlastMoutnTime() - new Date().getTime();
+      this.timesecond = times / 1000;
+    },
+    //     getlastMoutnTime() {
+    //   var date = new Date();
+    //   ///获取当前月份
+    //   var currentmonth = date.getMonth();
+    //   //获取下一个月份
+    //   var nextmonth = currentmonth + 1;
+    //   //获取下一月份的第一天
+    //   var nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
+    //   //一天的毫秒数
+    //   var oneday = 1 * 24 * 3600 * 1000;
+    //   //下一个月的第一天减去一天时间就是当前月份的最后一天时间
+    //   var lasttime = new Date(nextmonthfirstday - oneday).getTime();
+    //   return lasttime;
+    // },
+    getDaojishiWeek() {
+      let nowData = new Date();
+      //获取今天的是周几
+      let currentDay = nowData.getDay();
+      //把currentDay == 0赋值给周日
+      if (currentDay == 0) {
+        currentDay = 7;
+      }
+ 
+      let times = (7 - currentDay) * 24 * 3600 + Number(this.getDayLat());
+      this.timesecond = times;
+      console.log(this.timesecond, times,this.getDayLat(),"描述");
+
+      // 获取当前时间的具体时间
+      // console.log("当前时间" +new Date(monDayTime).toLocaleTimeString());
+    },
+    getDayLat() {
+      let now = new Date();
+      let hour = now.getHours(); // 时
+      let min = now.getMinutes(); // 分
+      let sec = now.getSeconds(); // 秒
+
+      let h = 24 - hour; // 倒计时 时
+      if (min > 0 || sec > 0) {
+        h -= 1;
+      }
+      let m = 60 - min; // 倒计时 分
+      if (sec > 0) {
+        m -= 1;
+      }
+      if (m == 60) {
+        m = 0;
+      }
+      let s = 60 - sec; // 倒计时 秒
+      if (s == 60) {
+        s = 0;
+      }
+    
+      let result = h * 3600 + m * 60 + s;
+      console.log(result);
+      return result;
+    },
+
+    getToken() {
+      this.$u
+        .post(`https://123.207.120.31:18001/common/testLogin?id=1`)
+        .then((res) => {
+          console.log(res, "拿到token");
+          uni.setStorageSync("Authorization", res.token);
+        });
+    },
+
+    closeDabang() {
+      this.showModal = false;
     },
     // 打榜弹窗
-    dabang(id){
-      console.log(id,'当前id是')
-      this.starId = id
-      this.showModal = true
+    dabang(id) {
+      this.starId = id;
+      this.showModal = true;
     },
     // 获取个人信息--我的标语
     getMyInfo() {
@@ -272,9 +417,9 @@ export default {
         .get("/personalCenter/personalCenterInfo")
         .then((res) => {
           // 回显标语
-        // 如果有标语且开启了就显示带icon的tag
-          if (res.slogan&&res.sloganOpen) {
-              this.sloganOpen = true
+          // 如果有标语且开启了就显示带icon的tag
+          if (res.slogan && res.sloganOpen) {
+            this.sloganOpen = true;
             this.sloganTextFlag = true; //有标语
             this.tagList.forEach((item, index) => {
               this.tagList[index].text = res.slogan[index];
@@ -285,7 +430,7 @@ export default {
           }
         })
         .catch((res) => {
-        //   this.$toLogin(res);
+          //   this.$toLogin(res);
         });
     },
     // 获取我的守护
@@ -296,13 +441,15 @@ export default {
           this.myGuardList = res.list;
         })
         .catch((res) => {
-        //   this.$toLogin(res);
+          //   this.$toLogin(res);
         });
     },
     // 点击周榜/月榜
-    getRankTypeIndex(data){
-      this.rankingList = []
-      this.getRankList(data)
+    getRankTypeIndex(data) {
+      console.log(data);
+      this.flagWeek = data;
+      this.rankingList = [];
+      this.getRankList(data);
     },
     // 获取明星榜单--总榜
     // 0周榜；1月榜；2总榜
@@ -323,9 +470,9 @@ export default {
           }
           this.topThreeList = list;
           // 处理排名第四以后的明星
-            if (res.list.length > 3) {
-              this.rankingList = res.list.slice(3)
-            }
+          if (res.list.length > 3) {
+            this.rankingList = res.list.slice(3);
+          }
         })
         .catch((res) => {
           this.$toLogin(res);
@@ -337,17 +484,15 @@ export default {
         this.swiperList = res;
       });
     },
-    clickSwiper(index) {
-      console.log(index);
-    },
+    clickSwiper(index) {},
     routerSearch() {
       uni.navigateTo({
         url: "/pages/search/search",
       });
     },
-    routerStarDetail(id) {
+    routerStarDetail(id, name) {
       uni.navigateTo({
-        url: `/pages/starDetail/starDetail?id=${id}`,
+        url: `/pages/starDetail/starDetail?id=${id}&name=${name}`,
       });
     },
     routerToCenter() {
@@ -365,8 +510,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/deep/ .u-countdown-item {
+  background: none !important;
+}
 .home-page {
-  background: #F5F8FF;
+  background: #f5f8ff;
   // 轮播区
   .home-swiper {
     position: relative;
@@ -480,7 +628,7 @@ export default {
     z-index: -2;
     .card-time {
       background: #feecca;
-      width: 296rpx;
+      width: 350rpx;
       height: 42rpx;
       line-height: 42rpx;
       text-align: center;
@@ -645,25 +793,22 @@ export default {
     height: 100%;
   }
 }
-  .my {
-    position: fixed;
-    // background: #99a9bf;
-    width: 100rpx;
-    height: 100rpx;
-    // text-align: center;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // position: absolute;
-    right: 10rpx;
-    bottom: 50rpx;
-    font-size: 6px;
-    z-index: 100000;
-   
-      .my-img {
-        width: 100rpx;
-      height: 100rpx;
-      }
-    
+.my {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 20rpx;
+  bottom: 50rpx;
+  font-size: 6px;
+  z-index: 100000;
+  border-radius: 20px;
+
+  box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+  text-align: center;
+  .my-text {
+    color: #e34c4c;
+    font-size: 12px;
+    margin-top: -2px;
   }
+}
 </style>

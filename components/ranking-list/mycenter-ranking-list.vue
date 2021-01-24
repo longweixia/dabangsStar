@@ -157,7 +157,7 @@ export default {
     },
     // 打榜弹窗
     dabang(id){
-      console.log(id,'ui')
+ 
       this.starId = id
       this.showModal = true
     },

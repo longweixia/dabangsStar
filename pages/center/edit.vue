@@ -136,7 +136,7 @@ export default {
         sourceType: ["camera"], //这要注意，camera掉拍照，album是打开手机相册
         success: (res) => {
           const tempFilePaths = res.tempFilePaths;
-          console.log(tempFilePaths, "拍照");
+       
         },
       });
     },
@@ -147,7 +147,7 @@ export default {
         sourceType: ["album"], //这要注意，camera掉拍照，album是打开手机相册
         success: (res) => {
           const tempFilePaths = res.tempFilePaths;
-          console.log(tempFilePaths, "相册");
+      
           this.goUploadImg(tempFilePaths);
         },
       });
@@ -158,7 +158,7 @@ export default {
     },
     // 拍照-相册选择
     clickCamera(index) {
-      console.log(`点击了第${index + 1}项`);
+    
       if (index === 0) {
         //   拍照
         this.uploadCamera();
@@ -169,7 +169,7 @@ export default {
     // 调用上传接口上传图片
     goUploadImg(tempFilePaths) {
       uni.uploadFile({
-        url: "https://123.207.120.31:18001/common/upload", //服务器地址
+        url: "http://123.207.120.31:18001/common/upload", //服务器地址
         fileType: "image", //ZFB必填,不然报错
         header: {
           Authorization: localStorage.getItem("Authorization"),
@@ -178,7 +178,7 @@ export default {
         name: "file",
         success: (uploadFileRes) => {
           let imgData = JSON.parse(uploadFileRes.data);
-          console.log(imgData.data);
+       
           //   this.myData.avatarUrl = imgData.data;
           this.changeAvatarUrlApi(imgData.data);
         },

@@ -4,6 +4,7 @@
     "u-image": "/node-modules/uview-ui/components/u-image/u-image",
     "resources": "/components/resources/resources",
     "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
     "prize-praw": "/components/prize-wraw/prize-wraw",
     "dabang-modal": "/components/dabangModal/index"
   }

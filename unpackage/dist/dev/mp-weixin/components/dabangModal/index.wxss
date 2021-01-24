@@ -1,3 +1,99 @@
+
+.message.data-v-1d3c6484 {
+  position: fixed;
+  z-index: 99999;
+  opacity: 0;
+}
+.round.data-v-1d3c6484 {
+  border-radius: 5000px;
+}
+.bg-gradual-orange.data-v-1d3c6484 {
+
+  background-image: -webkit-linear-gradient(45deg, #ff9700, #ed1c24);
+  background-image: linear-gradient(45deg, #ff9700, #ed1c24);
+
+
+
+
+
+  color: #ffffff;
+}
+.shadow.data-v-1d3c6484 {
+  box-shadow: 4px 4px 5px rgba(217, 109, 26, 0.2);
+}
+.flex.data-v-1d3c6484 {
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+}
+.justify-start.data-v-1d3c6484 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+}
+.cu-avatar.data-v-1d3c6484 {
+
+  font-variant: small-caps;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  white-space: nowrap;
+  background-size: cover;
+  background-position: center;
+  vertical-align: middle;
+
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background-color: #ccc;
+  color: #ffffff;
+  position: relative;
+  width: 30rpx;
+  height: 30rpx;
+  font-size: 1.5em;
+}
+.cu-a-sm.data-v-1d3c6484 {
+  width: 30rpx;
+  height: 30rpx;
+  font-size: 1em;
+}
+.padding-lr-sm.data-v-1d3c6484 {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  bottom: 250rpx;
+}
+.align-center.data-v-1d3c6484 {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.margin-left-xs.data-v-1d3c6484 {
+  margin-left: 10rpx;
+}
+.text-bold.data-v-1d3c6484 {
+  font-weight: bold;
+}
+.margin-lr-sm.data-v-1d3c6484 {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.text-sm.data-v-1d3c6484 {
+  font-size: 15rpx;
+  color: #ffffff;
+}
+
 @charset "UTF-8";
 /**
  * 这里是uni-app内置的常用样式变量
@@ -24,6 +120,158 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+@-webkit-keyframes leftBottomEnter {
+0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    opacity: 0;
+}
+100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+}
+}
+@keyframes leftBottomEnter {
+0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    opacity: 0;
+}
+100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+}
+}
+@-webkit-keyframes leftBottomExit {
+0% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+}
+100% {
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+    opacity: 0;
+}
+}
+@keyframes leftBottomExit {
+0% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+}
+100% {
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+    opacity: 0;
+}
+}
+@-webkit-keyframes leftToRight {
+0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+}
+100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+}
+}
+@keyframes leftToRight {
+0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+}
+100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+}
+}
+@-webkit-keyframes rightToLeft {
+0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+}
+100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+}
+}
+@keyframes rightToLeft {
+0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+}
+100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+}
+}
+.danmu-li {
+  position: absolute;
+  width: 100%;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+.danmu-li.leftBottomEnter {
+  -webkit-animation-name: leftBottomEnter;
+          animation-name: leftBottomEnter;
+}
+.danmu-li.leftBottomExit {
+  -webkit-animation-name: leftBottomExit;
+          animation-name: leftBottomExit;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.danmu-li.rightToLeft {
+  -webkit-animation-name: rightToLeft;
+          animation-name: rightToLeft;
+}
+.danmu-li.leftToRight {
+  -webkit-animation-name: leftToRight;
+          animation-name: leftToRight;
+}
+.danmu-li .danmu-inner {
+  display: inline-block;
+}
+.danmu-li .danmu-inner .user-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 3rpx 40rpx 3rpx 10rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 32rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.danmu-li .danmu-inner .user-box .user-img .img-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.danmu-li .danmu-inner .user-box .user-img .img-box image {
+  width: 58rpx;
+  height: 58rpx;
+  background: #373737;
+  border-radius: 50%;
+}
+.danmu-li .danmu-inner .user-box .user-status {
+  margin-left: 10rpx;
+  white-space: nowrap;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: white;
+}
+.danmu-li .danmu-inner .user-box .user-text {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: white;
+}
 .u-mode-center-box {
   border-radius: 0 !important;
 }
@@ -51,10 +299,9 @@
   height: 280rpx;
   position: relative;
 }
-.dabang-modal .detail-bg-img .img {
+.dabang-modal .detail-bg-img .bg-img {
   width: 100%;
   height: 100%;
-  z-index: -2;
 }
 .dabang-modal .star-card {
   margin-top: -60rpx;
@@ -144,15 +391,15 @@
   display: inline-block;
 }
 .dabang-modal .body-area .right-btn .col-top .btn {
-  width: 100rpx;
-  height: 40rpx;
+  min-width: 120rpx;
+  height: 50rpx;
   text-align: center;
-  line-height: 40rpx;
+  line-height: 50rpx;
   border-radius: 10rpx;
   font-size: 10px;
   background: #e34c4c;
   color: #fff;
-  pad: 5rpx;
+  padding: 5rpx 10rpx;
 }
 .dabang-modal .body-area .right-btn .col-top .hot {
   color: #d1d1d1;

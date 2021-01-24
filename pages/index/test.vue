@@ -1,31 +1,31 @@
 <template>
-  <view
-    class="container"
-    @touchmove="handletouchstart"
-    @touchend="handletouchend"
-  >
-    <view v-for="(item, index) in namelist" :key="index"  >
-      <!-- <view class="column popupfx" :class="specClass+index" @click="createHaibao" -->
-      <!-- <view
+  <view>
+    <view v-for="(item, index) in namelist" :key="index" class="animation">
+   
+      <view
         class="column popupfx"
-        :style="getIndexClass(index)"
-        @click="createHaibao"
-        >{{ item.name }}</view
-      > -->
-      <view class="column popupfx"
-        :class="specClass+index"
-        @click="createHaibao"
+        :class="specClass + index"
+        :animation="animationData"
         >{{ item.name }}</view
       >
     </view>
+
+    <button @click="colrdo">别跑</button>
+    <Danmu ref="lffBarrage"></Danmu>
   </view>
 </template>
 
 <script>
+import Danmu from "../../components/lff-barrage/lff-barrage.vue";
+
 export default {
-  name: "ranking-tab-hasText",
-  props: {},
-  watch: {},
+  name: "text",
+  components: {
+  Danmu
+  },
+  props:{
+
+  },
   data() {
     return {
       specClass: "hide",
@@ -42,33 +42,65 @@ export default {
         {
           name: "帅气",
         },
+        {
+          name: "帅气1",
+        },
+        {
+          name: "帅气2",
+        },
+        {
+          name: "帅气3",
+        },
+        {
+          name: "帅气4",
+        },
       ],
+      animationData: {},
+
+      // 在data中初始化animationData
     };
   },
-  methods: {
-    handletouchstart() {
-      this.specClass = "show";
-    },
-    handletouchend() {
-      this.specClass = "hide0";
-    },
-    createHaibao() {},
-    getIndexClass(index) {
-
-      let t = `animation: ${"hideLayer" + index} ${index + 2}s linear both;`;
-      return t;
-	},
-	 mounted() {
-	  this.handletouchstart()
+  onUnload() {
+    // this.animationData = {};
+    // 页面关闭后清空数据
   },
+
+  created() {
+    // 创建动画实例
+  },
+  methods: {
+    colrdo() {
+	  //插入一条弹幕
+	  this.namelist.forEach((e,index) => {
+		  setTimeout(() => {
+			   this.$refs.lffBarrage.add({ item: e});
+		  }, 1000*(index+2));
+	  });
+     
+    },
+    // running() {
+    // //   this.animation = uni.createAnimation();
+    //   this.animation = uni.createAnimation();
+    //   this.animation.translateY(-100).opacity(0).step({ duration: 2000 });
+    //   this.animationData = this.animation.export();
+
+    // //   setTimeout(() => {
+    // //     this.animation.translateX(0).opacity(0).step({ duration: 0 });
+    // //     this.animationData = this.animation.export();
+    // //   }, 800);
+    // },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.animation {
+  position: absolute;
+  top: 200px;
+}
 .popupfx {
-    // position: fixed;
-  top: 80%;
+  // position: fixed;
+  //   top: 80%;
   right: 20upx;
   z-index: 10;
   //   padding-top:10px;
@@ -86,76 +118,132 @@ export default {
   //     }
   //   }
 
-    &.hide0 {
-      animation: hideLayer0 3s linear both;
-    }
-      &.hide1 {
-      animation: hideLayer1 4s linear both;
-    }
-    &.hide2 {
-      animation: hideLayer2 5s linear both;
-    }
-    &.hide3 {
-      animation: hideLayer2 6s linear both;
-    }
-    &.hide4 {
-      animation: hideLayer2 7s linear both;
-    }
-  @keyframes hideLayer0 {
-    0% {
-      transform: translateY(80px);
-      opacity: 1;
-    }
+  //   &.hide0 {
+  //     animation: hideLayer0 3s linear both;
+  //   }
+  //   &.hide1 {
+  //     animation: hideLayer1 6s linear both;
+  //   }
+  //   &.hide2 {
+  //     animation: hideLayer2 9s linear both;
+  //   }
+  //   &.hide3 {
+  //     animation: hideLayer2 6s linear both;
+  //   }
+  //   &.hide4 {
+  //     animation: hideLayer2 7s linear both;
+  //   }
+  //   &.hide5 {
+  //     animation: hideLayer2 8s linear both;
+  //   }
+  //   &.hide6 {
+  //     animation: hideLayer2 9s linear both;
+  //   }
+  //   &.hide7 {
+  //     animation: hideLayer2 10s linear both;
+  //   }
+  //   @keyframes hideLayer0 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
 
-    100% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-  }
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //       display: none;
+  //     }
+  //   }
 
-  @keyframes hideLayer1 {
-    0% {
-      transform: translateY(80px);
-      opacity: 1;
-    }
+  //   @keyframes hideLayer1 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
 
-    100% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-  }
-  @keyframes hideLayer2 {
-    0% {
-      transform: translateY(80px);
-      opacity: 1;
-    }
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //       display: none;
+  //     }
+  //   }
+  //   @keyframes hideLayer2 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
 
-    100% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-  }
-  @keyframes hideLayer3 {
-    0% {
-      transform: translateY(80px);
-      opacity: 1;
-    }
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //       display: none;
+  //     }
+  //   }
+  //   @keyframes hideLayer3 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
 
-    100% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-  }
-  @keyframes hideLayer4 {
-    0% {
-      transform: translateY(80px);
-      opacity: 1;
-    }
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //     }
+  //   }
+  //   @keyframes hideLayer4 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
 
-    100% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-  }
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //     }
+  //   }
+  //   @keyframes hideLayer5 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
+
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //     }
+  //   }
+  //   @keyframes hideLayer6 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
+
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //     }
+  //   }
+  //   @keyframes hideLayer7 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
+
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //     }
+  //   }
+  //   @keyframes hideLayer8 {
+  //     0% {
+  //       transform: translateY(80px);
+  //       opacity: 1;
+  //     }
+
+  //     100% {
+  //       transform: translateY(0);
+  //       opacity: 0;
+  //     }
+  //   }
 }
 </style>

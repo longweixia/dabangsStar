@@ -13,7 +13,7 @@ exports.toLogin =  (data) =>{
                         url: "/pages/center/center"
                       });
                 } else if (res.cancel) {
-                    console.log('用户点击取消');
+                 
                 }
             }
         });

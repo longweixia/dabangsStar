@@ -9,34 +9,53 @@
     class="dabang-modal"
   >
     <view class="close-btn" @click="close"> x </view>
-    <Binglyric
-      ref="lffBarrage"
-      :info="dabangInfo"
-      @loopDanmu="loopDanmu"
-      style="bottom: 50rpx; position: relative"
-    ></Binglyric>
-    <Test
-      ref="lffBarrage"
-      :info="dabangInfo"
-      @loopDanmu="loopDanmu"
-      style="bottom: 50rpx; position: relative"
-    ></Test>
 
     <view class="slot-content">
       <view class="title-modal">
+        <!-- 弹幕 -->
+        <view
+          style="
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: -400px;
+            z-index: 100000;
+          "
+        >
+          <view
+            class="danmu-li"
+            v-for="(item, index) in listData"
+            :class="item.type"
+            :style="[item.style]"
+            :key="index"
+          >
+            <view class="danmu-inner">
+              <view class="user-box">
+                <view class="user-img">
+                  <view class="img-box">
+                    <image :src="item.item.avatarUrl"></image>
+                  </view>
+                </view>
+                <view class="user-text cl1"> {{ item.item.nickName }} </view>
+                <view class="user-status cl1">
+                  打榜了<text style="color: #e34c4c; font-weight: bold">
+                    {{ item.item.vigourVal }}</text
+                  >热力值
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
         <view class="detail-bg-img">
-          <img class="img" :src="detailImg" />
-          <!--  -->
-
-          <!-- 打榜弹窗 -->
-          <!-- <view class="toast-db">
-            <img class="imgs" :src="StarGuardList.avatarUrl" />
-            <view class="text">
-              {{ StarGuardList.nickName }}打榜<text class="red-num">
-                {{ StarGuardList.vigourVal }}</text
-              >热力值</view
-            >
-          </view> -->
+          <view
+            class="bg-img"
+            :style="{
+              background:
+                'url(' + detailImg + ') center center / cover no-repeat',
+            }"
+          ></view>
         </view>
 
         <view class="body-area">
@@ -52,7 +71,7 @@
                 <view class="add" @click="add('jia')">+</view>
 
                 <view class="btn" @click="add('btn')"
-                  >打榜+99
+                  >打榜<text v-if="btnVal">{{ btnVal }}</text>
                   <Dianzan
                     ref="dianzan"
                     :dabangVal="inpValue"
@@ -91,12 +110,59 @@ import Dianzan from "./dianzan.vue";
 export default {
   name: "BtnNav",
   components: {
-    // 00,
-    Binglyric,
+    // 00,Binglyric
+    // ,
     Dianzan,
-    Test
+    Test,
   },
   props: ["showModal", "rankType", "starId"],
+  props: {
+    //rightToLeft leftToRight leftBottom
+    showModal: {
+      type: Boolean,
+      default: false,
+    },
+    rankType: {
+      type: Number,
+      default: 0,
+    },
+    starId: {
+      type: String,
+      default: "",
+    },
+    type: {
+      type: String,
+      default: "leftBottom",
+    },
+    minTime: {
+      type: Number,
+      default: 4,
+    },
+    maxTime: {
+      type: Number,
+      default: 9,
+    },
+    minTop: {
+      type: Number,
+      default: 0,
+    },
+    maxTop: {
+      type: Number,
+      default: 100,
+    },
+    hrackH: {
+      //轨道高度
+      type: Number,
+      default: 40,
+    },
+    noStacked: {
+      //不允许堆叠(暂不可用)
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
   watch: {
     showModal: {
       handler(newVal, oldVal) {
@@ -117,6 +183,9 @@ export default {
   },
   data() {
     return {
+      looNum: 0, //弹幕次数
+      btnVal: 0, //打榜按钮选中的值
+      listData: [],
       showInfo: false,
       danmu: "",
       myInfo: {},
@@ -181,25 +250,7 @@ export default {
       StarGuardList: [], //打榜弹窗数据
       detailImg: "",
       starInfo: [],
-      dabangInfo: [
-        {
-          title: "踮起脚尖走向阳光 刚刚浏览本店",
-          avatarUrl:
-            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg",
-        },
-        // {
-        //   title: "sb",
-        //   img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
-        // },
-        // {
-        //   title: "sb1",
-        //   img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
-        // },
-        // {
-        //   title: "sb1",
-        //   img: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3672480879,3772984794&fm=26&gp=0.jpg"
-        // },
-      ],
+      dabangInfo: [],
     };
   },
   mounted() {
@@ -211,11 +262,107 @@ export default {
     this.selectFensInfo();
 
     // this.colrdo()
+    this.hrackNum = Math.floor((this.maxTop - this.minTop) / this.hrackH);
   },
   onLoad(option) {
     this.starId = Number(option.id);
   },
   methods: {
+    // 添加弹幕
+    addDanmu(obj) {
+      let data = {
+        item: obj.item,
+        id: Date.parse(new Date()),
+        time: Math.ceil(
+          Math.floor(
+            Math.random() * (this.maxTime - this.minTime + 1) + this.minTime
+          )
+        ),
+        type: this.type,
+      };
+      if (this.type === "leftBottom") {
+        let objData = {
+          item: data.item,
+          type: "leftBottomEnter",
+          style: {
+            transition: `all 0.5s`,
+            animationDuration: `0.5s`,
+            transform: `translateX(0%)`,
+            bottom: `${this.minTop}px`,
+          },
+        };
+        let listLen = this.listData.length;
+        let hrackNum = this.hrackNum;
+        for (let i in this.listData) {
+          if (this.listData[i].status === "reuse") {
+            //重用
+            this.$set(this.listData, i, objData);
+          } else if (this.listData[i].status === "reset") {
+            //重置
+            this.listData[i].style.transition = "none";
+            this.listData[i].style.bottom = 0;
+            this.listData[i].status = "reuse";
+          } else if (this.listData[i].status === "recycle") {
+            //回收
+            this.listData[i].type = "leftBottomExit";
+            this.listData[i].status = "reset";
+          } else {
+            this.listData[i].style.bottom =
+              parseInt(this.listData[i].style.bottom) + this.hrackH + "px";
+          }
+          if (
+            parseInt(this.listData[i].style.bottom) >=
+              this.maxTop - this.hrackH &&
+            this.listData[i].status !== "reset"
+          ) {
+            //需要回收
+            this.listData[i].status = "recycle";
+          }
+        }
+
+        if (listLen < hrackNum + 3) {
+          this.listData.push(objData);
+        }
+        console.log(
+          listLen,
+          "listLen",
+          hrackNum,
+          "hrackNum",
+          this.listData,
+          "this.listData"
+        );
+      }
+      // else if (this.type === "rightToLeft" || this.type === "leftToRight") {
+      //   let objData = this.horStacked(data);
+      //   for (let i in this.listData) {
+      //     if (this.listData[i].delTime <= Date.parse(new Date())) {
+      //       this.repaint(i, objData.type);
+      //       objData.type = "";
+      //       this.$set(this.listData, i, objData);
+      //       return;
+      //     }
+      //   }
+      //   this.listData.push(objData);
+      // }
+    },
+    horStacked(data) {
+      return {
+        item: data.item,
+        type: this.type,
+        style: {
+          animationDuration: `${data.time}s`,
+          top: `${Math.ceil(
+            Math.random() * (this.maxTop - this.minTop + 1) + this.minTop
+          )}px`,
+        },
+        delTime: Date.parse(new Date()) + data.time * 1200,
+      };
+    },
+    repaint(index, type) {
+      setTimeout(() => {
+        this.listData[index].type = type;
+      }, 100);
+    },
     close() {
       this.$emit("closeDabang");
     },
@@ -223,31 +370,38 @@ export default {
       this.dabangInfo = this.dabangInfo.concat(this.StarGuardList);
     },
     colrdo() {
-      //  this.dabangInfo =this.dabangInfo.concat(
-      //     this.StarGuardList
-      //  )
-      for (let i = 0; i < this.StarGuardList.length; i++) {
-        ((j) => {
-          this.danmu = setTimeout(() => {
-            // console.log(i)
-            this.dabangInfo = this.dabangInfo.concat(this.StarGuardList[i]);
-          }, 1000 * i);
-        })(i);
-      }
-
       //插入一条弹幕
-      // this.StarGuardList.forEach((e, i) => {
-      //   var pre = Date.now();
+      let that = this;
 
-      //   // this.dabangInfo = this.dabangInfo.concat(e);
-      //   // this.throttle(this.dabangInfo.concat(e),1000)
-      //   this.danmu = setInterval((()=>{
-      //      var now = Date.now();
-      //     if (now - pre >= 1000) {
-      //   this.dabangInfo = this.dabangInfo.concat(e);
-      //   }
-      //   }),500)
-      // });
+      if (this.StarGuardList && this.StarGuardList.length > 0) {
+        let old;
+        this.StarGuardList.forEach((e, index) => {
+          if (index < this.StarGuardList.length - 1) {
+           old= setTimeout(() => {
+              that.addDanmu({ item: e });
+            }, 1000 * (index + 2));
+          } else if (index == this.StarGuardList.length - 1) {
+            clearTimeout(old)
+          //  this.colrdo1()
+          }
+        });
+      }
+    },
+    colrdo1() {
+      //插入一条弹幕
+      let that = this;
+
+      if (this.StarGuardList && this.StarGuardList.length > 0) {
+        this.StarGuardList.forEach((e, index) => {
+          if (index < this.StarGuardList.length - 1) {
+            setTimeout(() => {
+              that.addDanmu({ item: e });
+            }, 1000 * (index + 2));
+          } else if (index == this.StarGuardList.length - 1) {
+           
+          }
+        });
+      }
     },
     //   加减input
     add(name) {
@@ -270,7 +424,6 @@ export default {
         }
         // this.myInfo.vigourVal =  Number(this.inpValue);
         this.hit();
-       
       }
     },
 
@@ -296,7 +449,7 @@ export default {
         })
         .then((res) => {
           // this.StarGuardList = res;
- this.$refs.dianzan.handleClick();
+          this.$refs.dianzan.handleClick();
           this.selectFensInfo();
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
@@ -314,7 +467,7 @@ export default {
         })
         .then((res) => {
           this.starInfo = res; //　少了头像
-          this.detailImg = res.detailImg;
+          this.detailImg = res.hitPopupImg;
           this.starName = res.name;
 
           // if (res.list && res.list.length > 0) {
@@ -334,6 +487,8 @@ export default {
         });
         return false;
       }
+
+      this.btnVal = val;
       this.inpValue = val;
     },
     // 获取我的信息
@@ -356,6 +511,114 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes leftBottomEnter {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes leftBottomExit {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+}
+
+@keyframes leftToRight {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes rightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.danmu-li {
+  position: absolute;
+  width: 100%;
+  transform: translateX(100%);
+  animation-timing-function: linear;
+
+  &.leftBottomEnter {
+    animation-name: leftBottomEnter;
+  }
+  &.leftBottomExit {
+    animation-name: leftBottomExit;
+    animation-fill-mode: forwards;
+  }
+
+  &.rightToLeft {
+    animation-name: rightToLeft;
+  }
+
+  &.leftToRight {
+    animation-name: leftToRight;
+  }
+
+  .danmu-inner {
+    display: inline-block;
+
+    .user-box {
+      display: flex;
+      padding: 3rpx 40rpx 3rpx 10rpx;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 32rpx;
+      align-items: center;
+
+      .user-img {
+        .img-box {
+          display: flex;
+
+          image {
+            width: 58rpx;
+            height: 58rpx;
+            background: rgba(55, 55, 55, 1);
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .user-status {
+        margin-left: 10rpx;
+        white-space: nowrap;
+        font-size: 28rpx;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .user-text {
+        margin-left: 10rpx;
+        // white-space: nowrap;
+        font-size: 28rpx;
+        font-weight: 400;
+        // width: 150rpx;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
 .u-mode-center-box {
   border-radius: 0 !important;
 }
@@ -385,10 +648,10 @@ export default {
     width: 100%;
     height: 280rpx;
     position: relative;
-    .img {
+    .bg-img {
       width: 100%;
       height: 100%;
-      z-index: -2;
+      // z-index: -2;
     }
   }
   // 当前明星卡片
@@ -475,15 +738,15 @@ export default {
           display: inline-block;
         }
         .btn {
-          width: 100rpx;
-          height: 40rpx;
+          min-width: 120rpx;
+          height: 50rpx;
           text-align: center;
-          line-height: 40rpx;
+          line-height: 50rpx;
           border-radius: 10rpx;
           font-size: 10px;
           background: #e34c4c;
           color: #fff;
-          pad: 5rpx;
+          padding: 5rpx 10rpx;
         }
         .hot {
           color: #d1d1d1;
@@ -511,6 +774,7 @@ export default {
       color: #fff;
       margin-top: 20rpx;
       margin-bottom: 20rpx;
+
       background: linear-gradient(to right, #f83a3a, #f7c18b);
     }
   }

@@ -39,7 +39,7 @@ const install = (Vue, vm) => {
 
     // 响应拦截，判断状态码是否通过
     Vue.prototype.$u.http.interceptor.response = (res) => {
-console.log(res)
+
         if (res.code == 200) {
         
             // res为服务端返回值，可能有code，result等字段
@@ -65,7 +65,7 @@ console.log(res)
                             url: "/pages/center/center"
                           });
                     } else if (res.cancel) {
-                        console.log('用户点击取消');
+                     ;
                     }
                 }
             });

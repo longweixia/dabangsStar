@@ -24,62 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.dan-mu.data-v-3c87bd84 {
+  position: relative;
+}
 .popupfx.data-v-3c87bd84 {
-  position: fixed;
-  top: 80%;
   right: 20rpx;
   z-index: 10;
-}
-.popupfx.show.data-v-3c87bd84 {
-  -webkit-animation: showLayer-data-v-3c87bd84 2s linear both;
-          animation: showLayer-data-v-3c87bd84 2s linear both;
-}
-.popupfx.hide.data-v-3c87bd84 {
-  -webkit-animation: hideLayer-data-v-3c87bd84 2s linear both;
-          animation: hideLayer-data-v-3c87bd84 2s linear both;
-}
-@-webkit-keyframes showLayer-data-v-3c87bd84 {
-0% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-}
-100% {
-    -webkit-transform: translateY(80px);
-            transform: translateY(80px);
-}
-}
-@keyframes showLayer-data-v-3c87bd84 {
-0% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-}
-100% {
-    -webkit-transform: translateY(80px);
-            transform: translateY(80px);
-}
-}
-@-webkit-keyframes hideLayer-data-v-3c87bd84 {
-0% {
-    -webkit-transform: translateY(80px);
-            transform: translateY(80px);
-    opacity: 1;
-}
-100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 0;
-}
-}
-@keyframes hideLayer-data-v-3c87bd84 {
-0% {
-    -webkit-transform: translateY(80px);
-            transform: translateY(80px);
-    opacity: 1;
-}
-100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 0;
-}
 }
 

@@ -75,7 +75,7 @@ export default {
     // },
     getUserinfo() {
       this.$u.get(`/personalCenter/personalCenterInfo`).then((res) => {
-        console.log(res, "个人");
+      
 
         // this.swiperList = res;
       });
@@ -155,7 +155,7 @@ export default {
       // 请求微信端地址获取用户唯一标识的
 
       // htxcx(obj.appid,obj.secret,obj.code).then(res=>{
-      // 	console.log("res:",res)
+ 
       // 	res.data.openid // 唯一
       // 	res.data.session_key
       // 	this.encryptedData
@@ -164,7 +164,7 @@ export default {
       // 		url: '/pages/index/index'
       // 	});
       // },err=>{
-      // 	console.log("err:",err)
+
       // })
       let encryptedData = JSON.stringify(_this.encryptedData);
       this.$u

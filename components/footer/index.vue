@@ -178,7 +178,7 @@ export default {
             })
     },
     clickSwiper(index) {
-      console.log(index);
+
     },
     routerSearch() {
       uni.navigateTo({
