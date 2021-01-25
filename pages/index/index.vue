@@ -197,7 +197,7 @@
     <view class="list-four-th">
       <starRankingList
         :rankingList="rankingList"
-        style="background: #fff; padding-left: 10rpx; padding-right: 10rpx"
+        style="background: #fff; padding-left: 10px; padding-right: 10px"
       ></starRankingList>
     </view>
 

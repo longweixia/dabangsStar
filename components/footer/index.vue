@@ -418,7 +418,9 @@ export default {
     // margin: 20rpx;
     position: relative;
     top: -100rpx;
+
     margin-bottom: 80rpx;
+    
   }
 }
 .wrap {

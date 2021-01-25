@@ -26,6 +26,8 @@
 /* 文章场景相关 */
 .list-th.data-v-4ac4053b {
   margin: 0 20rpx;
+  border-radius: 5rpx;
+  background: #fff;
 }
 .list-row.data-v-4ac4053b {
   display: -webkit-box;

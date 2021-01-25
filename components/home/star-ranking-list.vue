@@ -46,7 +46,7 @@ export default {
   methods: {
       // 打榜弹窗
     dabang(id){
-
+      console.log(id,'ui')
       this.starId = id
       this.showModal = true
     },
@@ -66,6 +66,8 @@ export default {
 // 榜单
 .list-th {
   margin: 0 20rpx;
+  border-radius: 5rpx;
+  background: #fff;
 }
 .list-row {
   display: flex;
