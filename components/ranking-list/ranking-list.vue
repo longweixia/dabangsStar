@@ -1,6 +1,12 @@
 <template>
 <!-- 首页-粉丝-资源 用到的排名榜单 -->
     <view>
+      <!-- <view class="wrap">
+		<view class="item u-border-bottom" v-for="(item, index) in list" :key="index">
+			{{'第' + item + '条数据'}}
+		</view>
+		<u-loadmore :status="status" />
+	</view> -->
       <!-- 1.首页周日月排行榜 -->
       <view class="list-th" v-if="listPage == 'home'">
         <view class="list-row" v-for="(item, index) in rankingList" :key="index">
@@ -12,7 +18,7 @@
               class="img"
               width="80rpx"
               height="80rpx"
-              :src="item.starName"
+              :src="item.starAvatar"
               shape="circle"
             ></u-image>
           </view>
@@ -78,9 +84,22 @@ export default {
   props:["rankingList","listPage"], //榜单数据，页面来源
   data() {
     return {
-     
+       status: 'loadmore',
+				list: 15,
+				page: 0
     };
   },
+
+  onReachBottom() {
+			// if(this.page >= 3) return ;
+			// this.status = 'loading';
+			// this.page = ++ this.page;
+			// setTimeout(() => {
+			// 	this.list += 10;
+			// 	if(this.page >= 3) this.status = 'nomore';
+			// 	else this.status = 'loading';
+			// }, 2000)
+		}
 
 };
 </script>
@@ -130,7 +149,7 @@ export default {
     margin-right: 22rpx;
 }
 .name {
-  width: 150rpx;
+  width: 200rpx;
   text-align: left;
   color: #333333;
   font-weight: bold;

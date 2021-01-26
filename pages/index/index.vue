@@ -74,7 +74,7 @@
             :timestamp="timesecond"
             separator="zh"
             separator-size="14"
-            font-size="14"
+            font-size="24"
             separator-color="#606266"
           ></u-count-down>
         </view>

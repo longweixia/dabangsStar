@@ -21,9 +21,6 @@
     "navigationBarTitleText": "2424",
     "navigationBarBackgroundColor": "#F40",
     "navigationStyle": "custom",
-    "enablePullDownRefresh": true,
-    "backgroundTextStyle": "light",
-    "onReachBottomDistance": 50,
     "transparentTitle": "none"
   },
   "secret": "bfa8089fdfbb2addeb5de83af974561f",

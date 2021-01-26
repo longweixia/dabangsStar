@@ -36,7 +36,7 @@ export default {
         },
         {
           tips: "签到获得20热力值",
-          image: "../../static/home/choujiang.png",
+          image: "../../static/home/sigin.png",
   
           name: "签到",
           val: 500,

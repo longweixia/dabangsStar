@@ -1,7 +1,6 @@
 <template>
   <!-- 资源 -->
   <view>
-
     <view class="star-card" v-for="(item, index) in resourcesList" :key="index">
       <view class="list-top">
         <view class="row-text">
@@ -70,7 +69,7 @@
               class="img"
               width="60rpx"
               height="60rpx"
-              :src="item1.avatarUrl"
+              :src="item1"
               shape="circle"
             >
             </u-image>
@@ -78,7 +77,8 @@
           </view>
           <!-- <view v-if="item.fensList.length>6" class="more" @click="routerResourcesRanking(0)"> -->
           <view
-            class="more" v-if="item.fensList&&item.fensList.length>5"
+            class="more"
+            v-if="item.fensList && item.fensList.length > 5"
             @click="routerResourcesRanking(item.resourcesRelId, item.titles)"
           >
             <img src="../../static/home/moreWhite.png" />
@@ -96,10 +96,10 @@ export default {
   watch: {
     starName: {
       handler(newVal, oldVal) {
-		this.starName = newVal;
-		if(newVal){
-			this.selectResources(newVal)
-		}
+        this.starName = newVal;
+        if (newVal) {
+          this.selectResources(newVal);
+        }
         //  this.donghua();
       },
       immediate: true,
@@ -115,15 +115,14 @@ export default {
       resourcesList: [], //资源列表
     };
   },
-  created()  {
-	//获取资源列表
-	// if(this.starName){
-	// 	this.$emit('getstarName')
-	// 	   this.selectResources(this.starName);
-	// }else{
-	// 	   this.selectResources(this.starName);
-	// }
-
+  created() {
+    //获取资源列表
+    // if(this.starName){
+    // 	this.$emit('getstarName')
+    // 	   this.selectResources(this.starName);
+    // }else{
+    // 	   this.selectResources(this.starName);
+    // }
   },
   filters: {
     getTimeSecond(e) {
@@ -168,37 +167,36 @@ export default {
             this.resourcesList[index].reachNumValue = Math.round(
               (item.reachNum / item.target) * 100
             );
-		  });
-		
+          });
 
           // 处理资源名称
           if (this.resourcesList && this.resourcesList.length > 0) {
             this.resourcesList.forEach((item, index) => {
               if (item.type == 1) {
-                this.resourcesList[index].titles = `为${
-                  starName
-                }看视频${this.getTimeday(item.endTime)}天，解锁${
-                  item.mark
-                }应援金`;
+                this.resourcesList[
+                  index
+                ].titles = `为${starName}看视频${this.getTimeday(
+                  item.endTime
+                )}天，解锁${item.mark}应援金`;
               } else if (item.type == 2) {
-                this.resourcesList[index].titles = `为${
-                  starName
-                }看视频${this.getTimeday(item.endTime)}天，解锁${
-                  item.mark
-                }小程序开展`;
+                this.resourcesList[
+                  index
+                ].titles = `为${starName}看视频${this.getTimeday(
+                  item.endTime
+                )}天，解锁${item.mark}小程序开展`;
               } else if (item.type == 3) {
-                this.resourcesList[index].titles = `为${
-                  starName
-                }看视频${this.getTimeday(item.endTime)}天，解锁${
-                  item.mark
-                }首页轮播`;
+                this.resourcesList[
+                  index
+                ].titles = `为${starName}看视频${this.getTimeday(
+                  item.endTime
+                )}天，解锁${item.mark}首页轮播`;
               } else if (item.type == 4) {
-		
-                this.resourcesList[index].titles = `为${this.starName}看视频${this.getTimeday(item.endTime)}天，解锁${item.mark}`;
+                this.resourcesList[index].titles = `为${
+                  this.starName
+                }看视频${this.getTimeday(item.endTime)}天，解锁${item.mark}`;
               }
             });
           }
-         
         })
         .catch((res) => {});
     },
@@ -211,7 +209,6 @@ export default {
         .then((res) => {
           uni.showToast({
             title: "参与成功",
-            icon: "none",
             duration: 2000,
           });
           this.selectResources();

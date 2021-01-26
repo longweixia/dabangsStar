@@ -101,9 +101,9 @@
 		// "backgroundColor": "#808080" ,// 窗口的背景颜色 ？？？
 		"navigationStyle":"custom" ,// 取消默认原生导航栏 （最好不要自定义导航栏，否则会出现一系列问题，比如原生组件覆盖导航栏情况··· ···）
 		// "navigationStyle":"default" ,// 默认值，导航栏显示 
-		"enablePullDownRefresh": true ,// 是否开启下拉刷新
-		"backgroundTextStyle":"light" ,// dark 下拉loading样式
-		"onReachBottomDistance": 50 , // 页面上拉触底事件触发时，距页面底部的距离，单位只支持px
+		// "enablePullDownRefresh": true ,// 是否开启下拉刷新
+		// "backgroundTextStyle":"light" ,// dark 下拉loading样式
+		// "onReachBottomDistance": 50 , // 页面上拉触底事件触发时，距页面底部的距离，单位只支持px
 		// "titleImage" : "static/logo.png" // 导航栏图片地址，可替换当前导航栏文字 ,不支持微信小程序
 		"transparentTitle":  "none"// 导航栏透明度设置 none不透明    always总是透明   auto滑动自适应   小程序不支持！！！
 	},

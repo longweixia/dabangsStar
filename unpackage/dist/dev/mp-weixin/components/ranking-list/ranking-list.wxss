@@ -74,7 +74,7 @@
   margin-right: 22rpx;
 }
 .name.data-v-468d5fa4 {
-  width: 150rpx;
+  width: 200rpx;
   text-align: left;
   color: #333333;
   font-weight: bold;

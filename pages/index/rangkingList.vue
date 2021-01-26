@@ -28,6 +28,7 @@ export default {
   },
   data() {
     return {
+      listPage:'',
       hasData: true,// 是否有数据，默认有数据
       rankingList: [],
         background: {
