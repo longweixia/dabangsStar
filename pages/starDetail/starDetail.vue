@@ -278,6 +278,9 @@ export default {
     },
     closeDabang() {
       this.showModal = false;
+      this.selectStarInfo()
+      this.getrankList(0)
+      this.getrankList(1)
     },
     // 打榜弹窗
     dabang(id) {

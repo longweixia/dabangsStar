@@ -52,6 +52,7 @@ export default {
     },
        closeDabang(){
       this.showModal = false
+      this.$emit("loadData")
     },
         routerStarDetail(id) {
       uni.navigateTo({

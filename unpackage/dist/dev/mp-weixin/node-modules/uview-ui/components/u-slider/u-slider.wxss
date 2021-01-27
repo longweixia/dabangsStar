@@ -26,7 +26,8 @@
 /* 文章场景相关 */
 .u-slider.data-v-c7a63ef2 {
   position: relative;
-  border-radius: 999px;
+  -webkit-border-radius: 999px;
+          border-radius: 999px;
   border-radius: 999px;
   background-color: #ebedf0;
 }
@@ -41,7 +42,8 @@
 }
 .u-slider__gap.data-v-c7a63ef2 {
   position: relative;
-  border-radius: inherit;
+  -webkit-border-radius: inherit;
+          border-radius: inherit;
   -webkit-transition: width 0.2s;
   transition: width 0.2s;
   transition: width 0.2s;
@@ -50,8 +52,10 @@
 .u-slider__button.data-v-c7a63ef2 {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   background-color: #fff;
   cursor: pointer;
 }

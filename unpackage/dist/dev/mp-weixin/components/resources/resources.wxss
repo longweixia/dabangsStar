@@ -26,9 +26,11 @@
 /* 文章场景相关 */
 .star-card.data-v-552bde50 {
   background: #fff;
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
   margin: 20rpx;
-  box-shadow: 0 0 15rpx #e6e6e6;
+  -webkit-box-shadow: 0 0 15rpx #e6e6e6;
+          box-shadow: 0 0 15rpx #e6e6e6;
   padding: 10rpx;
 }
 .star-card .list-top.data-v-552bde50 {
@@ -55,7 +57,8 @@
   text-align: center;
   margin-left: 10rpx;
   display: inline-block;
-  border-radius: 30rpx;
+  -webkit-border-radius: 30rpx;
+          border-radius: 30rpx;
   background: #f3c3c3;
   color: #e34c4c;
 }
@@ -64,8 +67,10 @@
   height: 54rpx;
   line-height: 54rpx;
   padding: 0 20rpx;
-  border-radius: 27rpx;
+  -webkit-border-radius: 27rpx;
+          border-radius: 27rpx;
   text-align: center;
+  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -83,7 +88,8 @@
   height: 50rpx;
   background-color: #f64f71;
   color: #fff;
-  border-radius: 25rpx;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
   border: none;
   font-size: 22rpx;
   line-height: 1;
@@ -101,7 +107,8 @@
   height: 40rpx;
   line-height: 40rpx;
   background: #f64f71;
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
   color: #fff;
   position: relative;
   right: 40rpx;
@@ -200,7 +207,8 @@
   height: 24rpx;
   line-height: 24rpx;
   text-align: center;
-  border-radius: 12rpx;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
 }
 .list-bottom .star-ranking .img-list .num.data-v-552bde50::after {
   clear: both;

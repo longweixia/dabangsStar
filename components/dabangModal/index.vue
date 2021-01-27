@@ -167,6 +167,9 @@ export default {
     showModal: {
       handler(newVal, oldVal) {
         this.show = newVal;
+        // if(!show){
+        //     this.$emit("loadData")
+        // }
       },
       immediate: true,
     },

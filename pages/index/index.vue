@@ -196,7 +196,7 @@
     <!-- 榜单前三以外 -->
     <view class="list-four-th">
       <starRankingList
-        :rankingList="rankingList"
+        :rankingList="rankingList" @loadData="closeDabang"
         style="background: #fff; padding-left: 10px; padding-right: 10px"
       ></starRankingList>
     </view>
@@ -405,6 +405,8 @@ export default {
 
     closeDabang() {
       this.showModal = false;
+      this.selectMyGuard()
+      this.getRankTypeIndex(2)
     },
     // 打榜弹窗
     dabang(id) {
@@ -764,7 +766,7 @@ export default {
   .list-four-th {
     // margin: 20rpx;
     position: relative;
-    top: -100rpx;
+    top: -135rpx;
     margin-bottom: 80rpx;
   }
 }

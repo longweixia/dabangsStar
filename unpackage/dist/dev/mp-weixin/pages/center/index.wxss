@@ -56,7 +56,8 @@
           justify-content: space-between;
   padding-bottom: 20rpx;
   padding-top: 20rpx;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   position: relative;
   top: 20rpx;
   padding: 20rpx;
@@ -104,8 +105,10 @@
   line-height: 54rpx;
   width: 100%;
   padding: 0 10rpx;
-  border-radius: 27rpx;
+  -webkit-border-radius: 27rpx;
+          border-radius: 27rpx;
   text-align: center;
+  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -157,7 +160,8 @@
   height: 56rpx;
   line-height: 56rpx;
   padding: 0 10rpx;
-  border-radius: 28rpx;
+  -webkit-border-radius: 28rpx;
+          border-radius: 28rpx;
   background: #feeeef;
   color: #ef6a75;
 }

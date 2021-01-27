@@ -86,6 +86,7 @@
         </view>
       </view>
     </view>
+    <u-toast ref="join" />
   </view>
 </template>
 
@@ -207,10 +208,15 @@ export default {
           `/starDetail/joinResources?resourcesRelId=${item.resourcesRelId}&status=0`
         )
         .then((res) => {
-          uni.showToast({
-            title: "参与成功",
-            duration: 2000,
-          });
+        //   uni.showToast({
+        //     title: "参与成功",
+        //     duration: 2000,
+        //   });
+        this.$refs.join.show({
+					title: '参与成功',
+					type: 'success',
+					duration: 2000
+				})
           this.selectResources();
         })
         .catch((res) => {});

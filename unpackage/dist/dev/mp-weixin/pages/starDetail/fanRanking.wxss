@@ -31,7 +31,8 @@
 .fan-ranking-area .list {
   background: #fff;
   margin: 20rpx;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   padding: 10rpx;
   padding: 20rpx;
 }
@@ -39,7 +40,8 @@
   width: 100px;
   height: 30px;
   background: #000;
-  border-radius: 15px;
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
 }
 .fan-ranking-area .nav-top {
   text-align: center;
