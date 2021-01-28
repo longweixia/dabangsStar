@@ -21,6 +21,7 @@
         >
           授权登录
         </button>
+        <div @click="wxGetUserInfo">2323</div>
         <!-- <button
 					class="bottom"
 					type="primary"
