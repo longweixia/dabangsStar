@@ -1,11 +1,11 @@
 <template>
   <view class="my-center-content">
       <!-- <MyTitle classType="center"></MyTitle> -->
-      <u-navbar title="个人中心" :background="background" title-color="#fff" back-icon-color="#fff"></u-navbar>
+      <u-navbar title="个人中心" :background="background" title-color="#fff" :border-bottom="false" back-icon-color="#fff"></u-navbar>
       <view class="content">
     <!-- 个人中心顶部 -->
     <view class="top">
-      <img src="../../static/home/centerbg.png" class="bg-img" />
+      <!-- <img src="../../static/home/centerbg.png" class="bg-img" /> -->
       <view class="list-top">
         <view class="left-content">
           <u-image
@@ -173,9 +173,13 @@ onShow() {
    
 .content{
      position: relative;
-    top: -10px;
+    top: -20rpx;
   .top {
     position: relative;
+    padding-top: 40rpx;
+    height: 400rpx;
+    z-index: -1;
+    background: linear-gradient(to bottom, #F64D71, #FEECB3);
     .bg-img {
       position: absolute;
       z-index: -1;
@@ -199,6 +203,7 @@ onShow() {
       padding: 20rpx;
       padding-bottom: 200rpx;
       .left-content {
+         padding-top: 20rpx;
         display: flex;
         align-items: center;
         flex-direction: row;
@@ -321,9 +326,15 @@ onShow() {
   .list {
     margin-left: 20rpx;
     margin-right: 20rpx;
-    margin-top: 100rpx;
-    padding-top: 50rpx;
-    border-top: 1px solid #000;
+    // margin-top: 100rpx;
+    // padding-top: 50rpx;
+    box-shadow: 0 5px 5px rgba(105, 105, 105, 0.16);
+    border-top: 0.5px solid #D9D9D9;
+    background: #fff;
+    margin-top: 40rpx;
+    z-index: 100;
+    padding-top: 10rpx;
+    
   }
   // 编辑
   .edit-btn {

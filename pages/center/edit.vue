@@ -1,6 +1,6 @@
 <template>
   <view class="my-edit">
-            <u-navbar title="修改资料"></u-navbar>
+    <u-navbar title="我"></u-navbar>
     <u-cell-group>
       <u-cell-item
         title="头像"
@@ -240,6 +240,10 @@ export default {
     height: 64rpx;
     border-radius: 32rpx;
     border: 1px solid #ddd;
+  }
+  .u-cell{
+    color: #c9c9c9;
+    border-bottom: 1px solid #c9c9c9;
   }
   /deep/ .u-cell_title {
     color: #c9c9c9 !important;

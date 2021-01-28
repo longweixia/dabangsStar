@@ -1,7 +1,6 @@
 <template>
 	<view class="my-edit-slogan">
-              <u-navbar title="修改标语"></u-navbar>
-
+			    <u-navbar title="个人标语" :background="background" title-color="#fff" :border-bottom="false" back-icon-color="#fff"></u-navbar>
 		<view class="bg-img"></view>
 		<view class="edit-card">
 			<u-cell-group class="card-content">
@@ -64,6 +63,17 @@ export default {
 	props: ['btnList', 'rankType'],
 	data() {
 		return {
+			background: {
+					backgroundColor: '#f64d71',
+					
+					// 导航栏背景图
+					// background: 'url(https://cdn.uviewui.com/uview/swiper/1.jpg) no-repeat',
+					// 还可以设置背景图size属性
+					// backgroundSize: 'cover',
+					
+					// 渐变色
+					// backgroundImage: 'linear-gradient(45deg, rgb(28, 187, 180), rgb(141, 198, 63))'
+				},
 			formArry: [
 				{
 					name: 'inp1',
@@ -182,6 +192,8 @@ export default {
 		width: 100%;
 		height: 444rpx;
 		background: linear-gradient(to bottom, #f64d71, #feecb3);
+		position: relative;
+        top: -10px;
 	}
 	.edit-card {
 		top: 140rpx;

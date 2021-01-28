@@ -26,10 +26,15 @@
 /* 文章场景相关 */
 .my-center-content .content.data-v-0f3320de {
   position: relative;
-  top: -10px;
+  top: -20rpx;
 }
 .my-center-content .content .top.data-v-0f3320de {
   position: relative;
+  padding-top: 40rpx;
+  height: 400rpx;
+  z-index: -1;
+  background: -webkit-linear-gradient(top, #F64D71, #FEECB3);
+  background: linear-gradient(to bottom, #F64D71, #FEECB3);
 }
 .my-center-content .content .top .bg-img.data-v-0f3320de {
   position: absolute;
@@ -56,14 +61,14 @@
           justify-content: space-between;
   padding-bottom: 20rpx;
   padding-top: 20rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   position: relative;
   top: 20rpx;
   padding: 20rpx;
   padding-bottom: 200rpx;
 }
 .my-center-content .content .top .list-top .left-content.data-v-0f3320de {
+  padding-top: 20rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -105,10 +110,8 @@
   line-height: 54rpx;
   width: 100%;
   padding: 0 10rpx;
-  -webkit-border-radius: 27rpx;
-          border-radius: 27rpx;
+  border-radius: 27rpx;
   text-align: center;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -160,8 +163,7 @@
   height: 56rpx;
   line-height: 56rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 28rpx;
-          border-radius: 28rpx;
+  border-radius: 28rpx;
   background: #feeeef;
   color: #ef6a75;
 }
@@ -185,9 +187,12 @@
 .my-center-content .content .list.data-v-0f3320de {
   margin-left: 20rpx;
   margin-right: 20rpx;
-  margin-top: 100rpx;
-  padding-top: 50rpx;
-  border-top: 1px solid #000;
+  box-shadow: 0 5px 5px rgba(105, 105, 105, 0.16);
+  border-top: 0.5px solid #D9D9D9;
+  background: #fff;
+  margin-top: 40rpx;
+  z-index: 100;
+  padding-top: 10rpx;
 }
 .my-center-content .content .edit-btn.data-v-0f3320de {
   padding-left: 10rpx;

@@ -128,7 +128,7 @@ export default {
   filters: {
     getTimeSecond(e) {
       if (e) {
-        let time = new Date(e).getTime() - new Date().getTime();
+              let time = new Date(e.replace(/-/g, "/")).getTime() - new Date().getTime();
         let day = Math.floor(time / 86400000); //天
         let hours = Math.floor((time % 86400000) / 3600000); //时
         let minutes = Math.floor((time % 3600000) / 60000); //分
@@ -139,7 +139,7 @@ export default {
   },
   methods: {
     getTimeday(e) {
-      let time = new Date(e).getTime() - new Date().getTime();
+      let time = new Date(e.replace(/-/g, "/")).getTime() - new Date().getTime();
       let day = Math.floor(time / 86400000); //天
       return day;
     },
@@ -241,9 +241,10 @@ export default {
     padding-bottom: 20rpx;
     padding-top: 20rpx;
     .row-text {
-      padding: 10rpx 40rpx;
+      font-size: 10px!important;
+      padding: 10rpx 30rpx;
       right: 50rpx;
-      height: 60rpx;
+      height: 42rpx;
       text-align: center;
       margin-left: 10rpx;
       display: inline-block;
@@ -253,13 +254,14 @@ export default {
     }
     .btn {
       text-align: center;
-      height: 54rpx;
-      line-height: 54rpx;
-      padding: 0 20rpx;
+      height: 46rpx;
+      line-height: 46rpx;
+      padding: 0 30rpx;
       border-radius: 27rpx;
       text-align: center;
       background: linear-gradient(to right, #f83a3a, #f7c18b);
       color: #fff;
+      font-size: 12px;
     }
   }
 }

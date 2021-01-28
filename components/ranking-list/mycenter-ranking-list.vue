@@ -3,7 +3,7 @@
   <!-- 个人中心用到的 -->
   <view>
     <!-- 1.首页周日月排行榜 -->
-    <view class="list-th" v-if="rankType === 0">
+    <view class="list-th list-thcenter" v-if="rankType === 0">
       <view class="list-row" v-for="(item, index) in rankingList" :key="index">
 
 
@@ -246,6 +246,9 @@ export default {
 .list-th {
   margin: 0 20rpx;
 }
+.list-thcenter{
+  padding-bottom: 20px;
+}
 .list-row {
   display: flex;
   align-items: center;
@@ -294,7 +297,7 @@ export default {
 .val {
   text-align: right;
   position: absolute;
-  right: 20rpx;
+  right: 40rpx;
   margin-top: 40rpx;
   width: 200rpx;
   font-size: 24rpx;

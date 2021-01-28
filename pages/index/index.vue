@@ -60,7 +60,7 @@
         :tagList="tagList"
         @getRankTypeIndex="getRankTypeIndex"
       ></rankingTabHasText>
-      <rankingTabNo v-if="!sloganTextFlag"></rankingTabNo>
+      <rankingTabNo v-if="!sloganTextFlag" @getRankTypeIndex="getRankTypeIndex"></rankingTabNo>
     </view>
     <!-- 榜单前三 -->
     <view class="list-top-three" style="z-index: 10000">
