@@ -661,7 +661,11 @@ __webpack_require__.r(__webpack_exports__);
         _this4.swiperList = res;
       });
     },
-    clickSwiper: function clickSwiper(index) {},
+    clickSwiper: function clickSwiper(index) {
+      uni.navigateTo({
+        url: "/pages/index/SecondPage" });
+
+    },
     routerSearch: function routerSearch() {
       uni.navigateTo({
         url: "/pages/search/search" });

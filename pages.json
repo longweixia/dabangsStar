@@ -93,6 +93,12 @@
             "style": {
                 "navigationBarTitleText": "个人标语"
             }
+        },
+        {
+            "path": "pages/index/SecondPage",
+            "style": {
+                "navigationBarTitleText": "二级页面"
+            }
         }
     ],
     "globalStyle": { // 设置默认页面的窗口表现

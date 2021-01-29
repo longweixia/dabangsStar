@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "二级页面",
+  "usingComponents": {
+    "u-image": "/node-modules/uview-ui/components/u-image/u-image",
+    "btn-nav": "/components/btn-nav/btn-nav"
+  }
+}

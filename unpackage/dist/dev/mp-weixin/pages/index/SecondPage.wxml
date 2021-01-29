@@ -1,0 +1,1 @@
+<view class="listAwards-area"><view style="margin:20rpx;"><u-image vue-id="2faf490d-1" mode="widthFix" src="{{srcImg}}" bind:__l="__l"></u-image></view></view>

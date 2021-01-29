@@ -13,7 +13,8 @@
     "pages/center/center",
     "pages/center/index",
     "pages/center/edit",
-    "pages/center/slogan"
+    "pages/center/slogan",
+    "pages/index/SecondPage"
   ],
   "subPackages": [],
   "window": {

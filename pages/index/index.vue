@@ -486,7 +486,11 @@ export default {
         this.swiperList = res;
       });
     },
-    clickSwiper(index) {},
+    clickSwiper(index) {
+         uni.navigateTo({
+        url: "/pages/index/SecondPage",
+      });
+    },
     routerSearch() {
       uni.navigateTo({
         url: "/pages/search/search",
