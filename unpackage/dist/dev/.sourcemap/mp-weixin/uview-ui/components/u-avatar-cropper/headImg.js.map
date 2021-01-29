@@ -1,0 +1,1 @@
+{"version":3,"sources":["uni-app:///main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,yO;AACAA,UAAU,CAACC,gBAAD,CAAV,C","file":"uview-ui/components/u-avatar-cropper/headImg.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './uview-ui/components/u-avatar-cropper/headImg.vue'\ncreatePage(Page)"],"sourceRoot":""}

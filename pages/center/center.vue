@@ -21,7 +21,6 @@
         >
           授权登录
         </button>
-        <div @click="wxGetUserInfo">2323</div>
         <!-- <button
 					class="bottom"
 					type="primary"
@@ -35,7 +34,7 @@
         <!-- <button class="bottom" type="primary" @click="getUserinfo">
           获取个人中心数据
         </button> -->
-        <button class="bottom" type="primary" @click="getToken">
+        <button class="bottom" type="primary" @click="getToken" v-if="false">
           （浏览器）登录
         </button>
 

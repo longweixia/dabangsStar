@@ -212,6 +212,7 @@
 }
 }
 .danmu-li {
+  margin-top: -30px;
   position: absolute;
   width: 100%;
   -webkit-transform: translateX(100%);
@@ -245,7 +246,7 @@
   display: -webkit-flex;
   display: flex;
   padding: 3rpx 40rpx 3rpx 10rpx;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   -webkit-border-radius: 32rpx;
           border-radius: 32rpx;
   -webkit-box-align: center;
@@ -258,8 +259,8 @@
   display: flex;
 }
 .danmu-li .danmu-inner .user-box .user-img .img-box image {
-  width: 58rpx;
-  height: 58rpx;
+  width: 24rpx;
+  height: 24rpx;
   background: #373737;
   -webkit-border-radius: 50%;
           border-radius: 50%;
@@ -269,42 +270,54 @@
   white-space: nowrap;
   font-size: 28rpx;
   font-weight: 400;
-  color: white;
+  color: black;
 }
 .danmu-li .danmu-inner .user-box .user-text {
   margin-left: 10rpx;
   font-size: 28rpx;
   font-weight: 400;
-  color: white;
+  color: black;
 }
-.u-mode-center-box {
+.title-modal {
+  background: #fff;
+}
+ .u-mode-center-box, .u-model {
   -webkit-border-radius: 0 !important;
           border-radius: 0 !important;
+  background: none;
 }
 .dabang-modal {
   position: relative;
-  position: relative;
+  background: none;
 }
 .dabang-modal .close-btn {
-  text-align: center;
-  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: relative;
   color: #fff;
-  width: 40rpx;
+  width: 50rpx;
   margin: 0 auto;
-  height: 40rpx;
-  line-height: 40rpx;
+  height: 50rpx;
   margin: 0 auto;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
   border: 1px solid #fff;
   right: 0;
-  top: 0;
+  margin-top: 60px;
   z-index: 10000;
 }
 .dabang-modal .detail-bg-img {
   width: 100%;
   height: 280rpx;
   position: relative;
+  margin-bottom: 40rpx;
 }
 .dabang-modal .detail-bg-img .bg-img {
   width: 100%;
@@ -409,7 +422,8 @@
   font-size: 10px;
   background: #e34c4c;
   color: #fff;
-  padding: 5rpx 10rpx;
+  padding: 0 10rpx;
+  font-size: 14px;
 }
 .dabang-modal .body-area .right-btn .col-top .hot {
   color: #d1d1d1;

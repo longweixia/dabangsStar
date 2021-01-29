@@ -39,5 +39,6 @@
 .nodata.data-v-51847fa6 {
   text-align: center;
   margin-top: 40rpx;
+  padding-bottom: 40rpx;
 }
 

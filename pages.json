@@ -87,6 +87,7 @@
                 "navigationBarTitleText": "我"
             }
         },
+      
         {
             "path": "pages/center/slogan",
             "style": {

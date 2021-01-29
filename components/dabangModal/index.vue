@@ -8,7 +8,7 @@
     ref="uModal"
     class="dabang-modal"
   >
-    <view class="close-btn" @click="close"> x </view>
+   
 
     <view class="slot-content">
       <view class="title-modal">
@@ -20,7 +20,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            top: -400px;
+            top: -440px;
             z-index: 100000;
           "
         >
@@ -97,7 +97,9 @@
           </u-row>
         </view>
       </view>
+      
     </view>
+     <view class="close-btn" @click="close"> x </view>
   </u-modal>
 </template>
 
@@ -375,15 +377,21 @@ export default {
     colrdo() {
       //插入一条弹幕
       let that = this;
+       let list = []
+        for(var i =1;i<20;i++){
+          list=  list.concat(this.StarGuardList)
+        }
+  
 
-      if (this.StarGuardList && this.StarGuardList.length > 0) {
+
+      if (list && list.length > 0) {
         let old;
-        this.StarGuardList.forEach((e, index) => {
-          if (index < this.StarGuardList.length - 1) {
+        list.forEach((e, index) => {
+          if (index < list.length - 1) {
            old= setTimeout(() => {
               that.addDanmu({ item: e });
             }, 1000 * (index + 2));
-          } else if (index == this.StarGuardList.length - 1) {
+          } else if (index == list.length - 1) {
             clearTimeout(old)
           //  this.colrdo1()
           }
@@ -393,14 +401,21 @@ export default {
     colrdo1() {
       //插入一条弹幕
       let that = this;
+      let list = []
+        for(var i =1;i<20;i++){
+            list.push(this.StarGuardList)
+        }
+        console.log(list)
 
       if (this.StarGuardList && this.StarGuardList.length > 0) {
-        this.StarGuardList.forEach((e, index) => {
-          if (index < this.StarGuardList.length - 1) {
+        
+        
+        list.forEach((e, index) => {
+          if (index < list - 1) {
             setTimeout(() => {
               that.addDanmu({ item: e });
             }, 1000 * (index + 2));
-          } else if (index == this.StarGuardList.length - 1) {
+          } else if (index == list - 1) {
            
           }
         });
@@ -448,7 +463,7 @@ export default {
       this.$u
         .post("/home/hit", {
           starId: this.starId,
-          vigourVal: Number(this.inpValue),
+          vigourVal: this.inpValue,
         })
         .then((res) => {
           // this.StarGuardList = res;
@@ -559,6 +574,7 @@ export default {
 }
 
 .danmu-li {
+    margin-top: -30px;
   position: absolute;
   width: 100%;
   transform: translateX(100%);
@@ -586,7 +602,7 @@ export default {
     .user-box {
       display: flex;
       padding: 3rpx 40rpx 3rpx 10rpx;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, .3);
       border-radius: 32rpx;
       align-items: center;
 
@@ -595,8 +611,8 @@ export default {
           display: flex;
 
           image {
-            width: 58rpx;
-            height: 58rpx;
+            width: 24rpx;
+            height: 24rpx;
             background: rgba(55, 55, 55, 1);
             border-radius: 50%;
           }
@@ -608,7 +624,7 @@ export default {
         white-space: nowrap;
         font-size: 28rpx;
         font-weight: 400;
-        color: rgba(255, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
       }
 
       .user-text {
@@ -617,31 +633,38 @@ export default {
         font-size: 28rpx;
         font-weight: 400;
         // width: 150rpx;
-        color: rgba(255, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
       }
     }
   }
 }
-.u-mode-center-box {
+.title-modal{
+    background: #fff;
+}
+/deep/ .u-mode-center-box,/deep/ .u-model {
   border-radius: 0 !important;
+  background: none;
 }
 .dabang-modal {
   position: relative;
 
-  position: relative;
+  background: none;
   .close-btn {
-    text-align: center;
-    position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    position: relative;
     color: #fff;
-    width: 40rpx;
+    width: 50rpx;
     margin: 0 auto;
-    height: 40rpx;
-    line-height: 40rpx;
+    height: 50rpx;
+ 
     margin: 0 auto;
-    border-radius: 20rpx;
+    border-radius: 25rpx;
     border: 1px solid #fff;
     right: 0;
-    top: 0;
+    margin-top: 60px;
 
     z-index: 10000;
   }
@@ -651,6 +674,7 @@ export default {
     width: 100%;
     height: 280rpx;
     position: relative;
+    margin-bottom: 40rpx;
     .bg-img {
       width: 100%;
       height: 100%;
@@ -749,7 +773,8 @@ export default {
           font-size: 10px;
           background: #e34c4c;
           color: #fff;
-          padding: 5rpx 10rpx;
+          padding: 0 10rpx;
+          font-size: 14px;
         }
         .hot {
           color: #d1d1d1;

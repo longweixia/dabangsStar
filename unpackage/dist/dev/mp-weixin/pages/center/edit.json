@@ -4,9 +4,11 @@
     "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
     "u-cell-group": "/node-modules/uview-ui/components/u-cell-group/u-cell-group",
     "u-cell-item": "/node-modules/uview-ui/components/u-cell-item/u-cell-item",
-    "u-action-sheet": "/node-modules/uview-ui/components/u-action-sheet/u-action-sheet",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
     "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal",
     "u-input": "/node-modules/uview-ui/components/u-input/u-input",
-    "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast"
+    "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
+    "u-action-sheet": "/node-modules/uview-ui/components/u-action-sheet/u-action-sheet",
+    "kps-image-cutter": "/pages/center/ksp-image-cutter"
   }
 }

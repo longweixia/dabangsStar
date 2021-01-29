@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-isLogin:false,// 未登录
+      isLogin:true,// 未登录
       rankingList: [],
       hasData: true, // 是否有数据，默认有数据
       btnList: ["我的守护", "热力获取记录", "打榜记录"],
@@ -168,5 +168,6 @@ isLogin:false,// 未登录
 .nodata {
   text-align: center;
   margin-top: 40rpx;
+  padding-bottom: 40rpx;
 }
 </style>

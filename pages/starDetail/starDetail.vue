@@ -1,6 +1,11 @@
 <template>
   <view style="background: #f5f8ff; padding-bottom: 20rpx">
     <view class="detail-bg-img">
+         <img
+        @click="routerTohome"
+        class="search-icon"
+        src="../../static/home/right-btn2.png"
+      />
       <img class="img" :src="detailImg" />
       <!-- 打榜弹窗 -->
       <!-- <view class="toast-db">
@@ -292,6 +297,11 @@ export default {
         url: `/pages/center/index`,
       });
     },
+    routerTohome() {
+      uni.navigateTo({
+        url: `/pages/index/index`,
+      });
+    },
     // 获取轮播
     carouselList() {
       this.$u.post("/home/carousel/list").then((res) => {
@@ -379,6 +389,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 搜索区
+  .search-icon {
+    position: absolute;
+    top: 100rpx;
+    left: 28rpx;
+    width: 38rpx;
+    height: 38rpx;
+  }
 // 顶部背景图
 .detail-bg-img {
   width: 100%;
