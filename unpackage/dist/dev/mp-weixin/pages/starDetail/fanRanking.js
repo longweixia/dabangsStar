@@ -200,7 +200,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
   methods: {
     changebtn: function changebtn(index) {var _this = this;
-      console.log(index);
+
       this.rankType = index;
 
       this.$u.

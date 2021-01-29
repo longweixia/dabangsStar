@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     changebtn(index) {
-      console.log(index);
+    
       this.rankType = index;
     
       this.$u

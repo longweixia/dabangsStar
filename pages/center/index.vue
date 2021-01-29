@@ -164,7 +164,7 @@ export default {
 						uni.getUserInfo({
 							provider: 'weixin',
 							success: function (infoRes) {
-								console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
+								// console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
 								_this.nickName = infoRes.userInfo.nickName //昵称
 								_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
 								_this.updateUserInfo() //调用更新信息方法
@@ -278,7 +278,7 @@ export default {
 			uni.getUserInfo({
 				provider: 'weixin',
 				success: function (infoRes) {
-					console.log(infoRes, '用户信息')
+					// console.log(infoRes, '用户信息')
 					_this.encryptedData = infoRes.encryptedData
 					_this.iv = infoRes.iv
 					_this.rawData = infoRes.rawData
@@ -289,7 +289,7 @@ export default {
 					_this.updateUserInfo()
 				},
 				fail: function (fail) {
-					console.log('fail:', fail)
+					// console.log('fail:', fail)
 				},
 			})
 		},

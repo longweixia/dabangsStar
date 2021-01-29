@@ -328,14 +328,14 @@ export default {
         if (listLen < hrackNum + 3) {
           this.listData.push(objData);
         }
-        console.log(
-          listLen,
-          "listLen",
-          hrackNum,
-          "hrackNum",
-          this.listData,
-          "this.listData"
-        );
+        // console.log(
+        //   listLen,
+        //   "listLen",
+        //   hrackNum,
+        //   "hrackNum",
+        //   this.listData,
+        //   "this.listData"
+        // );
       }
       // else if (this.type === "rightToLeft" || this.type === "leftToRight") {
       //   let objData = this.horStacked(data);
@@ -405,7 +405,7 @@ export default {
         for(var i =1;i<20;i++){
             list.push(this.StarGuardList)
         }
-        console.log(list)
+        // console.log(list)
 
       if (this.StarGuardList && this.StarGuardList.length > 0) {
         

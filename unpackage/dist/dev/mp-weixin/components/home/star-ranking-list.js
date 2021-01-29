@@ -166,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     // 打榜弹窗
     dabang: function dabang(id) {
-      console.log(id, 'ui');
+      //   console.log(id,'ui')
       this.starId = id;
       this.showModal = true;
     },

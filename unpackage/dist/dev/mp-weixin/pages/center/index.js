@@ -323,7 +323,7 @@ __webpack_require__.r(__webpack_exports__);
             uni.getUserInfo({
               provider: 'weixin',
               success: function success(infoRes) {
-                console.log('login用户信息：', infoRes); //获取用户信息后向调用信息更新方法
+                // console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
                 _this.nickName = infoRes.userInfo.nickName; //昵称
                 _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
                 _this.updateUserInfo(); //调用更新信息方法
@@ -437,7 +437,7 @@ __webpack_require__.r(__webpack_exports__);
       uni.getUserInfo({
         provider: 'weixin',
         success: function success(infoRes) {
-          console.log(infoRes, '用户信息');
+          // console.log(infoRes, '用户信息')
           _this.encryptedData = infoRes.encryptedData;
           _this.iv = infoRes.iv;
           _this.rawData = infoRes.rawData;
@@ -448,7 +448,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.updateUserInfo();
         },
         fail: function fail(_fail) {
-          console.log('fail:', _fail);
+          // console.log('fail:', fail)
         } });
 
     } } };exports.default = _default;

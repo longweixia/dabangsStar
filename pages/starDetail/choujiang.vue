@@ -40,7 +40,7 @@ export default {
             icon:'none',
             duration: 2000
         });
-			console.log(param)
+			// console.log(param)
 			// console.log(`抽到第${param+1}个方格的奖品`)
 		},
 	},

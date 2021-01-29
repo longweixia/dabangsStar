@@ -560,7 +560,7 @@ var _default =
 
             },
             fail: function fail(ev) {
-              console.log(ev);
+              // console.log(ev);
             },
             complete: function complete() {
               uni.hideLoading();

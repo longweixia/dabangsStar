@@ -205,7 +205,7 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'none',
         duration: 2000 });
 
-      console.log(param);
+      // console.log(param)
       // console.log(`抽到第${param+1}个方格的奖品`)
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

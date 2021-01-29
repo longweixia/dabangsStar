@@ -150,7 +150,7 @@
 		},
 		methods: {
 			formSubmit: function(e) {
-				console.log(e)
+				// console.log(e)
 				let _formdata = e.detail.value
 				this.$emit('confirm',_formdata)
 			},

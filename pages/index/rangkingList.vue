@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     changebtn(index) {
-      console.log(index);
+    //   console.log(index);
       this.rankType = index
     //   粉丝榜调用新接口
       if(index===3){

@@ -362,7 +362,7 @@ export default {
  
       let times = (7 - currentDay) * 24 * 3600 + Number(this.getDayLat());
       this.timesecond = times;
-      console.log(this.timesecond, times,this.getDayLat(),"描述");
+    //   console.log(this.timesecond, times,this.getDayLat(),"描述");
 
       // 获取当前时间的具体时间
       // console.log("当前时间" +new Date(monDayTime).toLocaleTimeString());
@@ -390,7 +390,7 @@ export default {
       }
     
       let result = h * 3600 + m * 60 + s;
-      console.log(result);
+    //   console.log(result);
       return result;
     },
 
@@ -398,7 +398,7 @@ export default {
       this.$u
         .post(`https://123.207.120.31:18001/common/testLogin?id=1`)
         .then((res) => {
-          console.log(res, "拿到token");
+        //   console.log(res, "拿到token");
           uni.setStorageSync("Authorization", res.token);
         });
     },
@@ -448,7 +448,7 @@ export default {
     },
     // 点击周榜/月榜
     getRankTypeIndex(data) {
-      console.log(data);
+  
       this.flagWeek = data;
       this.rankingList = [];
       this.getRankList(data);
