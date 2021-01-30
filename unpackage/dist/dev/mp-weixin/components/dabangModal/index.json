@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "u-modal": "/node-modules/uview-ui/components/u-modal/u-modal",
     "u-row": "/node-modules/uview-ui/components/u-row/u-row",
     "u-col": "/node-modules/uview-ui/components/u-col/u-col",
     "dianzan": "/components/dabangModal/dianzan",

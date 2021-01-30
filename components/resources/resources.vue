@@ -203,7 +203,21 @@ export default {
     },
     //参加活动
     join(item) {
-      this.$u
+       if (!uni.getStorageSync("Authorization")) {
+        uni.showModal({
+          title: "请登录",
+          content: "登录后可以获取更多功能",
+          success: (res) => {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: "/pages/center/center",
+              });
+            } else if (res.cancel) {
+            }
+          },
+        });
+      }else{
+ this.$u
         .post(
           `/starDetail/joinResources?resourcesRelId=${item.resourcesRelId}&status=0`
         )
@@ -220,6 +234,8 @@ export default {
           this.selectResources();
         })
         .catch((res) => {});
+      }
+     
     },
   },
 };

@@ -3,14 +3,14 @@
         "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
     },
     "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-        {
-            "path": "pages/index/kaiping",
-            "name":"kaiping",
+        // {
+        //     "path": "pages/index/kaiping",
+        //     "name":"kaiping",
             
-            "style": {
-                "navigationBarTitleText": "欢迎来到明星打榜"
-            }
-        },
+        //     "style": {
+        //         "navigationBarTitleText": "欢迎来到明星打榜"
+        //     }
+        // },
         {
             "path": "pages/index/index",
             "name":"index",

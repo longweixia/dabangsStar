@@ -40,10 +40,8 @@
   width: 100%;
   height: 100%;
   z-index: -2;
-  -webkit-border-bottom-left-radius: 20rpx;
-          border-bottom-left-radius: 20rpx;
-  -webkit-border-bottom-right-radius: 20rpx;
-          border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
 .star-card.data-v-382f0766 {
   margin-top: -60rpx;
@@ -108,10 +106,8 @@
   height: 54rpx;
   line-height: 54rpx;
   padding: 0 20rpx;
-  -webkit-border-radius: 27rpx;
-          border-radius: 27rpx;
+  border-radius: 27rpx;
   text-align: center;
-  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -216,8 +212,7 @@
   height: 24rpx;
   line-height: 24rpx;
   text-align: center;
-  -webkit-border-radius: 12rpx;
-          border-radius: 12rpx;
+  border-radius: 12rpx;
 }
 .star-card .card--content .list-bottom .star-ranking .img-list .num.data-v-382f0766::after {
   clear: both;
@@ -255,8 +250,7 @@
 .toast-db .imgs.data-v-382f0766 {
   width: 40rpx;
   height: 40rpx;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   display: inline-block;
 }
 .toast-db .text.data-v-382f0766 {
@@ -295,10 +289,8 @@
   bottom: 50rpx;
   font-size: 6px;
   z-index: 100000;
-  -webkit-border-radius: 20px;
-          border-radius: 20px;
-  -webkit-box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
-          box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
   text-align: center;
 }
 .my .my-text.data-v-382f0766 {

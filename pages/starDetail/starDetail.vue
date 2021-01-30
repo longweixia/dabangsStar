@@ -152,7 +152,23 @@ export default {
     DabangModal,
   },
   onShareAppMessage: function (res) {
-      setTimeout(() => {
+      if(!uni.getStorageSync('Authorization')){
+         uni.showModal({
+            title: '请登录',
+            content: '登录后可以获取更多功能',
+            success: (res)=> {
+                if (res.confirm) {
+                    uni.navigateTo({
+                        url: "/pages/center/center"
+                      });
+                } else if (res.cancel) {
+                 
+                }
+            }
+        });
+     
+      }else{
+  setTimeout(() => {
           this.shareinfo()
       }, 2000);
     // return eventHandler接收到的分享参数
@@ -180,6 +196,8 @@ export default {
       //   alert(2);
       // },
     };
+      }
+    
   },
   data() {
     return {

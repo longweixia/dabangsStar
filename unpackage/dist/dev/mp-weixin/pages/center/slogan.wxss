@@ -27,7 +27,6 @@
 .my-edit-slogan .bg-img {
   width: 100%;
   height: 444rpx;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f64d71), to(#feecb3));
   background: -webkit-linear-gradient(top, #f64d71, #feecb3);
   background: linear-gradient(to bottom, #f64d71, #feecb3);
   position: relative;
@@ -37,15 +36,12 @@
   top: 140rpx;
   position: absolute;
   margin: 20rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
-  -webkit-box-shadow: 0 0 20px rgba(134, 134, 134, 0.16);
-          box-shadow: 0 0 20px rgba(134, 134, 134, 0.16);
+  border-radius: 10rpx;
+  box-shadow: 0 0 20px rgba(134, 134, 134, 0.16);
 }
 .my-edit-slogan .edit-card .card-content .u-cell-item-box {
   padding: 20rpx !important;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .my-edit-slogan .tips-top {
   color: #333;
@@ -97,8 +93,7 @@
   height: 74rpx;
   line-height: 74rpx;
   padding: 0 20rpx;
-  -webkit-border-radius: 37rpx;
-          border-radius: 37rpx;
+  border-radius: 37rpx;
   text-align: center;
   background: #e1e1e1;
   color: #fff;

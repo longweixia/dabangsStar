@@ -5,99 +5,12 @@
 				{{title}}
 			</view>
 			<view class="a_input">
-			 <view class="slot-content">
-      <view class="title-modal">
-
-        <view
-          style="
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            top: -400px;
-            z-index: 100000;
-          "
-        >
-          <view
-            class="danmu-li"
-            v-for="(item, index) in listData"
-            :class="item.type"
-            :style="[item.style]"
-            :key="index"
-          >
-            <view class="danmu-inner">
-              <view class="user-box">
-                <view class="user-img">
-                  <view class="img-box">
-                    <image :src="item.item.avatarUrl"></image>
-                  </view>
-                </view>
-                <view class="user-text cl1"> {{ item.item.nickName }} </view>
-                <view class="user-status cl1">
-                  打榜了<text style="color: #e34c4c; font-weight: bold">
-                    {{ item.item.vigourVal }}</text
-                  >热力值
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-        <view class="detail-bg-img">
-          <view
-            class="bg-img"
-            :style="{
-              background:
-                'url(' + detailImg + ') center center / cover no-repeat',
-            }"
-          ></view>
-        </view>
-
-        <view class="body-area">
-          <u-row gutter="16" style="margin-top: 20rpx">
-            <u-col span="4">
-              <view class="title"> 为{{ starName }}打榜</view>
-            </u-col>
-
-            <u-col span="8" class="right-btn">
-              <view class="col-top">
-                <view class="slice" @click="add('jian')">-</view>
-                <input v-model="inpValue" type="number" class="inp-num" />
-                <view class="add" @click="add('jia')">+</view>
-
-                <view class="btn" @click="add('btn')"
-                  >打榜<text v-if="btnVal">{{ btnVal }}</text>
-                  <Dianzan
-                    ref="dianzan"
-                    :dabangVal="inpValue"
-                    style="position: relative; top: -80rpx"
-                  ></Dianzan>
-                </view>
-              </view>
-              <view class="col-top col-top2">
-                <view class="hot">我的热力值：{{ myInfo.vigourVal }}</view>
-
-                <view class="hot-text" @click="routerStarDetail()"
-                  >获得热力值>></view
-                >
-              </view>
-            </u-col>
-          </u-row>
-          <u-row gutter="16" class="row-bottom">
-            <u-col span="3" v-for="(item, index) in dabangValList" :key="index">
-              <view class="btn" @click="addBtn(item.value)"
-                >+{{ item.value }}</view
-              >
-            </u-col>
-          </u-row>
-        </view>
-      </view>
-    </view>
+				<input :type="type" :value="value" :placeholder="placeholder" :name="name"/>
 			</view>
 			<view class="a_btn">
 				
 				<button form-type="reset" :style="{color:cancelColor}">{{cancelText}}</button>
-				<button form-type="submit" :style="{color:confirmColor}" @click="close">{{confirmText}}</button>
+				<button form-type="submit" :style="{color:confirmColor}">{{confirmText}}</button>
 			</view>
 		</form>
 	</view>
@@ -150,7 +63,7 @@
 		},
 		methods: {
 			formSubmit: function(e) {
-				// console.log(e)
+				console.log(e)
 				let _formdata = e.detail.value
 				this.$emit('confirm',_formdata)
 			},

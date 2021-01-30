@@ -47,28 +47,24 @@
   width: 50rpx;
   height: 50rpx;
   line-height: 50rpx;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   color: #e34c4c;
   text-align: center;
   border: 1px solid #e34c4c;
 }
 .num-body .num0.data-v-468d5fa4 {
-  background: -webkit-gradient(linear, left top, left bottom, from(#fe6925), to(#df372c));
   background: -webkit-linear-gradient(#fe6925, #df372c);
   background: linear-gradient(#fe6925, #df372c);
   color: #fff;
   border: none;
 }
 .num-body .num1.data-v-468d5fa4 {
-  background: -webkit-gradient(linear, left top, left bottom, from(#e8d81c), to(#e1792a));
   background: -webkit-linear-gradient(#e8d81c, #e1792a);
   background: linear-gradient(#e8d81c, #e1792a);
   color: #fff;
   border: none;
 }
 .num-body .num2.data-v-468d5fa4 {
-  background: -webkit-gradient(linear, left top, left bottom, from(#3bf2c9), to(#4ce8f3));
   background: -webkit-linear-gradient(#3bf2c9, #4ce8f3);
   background: linear-gradient(#3bf2c9, #4ce8f3);
   color: #fff;

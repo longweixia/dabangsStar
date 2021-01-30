@@ -17,8 +17,7 @@
 	height: 100rpx;
 	left: 0rpx;
 	bottom: 0rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	border-bottom: 1px solid #C0C0C0;
 	background: #F8F8F8;
 }

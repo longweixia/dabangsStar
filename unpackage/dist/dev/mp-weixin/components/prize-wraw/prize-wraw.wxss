@@ -67,8 +67,7 @@
   padding: 10rpx;
   margin-left: 10rpx;
   display: inline-block;
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
+  border-radius: 30rpx;
   background: #e34c4c;
   color: #fff;
 }

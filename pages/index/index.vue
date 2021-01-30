@@ -2,21 +2,68 @@
   <view class="home-page">
     <!-- 轮播 -->
     <view class="home-swiper">
-      <u-swiper
+ 
+      <u-swiper 
         :list="swiperList"
         @click="clickSwiper"
+        @change="changeSwiper"
         height="590"
         mode="dot"
         indicator-pos="bottomCenter"
         :autoplay="true"
         interval="2000"
         name="img"
-      ></u-swiper>
+      >
+ 
+      </u-swiper>
       <img
         @click="routerSearch"
         class="search-icon"
         src="../../static/home/searchBtn.png"
       />
+      <!-- 周冠军 -->
+      <view class="week-area" v-if="current===2">
+      <view class="row-title">
+        上周周榜冠军
+        </view> 
+      <view class="row-name">
+        {{weekName}}
+        </view> 
+      <img
+        @click="routerSearch"
+        class="week-img"
+        src="./weekOne.png"
+      />
+        <img
+        @click="routerSearch"
+        class="week-img-ai"
+        src="./weekOneAi.png"
+      />
+      </view>
+      <!-- 月冠军 -->
+      <view class="week-area" v-if="current===3">
+      <view class="row-title">
+        {{monthNum+1}}月月榜冠军
+        </view> 
+      <view class="row-name  month-name">
+        {{monthName}}
+        </view> 
+      <img
+        @click="routerSearch"
+        class="week-img"
+        src="./monthOne.png"
+      />
+        <img
+        @click="routerSearch"
+        class="week-img-ai"
+        src="./monthOneAi.png"
+      />
+        <img
+        @click="routerSearch"
+        class="week-img-star"
+        src="./monthOneStar.png"
+      />
+      </view>
     </view>
     <!-- 搜索 -->
 
@@ -243,6 +290,8 @@ export default {
   },
   data() {
     return {
+      weekName:"",
+      current: 0,
       sloganOpen: false,
       starId: "", //明星id
       showModal: false, //打榜弹窗
@@ -282,6 +331,8 @@ export default {
       sloganTextFlag: false, //是否在个人中心设置明星tag文字
       timesecond: 0,
       flagWeek: 0, //当前点击的是周榜
+      monthNum: null,
+      monthName:""
     };
   },
 
@@ -302,6 +353,7 @@ export default {
   },
 
   mounted() {
+    this.monthNum = new Date().getMonth()
     this.getDaojishiWeek();
 
     this.$emit("footer", false);
@@ -316,8 +368,13 @@ export default {
   onShow() {
     // 个人信息-标语
     this.getMyInfo();
+    // this.getWeekOne(0)
+    // this.getWeekOne(1)
   },
   methods: {
+    changeSwiper(index){
+      this.current = index
+    },
     // 获取当前月的最后一天时间
     getlastMoutnTime() {
       var date = new Date();
@@ -453,6 +510,24 @@ export default {
       this.rankingList = [];
       this.getRankList(data);
     },
+    getWeekOne(index){
+      this.$u
+        .post("/home/weekRank/list", {
+          pageNum: 1,
+          pageSize: 20,
+          rankType: index,
+        })
+        .then((res) => {
+          if(index===0){
+      
+            this.weekName = res.list[0].starName
+          }
+         else if(index===1){
+      
+            this.monthName = res.list[0].starName
+          }
+        })
+    },
     // 获取明星榜单--总榜
     // 0周榜；1月榜；2总榜
     getRankList(data) {
@@ -463,6 +538,10 @@ export default {
           rankType: data,
         })
         .then((res) => {
+          if(data===0){
+      
+            this.weekName = res.list[0].starName
+          }
           // 按原型图，第一名在第二的位置，所以要把第一名和第二名换一下
           // 处理排名前三的明星
           let list = res.list.slice(0, 3);
@@ -484,16 +563,25 @@ export default {
     carouselList() {
       this.$u.get("/home/carousel/list").then((res) => {
         this.swiperList = res;
+        if(this.swiperList&&this.swiperList.length>0){
+          this.weekName = this.swiperList[2].starName
+          this.monthName = this.swiperList[3].starName
+        }
       });
     },
     clickSwiper(index) {
-         uni.navigateTo({
-        url: "/pages/index/SecondPage",
+      if(index<2){
+        uni.navigateTo({
+         url: `/pages/index/SecondPage?current=${index}`
+
       });
+      }
+         
     },
     routerSearch() {
       uni.navigateTo({
-        url: "/pages/search/search",
+        url: "/pages/search/search"
+        // url: "/pages/center/center"
       });
     },
     routerStarDetail(id, name) {
@@ -524,6 +612,56 @@ export default {
   // 轮播区
   .home-swiper {
     position: relative;
+  }
+  // 周冠军
+  .week-area{
+    position: absolute;
+    top: 80rpx;
+    left: 57rpx;
+    width: 38rpx;
+    height: 38rpx;
+    width:327rpx;
+    height: 267rpx;
+    .row-title{
+       position: absolute;
+       font-size: 20px;
+       font-weight: bold;
+       color: #fff;
+      //  box-shadow:  1px 1px 5px rgba(105, 105, 105, 0.16);
+       top: 50rpx;
+       left: 50rpx;
+    }
+    .row-name{
+       position: absolute;
+       font-size: 18px;
+       font-weight: bold;
+       color: #FF3C3C;
+      //  box-shadow:  1px 1px 5px rgba(105, 105, 105, 0.16);
+       top: 120rpx;
+       left: 115rpx;
+    }
+    .month-name{
+       top: 160rpx;
+       left: 115rpx;
+    }
+    .week-img{
+      width:100%;
+      height:100%;
+    }
+    .week-img-ai{
+      width: 194rpx;
+      height:224rpx;
+      position: absolute;
+      top: 240rpx;
+      left: 40rpx;
+    }
+    .week-img-star{
+       width: 52rpx;
+      height:45rpx;
+      position: absolute;
+      top: 30rpx;
+      left: 240rpx;
+    }
   }
   /deep/ .u-swiper-indicator {
     bottom: 120rpx !important;

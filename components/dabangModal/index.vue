@@ -1,29 +1,22 @@
 <template>
-  <u-modal
-    width="700"
-    v-model="show"
-    :show-confirm-button="false"
-    :mask-close-able="true"
-    :show-title="false"
-    ref="uModal"
-    class="dabang-modal"
-  >
-   
-
-    <view class="slot-content">
-      <view class="title-modal">
-        <!-- 弹幕 -->
+  <view class="a_mask dabang-modal" ref="uModal" v-if="showModal">
+    <form class="a_box" @submit="formSubmit" @reset="formReset">
+      <view class="slot-content">
+        <view class="title-modal">
+          <!-- 弹幕 -->
+           <!-- 弹幕 -->
         <view
-          style="
+           style="
             overflow: hidden;
             position: fixed;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            top: -440px;
+            top: -540rpx;
             z-index: 100000;
           "
         >
+   
           <view
             class="danmu-li"
             v-for="(item, index) in listData"
@@ -48,59 +41,68 @@
             </view>
           </view>
         </view>
-        <view class="detail-bg-img">
-          <view
-            class="bg-img"
-            :style="{
-              background:
-                'url(' + detailImg + ') center center / cover no-repeat',
-            }"
-          ></view>
-        </view>
 
-        <view class="body-area">
-          <u-row gutter="16" style="margin-top: 20rpx">
-            <u-col span="4">
-              <view class="title"> 为{{ starName }}打榜</view>
-            </u-col>
+          <view class="detail-bg-img">
+            <view
+              class="bg-img"
+              :style="{
+                background:
+                  'url(' + detailImg + ') center center / cover no-repeat',
+              }"
+            ></view>
+          </view>
 
-            <u-col span="8" class="right-btn">
-              <view class="col-top">
-                <view class="slice" @click="add('jian')">-</view>
-                <input v-model="inpValue" type="number" class="inp-num" />
-                <view class="add" @click="add('jia')">+</view>
+          <view class="body-area">
+            <u-row gutter="16" style="margin-top: 20rpx">
+              <u-col span="4">
+                <view class="title"> 为{{ starName }}打榜</view>
+              </u-col>
 
-                <view class="btn" @click="add('btn')"
-                  >打榜<text v-if="btnVal">{{ btnVal }}</text>
-                  <Dianzan
-                    ref="dianzan"
-                    :dabangVal="inpValue"
-                    style="position: relative; top: -80rpx"
-                  ></Dianzan>
+              <u-col span="8" class="right-btn">
+                <view class="col-top">
+                  <view class="slice" @click="add('jian')">-</view>
+                  <input v-model="inpValue" type="number" class="inp-num" />
+                  <view class="add" @click="add('jia')">+</view>
+
+                  <view class="btn" @click="add('btn')"
+                    >打榜<text v-if="btnVal">{{ btnVal }}</text>
+                    <Dianzan
+                      ref="dianzan"
+                      :dabangVal="inpValue"
+                      style="position: relative; top: -80rpx"
+                    ></Dianzan>
+                  </view>
                 </view>
-              </view>
-              <view class="col-top col-top2">
-                <view class="hot">我的热力值：{{ myInfo.vigourVal }}</view>
+                <view class="col-top col-top2">
+                  <view class="hot">我的热力值：{{ myInfo.vigourVal }}</view>
 
-                <view class="hot-text" @click="routerStarDetail()"
-                  >获得热力值>></view
-                >
-              </view>
-            </u-col>
-          </u-row>
-          <u-row gutter="16" class="row-bottom">
-            <u-col span="3" v-for="(item, index) in dabangValList" :key="index">
-              <view class="btn" @click="addBtn(item.value)"
-                >+{{ item.value }}</view
+                  <view class="hot-text" @click="routerStarDetail()"
+                    >获得热力值>></view
+                  >
+                </view>
+              </u-col>
+            </u-row>
+            <u-row gutter="16" class="row-bottom">
+              <u-col
+                span="3"
+                v-for="(item, index) in dabangValList"
+                :key="index"
               >
-            </u-col>
-          </u-row>
+                <view class="btn" @click="addBtn(item.value)"
+                  >+{{ item.value }}</view
+                >
+              </u-col>
+            </u-row>
+          </view>
         </view>
       </view>
-      
-    </view>
-     <view class="close-btn" @click="close"> x </view>
-  </u-modal>
+      <view class="a_btn">
+        <view class="close-btn" @click="close"> x </view>
+      </view>
+    </form>
+  </view>
+
+
 </template>
 
 <script>
@@ -163,6 +165,43 @@ export default {
       default() {
         return [];
       },
+    },
+
+    title: {
+      type: String,
+      default: "提示",
+    },
+    placeholder: {
+      type: String,
+      default: "请点击输入",
+    },
+    name: {
+      type: String,
+      default: "text",
+    },
+    typetext: {
+      type: String,
+      default: "text",
+    },
+    value: {
+      type: String,
+      default: "",
+    },
+    cancelColor: {
+      type: String,
+      default: "#999999",
+    },
+    confirmColor: {
+      type: String,
+      default: "#333333",
+    },
+    cancelText: {
+      type: String,
+      default: "取消",
+    },
+    confirmText: {
+      type: String,
+      default: "确定",
     },
   },
   watch: {
@@ -266,15 +305,24 @@ export default {
     // 获取我的热力值
     this.selectFensInfo();
 
-    // this.colrdo()
+ 
     this.hrackNum = Math.floor((this.maxTop - this.minTop) / this.hrackH);
   },
   onLoad(option) {
-    this.starId = Number(option.id);
+    this.starId = option.id;
   },
   methods: {
+    formSubmit: function (e) {
+    
+      let _formdata = e.detail.value;
+      this.$emit("confirm", _formdata);
+    },
+    formReset: function (e) {
+      this.$emit("cancel");
+    },
     // 添加弹幕
     addDanmu(obj) {
+
       let data = {
         item: obj.item,
         id: Date.parse(new Date()),
@@ -283,7 +331,7 @@ export default {
             Math.random() * (this.maxTime - this.minTime + 1) + this.minTime
           )
         ),
-        type: this.type,
+        type: this.types,
       };
       if (this.type === "leftBottom") {
         let objData = {
@@ -296,6 +344,7 @@ export default {
             bottom: `${this.minTop}px`,
           },
         };
+
         let listLen = this.listData.length;
         let hrackNum = this.hrackNum;
         for (let i in this.listData) {
@@ -328,27 +377,7 @@ export default {
         if (listLen < hrackNum + 3) {
           this.listData.push(objData);
         }
-        // console.log(
-        //   listLen,
-        //   "listLen",
-        //   hrackNum,
-        //   "hrackNum",
-        //   this.listData,
-        //   "this.listData"
-        // );
       }
-      // else if (this.type === "rightToLeft" || this.type === "leftToRight") {
-      //   let objData = this.horStacked(data);
-      //   for (let i in this.listData) {
-      //     if (this.listData[i].delTime <= Date.parse(new Date())) {
-      //       this.repaint(i, objData.type);
-      //       objData.type = "";
-      //       this.$set(this.listData, i, objData);
-      //       return;
-      //     }
-      //   }
-      //   this.listData.push(objData);
-      // }
     },
     horStacked(data) {
       return {
@@ -360,7 +389,7 @@ export default {
             Math.random() * (this.maxTop - this.minTop + 1) + this.minTop
           )}px`,
         },
-        delTime: Date.parse(new Date()) + data.time * 1200,
+        delTime: Date.parse(new Date()) + data.time * 2000,
       };
     },
     repaint(index, type) {
@@ -375,62 +404,39 @@ export default {
       this.dabangInfo = this.dabangInfo.concat(this.StarGuardList);
     },
     colrdo() {
+    
       //插入一条弹幕
       let that = this;
-       let list = []
-        for(var i =1;i<20;i++){
-          list=  list.concat(this.StarGuardList)
-        }
-  
-
-
+      let list = [];
+      for (var i = 1; i < 20; i++) {
+        list = list.concat(this.StarGuardList);
+      }
+    
       if (list && list.length > 0) {
         let old;
         list.forEach((e, index) => {
           if (index < list.length - 1) {
-           old= setTimeout(() => {
+            old = setTimeout(() => {
               that.addDanmu({ item: e });
             }, 1000 * (index + 2));
           } else if (index == list.length - 1) {
-            clearTimeout(old)
-          //  this.colrdo1()
+            clearTimeout(old);
+          
           }
         });
       }
     },
-    colrdo1() {
-      //插入一条弹幕
-      let that = this;
-      let list = []
-        for(var i =1;i<20;i++){
-            list.push(this.StarGuardList)
-        }
-        // console.log(list)
 
-      if (this.StarGuardList && this.StarGuardList.length > 0) {
-        
-        
-        list.forEach((e, index) => {
-          if (index < list - 1) {
-            setTimeout(() => {
-              that.addDanmu({ item: e });
-            }, 1000 * (index + 2));
-          } else if (index == list - 1) {
-           
-          }
-        });
-      }
-    },
     //   加减input
     add(name) {
       if (name == "jian") {
         if (Number(this.inpValue)) {
           this.inpValue = Number(this.inpValue) - 1;
-          // this.myInfo.vigourVal =this.inpValue;
+
         }
       } else if (name == "jia") {
         this.inpValue = Number(this.inpValue) + 1;
-        // this.myInfo.vigourVal =-this.inpValue;
+
       } else if (name == "btn") {
         if (this.inpValue == 0) {
           uni.showToast({
@@ -440,7 +446,6 @@ export default {
           });
           return false;
         }
-        // this.myInfo.vigourVal =  Number(this.inpValue);
         this.hit();
       }
     },
@@ -452,7 +457,6 @@ export default {
           starId: this.starId,
         })
         .then((res) => {
-          // this.showInfo =true
           this.StarGuardList = res;
           this.colrdo();
         })
@@ -466,14 +470,10 @@ export default {
           vigourVal: this.inpValue,
         })
         .then((res) => {
-          // this.StarGuardList = res;
+
           this.$refs.dianzan.handleClick();
           this.selectFensInfo();
-          // if (res.list && res.list.length > 0) {
-          //   this.hasData = true;
-          // } else {
-          //   this.hasData = false;
-          // }
+ 
         })
         .catch((res) => {});
     },
@@ -487,12 +487,6 @@ export default {
           this.starInfo = res; //　少了头像
           this.detailImg = res.hitPopupImg;
           this.starName = res.name;
-
-          // if (res.list && res.list.length > 0) {
-          //   this.hasData = true;
-          // } else {
-          //   this.hasData = false;
-          // }
         })
         .catch((res) => {});
     },
@@ -515,7 +509,6 @@ export default {
         .post("/home/fens")
         .then((res) => {
           this.myInfo = res; //　少了头像
-          //  this.inpValue=0
         })
         .catch((res) => {});
     },
@@ -574,7 +567,7 @@ export default {
 }
 
 .danmu-li {
-    margin-top: -30px;
+  margin-top: -30px;
   position: absolute;
   width: 100%;
   transform: translateX(100%);
@@ -602,7 +595,7 @@ export default {
     .user-box {
       display: flex;
       padding: 3rpx 40rpx 3rpx 10rpx;
-      background: rgba(255, 255, 255, .3);
+      background: rgba(255, 255, 255, 0.3);
       border-radius: 32rpx;
       align-items: center;
 
@@ -638,32 +631,35 @@ export default {
     }
   }
 }
-.title-modal{
-    background: #fff;
+.title-modal {
+  background: #fff;
 }
-/deep/ .u-mode-center-box,/deep/ .u-model {
+
+/deep/ .u-mode-center-box,
+/deep/ .u-model {
   border-radius: 0 !important;
-  background: none;
+  // background: none;
 }
 .dabang-modal {
-  position: relative;
+  // position: relative;
 
-  background: none;
+  // background: none;
   .close-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     position: relative;
     color: #fff;
     width: 50rpx;
-    margin: 0 auto;
+    // margin: 0 auto;
     height: 50rpx;
- 
+    line-height: 50rpx;
+
     margin: 0 auto;
     border-radius: 25rpx;
     border: 1px solid #fff;
-    right: 0;
+    // right: 0;
     margin-top: 60px;
 
     z-index: 10000;
@@ -793,8 +789,9 @@ export default {
     }
   }
   .row-bottom {
+    text-align: center;
     .btn {
-      width: 140rpx;
+      // width: 150rpx;
       height: 64rpx;
       line-height: 64rpx;
       text-align: center;
@@ -804,6 +801,66 @@ export default {
       margin-bottom: 20rpx;
 
       background: linear-gradient(to right, #f83a3a, #f7c18b);
+    }
+  }
+}
+.a_mask {
+  position: fixed;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .a_box {
+    width: 700rpx;
+    // margin: 20px;
+    overflow: hidden;
+
+    // background-color: #fff;
+    border-radius: 10upx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .a_head {
+      text-align: center;
+      font-size: 30upx;
+      line-height: 88upx;
+    }
+    .a_input {
+      padding: 30upx 20upx;
+      font-size: 28upx;
+      input {
+        text-align: center;
+      }
+    }
+    .a_btn {
+      text-align: center;
+      font-size: 30upx;
+      line-height: 88upx;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1upx solid #f5f5f5;
+      button {
+        width: 50%;
+        background-color: #fff;
+        font-size: 30upx;
+        border-radius: 0upx;
+        padding: 0;
+        &::after {
+          border: none;
+        }
+        &:first-child {
+          border-right: 1upx solid #f5f5f5;
+          color: #999999;
+          box-sizing: border-box;
+        }
+        &:last-child {
+          color: #333;
+        }
+      }
     }
   }
 }

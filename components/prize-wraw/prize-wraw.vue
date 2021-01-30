@@ -7,10 +7,16 @@
         <view class="name"> {{ item.name }}</view>
         <view class="tip">{{ item.tips }} </view>
       </view>
-      <view  v-if="index!==3" class="btn" style="z-index: 100" @click="clickBtn(index)">{{
-        item.name
-      }}</view>
-       <button v-if="index==3"  class="btn-share btn" open-type="share">立即分享</button>
+      <view
+        v-if="index !== 3"
+        class="btn"
+        style="z-index: 100"
+        @click="clickBtn(index)"
+        >{{ item.name }}</view
+      >
+      <button v-if="index == 3" class="btn-share btn" open-type="share">
+        立即分享
+      </button>
     </view>
   </view>
 </template>
@@ -18,10 +24,9 @@
 <script>
 export default {
   name: "prize-wraw",
-  props:["starId"],
+  props: ["starId"],
 
-
-  onLoad(){},
+  onLoad() {},
   components: {},
   data() {
     return {
@@ -30,21 +35,21 @@ export default {
         {
           tips: "100%中热力值",
           image: "../../static/home/choujiang.png",
-     
+
           name: "抽奖",
           val: 500,
         },
         {
           tips: "签到获得20热力值",
           image: "../../static/home/sigin.png",
-  
+
           name: "签到",
           val: 500,
         },
         {
           tips: "观看视频获得30热力值",
           image: "../../static/home/bofang.png",
-  
+
           name: "看视频",
           val: 500,
         },
@@ -56,117 +61,124 @@ export default {
           val: 500,
         },
       ],
-        //设置默认的分享参数
-            share:{
-                title:'ALAPI',
-                path:'/pages/index/index',
-                imageUrl:'',
-                desc:'',
-                content:''
-            }
+      //设置默认的分享参数
+      share: {
+        title: "ALAPI",
+        path: "/pages/index/index",
+        imageUrl: "",
+        desc: "",
+        content: "",
+      },
     };
   },
- 
-    
+
   methods: {
     clickBtn(i) {
-      if (i === 0) {
-        //抽奖
-        uni.navigateTo({
-          url: "/pages/starDetail/choujiang",
+      if (!uni.getStorageSync("Authorization")) {
+        uni.showModal({
+          title: "请登录",
+          content: "登录后可以获取更多功能",
+          success: (res) => {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: "/pages/center/center",
+              });
+            } else if (res.cancel) {
+            }
+          },
         });
-      } else if (i === 1) {
-        // 签到
-        this.signiIn()
- 
-      
+      } else {
+        if (i === 0) {
+          //抽奖
+          uni.navigateTo({
+            url: "/pages/starDetail/choujiang",
+          });
+        } else if (i === 1) {
+          // 签到
+          this.signiIn();
+        }
       }
     },
     // 签到
     signiIn() {
       let params = {
         starId: this.starId,
-        type:1//任务类型 1-签到 2-抽奖 3-看视频 4-分享
-      }
+        type: 1, //任务类型 1-签到 2-抽奖 3-看视频 4-分享
+      };
       this.$u
-        .post("/starDetail/getVigourVal",params)
+        .post("/starDetail/getVigourVal", params)
         .then((res) => {
-             uni.showToast({
+          uni.showToast({
             title: "签到成功，获得20热力值",
-            icon:'none',
-            duration: 1000
-        
-        });   
-         this.$emit("getmyInfo")
+            icon: "none",
+            duration: 1000,
+          });
+          this.$emit("getmyInfo");
         })
         .catch((res) => {
-            uni.showToast({
+          uni.showToast({
             title: res.message,
-            icon:'none',
+            icon: "none",
             duration: 1000,
-      
-        });
+          });
         });
     },
     // 获取热力值设置
     getHitSettings() {
       let params = {
-        starId: this.starId
-      }
+        starId: this.starId,
+      };
       this.$u
-        .get("/starDetail/selectHitSettings",params)
+        .get("/starDetail/selectHitSettings", params)
         .then((res) => {
           // 抽奖
-           this.prizeWrawList[0].tips= "100%中热力值"
+          this.prizeWrawList[0].tips = "100%中热力值";
           // 签到
-           this.prizeWrawList[1].tips= `签到获得${res.data.vigourSignNum}热力值`
+          this.prizeWrawList[1].tips = `签到获得${res.data.vigourSignNum}热力值`;
         })
         .catch((res) => {
-            uni.showToast({
+          uni.showToast({
             title: res.message,
-            icon:'none',
+            icon: "none",
             duration: 1000,
-      
-        });
+          });
         });
     },
     // 签到
     signiIn() {
       let params = {
         starId: this.starId,
-        type:1//任务类型 1-签到 2-抽奖 3-看视频 4-分享
-      }
+        type: 1, //任务类型 1-签到 2-抽奖 3-看视频 4-分享
+      };
       this.$u
-        .post("/starDetail/getVigourVal",params)
+        .post("/starDetail/getVigourVal", params)
         .then((res) => {
-             uni.showToast({
+          uni.showToast({
             title: "签到成功，获得20热力值",
-            icon:'none',
-            duration: 1000
-        
-        });   
-         this.$emit("getmyInfo")
+            icon: "none",
+            duration: 1000,
+          });
+          this.$emit("getmyInfo");
         })
         .catch((res) => {
-            uni.showToast({
+          uni.showToast({
             title: res.message,
-            icon:'none',
+            icon: "none",
             duration: 1000,
-      
-        });
+          });
         });
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-.btn-share{
-  margin-right: 0!important;
-  right: 0!important;
+.btn-share {
+  margin-right: 0 !important;
+  right: 0 !important;
   height: 60rpx;
   line-height: 50rpx;
-     
-  font-size: 30rpx!important;
+
+  font-size: 30rpx !important;
 }
 // 当前明星卡片
 .star-card {
