@@ -1,7 +1,7 @@
 <template>
   <view style="background: #f5f8ff; padding-bottom: 20rpx">
     <view class="detail-bg-img">
-         <img
+      <img
         @click="routerTohome"
         class="search-icon"
         src="../../static/home/right-btn2.png"
@@ -75,10 +75,11 @@
                   width="60rpx"
                   height="60rpx"
                   :src="item.avatarUrl"
-                  shape="circle" v-if="index<3"
+                  shape="circle"
+                  v-if="index < 3"
                 >
                 </u-image>
-                <view class="num" v-if="index<3">{{ index + 1 }}</view>
+                <view class="num" v-if="index < 3">{{ index + 1 }}</view>
               </view>
               <view class="more" @click="routerFanRanking(0)">
                 <img src="../../static/home/more.png" />
@@ -95,10 +96,11 @@
                   width="60rpx"
                   height="60rpx"
                   :src="item.avatarUrl"
-                  shape="circle" v-if="index<3"
+                  shape="circle"
+                  v-if="index < 3"
                 >
                 </u-image>
-                <view class="num" v-if="index<3">{{ index + 1 }}</view>
+                <view class="num" v-if="index < 3">{{ index + 1 }}</view>
               </view>
               <view class="more" @click="routerFanRanking(1)">
                 <img src="../../static/home/more.png" />
@@ -111,7 +113,12 @@
     <!-- 抽奖互动 -->
     <prizePraw :starId="ids" @getmyInfo="selectStarInfo"></prizePraw>
     <!-- 资源 -->
-    <resources :ids="ids" style="margin-top: 20rpx" :starName="starName" @getstarName="selectStarInfo"></resources>
+    <resources
+      :ids="ids"
+      style="margin-top: 20rpx"
+      :starName="starName"
+      @getstarName="selectStarInfo"
+    ></resources>
     <!-- <view class="home-bottom">
       <img class="home-bottom-img" src="../../static/home/homeBottom.png" />
       <view class="my">
@@ -121,7 +128,7 @@
         </view>
       </view>
     </view> -->
-      
+
     <u-toast ref="uToast" />
     <view v-if="showModal">
       <DabangModal
@@ -130,11 +137,9 @@
         @closeDabang="closeDabang"
       ></DabangModal>
     </view>
-      <view class="my" @click="routerToCenter">
-    
-        <u-icon name="account-fill" color="#E34C4C" size="40"></u-icon>
-        <view class="my-text">我的</view>
-     
+    <view class="my" @click="routerToCenter">
+      <u-icon name="account-fill" color="#E34C4C" size="40"></u-icon>
+      <view class="my-text">我的</view>
 
       <!-- <img class="my-img" src="../../static/home/my.png" @click="routerToCenter" /> -->
     </view>
@@ -152,56 +157,66 @@ export default {
     DabangModal,
   },
   onShareAppMessage: function (res) {
-      if(!uni.getStorageSync('Authorization')){
-         uni.showModal({
-            title: '请登录',
-            content: '登录后可以获取更多功能',
-            success: (res)=> {
-                if (res.confirm) {
-                    uni.navigateTo({
-                        url: "/pages/center/center"
-                      });
-                } else if (res.cancel) {
-                 
-                }
-            }
-        });
-     
-      }else{
-  setTimeout(() => {
-          this.shareinfo()
-      }, 2000);
-    // return eventHandler接收到的分享参数
+    
+    //可以通过res.from来判断是button分享还是menu分享（右上角）
+    console.log(res);
     return {
-      title: "打榜小程序", // 分享名称
-      path: "pages/index/index", // 这里写你这个页面的路径
-      imageUrl:"./shareWechart.png", //这个是显示的图片，不写就默认当前页面的截图
-      // success: function (shareTickets) {
-    
-      //   uni.showToast({
-      //     title: `恭喜你，抽中`,
-      //     icon: "none",
-      //     duration: 2000,
-      //   });
-      //   alert(0);
-      //   // 转发成功
-      // },
-      // fail: function (res) {
-  
-      //   // 转发失败
-      //   alert(1);
-      // },
-      // complete: function (res) {
-      //   // 不管成功失败都会执行
-      //   alert(2);
-      // },
-    };
-      }
-    
+      // 分享的标题如果没有则自定义为小程序名称全写
+      title: "我是分享界面",
+      //分享之后的路径如果没有则自定义为首页可以用模板字符串语法加入变量
+      path:`pages/logs/logs`,
+      //分享图片的本地地址如果不写则为默认当前屏幕截图可以是网络地址
+      // imageUrl:'/public/0cfd76ccdd6034da9d04a2d176871bd.jpg'
+      imageUrl:"/shareWechart.png"
+    }
+  // }
+    // if (!uni.getStorageSync("Authorization")) {
+    //   uni.showModal({
+    //     title: "请登录",
+    //     content: "登录后可以获取更多功能",
+    //     success: (res) => {
+    //       if (res.confirm) {
+    //         uni.navigateTo({
+    //           url: "/pages/center/center",
+    //         });
+    //       } else if (res.cancel) {
+    //       }
+    //     },
+    //   });
+    // } else {
+    //   setTimeout(() => {
+    //     this.shareinfo();
+    //   }, 2000);
+    //   // return eventHandler接收到的分享参数
+    //   return {
+    //     title: "打榜小程序", // 分享名称
+    //     // path: "pages/index/index", // 这里写你这个页面的路径
+    //     imageUrl: "./shareWechart.png", //这个是显示的图片，不写就默认当前页面的截图
+    //     // success: function (shareTickets) {
+
+    //     //   uni.showToast({
+    //     //     title: `恭喜你，抽中`,
+    //     //     icon: "none",
+    //     //     duration: 2000,
+    //     //   });
+    //     //   alert(0);
+    //     //   // 转发成功
+    //     // },
+    //     // fail: function (res) {
+
+    //     //   // 转发失败
+    //     //   alert(1);
+    //     // },
+    //     // complete: function (res) {
+    //     //   // 不管成功失败都会执行
+    //     //   alert(2);
+    //     // },
+    //   };
+    // }
   },
   data() {
     return {
-      starName:"",
+      starName: "",
       showModal: false,
       starInfo: {}, // 明星详情数据
       detailImg: "", //顶部明星图
@@ -249,10 +264,9 @@ export default {
     };
   },
   onLoad(option) {
-    this.ids =option.id;
-
+    this.ids = option.id;
   },
-  watch:{
+  watch: {
     starInfo: {
       handler(newVal, oldVal) {
         this.starName = newVal.name;
@@ -260,7 +274,7 @@ export default {
       },
       immediate: true,
       deep: true,
-    }
+    },
   },
   mounted() {
     // 明星详情
@@ -273,42 +287,55 @@ export default {
     this.getrankList(1);
   },
   methods: {
-      // 分享接口
+    // 分享接口
     shareinfo() {
       let params = {
         starId: this.ids,
-        type:4//任务类型 1-签到 2-抽奖 3-看视频 4-分享
-      }
+        type: 4, //任务类型 1-签到 2-抽奖 3-看视频 4-分享
+      };
       this.$u
-        .post("/starDetail/getVigourVal",params)
+        .post("/starDetail/getVigourVal", params)
         .then((res) => {
-             uni.showToast({
+          uni.showToast({
             title: "分享成功，获得30热力值",
-            icon:'none',
-            duration: 1000
-        
-        });   
-        this.selectStarInfo()
+            icon: "none",
+            duration: 1000,
+          });
+          this.selectStarInfo();
         })
         .catch((res) => {
-            uni.showToast({
+          uni.showToast({
             title: res.message,
-            icon:'none',
+            icon: "none",
             duration: 1000,
-      
-        });
+          });
         });
     },
     closeDabang() {
       this.showModal = false;
-      this.selectStarInfo()
-      this.getrankList(0)
-      this.getrankList(1)
+      this.selectStarInfo();
+      this.getrankList(0);
+      this.getrankList(1);
     },
     // 打榜弹窗
     dabang(id) {
-      this.ids = id;
-      this.showModal = true;
+      if (!uni.getStorageSync("Authorization")) {
+        uni.showModal({
+          title: "请登录",
+          content: "登录后可以获取更多功能",
+          success: (res) => {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: "/pages/center/center",
+              });
+            } else if (res.cancel) {
+            }
+          },
+        });
+      } else {
+        this.ids = id;
+        this.showModal = true;
+      }
     },
     routerToCenter() {
       uni.navigateTo({
@@ -408,13 +435,13 @@ export default {
 
 <style lang="scss" scoped>
 // 搜索区
-  .search-icon {
-    position: absolute;
-    top: 100rpx;
-    left: 28rpx;
-    width: 38rpx;
-    height: 38rpx;
-  }
+.search-icon {
+  position: absolute;
+  top: 100rpx;
+  left: 28rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
 // 顶部背景图
 .detail-bg-img {
   width: 100%;
@@ -644,7 +671,6 @@ export default {
     width: 100%;
     height: 100%;
   }
-   
 }
 .my {
   position: fixed;
@@ -655,13 +681,13 @@ export default {
   font-size: 6px;
   z-index: 100000;
   border-radius: 20px;
-  
-box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+
+  box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
   text-align: center;
-    .my-text{
-      color:#E34C4C;
-      font-size: 12px;
-      margin-top:-2px;
-    }
+  .my-text {
+    color: #e34c4c;
+    font-size: 12px;
+    margin-top: -2px;
+  }
 }
 </style>

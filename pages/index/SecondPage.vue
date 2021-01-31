@@ -67,8 +67,8 @@ export default {
     position: absolute;
     top: 100rpx;
     left: 28rpx;
-    width: 38rpx;
-    height: 38rpx;
+    width: 50rpx;
+    height: 50rpx;
   }
 }
 </style>

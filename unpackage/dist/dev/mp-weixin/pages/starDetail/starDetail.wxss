@@ -28,8 +28,8 @@
   position: absolute;
   top: 100rpx;
   left: 28rpx;
-  width: 38rpx;
-  height: 38rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .detail-bg-img.data-v-382f0766 {
   width: 100%;
@@ -294,7 +294,7 @@
   text-align: center;
 }
 .my .my-text.data-v-382f0766 {
-  color: #E34C4C;
+  color: #e34c4c;
   font-size: 12px;
   margin-top: -2px;
 }

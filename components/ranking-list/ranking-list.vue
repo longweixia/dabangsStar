@@ -25,7 +25,11 @@
           <view class="name">
             {{ item.starName }}
           </view>
-          <view class="val">
+          <view class="val val1">
+                <!-- <img
+              src="../../static/home/hotVal.png"
+              style="width:66rpx;height:66rpx;"
+            /> -->
             {{ item.totalVigourVal }}
           </view>
         </view>
@@ -48,7 +52,12 @@
           <view class="name">
             {{ item.nickName }}
           </view>
+           
           <view class="val">
+            <!-- <img
+              src="../../static/home/hotVal.png"
+              style="width:66rpx;height:66rpx;"
+            /> -->
             +{{ item.vigourVal }}热力值
           </view>
         </view>
@@ -156,11 +165,16 @@ export default {
   font-size: 28rpx;
 }
 .val {
+  // display: flex;
+  // align-items: center;
   text-align: right;
   position: absolute;
   right:40rpx;
   width: 200rpx;
   font-size: 24rpx;
   color: #b5b5b5;
+}
+.val1{
+  // width: 180rpx;
 }
 </style>

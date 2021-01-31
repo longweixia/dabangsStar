@@ -87,8 +87,8 @@
   position: absolute;
   top: 100rpx;
   left: 28rpx;
-  width: 38rpx;
-  height: 38rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .home-page .home-my-guard.data-v-57280228 {
   position: relative;
@@ -166,7 +166,7 @@
   margin-right: 20rpx;
 }
 .home-page .list-top-three.data-v-57280228 {
-  height: 434rpx;
+  height: 464rpx;
   margin-top: 20rpx;
   padding-top: 14rpx;
   margin-left: 20rpx;
@@ -372,5 +372,14 @@
   color: #e34c4c;
   font-size: 12px;
   margin-top: -2px;
+}
+.val.data-v-57280228 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-left: -30rpx;
 }
 

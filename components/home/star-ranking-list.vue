@@ -12,17 +12,25 @@
           height="80rpx"
           :src="item.starAvatar"
           shape="circle"
-        ></u-image>
+        ></u-image> 
       </view>
       <view class="name" @click="routerStarDetail(item.id)">
         {{ item.starName }}
       </view>
-      <view class="val" @click="routerStarDetail(item.id)">
-        {{ item.totalVigourVal }}
+      <view class="btn-area">
+           
+        <view class="val" @click="routerStarDetail(item.id)">
+          <img
+              src="../../static/home/hotVal.png"
+              style="width:66rpx;height:66rpx;display:inline-block"
+            />
+        <view style="display:inline-block;position:relative">{{ item.totalVigourVal }}</view>
       </view>
       <view class="btn"  @click="dabang(item.id)">
         打榜
       </view>
+      </view>
+      
     </view>
         <view v-if="showModal">
       <DabangModal :showModal="showModal" :starId="starId"  @closeDabang="closeDabang"></DabangModal>
@@ -47,8 +55,23 @@ export default {
       // 打榜弹窗
     dabang(id){
     //   console.log(id,'ui')
+     if (!uni.getStorageSync("Authorization")) {
+        uni.showModal({
+          title: "请登录",
+          content: "登录后可以获取更多功能",
+          success: (res) => {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: "/pages/center/center",
+              });
+            } else if (res.cancel) {
+            }
+          },
+        });
+      } else{
       this.starId = id
       this.showModal = true
+      }
     },
        closeDabang(){
       this.showModal = false
@@ -64,6 +87,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 // 榜单
 .list-th {
   margin: 0 20rpx;
@@ -103,9 +131,12 @@ export default {
   font-size: 28rpx;
 }
 .val {
+  display: flex;
+  align-items: center;
   position: absolute;
-  right: 28rpx;
+  right: 80rpx;
   width: 200rpx;
+  margin-top: 5rpx;
   font-size: 24rpx;
   color: #333333;
   font-size: 12px;

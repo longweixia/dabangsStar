@@ -34,7 +34,7 @@
         <!-- <button class="bottom" type="primary" @click="getUserinfo">
           获取个人中心数据
         </button> -->
-        <button class="bottom" type="primary" @click="getToken" v-if="false">
+        <button class="bottom" type="primary" @click="getToken">
           （浏览器）登录
         </button>
 

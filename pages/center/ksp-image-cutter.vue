@@ -400,6 +400,7 @@ export default {
 			return url.createObjectURL(new Blob([u8arr], {type: mime}));
 		},
 		onok() {
+		
 			var scale = this.image.width / this.real.width;
 			var x = (this.frame.left - this.image.left) / scale;
 			var y = (this.frame.top - this.image.top) / scale;

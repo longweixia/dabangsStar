@@ -29,16 +29,16 @@
       <view class="row-name">
         {{weekName}}
         </view> 
-      <img
+      <!-- <img
         @click="routerSearch"
         class="week-img"
         src="./weekOne.png"
       />
         <img
         @click="routerSearch"
-        class="week-img-ai"
+        class="week-img-ai"list-top-three
         src="./weekOneAi.png"
-      />
+      /> -->
       </view>
       <!-- 月冠军 -->
       <view class="week-area" v-if="current===3">
@@ -48,12 +48,12 @@
       <view class="row-name  month-name">
         {{monthName}}
         </view> 
-      <img
+      <!-- <img
         @click="routerSearch"
         class="week-img"
         src="./monthOne.png"
-      />
-        <img
+      /> -->
+        <!-- <img
         @click="routerSearch"
         class="week-img-ai"
         src="./monthOneAi.png"
@@ -62,7 +62,7 @@
         @click="routerSearch"
         class="week-img-star"
         src="./monthOneStar.png"
-      />
+      /> -->
       </view>
     </view>
     <!-- 搜索 -->
@@ -158,6 +158,13 @@
           <view class="name" @click="routerStarDetail(item.id, item.name)">{{
             item.starName
           }}</view>
+          <!-- <view class="val" @click="routerStarDetail(item.id, item.name)">
+             <img
+              class="img-head"
+              src="../../static/home/hotVal.png"
+              style="border: 1px solid #ddd"
+            />
+          </view> -->
           <view class="val" @click="routerStarDetail(item.id, item.name)">{{
             item.totalVigourVal
           }}</view>
@@ -226,7 +233,18 @@
           <view class="name" @click="routerStarDetail(item.id, item.name)">{{
             item.starName || "无"
           }}</view>
-          <view class="val" @click="routerStarDetail(item.id, item.name)">{{
+           <view class="val" @click="routerStarDetail(item.id, item.name)">
+             <!-- <img
+              class="img-head" 
+              src="../../static/home/hotVal.png"
+              style="width:66rpx;height:66rpx"
+            /> -->
+          </view>
+          <view class="val" @click="routerStarDetail(item.id, item.name)">
+                 <img
+              src="../../static/home/hotVal.png"
+              style="width:66rpx;height:66rpx;"
+            />{{
             item.totalVigourVal
           }}</view>
           <view
@@ -358,18 +376,20 @@ export default {
 
     this.$emit("footer", false);
 
+    
+  },
+  onShow() {
+    // 个人信息-标语
+    console.log("刷新页面")
+    // this.getWeekOne(0)
+    // this.getWeekOne(1)
     // 明星排行榜,默认查总榜
     this.getRankList(2);
     // 轮播图
     this.carouselList();
     // 我的守护
     this.selectMyGuard();
-  },
-  onShow() {
-    // 个人信息-标语
     this.getMyInfo();
-    // this.getWeekOne(0)
-    // this.getWeekOne(1)
   },
   methods: {
     changeSwiper(index){
@@ -467,8 +487,24 @@ export default {
     },
     // 打榜弹窗
     dabang(id) {
-      this.starId = id;
+      if (!uni.getStorageSync("Authorization")) {
+        uni.showModal({
+          title: "请登录",
+          content: "登录后可以获取更多功能",
+          success: (res) => {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: "/pages/center/center",
+              });
+            } else if (res.cancel) {
+            }
+          },
+        });
+      } else{
+          this.starId = id;
       this.showModal = true;
+      }
+    
     },
     // 获取个人信息--我的标语
     getMyInfo() {
@@ -478,14 +514,15 @@ export default {
           // 回显标语
           // 如果有标语且开启了就显示带icon的tag
           if (res.slogan && res.sloganOpen) {
-            this.sloganOpen = true;
+            // this.sloganOpen = true;
             this.sloganTextFlag = true; //有标语
             this.tagList.forEach((item, index) => {
               this.tagList[index].text = res.slogan[index];
             });
           } else {
+            this.sloganTextFlag = false; //有标语
             //   否则显示原有的icon
-            this.sloganOpen = false; //无标语
+            // this.sloganOpen = false; //无标语
           }
         })
         .catch((res) => {
@@ -538,10 +575,7 @@ export default {
           rankType: data,
         })
         .then((res) => {
-          if(data===0){
-      
-            this.weekName = res.list[0].starName
-          }
+        
           // 按原型图，第一名在第二的位置，所以要把第一名和第二名换一下
           // 处理排名前三的明星
           let list = res.list.slice(0, 3);
@@ -604,6 +638,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 /deep/ .u-countdown-item {
   background: none !important;
 }
@@ -671,8 +706,8 @@ export default {
     position: absolute;
     top: 100rpx;
     left: 28rpx;
-    width: 38rpx;
-    height: 38rpx;
+    width: 50rpx;
+    height: 50rpx;
   }
   // 我的守护
   .home-my-guard {
@@ -759,7 +794,7 @@ export default {
   }
   // 榜单前三
   .list-top-three {
-    height: 434rpx;
+    height: 464rpx;
     margin-top: 20rpx;
     padding-top: 14rpx;
     margin-left: 20rpx;
@@ -954,5 +989,10 @@ export default {
     font-size: 12px;
     margin-top: -2px;
   }
+}
+.val{
+   display: flex;
+  align-items: center;
+  margin-left: -30rpx;
 }
 </style>

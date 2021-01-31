@@ -260,9 +260,25 @@ export default {
 					url: '/pages/center/LlistAwards',
 				})
 			} else {
-				uni.navigateTo({
+				 if (!uni.getStorageSync("Authorization")) {
+        uni.showModal({
+          title: "请登录",
+          content: "登录后可以获取更多功能",
+          success: (res) => {
+            if (res.confirm) {
+              uni.navigateTo({
+                url: "/pages/center/center",
+              });
+            } else if (res.cancel) {
+            }
+          },
+        });
+      }else{
+			uni.navigateTo({
 					url: '/pages/center/slogan',
-				})
+				})  
+	  }
+			
 			}
 		},
 
