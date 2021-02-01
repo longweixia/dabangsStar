@@ -184,7 +184,7 @@ export default {
 .star-card {
     z-index: 10000;
   margin: 20rpx;
-  margin-top:-100rpx;
+  margin-top:-80rpx;
   // 明星上方数据
   .list-top {
     display: flex;

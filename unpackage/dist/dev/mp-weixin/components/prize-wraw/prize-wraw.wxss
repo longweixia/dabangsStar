@@ -34,7 +34,7 @@
 .star-card.data-v-9322ff78 {
   z-index: 10000;
   margin: 20rpx;
-  margin-top: -100rpx;
+  margin-top: -80rpx;
 }
 .star-card .list-top.data-v-9322ff78 {
   display: -webkit-box;
