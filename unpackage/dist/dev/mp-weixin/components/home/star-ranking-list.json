@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "u-image": "/node-modules/uview-ui/components/u-image/u-image",
-    "dabang-modal": "/components/dabangModal/index"
+    "dabang-modal": "/components/dabangModal/index",
+    "login-modal": "/components/home/loginModal"
   }
 }

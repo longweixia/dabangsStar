@@ -50,9 +50,11 @@ export default {
   },
   methods: {
     changebtn(index) {
+    
  
       this.rankType = index;
       if(index===0){
+              console.log(index,'调用打榜')
           this.myGuard()
       }else if(index===2){
           this.selectHitList()

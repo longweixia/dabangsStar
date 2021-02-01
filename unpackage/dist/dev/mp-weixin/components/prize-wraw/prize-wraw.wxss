@@ -32,7 +32,9 @@
   font-size: 30rpx !important;
 }
 .star-card.data-v-9322ff78 {
+  z-index: 10000;
   margin: 20rpx;
+  margin-top: -100rpx;
 }
 .star-card .list-top.data-v-9322ff78 {
   display: -webkit-box;
@@ -67,7 +69,8 @@
   padding: 10rpx;
   margin-left: 10rpx;
   display: inline-block;
-  border-radius: 30rpx;
+  -webkit-border-radius: 30rpx;
+          border-radius: 30rpx;
   background: #e34c4c;
   color: #fff;
 }

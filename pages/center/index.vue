@@ -16,8 +16,8 @@
 					<view class="left-content" style="z-index: 100000">
 						<u-image
 							class="img-icon"
-							width="120rpx"
-							height="120rpx"
+							width="120rpx" 
+							height="120rpx" error-icon="../../static/home/noImg.png"
 							:src="myData.avatarUrl"
 							shape="circle"
 						></u-image>

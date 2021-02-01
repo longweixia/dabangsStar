@@ -182,7 +182,9 @@ export default {
 }
 // 当前明星卡片
 .star-card {
+    z-index: 10000;
   margin: 20rpx;
+  margin-top:-100rpx;
   // 明星上方数据
   .list-top {
     display: flex;

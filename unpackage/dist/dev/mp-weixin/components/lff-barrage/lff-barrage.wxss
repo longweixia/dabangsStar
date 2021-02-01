@@ -147,7 +147,8 @@
   display: flex;
   padding: 3rpx 40rpx 3rpx 10rpx;
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 32rpx;
+  -webkit-border-radius: 32rpx;
+          border-radius: 32rpx;
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
@@ -161,7 +162,8 @@
   width: 58rpx;
   height: 58rpx;
   background: #373737;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
 }
 .danmu-li .danmu-inner .user-box .user-status {
   margin-left: 10rpx;

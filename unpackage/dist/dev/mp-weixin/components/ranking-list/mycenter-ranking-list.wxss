@@ -42,7 +42,8 @@
           justify-content: space-between;
   padding-bottom: 20rpx;
   padding-top: 20rpx;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   position: relative;
   top: 20rpx;
 }
@@ -86,11 +87,13 @@
   height: 54rpx;
   line-height: 54rpx;
   padding: 0 30rpx;
-  border-radius: 27rpx;
+  -webkit-border-radius: 27rpx;
+          border-radius: 27rpx;
   text-align: center;
   color: #fff;
 }
 .list-top .btn-group .btn1.data-v-68326d62 {
+  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   margin-right: 12rpx;
@@ -125,24 +128,28 @@
   width: 50rpx;
   height: 50rpx;
   line-height: 50rpx;
-  border-radius: 25rpx;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
   color: #e34c4c;
   text-align: center;
   border: 1px solid #e34c4c;
 }
 .num-body .num0.data-v-68326d62 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fe6925), to(#df372c));
   background: -webkit-linear-gradient(#fe6925, #df372c);
   background: linear-gradient(#fe6925, #df372c);
   color: #fff;
   border: none;
 }
 .num-body .num1.data-v-68326d62 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#e8d81c), to(#e1792a));
   background: -webkit-linear-gradient(#e8d81c, #e1792a);
   background: linear-gradient(#e8d81c, #e1792a);
   color: #fff;
   border: none;
 }
 .num-body .num2.data-v-68326d62 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#3bf2c9), to(#4ce8f3));
   background: -webkit-linear-gradient(#3bf2c9, #4ce8f3);
   background: linear-gradient(#3bf2c9, #4ce8f3);
   color: #fff;

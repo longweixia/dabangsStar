@@ -6,6 +6,44 @@
         class="search-icon"
         src="../../static/home/right-btn2.png"
       />
+      <!-- 弹幕 -->
+        <view
+           style="
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 200rpx;
+            pointer-events: none;
+            top:260rpx;
+            left:20rpx;
+            z-index: 100000;
+          "
+        >
+          <view
+            class="danmu-li"
+            v-for="(item, index) in listData"
+            :class="item.type"
+            :style="[item.style]"
+            :key="index"
+          >
+            <view class="danmu-inner">
+              <view class="user-box">
+                <view class="user-img">
+                  <view class="img-box">
+                    <image :src="item.item.avatarUrl"></image>
+                  </view>
+                </view>
+                <view class="user-text cl1"> {{ item.item.nickName }} </view>
+                <view class="user-status cl1">
+                  打榜了<text style="color: #e34c4c; font-weight: bold">
+                    {{ item.item.vigourVal }}</text
+                  >热力值
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 弹幕结束 -->
       <img class="img" :src="detailImg" />
       <!-- 打榜弹窗 -->
       <!-- <view class="toast-db">
@@ -20,8 +58,8 @@
     </view>
 
     <!-- 当前明星 -->
-    <view class="star-card" style="z-index: 10000">
-      <view class="card-img" style="z-index: 10000">
+    <view class="star-card">
+      <view class="card-img">
         <img src="../../static/home/starCard.png" class="bg-img" />
 
         <!-- 明星信息 -->
@@ -38,7 +76,7 @@
               <view class="name"> {{ starInfo.name }}</view>
               <view class="rank-text"
                 >本周排名：{{ starInfo.thisWeekRank }}
-                <text>本月排名：{{ starInfo.thisMonthRank }}</text>
+                <text style="margin-left:20rpx">本月排名：{{ starInfo.thisMonthRank }}</text>
               </view>
             </view>
             <view class="btn-group" style="z-index: 10000">
@@ -158,64 +196,46 @@ export default {
   },
   onShareAppMessage: function (res) {
     
-    //可以通过res.from来判断是button分享还是menu分享（右上角）
-    console.log(res);
-    return {
-      // 分享的标题如果没有则自定义为小程序名称全写
-      title: "我是分享界面",
-      //分享之后的路径如果没有则自定义为首页可以用模板字符串语法加入变量
-      path:`pages/logs/logs`,
-      //分享图片的本地地址如果不写则为默认当前屏幕截图可以是网络地址
-      // imageUrl:'/public/0cfd76ccdd6034da9d04a2d176871bd.jpg'
-      imageUrl:"/shareWechart.png"
+//     //可以通过res.from来判断是button分享还是menu分享（右上角）
+//     console.log(res);
+//     return {
+//       // 分享的标题如果没有则自定义为小程序名称全写
+//       title: "我是分享界面",
+//       //分享之后的路径如果没有则自定义为首页可以用模板字符串语法加入变量
+//       path:`pages/logs/logs`,
+//       //分享图片的本地地址如果不写则为默认当前屏幕截图可以是网络地址，本地要放到static里面
+//       imageUrl:"../../static/shareWechart.png"
+//     }
+//   // }
+    if (!uni.getStorageSync("Authorization")) {
+      uni.showModal({
+        title: "请登录",
+        content: "登录后可以获取更多功能",
+        success: (res) => {
+          if (res.confirm) {
+            uni.navigateTo({
+              url: "/pages/center/center",
+            });
+          } else if (res.cancel) {
+          }
+        },
+      });
+    } else {
+      setTimeout(() => {
+        this.shareinfo();
+      }, 2000);
+      // return eventHandler接收到的分享参数
+      return {
+        title: "超级爱豆榜", // 分享名称
+        path: "pages/index/index", // 这里写你这个页面的路径
+        imageUrl: "../../static/shareWechart.png" //这个是显示的图片，不写就默认当前页面的截图
+      };
     }
-  // }
-    // if (!uni.getStorageSync("Authorization")) {
-    //   uni.showModal({
-    //     title: "请登录",
-    //     content: "登录后可以获取更多功能",
-    //     success: (res) => {
-    //       if (res.confirm) {
-    //         uni.navigateTo({
-    //           url: "/pages/center/center",
-    //         });
-    //       } else if (res.cancel) {
-    //       }
-    //     },
-    //   });
-    // } else {
-    //   setTimeout(() => {
-    //     this.shareinfo();
-    //   }, 2000);
-    //   // return eventHandler接收到的分享参数
-    //   return {
-    //     title: "打榜小程序", // 分享名称
-    //     // path: "pages/index/index", // 这里写你这个页面的路径
-    //     imageUrl: "./shareWechart.png", //这个是显示的图片，不写就默认当前页面的截图
-    //     // success: function (shareTickets) {
-
-    //     //   uni.showToast({
-    //     //     title: `恭喜你，抽中`,
-    //     //     icon: "none",
-    //     //     duration: 2000,
-    //     //   });
-    //     //   alert(0);
-    //     //   // 转发成功
-    //     // },
-    //     // fail: function (res) {
-
-    //     //   // 转发失败
-    //     //   alert(1);
-    //     // },
-    //     // complete: function (res) {
-    //     //   // 不管成功失败都会执行
-    //     //   alert(2);
-    //     // },
-    //   };
-    // }
   },
   data() {
     return {
+          looNum: 0, //弹幕次数
+         listData: [],
       starName: "",
       showModal: false,
       starInfo: {}, // 明星详情数据
@@ -263,6 +283,90 @@ export default {
       rankingListMouth: [], //粉丝月榜
     };
   },
+  props:{
+    //rightToLeft leftToRight leftBottom
+    showModal: {
+      type: Boolean,
+      default: false,
+    },
+    rankType: {
+      type: Number,
+      default: 0,
+    },
+    starId: {
+      type: String,
+      default: "",
+    },
+    type: {
+      type: String,
+      default: "leftBottom",
+    },
+    minTime: {
+      type: Number,
+      default: 4,
+    },
+    maxTime: {
+      type: Number,
+      default: 9,
+    },
+    minTop: {
+      type: Number,
+      default: 0,
+    },
+    maxTop: {
+      type: Number,
+      default: 100,
+    },
+    hrackH: {
+      //轨道高度
+      type: Number,
+      default: 40,
+    },
+    noStacked: {
+      //不允许堆叠(暂不可用)
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+
+    title: {
+      type: String,
+      default: "提示",
+    },
+    placeholder: {
+      type: String,
+      default: "请点击输入",
+    },
+    name: {
+      type: String,
+      default: "text",
+    },
+    typetext: {
+      type: String,
+      default: "text",
+    },
+    value: {
+      type: String,
+      default: "",
+    },
+    cancelColor: {
+      type: String,
+      default: "#999999",
+    },
+    confirmColor: {
+      type: String,
+      default: "#333333",
+    },
+    cancelText: {
+      type: String,
+      default: "取消",
+    },
+    confirmText: {
+      type: String,
+      default: "确定",
+    },
+  },
   onLoad(option) {
     this.ids = option.id;
   },
@@ -285,6 +389,8 @@ export default {
     this.getrankList(0);
     // 粉丝周榜
     this.getrankList(1);
+     
+    this.hrackNum = Math.floor((this.maxTop - this.minTop) / this.hrackH);
   },
   methods: {
     // 分享接口
@@ -394,6 +500,8 @@ export default {
         })
         .then((res) => {
           this.StarGuardList = res;
+           this.colrdo();
+
           // if (res.list && res.list.length > 0) {
           //   this.hasData = true;
           // } else {
@@ -428,6 +536,88 @@ export default {
           }
         })
         .catch((res) => {});
+    },
+      // 添加弹幕
+    addDanmu(obj) {
+
+      let data = {
+        item: obj.item,
+        id: Date.parse(new Date()),
+        time: Math.ceil(
+          Math.floor(
+            Math.random() * (this.maxTime - this.minTime + 1) + this.minTime
+          )
+        ),
+        type: this.types,
+      };
+      if (this.type === "leftBottom") {
+        let objData = {
+          item: data.item,
+          type: "leftBottomEnter",
+          style: {
+            transition: `all 0.5s`,
+            animationDuration: `0.5s`,
+            transform: `translateX(0%)`,
+            bottom: `${this.minTop}px`,
+          },
+        };
+
+        let listLen = this.listData.length;
+        let hrackNum = this.hrackNum;
+        for (let i in this.listData) {
+          if (this.listData[i].status === "reuse") {
+            //重用
+            this.$set(this.listData, i, objData);
+          } else if (this.listData[i].status === "reset") {
+            //重置
+            this.listData[i].style.transition = "none";
+            this.listData[i].style.bottom = 0;
+            this.listData[i].status = "reuse";
+          } else if (this.listData[i].status === "recycle") {
+            //回收
+            this.listData[i].type = "leftBottomExit";
+            this.listData[i].status = "reset";
+          } else {
+            this.listData[i].style.bottom =
+              parseInt(this.listData[i].style.bottom) + this.hrackH + "px";
+          }
+          if (
+            parseInt(this.listData[i].style.bottom) >=
+              this.maxTop - this.hrackH &&
+            this.listData[i].status !== "reset"
+          ) {
+            //需要回收
+            this.listData[i].status = "recycle";
+          }
+        }
+
+        if (listLen < hrackNum + 3) {
+          this.listData.push(objData);
+        }
+      }
+    },
+    colrdo() {
+    
+      //插入一条弹幕
+      let that = this;
+      let list = [];
+      for (var i = 1; i < 20; i++) {
+        list = list.concat(this.StarGuardList);
+      }
+    
+      if (list && list.length > 0) {
+        let old;
+        list.forEach((e, index) => {
+          if (index < list.length - 1) {
+            old = setTimeout(() => {
+              that.addDanmu({ item: e });
+            }, 1000 * (index + 2));
+          } else if (index == list.length - 1) {
+            clearTimeout(old);
+          
+          }
+        });
+      }
     },
   },
 };
@@ -688,6 +878,71 @@ export default {
     color: #e34c4c;
     font-size: 12px;
     margin-top: -2px;
+  }
+}
+.danmu-li {
+  margin-top: -30px;
+  position: absolute;
+  width: 100%;
+  transform: translateX(100%);
+  animation-timing-function: linear;
+
+  &.leftBottomEnter {
+    animation-name: leftBottomEnter;
+  }
+  &.leftBottomExit {
+    animation-name: leftBottomExit;
+    animation-fill-mode: forwards;
+  }
+
+  &.rightToLeft {
+    animation-name: rightToLeft;
+  }
+
+  &.leftToRight {
+    animation-name: leftToRight;
+  }
+
+  .danmu-inner {
+    display: inline-block;
+
+    .user-box {
+      display: flex;
+      padding: 3rpx 40rpx 3rpx 10rpx;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 32rpx;
+      align-items: center;
+
+      .user-img {
+        .img-box {
+          display: flex;
+
+          image {
+            width: 24rpx;
+            height: 24rpx;
+            background: rgba(55, 55, 55, 1);
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .user-status {
+        margin-left: 10rpx;
+        white-space: nowrap;
+        font-size: 28rpx;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 1);
+      }
+
+      .user-text {
+        margin-left: 10rpx;
+        // white-space: nowrap;
+        font-size: 28rpx;
+        font-weight: 400;
+        // width: 150rpx;
+        color: rgba(0, 0, 0, 1);
+      }
+    }
   }
 }
 </style>

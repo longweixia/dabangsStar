@@ -40,8 +40,10 @@
   width: 100%;
   height: 100%;
   z-index: -2;
-  border-bottom-left-radius: 20rpx;
-  border-bottom-right-radius: 20rpx;
+  -webkit-border-bottom-left-radius: 20rpx;
+          border-bottom-left-radius: 20rpx;
+  -webkit-border-bottom-right-radius: 20rpx;
+          border-bottom-right-radius: 20rpx;
 }
 .star-card.data-v-382f0766 {
   margin-top: -60rpx;
@@ -106,8 +108,10 @@
   height: 54rpx;
   line-height: 54rpx;
   padding: 0 20rpx;
-  border-radius: 27rpx;
+  -webkit-border-radius: 27rpx;
+          border-radius: 27rpx;
   text-align: center;
+  background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
@@ -212,7 +216,8 @@
   height: 24rpx;
   line-height: 24rpx;
   text-align: center;
-  border-radius: 12rpx;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
 }
 .star-card .card--content .list-bottom .star-ranking .img-list .num.data-v-382f0766::after {
   clear: both;
@@ -250,7 +255,8 @@
 .toast-db .imgs.data-v-382f0766 {
   width: 40rpx;
   height: 40rpx;
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
   display: inline-block;
 }
 .toast-db .text.data-v-382f0766 {
@@ -289,13 +295,82 @@
   bottom: 50rpx;
   font-size: 6px;
   z-index: 100000;
-  border-radius: 20px;
-  box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
+          box-shadow: 0px 0px 6px rgba(255, 113, 113, 0.3);
   text-align: center;
 }
 .my .my-text.data-v-382f0766 {
   color: #e34c4c;
   font-size: 12px;
   margin-top: -2px;
+}
+.danmu-li.data-v-382f0766 {
+  margin-top: -30px;
+  position: absolute;
+  width: 100%;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+.danmu-li.leftBottomEnter.data-v-382f0766 {
+  -webkit-animation-name: leftBottomEnter;
+          animation-name: leftBottomEnter;
+}
+.danmu-li.leftBottomExit.data-v-382f0766 {
+  -webkit-animation-name: leftBottomExit;
+          animation-name: leftBottomExit;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.danmu-li.rightToLeft.data-v-382f0766 {
+  -webkit-animation-name: rightToLeft;
+          animation-name: rightToLeft;
+}
+.danmu-li.leftToRight.data-v-382f0766 {
+  -webkit-animation-name: leftToRight;
+          animation-name: leftToRight;
+}
+.danmu-li .danmu-inner.data-v-382f0766 {
+  display: inline-block;
+}
+.danmu-li .danmu-inner .user-box.data-v-382f0766 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 3rpx 40rpx 3rpx 10rpx;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-border-radius: 32rpx;
+          border-radius: 32rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.danmu-li .danmu-inner .user-box .user-img .img-box.data-v-382f0766 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.danmu-li .danmu-inner .user-box .user-img .img-box image.data-v-382f0766 {
+  width: 24rpx;
+  height: 24rpx;
+  background: #373737;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+.danmu-li .danmu-inner .user-box .user-status.data-v-382f0766 {
+  margin-left: 10rpx;
+  white-space: nowrap;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: black;
+}
+.danmu-li .danmu-inner .user-box .user-text.data-v-382f0766 {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: black;
 }
 

@@ -18,4 +18,7 @@
 	uni-modal{
 		z-index: 10000!important;
 	}
+    .u-image__error{
+      background-color:#fff!important;
+    }
 </style>

@@ -33,10 +33,12 @@
   position: relative;
 }
 .list-ranking-type .guard-list .guard-card .card-content.data-v-0bc49452 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#feecb3), to(#f64d71));
   background: -webkit-linear-gradient(top, #feecb3, #f64d71);
   background: linear-gradient(to bottom, #feecb3, #f64d71);
   color: #fff;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   height: 110rpx;
   position: relative;
 }
@@ -78,18 +80,22 @@
   font-size: 14px;
 }
 .list-ranking-type .guard-list .guard-card .card-content0.data-v-0bc49452 {
+  background: -webkit-gradient(linear, left top, right top, from(#90f7ec), to(#32ccbc));
   background: -webkit-linear-gradient(left, #90f7ec, #32ccbc);
   background: linear-gradient(to right, #90f7ec, #32ccbc);
 }
 .list-ranking-type .guard-list .guard-card .card-content1.data-v-0bc49452 {
+  background: -webkit-gradient(linear, left top, right top, from(#81fbb8), to(#2cc972));
   background: -webkit-linear-gradient(left, #81fbb8, #2cc972);
   background: linear-gradient(to right, #81fbb8, #2cc972);
 }
 .list-ranking-type .guard-list .guard-card .card-content2.data-v-0bc49452 {
+  background: -webkit-gradient(linear, left top, right top, from(#e2b0ff), to(#9f44d3));
   background: -webkit-linear-gradient(left, #e2b0ff, #9f44d3);
   background: linear-gradient(to right, #e2b0ff, #9f44d3);
 }
 .list-ranking-type .guard-list .guard-card .card-content3.data-v-0bc49452 {
+  background: -webkit-gradient(linear, left top, right top, from(#abdcff), to(#0396ff));
   background: -webkit-linear-gradient(left, #abdcff, #0396ff);
   background: linear-gradient(to right, #abdcff, #0396ff);
 }

@@ -13,7 +13,7 @@
             class="img-icon"
              width="80rpx"
             height="80rpx"
-            :src="item.avatar"
+            :src="item.avatar" error-icon="../../static/home/noImg.png"
             shape="circle"
           ></u-image>
           <view class="row-text">
@@ -45,13 +45,6 @@
 
       <view class="list-top">
         <view class="left-content">
-          <!-- <u-image
-            class="img-icon"
-             width="80rpx"
-            height="80rpx"
-            :src="item.avatar"
-            shape="circle"
-          ></u-image> -->
           <view class="row-text">
             <view class="name">
             
@@ -80,7 +73,7 @@
             class="img-icon"
              width="80rpx"
             height="80rpx"
-            :src="item.avatar"
+            :src="item.avatar" error-icon="../../static/home/noImg.png"
             shape="circle"
           ></u-image>
           <view class="row-text">

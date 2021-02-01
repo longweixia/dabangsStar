@@ -9,6 +9,7 @@
     "ranking-tab-no": "/components/home/ranking-tab-no",
     "ranking-tab-has-text": "/components/home/ranking-tab-hasText",
     "star-ranking-list": "/components/home/star-ranking-list",
-    "dabang-modal": "/components/dabangModal/index"
+    "dabang-modal": "/components/dabangModal/index",
+    "login-modal": "/components/home/loginModal"
   }
 }
