@@ -16,6 +16,7 @@
 			</u-swiper>
 			<img
 				@click="routerSearch"
+				:style="{ top: iconTop }"
 				class="search-icon"
 				src="../../static/home/searchBtn.png"
 			/>
@@ -43,12 +44,13 @@
 			</view>
 			<!-- 月冠军 -->
 			<view class="week-area" v-if="current === 3">
-				<view class="row-title"> {{ monthNum + 1 }}月月榜冠军 
-                    <text class="row-name">
-					{{ monthName }}
-				</text>
-                </view>
-			
+				<view class="row-title">
+					{{ monthNum + 1 }}月月榜冠军
+					<text class="row-name">
+						{{ monthName }}
+					</text>
+				</view>
+
 				<!-- <img
         @click="routerSearch"
         class="week-img"
@@ -141,7 +143,6 @@
 							:class="'img-head' + index"
 							:src="iconList.icon2"
 						/>
-
 						<img
 							class="img-star"
 							src="../../static/home/oneStart.png"
@@ -153,28 +154,27 @@
 							style="border: 1px solid #ddd"
 						/>
 					</view>
-
 					<view
 						class="name"
 						@click="routerStarDetail(item.id, item.name)"
 						>{{ item.starName }}</view
 					>
-					<!-- <view class="val" @click="routerStarDetail(item.id, item.name)">
-             <img
-              class="img-head"
-              src="../../static/home/hotVal.png"
-              style="border: 1px solid #ddd"
-            />
-          </view> -->
 					<view
 						class="val"
 						@click="routerStarDetail(item.id, item.name)"
 						>{{ item.totalVigourVal }}</view
 					>
 					<view class="btn-area">
-						<view class="btn" @click="dabang(item.starId)"
-							>打榜</view
+							<button
+							@getuserinfo="wxGetUserInfo(item.id)"
+							class="btn"
+							type="primary"
+							open-type="getUserInfo"
+							withCredentials="true"
+							lang="zh_CN"
 						>
+							打榜
+						</button>
 					</view>
 				</view>
 			</view>
@@ -244,27 +244,23 @@
 						class="val"
 						@click="routerStarDetail(item.id, item.name)"
 					>
-						<!-- <img
-              class="img-head" 
-              src="../../static/home/hotVal.png"
-              style="width:66rpx;height:66rpx"
-            /> -->
-					</view>
-					<view
-						class="val"
-						@click="routerStarDetail(item.id, item.name)"
-					>{{ item.totalVigourVal }}
+						<view class="val-text">{{ item.totalVigourVal }}</view>
 						<img
 							src="../../static/home/hotVal.png"
-							style="width: 66rpx; height: 66rpx"
-						/></view
-					>
-					<view
-						class="btn-area"
-						style="z-index: 10000"
-						@click="dabang(item.id)"
-					>
-						<view class="btn" style="z-index: 10000">打榜</view>
+							style="width: 72rpx; height: 72rpx"
+					/></view>
+					<view class="btn-area" style="z-index: 10000">
+						<!-- <view class="btn" style="z-index: 10000">打榜</view> -->
+						<button
+							@getuserinfo="wxGetUserInfo(item.id)"
+							class="btn"
+							type="primary"
+							open-type="getUserInfo"
+							withCredentials="true"
+							lang="zh_CN"
+						>
+							打榜
+						</button>
 					</view>
 				</view>
 			</view>
@@ -307,9 +303,9 @@
         </button> -->
 
 		<!-- 登录弹窗 -->
-        <view v-if="showLogin">
-          <LoginModal :show="showLogin" @closeLogin="closeLogin"></LoginModal>
-	    </view>
+		<view v-if="showLogin">
+			<LoginModal :show="showLogin" @closeLogin="closeLogin"></LoginModal>
+		</view>
 	</view>
 </template>
 
@@ -325,12 +321,24 @@ export default {
 		rankingTabNo,
 		rankingTabHasText,
 		starRankingList,
-        DabangModal,
-        LoginModal
+		DabangModal,
+		LoginModal,
 	},
 	data() {
 		return {
-            showLogin: false, //默认不展示登录弹窗
+			code: '',
+			SessionKey: '',
+			encryptedData: '',
+			iv: '',
+			OpenId: '',
+			nickName: null,
+			avatarUrl: null,
+			isCanUse: true,
+			rawData: '',
+			signature: '',
+			// 用户信息
+			iconTop: '', // 搜索icon距离顶部的距离
+			showLogin: false, //默认不展示登录弹窗
 			weekName: '',
 			current: 0,
 			sloganOpen: false,
@@ -392,6 +400,9 @@ export default {
 			deep: true,
 		},
 	},
+	onLoad() {
+		this.login()
+	},
 
 	mounted() {
 		this.monthNum = new Date().getMonth()
@@ -400,6 +411,7 @@ export default {
 		this.$emit('footer', false)
 	},
 	onShow() {
+		this.iconTop = wx.getMenuButtonBoundingClientRect().top + 'px'
 		// 个人信息-标语
 		console.log('刷新页面')
 		// this.getWeekOne(0)
@@ -413,10 +425,10 @@ export default {
 		this.getMyInfo()
 	},
 	methods: {
-        // 关闭登录框
-        closeLogin(){
-            this.showLogin = false
-        },
+		// 关闭登录框
+		closeLogin() {
+			this.showLogin = false
+		},
 		changeSwiper(index) {
 			this.current = index
 		},
@@ -512,19 +524,71 @@ export default {
 		},
 		// 打榜弹窗
 		dabang(id) {
-                this.$u
-				.get('/personalCenter/personalCenterInfo')
+			// 打榜其实就是登录按钮，先判断登录没有，如果登录了，走打榜的逻辑，否则先走登录逻辑
+
+			this.starId = id
+			this.showModal = true
+		},
+		login() {
+			let _this = this
+			// 1.wx获取登录用户code
+			uni.login({
+				provider: 'weixin',
+				success: function (loginRes) {
+					_this.code = loginRes.code
+					if (!_this.isCanUse) {
+						//非第一次授权获取用户信息
+						uni.getUserInfo({
+							provider: 'weixin',
+							success: function (infoRes) {
+								// console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
+								_this.nickName = infoRes.userInfo.nickName //昵称
+								_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+								_this.updateUserInfo() //调用更新信息方法
+							},
+						})
+					}
+					// 将用户登录code传递到后台置换用户SessionKey、OpenId等信息
+				},
+			})
+		},
+		//向后台更新信息
+		updateUserInfo(id) {
+			let _this = this
+			this.$u
+				.post(`/common/weiXinLong`, {
+					code: _this.code,
+					encrypteData: this.encryptedData,
+					iv: this.iv,
+					rawData: this.rawData,
+					signature: this.signature,
+				})
 				.then((res) => {
-                this.starId = id
-				this.showModal = true
+					uni.setStorageSync('Authorization', res.token)
+					_this.starId = id
+					_this.showModal = true
 				})
-				.catch((res) => {
-                 
-                    if(!this.$toLogin(res)){
-                        this.showLogin = true
-                    };
-                    return false
-				})
+		},
+		wxGetUserInfo(id) {
+            let _this = this
+            uni.getUserInfo({
+							provider: 'weixin',
+							success: function (infoRes) {
+								console.log(infoRes, '用户信息')
+								_this.encryptedData = infoRes.encryptedData
+								_this.iv = infoRes.iv
+								_this.rawData = infoRes.rawData
+								_this.signature = infoRes.signature
+								_this.nickName = infoRes.userInfo.nickName //昵称
+								_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+								uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
+								_this.updateUserInfo(id)
+							},
+							fail: function (fail) {
+                                	console.log(fail, 'fail用户信息')
+                            },
+						})
+	
 		},
 		// 获取个人信息--我的标语
 		getMyInfo() {
@@ -545,9 +609,7 @@ export default {
 						// this.sloganOpen = false; //无标语
 					}
 				})
-				.catch((res) => {
-				
-				})
+				.catch((res) => {})
 		},
 		// 获取我的守护
 		selectMyGuard() {
@@ -671,7 +733,7 @@ export default {
 			font-size: 20px;
 			font-weight: bold;
 			color: #fff;
-            text-shadow: 2px 2px 1px #000;
+			text-shadow: 2px 2px 1px #000;
 		}
 		.row-name {
 			//    position: absolute;
@@ -679,7 +741,7 @@ export default {
 			font-size: 20px;
 			font-weight: bold;
 			color: #ff3c3c;
-            text-shadow: 2px 2px 1px #fff;
+			text-shadow: 2px 2px 1px #fff;
 		}
 		.month-name {
 			top: 160rpx;
@@ -712,8 +774,8 @@ export default {
 		position: absolute;
 		top: 100rpx;
 		left: 28rpx;
-		width: 50rpx;
-		height: 50rpx;
+		width: 65rpx;
+		height: 65rpx;
 	}
 	// 我的守护
 	.home-my-guard {
@@ -843,6 +905,22 @@ export default {
 			//  justify-content: center;
 			align-items: center;
 			flex-direction: column;
+			.val {
+				// display: flex;
+				// align-items: center;
+				// justify-content: center;
+				// display: -webkit-flex;
+				// margin-left: 20rpx;
+				height: 72rpx;
+				line-height: 72rpx;
+				.val-text {
+					display: inline-block;
+					height: 72rpx;
+					position: relative;
+					top: -20rpx;
+				}
+			}
+
 			.name {
 				font-weight: bold;
 			}
@@ -995,12 +1073,5 @@ export default {
 		font-size: 12px;
 		margin-top: -2px;
 	}
-}
-.val {
-	display: flex;
-	align-items: center;
-    justify-content: center;
-    display: -webkit-flex;
-	margin-left: 20rpx;
 }
 </style>

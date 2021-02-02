@@ -723,6 +723,7 @@ export default {
   }
   //   打榜内容
   .body-area {
+       position: relative;
     .title {
       font-size: 16px;
       font-weight: bold;
@@ -731,7 +732,12 @@ export default {
     .right-btn {
       margin-top: 20rpx;
       margin-bottom: 20rpx;
+      
+    //   padding-left: 40rpx;
+    // text-align: right;
       .col-top {
+          position: relative;
+      left: 40rpx;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -762,9 +768,9 @@ export default {
         }
         .btn {
           min-width: 120rpx;
-          height: 50rpx;
+          height: 60rpx;
           text-align: center;
-          line-height: 50rpx;
+          line-height: 60rpx;
           border-radius: 10rpx;
           font-size: 10px;
           background: #e34c4c;

@@ -10,10 +10,11 @@
       </view>
       <view class="title">{{ item.titles }}</view>
       <view class="slider-area">
+   
         <u-slider
           :disabled="true"
           class="slider-resource"
-          v-model="item.targetValue"
+          v-model="resourcesLists[index]"
           :use-slot="true"
           height="20"
           block-width="40"
@@ -34,7 +35,7 @@
         <u-slider
           :disabled="true"
           class="slider-resource"
-          v-model="item.reachNumValue"
+          v-model="resourcesLists1[index]"
           :use-slot="true"
           height="20"
           block-width="40"
@@ -113,6 +114,8 @@ export default {
     return {
       titles: "",
       value: 30,
+      resourcesLists:[],
+      resourcesLists1:[],
       resourcesList: [], //资源列表
     };
   },
@@ -164,10 +167,20 @@ export default {
             this.resourcesList[index].targetValue = Math.round(
               (item.joinNum / item.target) * 100
             );
+            this.resourcesLists.push(
+                Math.round(
+              (item.joinNum / item.target) * 100
+            )
+            )
             //  处理达成人数比
             this.resourcesList[index].reachNumValue = Math.round(
               (item.reachNum / item.target) * 100
             );
+            this.resourcesLists1.push(
+               Math.round(
+              (item.reachNum / item.target) * 100
+            )
+            )
           });
 
           // 处理资源名称
@@ -241,6 +254,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.slider-area{
+margin-right: 30rpx;
+}
+
 // 当前明星卡片
 .star-card {
   background: #fff;
@@ -304,11 +321,13 @@ export default {
   background-color: #e9c046;
 }
 .slider-resource {
-  margin-right: 150rpx;
+  margin-right: 180rpx!important;
 }
 .btn-slider {
   float: right;
-  width: 80rpx;
+  width: 100rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
   text-align: center;
   height: 40rpx;
   line-height: 40rpx;
@@ -316,7 +335,7 @@ export default {
   border-radius: 20rpx;
   color: #fff;
   position: relative;
-  right: 40rpx;
+  right: 20rpx;
   top: -30rpx;
 }
 .btn-slider1 {
@@ -329,6 +348,7 @@ export default {
   margin-top: 30rpx;
   margin-bottom: 30rpx;
   margin-left: 40rpx;
+//   margin-right: 40rpx;
 }
 .flex-area {
   margin-left: 30rpx;

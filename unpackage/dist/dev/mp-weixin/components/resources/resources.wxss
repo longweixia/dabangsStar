@@ -24,6 +24,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.slider-area.data-v-552bde50 {
+  margin-right: 30rpx;
+}
 .star-card.data-v-552bde50 {
   background: #fff;
   -webkit-border-radius: 20rpx;
@@ -100,11 +103,13 @@
   background-color: #e9c046;
 }
 .slider-resource.data-v-552bde50 {
-  margin-right: 150rpx;
+  margin-right: 180rpx !important;
 }
 .btn-slider.data-v-552bde50 {
   float: right;
-  width: 80rpx;
+  width: 100rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
   text-align: center;
   height: 40rpx;
   line-height: 40rpx;
@@ -113,7 +118,7 @@
           border-radius: 20rpx;
   color: #fff;
   position: relative;
-  right: 40rpx;
+  right: 20rpx;
   top: -30rpx;
 }
 .btn-slider1.data-v-552bde50 {

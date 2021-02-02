@@ -18,7 +18,7 @@
               class="img"
               width="80rpx"
               height="80rpx"
-              :src="item.starAvatar" error-icon="../../static/home/noImg.png"
+              :src="item.starAvatar" 
               shape="circle"
             ></u-image>
           </view>
@@ -45,7 +45,7 @@
               class="img"
               width="80rpx"
               height="80rpx"
-              :src="item.avatarUrl"  error-icon="../../static/home/noImg.png"
+              :src="item.avatarUrl" 
               shape="circle"
             ></u-image>
           </view>
@@ -73,7 +73,7 @@
               class="img"
               width="80rpx"
               height="80rpx"
-              :src="item.avatarUrl" error-icon="../../static/home/noImg.png"
+              :src="item.avatarUrl"
               shape="circle"
             ></u-image>
           </view>

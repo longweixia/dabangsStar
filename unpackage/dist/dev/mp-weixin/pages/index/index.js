@@ -94,19 +94,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uSwiper: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */ "node-modules/uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 164))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */ "node-modules/uview-ui/components/u-swiper/u-swiper").then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 156))
   },
   uImage: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 171))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-image/u-image */ "node-modules/uview-ui/components/u-image/u-image").then(__webpack_require__.bind(null, /*! uview-ui/components/u-image/u-image.vue */ 163))
   },
   uCountDown: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-count-down/u-count-down */ "node-modules/uview-ui/components/u-count-down/u-count-down").then(__webpack_require__.bind(null, /*! uview-ui/components/u-count-down/u-count-down.vue */ 178))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-count-down/u-count-down */ "node-modules/uview-ui/components/u-count-down/u-count-down").then(__webpack_require__.bind(null, /*! uview-ui/components/u-count-down/u-count-down.vue */ 170))
   },
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 185))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-icon/u-icon */ "node-modules/uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! uview-ui/components/u-icon/u-icon.vue */ 177))
   },
   uToast: function() {
-    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 192))
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-toast/u-toast */ "node-modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! uview-ui/components/u-toast/u-toast.vue */ 184))
   }
 }
 var render = function() {
@@ -176,11 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 199));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 206));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 213));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DabangModal = function DabangModal() {__webpack_require__.e(/*! require.ensure | components/dabangModal/index */ "components/dabangModal/index").then((function () {return resolve(__webpack_require__(/*! ./../../components/dabangModal/index.vue */ 220));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var LoginModal = function LoginModal() {__webpack_require__.e(/*! require.ensure | components/home/loginModal */ "components/home/loginModal").then((function () {return resolve(__webpack_require__(/*! ../../components/home/loginModal.vue */ 513));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var rankingTabNo = function rankingTabNo() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-no */ "components/home/ranking-tab-no").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-no.vue */ 191));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var rankingTabHasText = function rankingTabHasText() {__webpack_require__.e(/*! require.ensure | components/home/ranking-tab-hasText */ "components/home/ranking-tab-hasText").then((function () {return resolve(__webpack_require__(/*! ../../components/home/ranking-tab-hasText.vue */ 198));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var starRankingList = function starRankingList() {__webpack_require__.e(/*! require.ensure | components/home/star-ranking-list */ "components/home/star-ranking-list").then((function () {return resolve(__webpack_require__(/*! ../../components/home/star-ranking-list.vue */ 205));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var DabangModal = function DabangModal() {__webpack_require__.e(/*! require.ensure | components/dabangModal/index */ "components/dabangModal/index").then((function () {return resolve(__webpack_require__(/*! ./../../components/dabangModal/index.vue */ 212));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var LoginModal = function LoginModal() {__webpack_require__.e(/*! require.ensure | components/home/loginModal */ "components/home/loginModal").then((function () {return resolve(__webpack_require__(/*! ../../components/home/loginModal.vue */ 226));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -508,6 +504,18 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
+      code: '',
+      SessionKey: '',
+      encryptedData: '',
+      iv: '',
+      OpenId: '',
+      nickName: null,
+      avatarUrl: null,
+      isCanUse: true,
+      rawData: '',
+      signature: '',
+      // 用户信息
+      iconTop: '', // 搜索icon距离顶部的距离
       showLogin: false, //默认不展示登录弹窗
       weekName: '',
       current: 0,
@@ -570,6 +578,9 @@ __webpack_require__.r(__webpack_exports__);
       deep: true } },
 
 
+  onLoad: function onLoad() {
+    this.login();
+  },
 
   mounted: function mounted() {
     this.monthNum = new Date().getMonth();
@@ -578,6 +589,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$emit('footer', false);
   },
   onShow: function onShow() {
+    this.iconTop = wx.getMenuButtonBoundingClientRect().top + 'px';
     // 个人信息-标语
     console.log('刷新页面');
     // this.getWeekOne(0)
@@ -689,20 +701,72 @@ __webpack_require__.r(__webpack_exports__);
       this.getRankTypeIndex(2);
     },
     // 打榜弹窗
-    dabang: function dabang(id) {var _this = this;
+    dabang: function dabang(id) {
+      // 打榜其实就是登录按钮，先判断登录没有，如果登录了，走打榜的逻辑，否则先走登录逻辑
+
+      this.starId = id;
+      this.showModal = true;
+    },
+    login: function login() {
+      var _this = this;
+      // 1.wx获取登录用户code
+      uni.login({
+        provider: 'weixin',
+        success: function success(loginRes) {
+          _this.code = loginRes.code;
+          if (!_this.isCanUse) {
+            //非第一次授权获取用户信息
+            uni.getUserInfo({
+              provider: 'weixin',
+              success: function success(infoRes) {
+                // console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
+                _this.nickName = infoRes.userInfo.nickName; //昵称
+                _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+                _this.updateUserInfo(); //调用更新信息方法
+              } });
+
+          }
+          // 将用户登录code传递到后台置换用户SessionKey、OpenId等信息
+        } });
+
+    },
+    //向后台更新信息
+    updateUserInfo: function updateUserInfo(id) {
+      var _this = this;
       this.$u.
-      get('/personalCenter/personalCenterInfo').
+      post("/common/weiXinLong", {
+        code: _this.code,
+        encrypteData: this.encryptedData,
+        iv: this.iv,
+        rawData: this.rawData,
+        signature: this.signature }).
+
       then(function (res) {
+        uni.setStorageSync('Authorization', res.token);
         _this.starId = id;
         _this.showModal = true;
-      }).
-      catch(function (res) {
-
-        if (!_this.$toLogin(res)) {
-          _this.showLogin = true;
-        };
-        return false;
       });
+    },
+    wxGetUserInfo: function wxGetUserInfo(id) {
+      var _this = this;
+      uni.getUserInfo({
+        provider: 'weixin',
+        success: function success(infoRes) {
+          console.log(infoRes, '用户信息');
+          _this.encryptedData = infoRes.encryptedData;
+          _this.iv = infoRes.iv;
+          _this.rawData = infoRes.rawData;
+          _this.signature = infoRes.signature;
+          _this.nickName = infoRes.userInfo.nickName; //昵称
+          _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+          uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
+          _this.updateUserInfo(id);
+        },
+        fail: function fail(_fail) {
+          console.log(_fail, 'fail用户信息');
+        } });
+
+
     },
     // 获取个人信息--我的标语
     getMyInfo: function getMyInfo() {var _this2 = this;
@@ -723,9 +787,7 @@ __webpack_require__.r(__webpack_exports__);
           // this.sloganOpen = false; //无标语
         }
       }).
-      catch(function (res) {
-
-      });
+      catch(function (res) {});
     },
     // 获取我的守护
     selectMyGuard: function selectMyGuard() {var _this3 = this;

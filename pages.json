@@ -19,15 +19,6 @@
             }
         },
         {
-            "path": "pages/index/test",
-            "name":"test",
-            "style": {
-                "navigationBarTitleText": "测试消息"
-            }
-        },
-       
-      
-        {
             "path": "pages/index/rangkingList",
             "style": {
                 "navigationBarTitleText": "榜单"

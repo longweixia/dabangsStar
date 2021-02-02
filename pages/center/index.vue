@@ -17,7 +17,7 @@
 						<u-image
 							class="img-icon"
 							width="120rpx" 
-							height="120rpx" error-icon="../../static/home/noImg.png"
+							height="120rpx"
 							:src="myData.avatarUrl"
 							shape="circle"
 						></u-image>
@@ -150,10 +150,6 @@ export default {
 	methods: {
 		login() {
 			let _this = this
-			// uni.showLoading({
-			// 	title: '登录中...',
-			// })
-
 			// 1.wx获取登录用户code
 			uni.login({
 				provider: 'weixin',
@@ -173,35 +169,17 @@ export default {
 					}
 					// 将用户登录code传递到后台置换用户SessionKey、OpenId等信息
 
-					uni.hideLoading()
 				},
 			})
-		},
+        },
+        //向后台更新信息
 		updateUserInfo() {
-			//向后台更新信息
-			// this.setName(this.nickName,this.avatarUrl)
 			let _this = this
 			var obj = {
 				appid: 'wxcf8c06040676fecd',
 				secret: 'bfa8089fdfbb2addeb5de83af974561f',
 				code: this.code,
 			}
-			// 这个接口要在后端调用(https://api.weixin.qq.com无法加入白名单)
-			// https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+code+"&grant_type=authorization_code
-			// 请求微信端地址获取用户唯一标识的
-
-			// htxcx(obj.appid,obj.secret,obj.code).then(res=>{
-
-			// 	res.data.openid // 唯一
-			// 	res.data.session_key
-			// 	this.encryptedData
-			// 	this.iv
-			// 	uni.reLaunch({//信息更新成功后跳转到小程序首页
-			// 		url: '/pages/index/index'
-			// 	});
-			// },err=>{
-
-			// })
 			let encryptedData = JSON.stringify(_this.encryptedData)
 			this.$u
 				.post(`/common/weiXinLong`, {
@@ -224,8 +202,6 @@ export default {
 							url: `/pages/index/index`,
 						})
 					}, 1000)
-
-					// this.swiperList = res;
 				})
 		},
 		//获取周榜月榜奖励

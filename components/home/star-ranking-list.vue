@@ -36,7 +36,17 @@
 						"
 					/>
 				</view>
-				<view class="btn" @click="dabang(item.id)"> 打榜 </view>
+
+				<button
+					@getuserinfo="wxGetUserInfo(item.id)"
+					class="btn"
+					type="primary"
+					open-type="getUserInfo"
+					withCredentials="true"
+					lang="zh_CN"
+				>
+					打榜
+				</button>
 			</view>
 		</view>
 		<view v-if="showModal">
@@ -46,10 +56,10 @@
 				@closeDabang="closeDabang"
 			></DabangModal>
 		</view>
-        	<!-- 登录弹窗 -->
-        <view v-if="showLogin">
-          <LoginModal :show="showLogin" @closeLogin="closeLogin"></LoginModal>
-	    </view>
+		<!-- 登录弹窗 -->
+		<view v-if="showLogin">
+			<LoginModal :show="showLogin" @closeLogin="closeLogin"></LoginModal>
+		</view>
 	</view>
 </template>
 
@@ -59,37 +69,44 @@ import LoginModal from '../../components/home/loginModal.vue'
 export default {
 	props: ['rankingList'],
 	components: {
-        DabangModal,
-        LoginModal
+		DabangModal,
+		LoginModal,
 	},
 	data() {
 		return {
+			code: '',
+			SessionKey: '',
+			encryptedData: '',
+			iv: '',
+			OpenId: '',
+			nickName: null,
+			avatarUrl: null,
+			isCanUse: true,
+			rawData: '',
+			signature: '',
+			// 用户信息
+
 			starId: '', //明星id
-            showModal: false, //打榜弹窗
-             showLogin: false, //默认不展示登录弹窗
+			showModal: false, //打榜弹窗
+			showLogin: false, //默认不展示登录弹窗
 		}
 	},
+	onLoad() {
+		this.login()
+	},
+	onShow() {
+		this.login()
+	},
+	created() {
+		this.login()
+	},
+	mounted() {
+		this.login()
+	},
 	methods: {
-        // 关闭登录框
-        closeLogin(){
-            this.showLogin = false
-        },
-		// 打榜弹窗
-		dabang(id) {
-             this.$u
-				.get('/personalCenter/personalCenterInfo')
-				.then((res) => {
-            	this.starId = id
-					this.showModal = true
-				})
-				.catch((res) => {
-                 
-                    if(!this.$toLogin(res)){
-                        this.showLogin = true
-                    };
-                    return false
-				})
-		
+		// 关闭登录框
+		closeLogin() {
+			this.showLogin = false
 		},
 		closeDabang() {
 			this.showModal = false
@@ -98,6 +115,66 @@ export default {
 		routerStarDetail(id) {
 			uni.navigateTo({
 				url: `/pages/starDetail/starDetail?id=${id}`,
+			})
+		},
+		login() {
+			let _this = this
+			// 1.wx获取登录用户code
+			uni.login({
+				provider: 'weixin',
+				success: function (loginRes) {
+					_this.code = loginRes.code
+					if (!_this.isCanUse) {
+						//非第一次授权获取用户信息
+						uni.getUserInfo({
+							provider: 'weixin',
+							success: function (infoRes) {
+								// console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
+								_this.nickName = infoRes.userInfo.nickName //昵称
+								_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+								_this.updateUserInfo() //调用更新信息方法
+							},
+						})
+					}
+					// 将用户登录code传递到后台置换用户SessionKey、OpenId等信息
+				},
+			})
+		},
+		//向后台更新信息
+		updateUserInfo(id) {
+			let _this = this
+			this.$u
+				.post(`/common/weiXinLong`, {
+					code: _this.code,
+					encrypteData: this.encryptedData,
+					iv: this.iv,
+					rawData: this.rawData,
+					signature: this.signature,
+				})
+				.then((res) => {
+					uni.setStorageSync('Authorization', res.token)
+					_this.starId = id
+					_this.showModal = true
+				})
+		},
+		wxGetUserInfo(id) {
+			let _this = this
+			uni.getUserInfo({
+				provider: 'weixin',
+				success: function (infoRes) {
+					console.log(infoRes, '用户信息')
+					_this.encryptedData = infoRes.encryptedData
+					_this.iv = infoRes.iv
+					_this.rawData = infoRes.rawData
+					_this.signature = infoRes.signature
+					_this.nickName = infoRes.userInfo.nickName //昵称
+					_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+					uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
+					_this.updateUserInfo(id)
+				},
+				fail: function (fail) {
+					console.log(fail, 'fail用户信息')
+				},
 			})
 		},
 	},

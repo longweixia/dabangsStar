@@ -3,7 +3,7 @@
     <view>
       <u-image mode="widthFix" :src="srcImg" :border-radius="10"></u-image>
       <img
-        @click="routerTohome"
+        @click="routerTohome" :style="{top:iconTop}"
         class="search-icon"
         src="../../static/home/right-btn2.png"
       />
@@ -16,17 +16,22 @@ export default {
   name: "listAwards",
   data() {
     return {
+        iconTop: "",// 搜索icon距离顶部的距离
       current: null,
       awardsList: [],
       srcImg: "",
     };
   },
-  mounted() {},
+  mounted() {
+   
+  },
   onLoad(option) {
     this.current = option.current;
   },
   onShow() {
     this.getMyInfo();
+   
+          this.iconTop = wx.getMenuButtonBoundingClientRect().top+"px"
   },
 
   methods: {
@@ -67,8 +72,8 @@ export default {
     position: absolute;
     top: 100rpx;
     left: 28rpx;
-    width: 50rpx;
-    height: 50rpx;
+    width: 65rpx;
+    height: 65rpx;
   }
 }
 </style>

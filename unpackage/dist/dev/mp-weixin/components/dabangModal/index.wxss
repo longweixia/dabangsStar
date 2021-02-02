@@ -361,6 +361,9 @@
   color: #e34c4c;
   font-size: 12px;
 }
+.dabang-modal .body-area {
+  position: relative;
+}
 .dabang-modal .body-area .title {
   font-size: 16px;
   font-weight: bold;
@@ -371,6 +374,8 @@
   margin-bottom: 20rpx;
 }
 .dabang-modal .body-area .right-btn .col-top {
+  position: relative;
+  left: 40rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -408,9 +413,9 @@
 }
 .dabang-modal .body-area .right-btn .col-top .btn {
   min-width: 120rpx;
-  height: 50rpx;
+  height: 60rpx;
   text-align: center;
-  line-height: 50rpx;
+  line-height: 60rpx;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
   font-size: 10px;

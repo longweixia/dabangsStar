@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/test",
     "pages/index/rangkingList",
     "pages/search/search",
     "pages/starDetail/starDetail",

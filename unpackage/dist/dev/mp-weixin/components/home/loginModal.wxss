@@ -24,14 +24,35 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content.data-v-13ef8989 {
+.login-modals .row1.data-v-13ef8989 {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+}
+.login-modals .row1 .apply.data-v-13ef8989 {
+  margin-left: 20rpx;
+}
+.login-modals .row2.data-v-13ef8989 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.login-modals .row3.data-v-13ef8989 {
+  margin-top: 30rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  border-top: 0.5px solid #ddd;
+  border-bottom: 0.5px solid #ddd;
+}
+.login-modals .content.data-v-13ef8989 {
   padding: 24rpx;
   padding-top: 50rpx;
   padding-bottom: 50rpx;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
 }
-.confrim-btn.data-v-13ef8989 {
+.login-modals .confrim-btn.data-v-13ef8989 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -42,13 +63,12 @@
   -webkit-justify-content: center;
           justify-content: center;
 }
-.bottom.data-v-13ef8989 {
+.login-modals .bottom.data-v-13ef8989 {
   width: 200rpx;
   margin-top: 10rpx;
 }
-.bottom-login.data-v-13ef8989 {
+.login-modals .bottom-login.data-v-13ef8989 {
   width: 200rpx !important;
-  background: #007aff;
   margin-left: 20rpx;
   margin-right: 20rpx;
 }

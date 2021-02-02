@@ -28,8 +28,9 @@
   position: absolute;
   top: 100rpx;
   left: 28rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 65rpx;
+  height: 65rpx;
+  z-index: 10000;
 }
 .detail-bg-img.data-v-382f0766 {
   width: 100%;

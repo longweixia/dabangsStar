@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "测试消息",
-  "usingComponents": {
-    "danmu": "/components/lff-barrage/lff-barrage"
-  }
-}

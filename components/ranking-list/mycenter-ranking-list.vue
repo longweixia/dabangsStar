@@ -13,7 +13,7 @@
             class="img-icon"
              width="80rpx"
             height="80rpx"
-            :src="item.avatar" error-icon="../../static/home/noImg.png"
+            :src="item.avatar"
             shape="circle"
           ></u-image>
           <view class="row-text">
@@ -73,7 +73,7 @@
             class="img-icon"
              width="80rpx"
             height="80rpx"
-            :src="item.avatar" error-icon="../../static/home/noImg.png"
+            :src="item.avatar"
             shape="circle"
           ></u-image>
           <view class="row-text">
