@@ -314,18 +314,21 @@
   width: 68rpx;
   height: 68rpx;
 }
-.home-page .list-top-three .guard-card .btn-area.data-v-57280228 {
-  text-align: center;
-  margin-top: 14rpx;
-}
 .home-page .list-top-three .guard-card .btn-area .btn.data-v-57280228 {
+  margin: 0;
+  padding: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
   position: absolute;
-  right: 40rpx;
-  left: 40rpx;
+  right: 70rpx;
   height: 42rpx;
+  border: none;
   line-height: 42rpx;
   font-size: 14px;
-  width: 110rpx;
+  width: 80rpx;
   padding: 0 10rpx;
   -webkit-border-radius: 42rpx;
           border-radius: 42rpx;
@@ -334,6 +337,9 @@
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
   background: linear-gradient(to right, #f83a3a, #f7c18b);
   color: #fff;
+}
+.home-page .list-top-three .guard-card .btn-area .btn.data-v-57280228::after {
+  border: none;
 }
 .home-page .list-top-three .guard-card .btn-area1.data-v-57280228 {
   text-align: center;

@@ -915,8 +915,8 @@ export default {
 				// margin-left: 20rpx;
 				height: 72rpx;
 				line-height: 72rpx;
-                position: relative;
-                left: 40rpx;
+				position: relative;
+				left: 40rpx;
 				.val-text {
 					display: inline-block;
 					height: 72rpx;
@@ -995,21 +995,34 @@ export default {
 				}
 			}
 			.btn-area {
-				text-align: center;
-				margin-top: 14rpx;
+				// text-align: center;
+				// margin-top: 14rpx;
 				.btn {
-					position: absolute;
-					right: 40rpx;
-					left: 40rpx;
+				
+					margin: 0;
+					padding: 0;
+					border-radius: 0;
+					border: none;
+					font-size: 1em;
+					background-color: transparent;
+
+                    // 重置按钮完成
+                    position: absolute;
+					right:70rpx;
+					// left: 40rpx;
 					height: 42rpx;
+					border: none;
 					line-height: 42rpx;
 					font-size: 14px;
-					width: 110rpx;
+					width: 80rpx;
 					padding: 0 10rpx;
 					border-radius: 42rpx;
 					text-align: center;
 					background: linear-gradient(to right, #f83a3a, #f7c18b);
 					color: #fff;
+				}
+				.btn::after {
+					border: none;
 				}
 			}
 			.btn-area1 {
