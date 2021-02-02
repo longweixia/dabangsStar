@@ -153,8 +153,8 @@
 .home-page .home-my-guard .guard-list .guard-card .guard-right .guard-btn.data-v-57280228 {
   position: relative;
   top: -10rpx;
-  height: 46rpx;
-  line-height: 46rpx;
+  height: 42rpx;
+  line-height: 42rpx;
   width: 100rpx;
   padding: 0 10rpx;
   -webkit-border-radius: 23rpx;
@@ -234,6 +234,8 @@
 .home-page .list-top-three .guard-card .val.data-v-57280228 {
   height: 72rpx;
   line-height: 72rpx;
+  position: relative;
+  left: 40rpx;
 }
 .home-page .list-top-three .guard-card .val .val-text.data-v-57280228 {
   display: inline-block;
@@ -317,12 +319,16 @@
   margin-top: 14rpx;
 }
 .home-page .list-top-three .guard-card .btn-area .btn.data-v-57280228 {
-  height: 46rpx;
-  line-height: 46rpx;
+  position: absolute;
+  right: 40rpx;
+  left: 40rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  font-size: 14px;
   width: 110rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 23rpx;
-          border-radius: 23rpx;
+  -webkit-border-radius: 42rpx;
+          border-radius: 42rpx;
   text-align: center;
   background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);
@@ -334,12 +340,15 @@
   margin-top: 44rpx;
 }
 .home-page .list-top-three .guard-card .btn-area1 .btn.data-v-57280228 {
-  height: 46rpx;
-  line-height: 46rpx;
+  position: absolute;
+  right: 40rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  font-size: 14px;
   width: 110rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 23rpx;
-          border-radius: 23rpx;
+  -webkit-border-radius: 42rpx;
+          border-radius: 42rpx;
   text-align: center;
   background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);

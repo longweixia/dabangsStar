@@ -271,7 +271,7 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     //向后台更新信息
-    updateUserInfo: function updateUserInfo(id) {
+    updateUserInfo: function updateUserInfo(id) {var _this2 = this;
       var _this = this;
       this.$u.
       post("/common/weiXinLong", {
@@ -285,7 +285,11 @@ __webpack_require__.r(__webpack_exports__);
         uni.setStorageSync('Authorization', res.token);
         _this.starId = id;
         _this.showModal = true;
+      }).catch(function (res) {
+        _this2.starId = id;
+        _this2.showModal = true;
       });
+
     },
     wxGetUserInfo: function wxGetUserInfo(id) {
       var _this = this;

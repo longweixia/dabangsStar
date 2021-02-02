@@ -164,8 +164,8 @@
 						@click="routerStarDetail(item.id, item.name)"
 						>{{ item.totalVigourVal }}</view
 					>
-					<view class="btn-area">
-							<button
+					<view class="btn-area" style="z-index: 10000">
+						<button
 							@getuserinfo="wxGetUserInfo(item.id)"
 							class="btn"
 							type="primary"
@@ -254,7 +254,6 @@
 						<button
 							@getuserinfo="wxGetUserInfo(item.id)"
 							class="btn"
-							type="primary"
 							open-type="getUserInfo"
 							withCredentials="true"
 							lang="zh_CN"
@@ -568,27 +567,30 @@ export default {
 					_this.starId = id
 					_this.showModal = true
 				})
+				.catch((res) => {
+					this.starId = id
+					this.showModal = true
+				})
 		},
 		wxGetUserInfo(id) {
-            let _this = this
-            uni.getUserInfo({
-							provider: 'weixin',
-							success: function (infoRes) {
-								console.log(infoRes, '用户信息')
-								_this.encryptedData = infoRes.encryptedData
-								_this.iv = infoRes.iv
-								_this.rawData = infoRes.rawData
-								_this.signature = infoRes.signature
-								_this.nickName = infoRes.userInfo.nickName //昵称
-								_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
-								uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
-								_this.updateUserInfo(id)
-							},
-							fail: function (fail) {
-                                	console.log(fail, 'fail用户信息')
-                            },
-						})
-	
+			let _this = this
+			uni.getUserInfo({
+				provider: 'weixin',
+				success: function (infoRes) {
+					console.log(infoRes, '用户信息')
+					_this.encryptedData = infoRes.encryptedData
+					_this.iv = infoRes.iv
+					_this.rawData = infoRes.rawData
+					_this.signature = infoRes.signature
+					_this.nickName = infoRes.userInfo.nickName //昵称
+					_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+					uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
+					_this.updateUserInfo(id)
+				},
+				fail: function (fail) {
+					console.log(fail, 'fail用户信息')
+				},
+			})
 		},
 		// 获取个人信息--我的标语
 		getMyInfo() {
@@ -841,8 +843,8 @@ export default {
 					.guard-btn {
 						position: relative;
 						top: -10rpx;
-						height: 46rpx;
-						line-height: 46rpx;
+						height: 42rpx;
+						line-height: 42rpx;
 						width: 100rpx;
 						padding: 0 10rpx;
 						border-radius: 23rpx;
@@ -913,6 +915,8 @@ export default {
 				// margin-left: 20rpx;
 				height: 72rpx;
 				line-height: 72rpx;
+                position: relative;
+                left: 40rpx;
 				.val-text {
 					display: inline-block;
 					height: 72rpx;
@@ -994,11 +998,15 @@ export default {
 				text-align: center;
 				margin-top: 14rpx;
 				.btn {
-					height: 46rpx;
-					line-height: 46rpx;
+					position: absolute;
+					right: 40rpx;
+					left: 40rpx;
+					height: 42rpx;
+					line-height: 42rpx;
+					font-size: 14px;
 					width: 110rpx;
 					padding: 0 10rpx;
-					border-radius: 23rpx;
+					border-radius: 42rpx;
 					text-align: center;
 					background: linear-gradient(to right, #f83a3a, #f7c18b);
 					color: #fff;
@@ -1008,11 +1016,14 @@ export default {
 				text-align: center;
 				margin-top: 44rpx;
 				.btn {
-					height: 46rpx;
-					line-height: 46rpx;
+					position: absolute;
+					right: 40rpx;
+					height: 42rpx;
+					line-height: 42rpx;
+					font-size: 14px;
 					width: 110rpx;
 					padding: 0 10rpx;
-					border-radius: 23rpx;
+					border-radius: 42rpx;
 					text-align: center;
 					background: linear-gradient(to right, #f83a3a, #f7c18b);
 					color: #fff;

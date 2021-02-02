@@ -73,6 +73,7 @@ export default {
           pageSize: 20
         })
         .then(res => {
+             console.log('我的守护信息',res)
           this.isLogin = true
           this.rankingList = res.list; //　少了头像
           // this.rankingList = [

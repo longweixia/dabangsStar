@@ -614,6 +614,7 @@ option) {
 
     then(function (res) {
 
+      console.log('打榜成功---', res);
       _this3.$refs.dianzan.handleClick();
       _this3.selectFensInfo();
 
@@ -652,6 +653,7 @@ option) {
     post("/home/fens").
     then(function (res) {
       _this5.myInfo = res; //　少了头像
+      console.log('打榜后拿到我的信息', res);
     }).
     catch(function (res) {});
   },

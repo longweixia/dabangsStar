@@ -155,7 +155,11 @@ export default {
 					uni.setStorageSync('Authorization', res.token)
 					_this.starId = id
 					_this.showModal = true
-				})
+				}).catch((res) => {
+			this.starId = id
+			this.showModal = true
+        });
+	
 		},
 		wxGetUserInfo(id) {
 			let _this = this
@@ -241,11 +245,12 @@ export default {
 	//   top: -10rpx;
 	position: absolute;
 	right: 40rpx;
-	height: 46rpx;
-	line-height: 46rpx;
+	height: 42rpx;
+	line-height: 42rpx;
+    font-size: 14px;
 	width: 110rpx;
 	padding: 0 10rpx;
-	border-radius: 23rpx;
+	border-radius: 42rpx;
 	text-align: center;
 	background: linear-gradient(to right, #f83a3a, #f7c18b);
 	color: #fff;

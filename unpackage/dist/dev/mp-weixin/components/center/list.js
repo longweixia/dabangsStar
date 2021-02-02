@@ -193,6 +193,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         pageSize: 20 }).
 
       then(function (res) {
+        console.log('我的守护信息', res);
         _this.isLogin = true;
         _this.rankingList = res.list; //　少了头像
         // this.rankingList = [

@@ -470,7 +470,8 @@ export default {
           vigourVal: this.inpValue,
         })
         .then((res) => {
-
+            
+          console.log('打榜成功---',res)
           this.$refs.dianzan.handleClick();
           this.selectFensInfo();
  
@@ -509,6 +510,7 @@ export default {
         .post("/home/fens")
         .then((res) => {
           this.myInfo = res; //　少了头像
+          console.log('打榜后拿到我的信息',res)
         })
         .catch((res) => {});
     },

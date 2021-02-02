@@ -492,7 +492,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 {
   name: 'home',
   components: {
@@ -731,7 +730,7 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     //向后台更新信息
-    updateUserInfo: function updateUserInfo(id) {
+    updateUserInfo: function updateUserInfo(id) {var _this2 = this;
       var _this = this;
       this.$u.
       post("/common/weiXinLong", {
@@ -745,6 +744,10 @@ __webpack_require__.r(__webpack_exports__);
         uni.setStorageSync('Authorization', res.token);
         _this.starId = id;
         _this.showModal = true;
+      }).
+      catch(function (res) {
+        _this2.starId = id;
+        _this2.showModal = true;
       });
     },
     wxGetUserInfo: function wxGetUserInfo(id) {
@@ -766,10 +769,9 @@ __webpack_require__.r(__webpack_exports__);
           console.log(_fail, 'fail用户信息');
         } });
 
-
     },
     // 获取个人信息--我的标语
-    getMyInfo: function getMyInfo() {var _this2 = this;
+    getMyInfo: function getMyInfo() {var _this3 = this;
       this.$u.
       get('/personalCenter/personalCenterInfo').
       then(function (res) {
@@ -777,12 +779,12 @@ __webpack_require__.r(__webpack_exports__);
         // 如果有标语且开启了就显示带icon的tag
         if (res.slogan && res.sloganOpen) {
           // this.sloganOpen = true;
-          _this2.sloganTextFlag = true; //有标语
-          _this2.tagList.forEach(function (item, index) {
-            _this2.tagList[index].text = res.slogan[index];
+          _this3.sloganTextFlag = true; //有标语
+          _this3.tagList.forEach(function (item, index) {
+            _this3.tagList[index].text = res.slogan[index];
           });
         } else {
-          _this2.sloganTextFlag = false; //有标语
+          _this3.sloganTextFlag = false; //有标语
           //   否则显示原有的icon
           // this.sloganOpen = false; //无标语
         }
@@ -790,11 +792,11 @@ __webpack_require__.r(__webpack_exports__);
       catch(function (res) {});
     },
     // 获取我的守护
-    selectMyGuard: function selectMyGuard() {var _this3 = this;
+    selectMyGuard: function selectMyGuard() {var _this4 = this;
       this.$u.
       post('/home/selectMyGuard').
       then(function (res) {
-        _this3.myGuardList = res.list;
+        _this4.myGuardList = res.list;
       }).
       catch(function (res) {
         //   this.$toLogin(res);
@@ -806,7 +808,7 @@ __webpack_require__.r(__webpack_exports__);
       this.rankingList = [];
       this.getRankList(data);
     },
-    getWeekOne: function getWeekOne(index) {var _this4 = this;
+    getWeekOne: function getWeekOne(index) {var _this5 = this;
       this.$u.
       post('/home/weekRank/list', {
         pageNum: 1,
@@ -815,15 +817,15 @@ __webpack_require__.r(__webpack_exports__);
 
       then(function (res) {
         if (index === 0) {
-          _this4.weekName = res.list[0].starName;
+          _this5.weekName = res.list[0].starName;
         } else if (index === 1) {
-          _this4.monthName = res.list[0].starName;
+          _this5.monthName = res.list[0].starName;
         }
       });
     },
     // 获取明星榜单--总榜
     // 0周榜；1月榜；2总榜
-    getRankList: function getRankList(data) {var _this5 = this;
+    getRankList: function getRankList(data) {var _this6 = this;
       this.$u.
       post('/home/weekRank/list', {
         pageNum: 1,
@@ -838,10 +840,10 @@ __webpack_require__.r(__webpack_exports__);
           // debugger
           ;var _ref = [list[1], list[0]];list[0] = _ref[0];list[1] = _ref[1];
         }
-        _this5.topThreeList = list;
+        _this6.topThreeList = list;
         // 处理排名第四以后的明星
         if (res.list.length > 3) {
-          _this5.rankingList = res.list.slice(3);
+          _this6.rankingList = res.list.slice(3);
         }
       }).
       catch(function (res) {
@@ -849,12 +851,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     // 获取轮播
-    carouselList: function carouselList() {var _this6 = this;
+    carouselList: function carouselList() {var _this7 = this;
       this.$u.get('/home/carousel/list').then(function (res) {
-        _this6.swiperList = res;
-        if (_this6.swiperList && _this6.swiperList.length > 0) {
-          _this6.weekName = _this6.swiperList[2].starName;
-          _this6.monthName = _this6.swiperList[3].starName;
+        _this7.swiperList = res;
+        if (_this7.swiperList && _this7.swiperList.length > 0) {
+          _this7.weekName = _this7.swiperList[2].starName;
+          _this7.monthName = _this7.swiperList[3].starName;
         }
       });
     },
