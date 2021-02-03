@@ -11,7 +11,15 @@
 					@confirm="searchStart('input')"
 					placeholder="搜索"
 					v-model.trim="searchText"
+					clearabled
 				/>
+				<u-icon
+					color="#b1b1b1"
+					name="close-circle"
+					v-if="searchText"
+					class="cancle close-btn"
+					@click="clearDate"
+				></u-icon>
 				<view class="cancle" @click="cancle">取消</view>
 			</template>
 			<!-- #ifdef APP-PLUS -->
@@ -27,7 +35,7 @@
 			></image>
 		</view>
 		<!-- <view :class="'s-' + theme" v-if="hList.length > 0　&&　hasData"> -->
-		<view :class="'s-' + theme" v-if="!searchInput">
+		<view class="wanted-block" v-if="!searchInput">
 			<view class="header">
 				历史记录
 				<image
@@ -36,19 +44,30 @@
 					@click="delhistory"
 				></image>
 			</view>
-			<view class="list">
+			<!-- <view class="list">
 				<view
 					v-for="(item, index) in hList"
 					:key="index"
 					@click="keywordsClick(item)"
 					>{{ item }}</view
 				>
+			</view> -->
+			<view class="list listRecond">
+				<view
+					v-for="(item, index) in hList"
+					:key="index"
+					@click="keywordsClick(item)"
+					class="views"
+				>
+					{{ item }}
+				</view>
 			</view>
 		</view>
 		<view :class="'wanted-' + theme" v-if="hasData && !searchInput">
 			<view class="header">热门搜索</view>
 			<view class="list">
 				<view
+					class="views"
 					v-for="(item, index) in hotList"
 					:key="index"
 					@click="keywordsClick(item.name)"
@@ -153,6 +172,11 @@ export default {
 		}
 	},
 	methods: {
+		clearDate() {
+			this.searchText = ''
+			this.searchInput = false
+			this.hasData = true
+		},
 		// 明星详情
 		seeSater(item) {
 			uni.navigateTo({
@@ -161,7 +185,9 @@ export default {
 		},
 		// 取消
 		cancle() {
-			history.go(-1)
+			uni.navigateTo({
+				url: `/pages/index/index`,
+			})
 		},
 		searchStart: function (name) {
 			if (name == 'input') {
@@ -180,11 +206,12 @@ export default {
 				})
 			} else {
 				_this.$emit('getSearchText', _this.searchText)
+
 				uni.getStorage({
 					key: 'search_cache',
 					success(res) {
 						let list = res.data
-						if (list.length > 5) {
+						if (list.length > 9) {
 							for (let item of list) {
 								if (item == _this.searchText) {
 									return
@@ -277,6 +304,7 @@ export default {
 		z-index: 10;
 	}
 	.cancle {
+        z-index: 10000;
 		height: 32rpx;
 		line-height: 32rpx;
 		position: absolute;
@@ -323,8 +351,7 @@ export default {
 	}
 }
 .header {
-    
-font-family: PingFang SC;
+	font-family: PingFang SC;
 	font-size: 32rpx;
 	padding: 30rpx;
 	border-bottom: 2rpx solid #f9f9f9;
@@ -368,12 +395,19 @@ font-family: PingFang SC;
 		margin-bottom: 10rpx;
 	}
 	.list {
-		display: flex;
-		flex-wrap: wrap;
+		// display: flex;
+		// flex-wrap: wrap;
+		// justify-content: center;
+		// align-items: center;
 
-		margin-left: 30rpx;
-		view {
-			width: 106rpx;
+		// margin-left: 30rpx;
+    
+		.views {
+            display: inline-block;
+			margin-top: 20rpx;
+			width: calc(20% - 10px);
+			margin: 10px;
+			// width:100%;
 			height: 58rpx;
 			line-height: 58rpx;
 			border-radius: 10rpx;
@@ -385,7 +419,8 @@ font-family: PingFang SC;
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
-			margin-right: 20rpx;
+            padding-left: 5rpx;
+            padding-right: 5rpx;
 		}
 	}
 }
@@ -446,10 +481,19 @@ font-family: PingFang SC;
 }
 // 搜索无结果
 .data-no {
-	font-size: 10px;
+	font-size: 14px;
 	font-weight: bold;
 	color: #333333;
 	margin-left: 28rpx;
 	margin-top: 28rpx;
+}
+.close-btn {
+	position: relative;
+	margin-right: 100rpx;
+}
+.listRecond {
+	margin: 10rpx;
+	.views {
+	}
 }
 </style>

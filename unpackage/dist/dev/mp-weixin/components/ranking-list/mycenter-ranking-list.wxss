@@ -104,6 +104,7 @@
 }
 .list-th.data-v-68326d62 {
   margin: 0 20rpx;
+  padding-bottom: 20px;
 }
 .list-thcenter.data-v-68326d62 {
   padding-bottom: 20px;

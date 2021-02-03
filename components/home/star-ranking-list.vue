@@ -24,9 +24,7 @@
 			</view>
 			<view class="btn-area">
 				<view class="val" @click="routerStarDetail(item.id)">
-					<view style="display: inline-block; position: relative"
-						>{{ item.totalVigourVal }}
-					</view>
+					<view class="val-text">{{ item.totalVigourVal }} </view>
 					<img
 						src="../../static/home/hotVal.png"
 						style="
@@ -57,9 +55,9 @@
 			></DabangModal>
 		</view>
 		<!-- 登录弹窗 -->
-		<view v-if="showLogin">
+		<!-- <view v-if="showLogin">
 			<LoginModal :show="showLogin" @closeLogin="closeLogin"></LoginModal>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -108,9 +106,10 @@ export default {
 		closeLogin() {
 			this.showLogin = false
 		},
-		closeDabang() {
+		closeDabang(data) {
 			this.showModal = false
-			this.$emit('loadData')
+
+			this.$emit('loadData', data)
 		},
 		routerStarDetail(id) {
 			uni.navigateTo({
@@ -155,42 +154,45 @@ export default {
 					uni.setStorageSync('Authorization', res.token)
 					_this.starId = id
 					_this.showModal = true
-				}).catch((res) => {
-			this.starId = id
-			this.showModal = true
-        });
-	
+				})
+				.catch((res) => {
+					this.starId = id
+					this.showModal = true
+				})
 		},
 		wxGetUserInfo(id) {
-			let _this = this
-			uni.getUserInfo({
-				provider: 'weixin',
-				success: function (infoRes) {
-					console.log(infoRes, '用户信息')
-					_this.encryptedData = infoRes.encryptedData
-					_this.iv = infoRes.iv
-					_this.rawData = infoRes.rawData
-					_this.signature = infoRes.signature
-					_this.nickName = infoRes.userInfo.nickName //昵称
-					_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
-					uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
-					_this.updateUserInfo(id)
-				},
-				fail: function (fail) {
-					console.log(fail, 'fail用户信息')
-				},
-			})
+			this.$u
+				.get('/personalCenter/personalCenterInfo')
+				.then((res) => {
+					this.starId = id
+					this.showModal = true
+				})
+				.catch((res) => {
+					let _this = this
+					uni.getUserInfo({
+						provider: 'weixin',
+						success: function (infoRes) {
+							console.log(infoRes, '用户信息')
+							_this.encryptedData = infoRes.encryptedData
+							_this.iv = infoRes.iv
+							_this.rawData = infoRes.rawData
+							_this.signature = infoRes.signature
+							_this.nickName = infoRes.userInfo.nickName //昵称
+							_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+							uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
+							_this.updateUserInfo(id)
+						},
+						fail: function (fail) {
+							console.log(fail, 'fail用户信息')
+						},
+					})
+				})
 		},
 	},
 }
 </script>
 
 <style lang="scss" scoped>
-.btn-area {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 // 榜单
 .list-th {
 	margin: 0 20rpx;
@@ -229,30 +231,54 @@ export default {
 	font-weight: bold;
 	font-size: 28rpx;
 }
-.val {
+// 按钮区
+.btn-area {
 	display: flex;
+	justify-content: center;
 	align-items: center;
-	position: absolute;
-	right: 80rpx;
-	width: 200rpx;
-	margin-top: 5rpx;
-	font-size: 24rpx;
-	color: #333333;
-	font-size: 12px;
-}
-.btn {
-	//   position: relative;
-	//   top: -10rpx;
-	position: absolute;
-	right: 40rpx;
-	height: 42rpx;
-	line-height: 42rpx;
-    font-size: 14px;
-	width: 110rpx;
-	padding: 0 10rpx;
-	border-radius: 42rpx;
-	text-align: center;
-	background: linear-gradient(to right, #f83a3a, #f7c18b);
-	color: #fff;
+	.val {
+		display: flex;
+		align-items: center;
+        justify-content:flex-end;
+		position: absolute;
+		right: 150rpx;
+		width: 200rpx;
+		margin-top: 5rpx;
+		font-size: 24rpx;
+		color: #333333;
+		font-size: 12px;
+		margin-top: -5rpx;
+		.val-text {
+			display: inline-block;
+			position: relative;
+		}
+	}
+	.btn {
+		margin: 0;
+		padding: 0;
+		border-radius: 0;
+		border: none;
+		font-size: 1em;
+		background-color: transparent;
+
+		// 重置按钮完成
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		right: 30rpx;
+		// left: 40rpx;
+		height: 40rpx;
+		border: none;
+		// line-height: 42rpx;
+		font-size: 11px;
+		width: 98rpx;
+		padding: 0 10rpx;
+		border-radius: 42rpx;
+		text-align: center;
+		background: linear-gradient(to right, #f83a3a, #f7c18b);
+		// border: 0.5px solid #000;
+		color: #fff;
+	}
 }
 </style>

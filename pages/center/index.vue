@@ -13,7 +13,7 @@
 			<view class="top">
 				<!-- <img src="../../static/home/centerbg.png" class="bg-img" /> -->
 				<view class="list-top">
-					<view class="left-content" style="z-index: 100000">
+					<view class="left-content" style="z-index: 1000">
 						<u-image
 							class="img-icon"
 							width="120rpx" 
@@ -57,13 +57,13 @@
 						</view>
 					</view>
 
-					<view class="btn-group" style="z-index: 100000">
+					<view class="btn-group" style="z-index: 1000">
 						<view class="btn">
 							<img
 								class="btn-img"
 								src="../../static/home/kefu.png"
 							/>
-							<button open-type="contact">联系客服</button>
+							<button open-type="contact" class="call-btn">联系客服</button>
 						</view>
 						<view
 							class="btn btn2"
@@ -290,6 +290,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bottom{
+    	button:after {
+							border: none;
+						}
+}
 .my-center-content {
 	.content {
 		position: relative;
@@ -373,6 +378,13 @@ export default {
 						justify-content: center;
 						align-items: center;
 						button {
+                            margin: 0;
+					padding: 0;
+					border-radius: 0;
+					border: none;
+					font-size: 1em;
+					background-color: transparent;
+
 							position: relative;
 							display: inline-block;
 							padding-left: 0;
@@ -386,7 +398,7 @@ export default {
 							color: #fff;
 							background: none;
 						}
-						uni-button:after {
+						button:after {
 							border: none;
 						}
 						.btn-img {

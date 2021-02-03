@@ -250,19 +250,49 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _bingLyric = _interopRequireDefault(__webpack_require__(/*! ./../bing-lyric/bing-lyric.vue */ 217));var _name$components$prop;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Test = function Test() {__webpack_require__.e(/*! require.ensure | components/dabangModal/test */ "components/dabangModal/test").then((function () {return resolve(__webpack_require__(/*! ./test.vue */ 394));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Dianzan = function Dianzan() {__webpack_require__.e(/*! require.ensure | components/dabangModal/dianzan */ "components/dabangModal/dianzan").then((function () {return resolve(__webpack_require__(/*! ./dianzan.vue */ 401));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default2 = (_name$components$prop = {
 
 
 
 
-  name: "BtnNav",
+  name: 'BtnNav',
   components: {
     // 00,Binglyric
     // ,
     Dianzan: Dianzan,
     Test: Test },
 
-  props: ["showModal", "rankType", "starId"] }, _defineProperty(_name$components$prop, "props",
+  props: ['showModal', 'rankType', 'starId'] }, _defineProperty(_name$components$prop, "props",
 {
   //rightToLeft leftToRight leftBottom
   showModal: {
@@ -275,11 +305,11 @@ var _bingLyric = _interopRequireDefault(__webpack_require__(/*! ./../bing-lyric/
 
   starId: {
     type: String,
-    default: "" },
+    default: '' },
 
   type: {
     type: String,
-    default: "leftBottom" },
+    default: 'leftBottom' },
 
   minTime: {
     type: Number,
@@ -312,39 +342,39 @@ var _bingLyric = _interopRequireDefault(__webpack_require__(/*! ./../bing-lyric/
 
   title: {
     type: String,
-    default: "提示" },
+    default: '提示' },
 
   placeholder: {
     type: String,
-    default: "请点击输入" },
+    default: '请点击输入' },
 
   name: {
     type: String,
-    default: "text" },
+    default: 'text' },
 
   typetext: {
     type: String,
-    default: "text" },
+    default: 'text' },
 
   value: {
     type: String,
-    default: "" },
+    default: '' },
 
   cancelColor: {
     type: String,
-    default: "#999999" },
+    default: '#999999' },
 
   confirmColor: {
     type: String,
-    default: "#333333" },
+    default: '#333333' },
 
   cancelText: {
     type: String,
-    default: "取消" },
+    default: '取消' },
 
   confirmText: {
     type: String,
-    default: "确定" } }), _defineProperty(_name$components$prop, "watch",
+    default: '确定' } }), _defineProperty(_name$components$prop, "watch",
 
 
 {
@@ -361,7 +391,7 @@ var _bingLyric = _interopRequireDefault(__webpack_require__(/*! ./../bing-lyric/
   show: {
     handler: function handler(newVal, oldVal) {
       if (!newVal) {
-        this.$emit("closeDabang");
+        this.$emit('closeDabang');
         clearInterval(this.danmu);
       }
     },
@@ -370,72 +400,73 @@ var _bingLyric = _interopRequireDefault(__webpack_require__(/*! ./../bing-lyric/
 
 {
   return {
+    hasDabang: false, //进否进行了打榜，如果没有的话就不更新首页，否则更新首页面
     looNum: 0, //弹幕次数
     btnVal: 0, //打榜按钮选中的值
     listData: [],
     showInfo: false,
-    danmu: "",
+    danmu: '',
     myInfo: {},
     inpValue: 0,
     show: this.showModal,
     formArry: [
     {
-      name: "inp1",
-      value: "" },
+      name: 'inp1',
+      value: '' },
 
     {
-      name: "inp2",
-      value: "" },
+      name: 'inp2',
+      value: '' },
 
     {
-      name: "inp3",
-      value: "" },
+      name: 'inp3',
+      value: '' },
 
     {
-      name: "inp4",
-      value: "" }],
+      name: 'inp4',
+      value: '' }],
 
 
     dabangValList: [
     {
-      name: "inp1",
+      name: 'inp1',
       value: 99 },
 
     {
-      name: "inp2",
+      name: 'inp2',
       value: 520 },
 
     {
-      name: "inp3",
+      name: 'inp3',
       value: 999 },
 
     {
-      name: "inp4",
+      name: 'inp4',
       value: 1314 },
 
     {
-      name: "inp1",
+      name: 'inp1',
       value: 3344 },
 
     {
-      name: "inp2",
+      name: 'inp2',
       value: 5920 },
 
     {
-      name: "inp3",
+      name: 'inp3',
       value: 8888 },
 
     {
-      name: "inp4",
+      name: 'inp4',
       value: 9999 }],
 
 
-    starName: "", //明星名字
+    starName: '', //明星名字
 
     myData: {}, //个人信息
     checked: false, //默认没选中
     StarGuardList: [], //打榜弹窗数据
-    detailImg: "",
+    detailImg: '',
     starInfo: [],
     dabangInfo: [] };
 
@@ -448,7 +479,6 @@ var _bingLyric = _interopRequireDefault(__webpack_require__(/*! ./../bing-lyric/
   // 获取我的热力值
   this.selectFensInfo();
 
-
   this.hrackNum = Math.floor((this.maxTop - this.minTop) / this.hrackH);
 }), _defineProperty(_name$components$prop, "onLoad", function onLoad(
 option) {
@@ -456,30 +486,29 @@ option) {
 }), _defineProperty(_name$components$prop, "methods",
 {
   formSubmit: function formSubmit(e) {
-
     var _formdata = e.detail.value;
-    this.$emit("confirm", _formdata);
+    this.$emit('confirm', _formdata);
   },
   formReset: function formReset(e) {
-    this.$emit("cancel");
+    this.$emit('cancel');
   },
   // 添加弹幕
   addDanmu: function addDanmu(obj) {
-
     var data = {
       item: obj.item,
       id: Date.parse(new Date()),
       time: Math.ceil(
       Math.floor(
-      Math.random() * (this.maxTime - this.minTime + 1) + this.minTime)),
+      Math.random() * (this.maxTime - this.minTime + 1) +
+      this.minTime)),
 
 
       type: this.types };
 
-    if (this.type === "leftBottom") {
+    if (this.type === 'leftBottom') {
       var objData = {
         item: data.item,
-        type: "leftBottomEnter",
+        type: 'leftBottomEnter',
         style: {
           transition: "all 0.5s",
           animationDuration: "0.5s",
@@ -491,29 +520,31 @@ option) {
       var listLen = this.listData.length;
       var hrackNum = this.hrackNum;
       for (var i in this.listData) {
-        if (this.listData[i].status === "reuse") {
+        if (this.listData[i].status === 'reuse') {
           //重用
           this.$set(this.listData, i, objData);
-        } else if (this.listData[i].status === "reset") {
+        } else if (this.listData[i].status === 'reset') {
           //重置
-          this.listData[i].style.transition = "none";
+          this.listData[i].style.transition = 'none';
           this.listData[i].style.bottom = 0;
-          this.listData[i].status = "reuse";
-        } else if (this.listData[i].status === "recycle") {
+          this.listData[i].status = 'reuse';
+        } else if (this.listData[i].status === 'recycle') {
           //回收
-          this.listData[i].type = "leftBottomExit";
-          this.listData[i].status = "reset";
+          this.listData[i].type = 'leftBottomExit';
+          this.listData[i].status = 'reset';
         } else {
           this.listData[i].style.bottom =
-          parseInt(this.listData[i].style.bottom) + this.hrackH + "px";
+          parseInt(this.listData[i].style.bottom) +
+          this.hrackH +
+          'px';
         }
         if (
         parseInt(this.listData[i].style.bottom) >=
         this.maxTop - this.hrackH &&
-        this.listData[i].status !== "reset")
+        this.listData[i].status !== 'reset')
         {
           //需要回收
-          this.listData[i].status = "recycle";
+          this.listData[i].status = 'recycle';
         }
       }
 
@@ -529,7 +560,8 @@ option) {
       style: {
         animationDuration: "".concat(data.time, "s"),
         top: "".concat(Math.ceil(
-        Math.random() * (this.maxTop - this.minTop + 1) + this.minTop), "px") },
+        Math.random() * (this.maxTop - this.minTop + 1) +
+        this.minTop), "px") },
 
 
       delTime: Date.parse(new Date()) + data.time * 2000 };
@@ -541,13 +573,12 @@ option) {
     }, 100);
   },
   close: function close() {
-    this.$emit("closeDabang");
+    this.$emit('closeDabang', this.hasDabang);
   },
   loopDanmu: function loopDanmu() {
     this.dabangInfo = this.dabangInfo.concat(this.StarGuardList);
   },
   colrdo: function colrdo() {
-
     //插入一条弹幕
     var that = this;
     var list = [];
@@ -564,7 +595,6 @@ option) {
           }, 1000 * (index + 2));
         } else if (index == list.length - 1) {
           clearTimeout(old);
-
         }
       });
     }
@@ -572,19 +602,17 @@ option) {
 
   //   加减input
   add: function add(name) {
-    if (name == "jian") {
+    if (name == 'jian') {
       if (Number(this.inpValue)) {
         this.inpValue = Number(this.inpValue) - 1;
-
       }
-    } else if (name == "jia") {
+    } else if (name == 'jia') {
       this.inpValue = Number(this.inpValue) + 1;
-
-    } else if (name == "btn") {
+    } else if (name == 'btn') {
       if (this.inpValue == 0) {
         uni.showToast({
-          title: "请先选中对应的热力值",
-          icon: "none",
+          title: '请先选中对应的热力值',
+          icon: 'none',
           duration: 2000 });
 
         return false;
@@ -596,7 +624,7 @@ option) {
   //明星打榜弹窗
   selectStarGuardList: function selectStarGuardList() {var _this2 = this;
     this.$u.
-    get("/starDetail/selectStarGuardList", {
+    get('/starDetail/selectStarGuardList', {
       starId: this.starId }).
 
     then(function (res) {
@@ -608,23 +636,24 @@ option) {
   //打榜
   hit: function hit() {var _this3 = this;
     this.$u.
-    post("/home/hit", {
+    post('/home/hit', {
       starId: this.starId,
       vigourVal: this.inpValue }).
 
     then(function (res) {
-
+      _this3.hasDabang = true;
       console.log('打榜成功---', res);
       _this3.$refs.dianzan.handleClick();
       _this3.selectFensInfo();
-
     }).
-    catch(function (res) {});
+    catch(function (res) {
+      _this3.hasDabang = false;
+    });
   },
   // 获取明星详情页明星信息
   selectStarInfo: function selectStarInfo() {var _this4 = this;
     this.$u.
-    get("/starDetail/selectStarInfo", {
+    get('/starDetail/selectStarInfo', {
       id: this.starId }).
 
     then(function (res) {
@@ -637,8 +666,8 @@ option) {
   addBtn: function addBtn(val) {
     if (val > this.myInfo.vigourVal) {
       uni.showToast({
-        title: "您的热力值不足哦！",
-        icon: "none",
+        title: '您的热力值不足哦！',
+        icon: 'none',
         duration: 2000 });
 
       return false;
@@ -650,7 +679,7 @@ option) {
   // 获取我的信息
   selectFensInfo: function selectFensInfo() {var _this5 = this;
     this.$u.
-    post("/home/fens").
+    post('/home/fens').
     then(function (res) {
       _this5.myInfo = res; //　少了头像
       console.log('打榜后拿到我的信息', res);

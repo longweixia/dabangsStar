@@ -263,7 +263,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 {
   name: 'BtnNav',
   components: {
@@ -319,13 +318,16 @@ __webpack_require__.r(__webpack_exports__);
         success: function success(res) {
           // 设置url的值，显示控件
           _this.url = res.tempFilePaths[0];
-          _this.goUploadImg(res.tempFilePaths);
+          //this.goUploadImg(res.tempFilePaths)
         } });
 
     },
     onok: function onok(ev) {
       this.path = ev.path;
-      this.url = '';
+      console.log(ev, 11111);
+      // this.url = ''
+      this.goUploadImg(this.path);
+
     },
     oncancle: function oncancle() {
       // url设置为空，隐藏控件
@@ -356,7 +358,7 @@ __webpack_require__.r(__webpack_exports__);
         header: {
           Authorization: uni.getStorageSync('Authorization') },
 
-        filePath: tempFilePaths[0], //这个就是我们上面拍照返回或者先中照片返回的数组
+        filePath: tempFilePaths, //这个就是我们上面拍照返回或者先中照片返回的数组
         name: 'file',
         success: function success(uploadFileRes) {
           var imgData = JSON.parse(uploadFileRes.data);
@@ -373,7 +375,10 @@ __webpack_require__.r(__webpack_exports__);
 
       then(function (res) {
         _this4.getMyInfo();
+
         _this4.showNameModal = false;
+        _this4.url = "";
+
       }).
       catch(function (res) {
         //   this.$toLogin(res)

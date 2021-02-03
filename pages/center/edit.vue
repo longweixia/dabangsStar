@@ -90,9 +90,8 @@
 				@ok="onok"
 				@cancel="oncancle"
 				:url="url"
-				:fixed="false"
-				:maxWidth="500"
-				:minHeight="300" :width="200" :height="300"
+				:fixed="true" 
+				 :width="200" :height="200"
 			></kps-image-cutter>
 		</view>
 	</view>
@@ -157,13 +156,16 @@ export default {
 				success: (res) => {
 					// 设置url的值，显示控件
                     this.url = res.tempFilePaths[0]
-                    this.goUploadImg(res.tempFilePaths)
+                    //this.goUploadImg(res.tempFilePaths)
 				},
 			})
 		},
 		onok(ev) {
-			this.path = ev.path
-			this.url = ''
+            this.path = ev.path
+            console.log(ev,11111)
+            // this.url = ''
+            this.goUploadImg(this.path)
+ 
 		},
 		oncancle() {
 			// url设置为空，隐藏控件
@@ -194,7 +196,7 @@ export default {
 				header: {
 					Authorization: uni.getStorageSync('Authorization'),
 				},
-				filePath: tempFilePaths[0], //这个就是我们上面拍照返回或者先中照片返回的数组
+				filePath: tempFilePaths, //这个就是我们上面拍照返回或者先中照片返回的数组
 				name: 'file',
 				success: (uploadFileRes) => {
 					let imgData = JSON.parse(uploadFileRes.data)
@@ -210,8 +212,11 @@ export default {
 					avatarUrl: data,
 				})
 				.then((res) => {
-					this.getMyInfo()
+                    this.getMyInfo()
+                   
                     this.showNameModal = false
+                     this.url = "";
+  
 				})
 				.catch((res) => {
 					//   this.$toLogin(res)

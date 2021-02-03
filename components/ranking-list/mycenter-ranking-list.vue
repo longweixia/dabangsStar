@@ -238,6 +238,7 @@ export default {
 
 .list-th {
   margin: 0 20rpx;
+    padding-bottom: 20px;
 }
 .list-thcenter{
   padding-bottom: 20px;

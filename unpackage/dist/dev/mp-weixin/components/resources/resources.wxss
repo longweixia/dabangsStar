@@ -24,9 +24,6 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.slider-area.data-v-552bde50 {
-  margin-right: 30rpx;
-}
 .star-card.data-v-552bde50 {
   background: #fff;
   -webkit-border-radius: 20rpx;
@@ -89,8 +86,8 @@
   margin-bottom: 10rpx;
 }
 .badge-button.data-v-552bde50 {
-  width: 50rpx;
-  height: 50rpx;
+  width: 30rpx;
+  height: 30rpx;
   background-color: #f64f71;
   color: #fff;
   -webkit-border-radius: 25rpx;
@@ -103,7 +100,7 @@
   background-color: #e9c046;
 }
 .slider-resource.data-v-552bde50 {
-  margin-right: 180rpx !important;
+  margin-right: 240rpx !important;
 }
 .btn-slider.data-v-552bde50 {
   float: right;
@@ -118,19 +115,20 @@
           border-radius: 20rpx;
   color: #fff;
   position: relative;
-  right: 20rpx;
+  right: -120rpx;
   top: -30rpx;
 }
 .btn-slider1.data-v-552bde50 {
   background-color: #e9c046;
 }
-.u-slider--disabled.data-v-552bde50 {
+.u-slider-disabled.data-v-552bde50 {
   opacity: 1 !important;
 }
 .slider-area.data-v-552bde50 {
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
   margin-left: 40rpx;
+  margin-right: 120rpx;
 }
 .flex-area.data-v-552bde50 {
   margin-left: 30rpx;

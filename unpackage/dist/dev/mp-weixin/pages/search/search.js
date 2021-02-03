@@ -179,11 +179,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
       });
     },
-    getHotSearch: function getHotSearch() {var _this2 = this;
+    getHotSearch: function getHotSearch() {
       this.$u.
       get('/home/hotSearch').
       then(function (res) {
-        _this2.hotList = res; //　少了头像
+        // this.hotList = res //　少了头像
       }).
       catch(function (res) {
         // this.$toLogin(res)

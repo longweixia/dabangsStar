@@ -194,8 +194,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 {
   props: ['rankingList'],
   components: {
@@ -238,9 +236,10 @@ __webpack_require__.r(__webpack_exports__);
     closeLogin: function closeLogin() {
       this.showLogin = false;
     },
-    closeDabang: function closeDabang() {
+    closeDabang: function closeDabang(data) {
       this.showModal = false;
-      this.$emit('loadData');
+
+      this.$emit('loadData', data);
     },
     routerStarDetail: function routerStarDetail(id) {
       uni.navigateTo({
@@ -285,31 +284,39 @@ __webpack_require__.r(__webpack_exports__);
         uni.setStorageSync('Authorization', res.token);
         _this.starId = id;
         _this.showModal = true;
-      }).catch(function (res) {
+      }).
+      catch(function (res) {
         _this2.starId = id;
         _this2.showModal = true;
       });
-
     },
-    wxGetUserInfo: function wxGetUserInfo(id) {
-      var _this = this;
-      uni.getUserInfo({
-        provider: 'weixin',
-        success: function success(infoRes) {
-          console.log(infoRes, '用户信息');
-          _this.encryptedData = infoRes.encryptedData;
-          _this.iv = infoRes.iv;
-          _this.rawData = infoRes.rawData;
-          _this.signature = infoRes.signature;
-          _this.nickName = infoRes.userInfo.nickName; //昵称
-          _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
-          uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
-          _this.updateUserInfo(id);
-        },
-        fail: function fail(_fail) {
-          console.log(_fail, 'fail用户信息');
-        } });
+    wxGetUserInfo: function wxGetUserInfo(id) {var _this3 = this;
+      this.$u.
+      get('/personalCenter/personalCenterInfo').
+      then(function (res) {
+        _this3.starId = id;
+        _this3.showModal = true;
+      }).
+      catch(function (res) {
+        var _this = _this3;
+        uni.getUserInfo({
+          provider: 'weixin',
+          success: function success(infoRes) {
+            console.log(infoRes, '用户信息');
+            _this.encryptedData = infoRes.encryptedData;
+            _this.iv = infoRes.iv;
+            _this.rawData = infoRes.rawData;
+            _this.signature = infoRes.signature;
+            _this.nickName = infoRes.userInfo.nickName; //昵称
+            _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+            uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
+            _this.updateUserInfo(id);
+          },
+          fail: function fail(_fail) {
+            console.log(_fail, 'fail用户信息');
+          } });
 
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

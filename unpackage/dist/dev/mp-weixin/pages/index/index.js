@@ -694,10 +694,20 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
 
-    closeDabang: function closeDabang() {
+    closeDabang: function closeDabang(data) {
       this.showModal = false;
-      this.selectMyGuard();
-      this.getRankTypeIndex(2);
+      if (data) {
+        this.selectMyGuard();
+        this.getRankTypeIndex(0);
+      }
+
+    },
+    closeDabangTop: function closeDabangTop(data) {
+      this.showModal = false;
+      if (data) {
+        this.selectMyGuard();
+        this.getRankTypeIndex(0);
+      }
     },
     // 打榜弹窗
     dabang: function dabang(id) {
@@ -750,28 +760,36 @@ __webpack_require__.r(__webpack_exports__);
         _this2.showModal = true;
       });
     },
-    wxGetUserInfo: function wxGetUserInfo(id) {
-      var _this = this;
-      uni.getUserInfo({
-        provider: 'weixin',
-        success: function success(infoRes) {
-          console.log(infoRes, '用户信息');
-          _this.encryptedData = infoRes.encryptedData;
-          _this.iv = infoRes.iv;
-          _this.rawData = infoRes.rawData;
-          _this.signature = infoRes.signature;
-          _this.nickName = infoRes.userInfo.nickName; //昵称
-          _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
-          uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
-          _this.updateUserInfo(id);
-        },
-        fail: function fail(_fail) {
-          console.log(_fail, 'fail用户信息');
-        } });
+    wxGetUserInfo: function wxGetUserInfo(id) {var _this3 = this;
+      this.$u.
+      get('/personalCenter/personalCenterInfo').
+      then(function (res) {
+        _this3.starId = id;
+        _this3.showModal = true;
+      }).
+      catch(function (res) {
+        var _this = _this3;
+        uni.getUserInfo({
+          provider: 'weixin',
+          success: function success(infoRes) {
+            console.log(infoRes, '用户信息');
+            _this.encryptedData = infoRes.encryptedData;
+            _this.iv = infoRes.iv;
+            _this.rawData = infoRes.rawData;
+            _this.signature = infoRes.signature;
+            _this.nickName = infoRes.userInfo.nickName; //昵称
+            _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+            uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
+            _this.updateUserInfo(id);
+          },
+          fail: function fail(_fail) {
+            console.log(_fail, 'fail用户信息');
+          } });
 
+      });
     },
     // 获取个人信息--我的标语
-    getMyInfo: function getMyInfo() {var _this3 = this;
+    getMyInfo: function getMyInfo() {var _this4 = this;
       this.$u.
       get('/personalCenter/personalCenterInfo').
       then(function (res) {
@@ -779,12 +797,12 @@ __webpack_require__.r(__webpack_exports__);
         // 如果有标语且开启了就显示带icon的tag
         if (res.slogan && res.sloganOpen) {
           // this.sloganOpen = true;
-          _this3.sloganTextFlag = true; //有标语
-          _this3.tagList.forEach(function (item, index) {
-            _this3.tagList[index].text = res.slogan[index];
+          _this4.sloganTextFlag = true; //有标语
+          _this4.tagList.forEach(function (item, index) {
+            _this4.tagList[index].text = res.slogan[index];
           });
         } else {
-          _this3.sloganTextFlag = false; //有标语
+          _this4.sloganTextFlag = false; //有标语
           //   否则显示原有的icon
           // this.sloganOpen = false; //无标语
         }
@@ -792,11 +810,11 @@ __webpack_require__.r(__webpack_exports__);
       catch(function (res) {});
     },
     // 获取我的守护
-    selectMyGuard: function selectMyGuard() {var _this4 = this;
+    selectMyGuard: function selectMyGuard() {var _this5 = this;
       this.$u.
       post('/home/selectMyGuard').
       then(function (res) {
-        _this4.myGuardList = res.list;
+        _this5.myGuardList = res.list;
       }).
       catch(function (res) {
         //   this.$toLogin(res);
@@ -808,7 +826,7 @@ __webpack_require__.r(__webpack_exports__);
       this.rankingList = [];
       this.getRankList(data);
     },
-    getWeekOne: function getWeekOne(index) {var _this5 = this;
+    getWeekOne: function getWeekOne(index) {var _this6 = this;
       this.$u.
       post('/home/weekRank/list', {
         pageNum: 1,
@@ -817,15 +835,15 @@ __webpack_require__.r(__webpack_exports__);
 
       then(function (res) {
         if (index === 0) {
-          _this5.weekName = res.list[0].starName;
+          _this6.weekName = res.list[0].starName;
         } else if (index === 1) {
-          _this5.monthName = res.list[0].starName;
+          _this6.monthName = res.list[0].starName;
         }
       });
     },
     // 获取明星榜单--总榜
     // 0周榜；1月榜；2总榜
-    getRankList: function getRankList(data) {var _this6 = this;
+    getRankList: function getRankList(data) {var _this7 = this;
       this.$u.
       post('/home/weekRank/list', {
         pageNum: 1,
@@ -840,10 +858,10 @@ __webpack_require__.r(__webpack_exports__);
           // debugger
           ;var _ref = [list[1], list[0]];list[0] = _ref[0];list[1] = _ref[1];
         }
-        _this6.topThreeList = list;
+        _this7.topThreeList = list;
         // 处理排名第四以后的明星
         if (res.list.length > 3) {
-          _this6.rankingList = res.list.slice(3);
+          _this7.rankingList = res.list.slice(3);
         }
       }).
       catch(function (res) {
@@ -851,12 +869,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     // 获取轮播
-    carouselList: function carouselList() {var _this7 = this;
+    carouselList: function carouselList() {var _this8 = this;
       this.$u.get('/home/carousel/list').then(function (res) {
-        _this7.swiperList = res;
-        if (_this7.swiperList && _this7.swiperList.length > 0) {
-          _this7.weekName = _this7.swiperList[2].starName;
-          _this7.monthName = _this7.swiperList[3].starName;
+        _this8.swiperList = res;
+        if (_this8.swiperList && _this8.swiperList.length > 0) {
+          _this8.weekName = _this8.swiperList[2].starName;
+          _this8.monthName = _this8.swiperList[3].starName;
         }
       });
     },

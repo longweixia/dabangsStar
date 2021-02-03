@@ -1,8 +1,8 @@
 {
+  "component": true,
   "usingComponents": {
     "u-slider": "/node-modules/uview-ui/components/u-slider/u-slider",
     "u-image": "/node-modules/uview-ui/components/u-image/u-image",
     "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast"
-  },
-  "component": true
+  }
 }

@@ -16,7 +16,7 @@
           class="slider-resource"
           v-model="resourcesLists[index]"
           :use-slot="true"
-          height="20"
+          height="10"
           block-width="40"
           block-color="#F64F71"
           active-color="#F64F71"
@@ -37,7 +37,7 @@
           class="slider-resource"
           v-model="resourcesLists1[index]"
           :use-slot="true"
-          height="20"
+          height="10"
           block-width="40"
           block-color="#E9C046"
           active-color="#E9C046"
@@ -254,9 +254,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.slider-area{
-margin-right: 30rpx;
-}
+
 
 // 当前明星卡片
 .star-card {
@@ -308,8 +306,8 @@ margin-right: 30rpx;
 }
 .badge-button {
   // padding: 20rpx 20rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 30rpx;
+  height: 30rpx;
   background-color: #f64f71;
   color: #fff;
   border-radius: 25rpx;
@@ -321,7 +319,7 @@ margin-right: 30rpx;
   background-color: #e9c046;
 }
 .slider-resource {
-  margin-right: 180rpx!important;
+  margin-right: 240rpx!important;
 }
 .btn-slider {
   float: right;
@@ -335,20 +333,21 @@ margin-right: 30rpx;
   border-radius: 20rpx;
   color: #fff;
   position: relative;
-  right: 20rpx;
+  right: -120rpx;
   top: -30rpx;
 }
 .btn-slider1 {
   background-color: #e9c046;
 }
-.u-slider--disabled {
+.u-slider-disabled {
   opacity: 1 !important;
+//   margin-right:100rpx;
 }
 .slider-area {
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
   margin-left: 40rpx;
-//   margin-right: 40rpx;
+  margin-right: 120rpx;
 }
 .flex-area {
   margin-left: 30rpx;

@@ -269,7 +269,7 @@
 		<view class="list-four-th">
 			<starRankingList
 				:rankingList="rankingList"
-				@loadData="closeDabang"
+				@loadData="closeDabangTop"
 				style="
 					background: #fff;
 					padding-left: 10px;
@@ -516,10 +516,20 @@ export default {
 				})
 		},
 
-		closeDabang() {
+		closeDabang(data) {
+            this.showModal = false
+            if (data) {
+				this.selectMyGuard()
+				this.getRankTypeIndex(0)
+			}
+		
+		},
+		closeDabangTop(data) {
 			this.showModal = false
-			this.selectMyGuard()
-			this.getRankTypeIndex(2)
+			if (data) {
+				this.selectMyGuard()
+				this.getRankTypeIndex(0)
+			}
 		},
 		// 打榜弹窗
 		dabang(id) {
@@ -573,24 +583,32 @@ export default {
 				})
 		},
 		wxGetUserInfo(id) {
-			let _this = this
-			uni.getUserInfo({
-				provider: 'weixin',
-				success: function (infoRes) {
-					console.log(infoRes, '用户信息')
-					_this.encryptedData = infoRes.encryptedData
-					_this.iv = infoRes.iv
-					_this.rawData = infoRes.rawData
-					_this.signature = infoRes.signature
-					_this.nickName = infoRes.userInfo.nickName //昵称
-					_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
-					uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
-					_this.updateUserInfo(id)
-				},
-				fail: function (fail) {
-					console.log(fail, 'fail用户信息')
-				},
-			})
+			this.$u
+				.get('/personalCenter/personalCenterInfo')
+				.then((res) => {
+					this.starId = id
+					this.showModal = true
+				})
+				.catch((res) => {
+					let _this = this
+					uni.getUserInfo({
+						provider: 'weixin',
+						success: function (infoRes) {
+							console.log(infoRes, '用户信息')
+							_this.encryptedData = infoRes.encryptedData
+							_this.iv = infoRes.iv
+							_this.rawData = infoRes.rawData
+							_this.signature = infoRes.signature
+							_this.nickName = infoRes.userInfo.nickName //昵称
+							_this.avatarUrl = infoRes.userInfo.avatarUrl //头像
+							uni.setStorageSync('isCanUse', false) //记录是否第一次授权 false:表示不是第一次授权
+							_this.updateUserInfo(id)
+						},
+						fail: function (fail) {
+							console.log(fail, 'fail用户信息')
+						},
+					})
+				})
 		},
 		// 获取个人信息--我的标语
 		getMyInfo() {
@@ -729,7 +747,7 @@ export default {
 		position: absolute;
 		bottom: 20rpx;
 		left: 10rpx;
-		width: 327rpx;
+		width: 100%;
 		height: 267rpx;
 		.row-title {
 			font-size: 20px;
@@ -916,7 +934,7 @@ export default {
 				height: 72rpx;
 				line-height: 72rpx;
 				position: relative;
-				left: 40rpx;
+				left: 36rpx;
 				.val-text {
 					display: inline-block;
 					height: 72rpx;
@@ -995,10 +1013,7 @@ export default {
 				}
 			}
 			.btn-area {
-				// text-align: center;
-				// margin-top: 14rpx;
 				.btn {
-				
 					margin: 0;
 					padding: 0;
 					border-radius: 0;
@@ -1006,19 +1021,24 @@ export default {
 					font-size: 1em;
 					background-color: transparent;
 
-                    // 重置按钮完成
-                    position: absolute;
-					right:70rpx;
-					// left: 40rpx;
-					height: 42rpx;
+					// 重置按钮完成
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: absolute;
+					right: 70rpx;
+                
+
+					height: 40rpx;
 					border: none;
-					line-height: 42rpx;
-					font-size: 14px;
-					width: 80rpx;
+
+					font-size: 11px;
+					width: 98rpx;
 					padding: 0 10rpx;
 					border-radius: 42rpx;
 					text-align: center;
 					background: linear-gradient(to right, #f83a3a, #f7c18b);
+
 					color: #fff;
 				}
 				.btn::after {

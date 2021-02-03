@@ -46,7 +46,7 @@ export default {
 			this.$u
 				.get('/home/hotSearch')
 				.then((res) => {
-					this.hotList = res //　少了头像
+					// this.hotList = res //　少了头像
 				})
 				.catch((res) => {
 					// this.$toLogin(res)

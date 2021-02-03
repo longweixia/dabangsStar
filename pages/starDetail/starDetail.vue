@@ -66,7 +66,7 @@
           >热力值</view
         >
       </view> -->
-			<view class="detail-title"> 为爱豆加油 </view>
+			<!-- <view class="detail-title"> 为爱豆加油 </view> -->
 		</view>
 
 		<!-- 当前明星 -->
