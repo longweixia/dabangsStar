@@ -621,9 +621,14 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     routerTohome: function routerTohome() {
-      uni.navigateTo({
-        url: "/pages/index/index" });
+      wx.navigateBack({
+        delta: 1 });
 
+
+      console.log(1);
+      // uni.navigateTo({
+      // 	url: `/pages/index/index`,
+      // })
     },
     // 获取轮播
     carouselList: function carouselList() {var _this3 = this;

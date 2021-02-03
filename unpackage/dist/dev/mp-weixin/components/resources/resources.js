@@ -241,14 +241,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
-  name: "resources",
-  props: ["ids", "starName"],
+  name: 'resources',
+  props: ['ids', 'starName'],
   watch: {
     starName: {
       handler: function handler(newVal, oldVal) {
-        this.starName = newVal;
+        // this.starName = newVal
         if (newVal) {
           this.selectResources(newVal);
         }
@@ -262,7 +280,18 @@ var _default =
   components: {},
   data: function data() {
     return {
-      titles: "",
+      code: '',
+      SessionKey: '',
+      encryptedData: '',
+      iv: '',
+      OpenId: '',
+      nickName: null,
+      avatarUrl: null,
+      isCanUse: true,
+      rawData: '',
+      signature: '',
+      // 用户信息
+      titles: '',
       value: 30,
       resourcesLists: [],
       resourcesLists1: [],
@@ -281,18 +310,33 @@ var _default =
   filters: {
     getTimeSecond: function getTimeSecond(e) {
       if (e) {
-        var time = new Date(e.replace(/-/g, "/")).getTime() - new Date().getTime();
+        var time =
+        new Date(e.replace(/-/g, '/')).getTime() -
+        new Date().getTime();
         var day = Math.floor(time / 86400000); //天
         var hours = Math.floor(time % 86400000 / 3600000); //时
         var minutes = Math.floor(time % 3600000 / 60000); //分
         var seconds = Math.floor(time % 60000 / 1000); //秒
-        return day + "天" + hours + "小时" + minutes + "分" + seconds + "秒";
+        return (
+          day +
+          '天' +
+          hours +
+          '小时' +
+          minutes +
+          '分' +
+          seconds +
+          '秒');
+
       }
     } },
 
+  mounted: function mounted() {
+    this.login();
+  },
   methods: {
     getTimeday: function getTimeday(e) {
-      var time = new Date(e.replace(/-/g, "/")).getTime() - new Date().getTime();
+      var time =
+      new Date(e.replace(/-/g, '/')).getTime() - new Date().getTime();
       var day = Math.floor(time / 86400000); //天
       return day;
     },
@@ -302,103 +346,170 @@ var _default =
 
     },
     //获取资源列表
-    selectResources: function selectResources(starName) {var _this = this;
+    selectResources: function selectResources(starName) {var _this2 = this;
       this.$u.
-      post("/starDetail/selectResources", {
+      post('/starDetail/selectResources', {
         id: this.ids,
         pageNum: 1,
         pageSize: 20,
-        name: "" }).
+        name: '' }).
 
       then(function (res) {
-        _this.resourcesList = res.list;
-        _this.resourcesList.forEach(function (item, index) {
+        _this2.resourcesList = res.list;
+        _this2.resourcesList.forEach(function (item, index) {
           //  处理参与人数比
-          _this.resourcesList[index].targetValue = Math.round(
+          _this2.resourcesList[index].targetValue = Math.round(
           item.joinNum / item.target * 100);
 
-          _this.resourcesLists.push(
-          Math.round(
-          item.joinNum / item.target * 100));
-
+          _this2.resourcesLists.push(
+          Math.round(item.joinNum / item.target * 100));
 
           //  处理达成人数比
-          _this.resourcesList[index].reachNumValue = Math.round(
+          _this2.resourcesList[index].reachNumValue = Math.round(
           item.reachNum / item.target * 100);
 
-          _this.resourcesLists1.push(
-          Math.round(
-          item.reachNum / item.target * 100));
-
+          _this2.resourcesLists1.push(
+          Math.round(item.reachNum / item.target * 100));
 
         });
 
         // 处理资源名称
-        if (_this.resourcesList && _this.resourcesList.length > 0) {
-          _this.resourcesList.forEach(function (item, index) {
+        if (_this2.resourcesList && _this2.resourcesList.length > 0) {
+          _this2.resourcesList.forEach(function (item, index) {
             if (item.type == 1) {
-              _this.resourcesList[
+              _this2.resourcesList[
               index].
-              titles = "\u4E3A".concat(starName, "\u770B\u89C6\u9891").concat(_this.getTimeday(
+              titles = "\u4E3A".concat(starName, "\u770B\u89C6\u9891").concat(_this2.getTimeday(
               item.endTime), "\u5929\uFF0C\u89E3\u9501").concat(
               item.mark, "\u5E94\u63F4\u91D1");
             } else if (item.type == 2) {
-              _this.resourcesList[
+              _this2.resourcesList[
               index].
-              titles = "\u4E3A".concat(starName, "\u770B\u89C6\u9891").concat(_this.getTimeday(
+              titles = "\u4E3A".concat(starName, "\u770B\u89C6\u9891").concat(_this2.getTimeday(
               item.endTime), "\u5929\uFF0C\u89E3\u9501").concat(
               item.mark, "\u5C0F\u7A0B\u5E8F\u5F00\u5C55");
             } else if (item.type == 3) {
-              _this.resourcesList[
+              _this2.resourcesList[
               index].
-              titles = "\u4E3A".concat(starName, "\u770B\u89C6\u9891").concat(_this.getTimeday(
+              titles = "\u4E3A".concat(starName, "\u770B\u89C6\u9891").concat(_this2.getTimeday(
               item.endTime), "\u5929\uFF0C\u89E3\u9501").concat(
               item.mark, "\u9996\u9875\u8F6E\u64AD");
             } else if (item.type == 4) {
-              _this.resourcesList[index].titles = "\u4E3A".concat(
-              _this.starName, "\u770B\u89C6\u9891").concat(
-              _this.getTimeday(item.endTime), "\u5929\uFF0C\u89E3\u9501").concat(item.mark);
+              _this2.resourcesList[index].titles = "\u4E3A".concat(
+              _this2.starName, "\u770B\u89C6\u9891").concat(
+              _this2.getTimeday(
+              item.endTime), "\u5929\uFF0C\u89E3\u9501").concat(
+              item.mark);
             }
           });
         }
       }).
       catch(function (res) {});
     },
-    //参加活动
-    join: function join(item) {var _this2 = this;
-      if (!uni.getStorageSync("Authorization")) {
-        uni.showModal({
-          title: "请登录",
-          content: "登录后可以获取更多功能",
-          success: function success(res) {
-            if (res.confirm) {
-              uni.navigateTo({
-                url: "/pages/center/center" });
+    login: function login() {
+      var _this = this;
+      // 1.wx获取登录用户code
+      uni.login({
+        provider: 'weixin',
+        success: function success(loginRes) {
+          _this.code = loginRes.code;
+          if (!_this.isCanUse) {
+            //非第一次授权获取用户信息
+            uni.getUserInfo({
+              provider: 'weixin',
+              success: function success(infoRes) {
+                // console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
+                _this.nickName = infoRes.userInfo.nickName; //昵称
+                _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+                _this.updateUserInfo(); //调用更新信息方法
+              } });
 
-            } else if (res.cancel) {
-            }
+          }
+          // 将用户登录code传递到后台置换用户SessionKey、OpenId等信息
+        } });
+
+    },
+    //向后台更新信息
+    updateUserInfo: function updateUserInfo(item) {var _this3 = this;
+      var _this = this;
+      this.$u.
+      post("/common/weiXinLong", {
+        code: _this.code,
+        encrypteData: this.encryptedData,
+        iv: this.iv,
+        rawData: this.rawData,
+        signature: this.signature }).
+
+      then(function (res) {
+        uni.setStorageSync('Authorization', res.token);
+        _this3.join(item);
+
+      }).
+      catch(function (res) {
+        _this3.join(item);
+      });
+    },
+    wxGetUserInfo: function wxGetUserInfo(item) {var _this4 = this;
+      this.$u.
+      get('/personalCenter/personalCenterInfo').
+      then(function (res) {
+        _this4.join(item);
+      }).
+      catch(function (res) {
+        var _this = _this4;
+        uni.getUserInfo({
+          provider: 'weixin',
+          success: function success(infoRes) {
+            console.log(infoRes, '用户信息');
+            _this.encryptedData = infoRes.encryptedData;
+            _this.iv = infoRes.iv;
+            _this.rawData = infoRes.rawData;
+            _this.signature = infoRes.signature;
+            _this.nickName = infoRes.userInfo.nickName; //昵称
+            _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+            uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
+            _this.updateUserInfo(item);
+          },
+          fail: function fail(_fail) {
+            console.log(_fail, 'fail用户信息');
           } });
 
-      } else {
-        this.$u.
-        post("/starDetail/joinResources?resourcesRelId=".concat(
-        item.resourcesRelId, "&status=0")).
+      });
+    },
+    //参加活动
+    join: function join(item) {var _this5 = this;
+      // if (!uni.getStorageSync('Authorization')) {
+      // 	uni.showModal({
+      // 		title: '请登录',
+      // 		content: '登录后可以获取更多功能',
+      // 		success: (res) => {
+      // 			if (res.confirm) {
+      // 				uni.navigateTo({
+      // 					url: '/pages/center/center',
+      // 				})
+      // 			} else if (res.cancel) {
+      // 			}
+      // 		},
+      // 	})
+      // } else {
+      this.$u.
+      post("/starDetail/joinResources?resourcesRelId=".concat(
+      item.resourcesRelId, "&status=0")).
 
-        then(function (res) {
-          //   uni.showToast({
-          //     title: "参与成功",
-          //     duration: 2000,
-          //   });
-          _this2.$refs.join.show({
-            title: '参与成功',
-            type: 'success',
-            duration: 2000 });
+      then(function (res) {
+        //   uni.showToast({
+        //     title: "参与成功",
+        //     duration: 2000,
+        //   });
+        _this5.$refs.join.show({
+          title: '参与成功',
+          type: 'success',
+          duration: 2000 });
 
-          _this2.selectResources();
-        }).
-        catch(function (res) {});
-      }
-
+        _this5.selectResources(_this5.starName);
+      }).
+      catch(function (res) {});
+      // }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

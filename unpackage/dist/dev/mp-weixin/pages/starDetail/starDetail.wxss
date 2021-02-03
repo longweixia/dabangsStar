@@ -30,7 +30,7 @@
   left: 28rpx;
   width: 65rpx;
   height: 65rpx;
-  z-index: 10000;
+  z-index: 1000000;
 }
 .detail-bg-img.data-v-382f0766 {
   width: 100%;

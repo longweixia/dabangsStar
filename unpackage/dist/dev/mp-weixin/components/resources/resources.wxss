@@ -64,6 +64,13 @@
   color: #e34c4c;
 }
 .star-card .list-top .btn.data-v-552bde50 {
+  margin: 0;
+  padding: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
   text-align: center;
   height: 46rpx;
   line-height: 46rpx;

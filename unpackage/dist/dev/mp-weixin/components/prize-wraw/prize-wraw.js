@@ -137,6 +137,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   name: "prize-wraw",
@@ -146,6 +155,17 @@ var _default =
   components: {},
   data: function data() {
     return {
+      code: '',
+      SessionKey: '',
+      encryptedData: '',
+      iv: '',
+      OpenId: '',
+      nickName: null,
+      avatarUrl: null,
+      isCanUse: true,
+      rawData: '',
+      signature: '',
+      // 用户信息
       //抽奖互动
       prizeWrawList: [
       {
@@ -187,36 +207,108 @@ var _default =
 
 
   },
-
+  mounted: function mounted() {
+    this.login();
+  },
   methods: _defineProperty({
-    clickBtn: function clickBtn(i) {
-      if (!uni.getStorageSync("Authorization")) {
-        uni.showModal({
-          title: "请登录",
-          content: "登录后可以获取更多功能",
-          success: function success(res) {
-            if (res.confirm) {
-              uni.navigateTo({
-                url: "/pages/center/center" });
+    login: function login() {
+      var _this = this;
+      // 1.wx获取登录用户code
+      uni.login({
+        provider: 'weixin',
+        success: function success(loginRes) {
+          _this.code = loginRes.code;
+          if (!_this.isCanUse) {
+            //非第一次授权获取用户信息
+            uni.getUserInfo({
+              provider: 'weixin',
+              success: function success(infoRes) {
+                // console.log('login用户信息：', infoRes) //获取用户信息后向调用信息更新方法
+                _this.nickName = infoRes.userInfo.nickName; //昵称
+                _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+                _this.updateUserInfo(); //调用更新信息方法
+              } });
 
-            } else if (res.cancel) {
-            }
+          }
+          // 将用户登录code传递到后台置换用户SessionKey、OpenId等信息
+        } });
+
+    },
+    //向后台更新信息
+    updateUserInfo: function updateUserInfo(item) {var _this2 = this;
+      var _this = this;
+      this.$u.
+      post("/common/weiXinLong", {
+        code: _this.code,
+        encrypteData: this.encryptedData,
+        iv: this.iv,
+        rawData: this.rawData,
+        signature: this.signature }).
+
+      then(function (res) {
+        uni.setStorageSync('Authorization', res.token);
+        _this2.clickBtn(item);
+
+      }).
+      catch(function (res) {
+        _this2.clickBtn(item);
+      });
+    },
+    wxGetUserInfo: function wxGetUserInfo(item) {var _this3 = this;
+      this.$u.
+      get('/personalCenter/personalCenterInfo').
+      then(function (res) {
+        _this3.clickBtn(item);
+      }).
+      catch(function (res) {
+        var _this = _this3;
+        uni.getUserInfo({
+          provider: 'weixin',
+          success: function success(infoRes) {
+            console.log(infoRes, '用户信息');
+            _this.encryptedData = infoRes.encryptedData;
+            _this.iv = infoRes.iv;
+            _this.rawData = infoRes.rawData;
+            _this.signature = infoRes.signature;
+            _this.nickName = infoRes.userInfo.nickName; //昵称
+            _this.avatarUrl = infoRes.userInfo.avatarUrl; //头像
+            uni.setStorageSync('isCanUse', false); //记录是否第一次授权 false:表示不是第一次授权
+            _this.updateUserInfo(item);
+          },
+          fail: function fail(_fail) {
+            console.log(_fail, 'fail用户信息');
           } });
 
-      } else {
-        if (i === 0) {
-          //抽奖
-          uni.navigateTo({
-            url: "/pages/starDetail/choujiang" });
+      });
+    },
+    clickBtn: function clickBtn(i) {
+      //   if (!uni.getStorageSync("Authorization")) {
+      //     uni.showModal({
+      //       title: "请登录",
+      //       content: "登录后可以获取更多功能",
+      //       success: (res) => {
+      //         if (res.confirm) {
+      //           uni.navigateTo({
+      //             url: "/pages/center/center",
+      //           });
+      //         } else if (res.cancel) {
+      //         }
+      //       },
+      //     });
+      //   } else {
+      if (i === 0) {
+        //抽奖
+        uni.navigateTo({
+          url: "/pages/starDetail/choujiang" });
 
-        } else if (i === 1) {
-          // 签到
-          this.signiIn();
-        }
+      } else if (i === 1) {
+        // 签到
+        this.signiIn();
       }
+      //   }
     },
     // 签到
-    signiIn: function signiIn() {var _this = this;
+    signiIn: function signiIn() {var _this4 = this;
       var params = {
         starId: this.starId,
         type: 1 //任务类型 1-签到 2-抽奖 3-看视频 4-分享
@@ -229,7 +321,7 @@ var _default =
           icon: "none",
           duration: 1000 });
 
-        _this.$emit("getmyInfo");
+        _this4.$emit("getmyInfo");
       }).
       catch(function (res) {
         uni.showToast({
@@ -240,7 +332,7 @@ var _default =
       });
     },
     // 获取热力值设置
-    getHitSettings: function getHitSettings() {var _this2 = this;
+    getHitSettings: function getHitSettings() {var _this5 = this;
       var params = {
         starId: this.starId };
 
@@ -248,9 +340,9 @@ var _default =
       get("/starDetail/selectHitSettings", params).
       then(function (res) {
         // 抽奖
-        _this2.prizeWrawList[0].tips = "100%中热力值";
+        _this5.prizeWrawList[0].tips = "100%中热力值";
         // 签到
-        _this2.prizeWrawList[1].tips = "\u7B7E\u5230\u83B7\u5F97".concat(res.data.vigourSignNum, "\u70ED\u529B\u503C");
+        _this5.prizeWrawList[1].tips = "\u7B7E\u5230\u83B7\u5F97".concat(res.data.vigourSignNum, "\u70ED\u529B\u503C");
       }).
       catch(function (res) {
         uni.showToast({
@@ -261,7 +353,7 @@ var _default =
       });
     } }, "signiIn", function signiIn()
 
-  {var _this3 = this;
+  {var _this6 = this;
     var params = {
       starId: this.starId,
       type: 1 //任务类型 1-签到 2-抽奖 3-看视频 4-分享
@@ -274,7 +366,7 @@ var _default =
         icon: "none",
         duration: 1000 });
 
-      _this3.$emit("getmyInfo");
+      _this6.$emit("getmyInfo");
     }).
     catch(function (res) {
       uni.showToast({

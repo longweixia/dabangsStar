@@ -11,7 +11,7 @@
 			<img
 				@click="routerTohome"
 				:style="{ top: iconTop }"
-				class="search-icon"
+				class="search-icon" 
 				src="../../static/home/right-btn2.png"
 			/>
 			<!-- 弹幕 -->
@@ -439,9 +439,14 @@ export default {
 			})
 		},
 		routerTohome() {
-			uni.navigateTo({
-				url: `/pages/index/index`,
-			})
+wx.navigateBack({
+  delta: 1
+})
+
+            console.log(1)
+			// uni.navigateTo({
+			// 	url: `/pages/index/index`,
+			// })
 		},
 		// 获取轮播
 		carouselList() {
@@ -621,7 +626,7 @@ export default {
 	left: 28rpx;
 	width: 65rpx;
 	height: 65rpx;
-	z-index: 10000;
+	z-index: 1000000;
 }
 // 顶部背景图
 .detail-bg-img {

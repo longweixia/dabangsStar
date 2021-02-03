@@ -144,7 +144,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
 //
 //
 //
@@ -159,36 +164,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  name: "listAwards",
+  name: 'listAwards',
   data: function data() {
     return {
-      iconTop: "", // 搜索icon距离顶部的距离
+      iconTop: '', // 搜索icon距离顶部的距离
       current: null,
       awardsList: [],
-      srcImg: "" };
+      srcImg: '' };
 
   },
-  mounted: function mounted() {
-
-  },
+  mounted: function mounted() {},
   onLoad: function onLoad(option) {
     this.current = option.current;
   },
   onShow: function onShow() {
     this.getMyInfo();
 
-    this.iconTop = wx.getMenuButtonBoundingClientRect().top + "px";
+    this.iconTop = wx.getMenuButtonBoundingClientRect().top + 'px';
   },
 
   methods: {
     routerTohome: function routerTohome() {
-      uni.navigateTo({
-        url: "/pages/index/index" });
+      wx.navigateBack({
+        delta: 1 });
 
+      //   uni.navigateTo({
+      //     url: `/pages/index/index`,
+      //   });
     },
     getMyInfo: function getMyInfo() {var _this = this;
       this.$u.
-      get("/home/seleclCarouseDeatil").
+      get('/home/seleclCarouseDeatil').
       then(function (res) {
         _this.awardsList = res;
         if (_this.current == 0) {
@@ -205,7 +211,6 @@ var _default =
         //   });
       });
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

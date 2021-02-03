@@ -120,13 +120,12 @@
           align-items: center;
   position: absolute;
   right: 30rpx;
-  height: 40rpx;
-  border: none;
-  font-size: 11px;
-  width: 98rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  width: 100rpx;
   padding: 0 10rpx;
-  -webkit-border-radius: 42rpx;
-          border-radius: 42rpx;
+  -webkit-border-radius: 23rpx;
+          border-radius: 23rpx;
   text-align: center;
   background: -webkit-gradient(linear, left top, right top, from(#f83a3a), to(#f7c18b));
   background: -webkit-linear-gradient(left, #f83a3a, #f7c18b);

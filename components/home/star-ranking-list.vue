@@ -23,7 +23,7 @@
 				{{ item.starName }}
 			</view>
 			<view class="btn-area">
-				<view class="val" @click="routerStarDetail(item.id)">
+				<view class="val">
 					<view class="val-text">{{ item.totalVigourVal }} </view>
 					<img
 						src="../../static/home/hotVal.png"
@@ -267,18 +267,17 @@ export default {
 		align-items: center;
 		position: absolute;
 		right: 30rpx;
-		// left: 40rpx;
-		height: 40rpx;
-		border: none;
-		// line-height: 42rpx;
-		font-size: 11px;
-		width: 98rpx;
-		padding: 0 10rpx;
-		border-radius: 42rpx;
-		text-align: center;
-		background: linear-gradient(to right, #f83a3a, #f7c18b);
-		// border: 0.5px solid #000;
-		color: #fff;
+        
+					
+						height: 42rpx;
+						line-height: 42rpx;
+						width: 100rpx;
+						padding: 0 10rpx;
+						border-radius: 23rpx;
+						text-align: center;
+						background: linear-gradient(to right, #f83a3a, #f7c18b);
+						color: #fff;
+	
 	}
 }
 </style>

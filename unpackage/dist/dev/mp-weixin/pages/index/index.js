@@ -871,17 +871,33 @@ __webpack_require__.r(__webpack_exports__);
     // 获取轮播
     carouselList: function carouselList() {var _this8 = this;
       this.$u.get('/home/carousel/list').then(function (res) {
-        _this8.swiperList = res;
-        if (_this8.swiperList && _this8.swiperList.length > 0) {
-          _this8.weekName = _this8.swiperList[2].starName;
-          _this8.monthName = _this8.swiperList[3].starName;
-        }
+        _this8.swiperList = res || [];
+
+        _this8.swiperList.forEach(function (item, index) {
+          if (item.code == 'WEEK') {
+            _this8.weekName = item.starName;
+          } else if (item.code == 'MONTH') {
+            _this8.monthName = item.starName;
+          }
+        });
+
+        // if (this.swiperList && this.swiperList.length > 0) {
+        // 	this.weekName = this.swiperList[2].starName
+        // 	this.monthName = this.swiperList[3].starName
+        // }
+
       });
+
     },
     clickSwiper: function clickSwiper(index) {
       if (index < 2) {
         uni.navigateTo({
           url: "/pages/index/SecondPage?current=".concat(index) });
+
+      } else {
+        uni.navigateTo({
+          // url: `/pages/stail/center?id=${this.swiperList[index].starId}`,
+          url: "/pages/starDetail/starDetail?id=".concat(this.swiperList[index].starId, "&name=").concat(this.swiperList[index].starName) });
 
       }
     },

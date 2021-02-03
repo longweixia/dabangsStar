@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var zySearch = function zySearch() {__webpack_require__.e(/*! require.ensure | components/zy-search/zy-search */ "components/zy-search/zy-search").then((function () {return resolve(__webpack_require__(/*! ../../components/zy-search/zy-search.vue */ 254));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var zySearch = function zySearch() {__webpack_require__.e(/*! require.ensure | components/zy-search/zy-search */ "components/zy-search/zy-search").then((function () {return resolve(__webpack_require__(/*! ../../components/zy-search/zy-search.vue */ 254));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -168,6 +168,21 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   mounted: function mounted() {
     this.getHotSearch();
+
+    uni.getStorage({
+      key: 'search_cache',
+      success: function success(res) {
+        console.log(res, "空");
+      },
+      fail: function fail(err) {
+        console.log(err, "失败");
+        uni.setStorage({
+          key: 'search_cache',
+          data: [] });
+
+      } });
+
+
   },
   methods: {
     getSearchText: function getSearchText(e) {
@@ -193,6 +208,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       this.dataList = [];
 
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

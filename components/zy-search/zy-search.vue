@@ -56,10 +56,10 @@
 				<view
 					v-for="(item, index) in hList"
 					:key="index"
-					@click="keywordsClick(item)"
+					 @click="seeSaterLocal(item)"
 					class="views"
 				>
-					{{ item }}
+					{{ item.name }}
 				</view>
 			</view>
 		</view>
@@ -161,7 +161,7 @@ export default {
 			immediate: true,
 		},
 	},
-
+    
 	data() {
 		return {
 			searchInput: false, //是否是输入字符来搜索关键词的，如果是就隐藏热门搜索和历史记录
@@ -173,14 +173,63 @@ export default {
 	},
 	methods: {
 		clearDate() {
+            let _this = this
 			this.searchText = ''
 			this.searchInput = false
-			this.hasData = true
+            this.hasData = true
+            uni.getStorage({
+				key: 'search_cache',
+				success(res) {
+				
+				 _this.hList = res.data
+                 
+				},
+				fail() {},
+            })
+           
 		},
 		// 明星详情
-		seeSater(item) {
+		seeSater(item1) {
+			// uni.getStorage({
+			// 	key: 'search_cache',
+			// 	success(res) {
+            //         console.log(res,"空")
+            //     },
+			// 	fail() {
+			// 		uni.setStorage({
+			// 			key: 'search_cache',
+			// 			data: []
+			// 		})
+			// 	},
+			// })
+
+			uni.getStorage({
+				key: 'search_cache',
+				success(res) {
+				
+					let list = res.data.concat({
+						name: item1.name,
+						id: item1.id,
+					})
+				
+					uni.setStorage({
+						key: 'search_cache',
+						data: list,
+                    })
+                 
+				},
+				fail() {},
+            })
+          
+
 			uni.navigateTo({
-				url: `/pages/starDetail/starDetail?id=${item.id}`,
+				url: `/pages/starDetail/starDetail?id=${item1.id}`,
+			})
+		},
+		// 点点击本地记录-明星详情
+		seeSaterLocal(item1) {
+			uni.navigateTo({
+				url: `/pages/starDetail/starDetail?id=${item1.id}`,
 			})
 		},
 		// 取消
@@ -207,42 +256,42 @@ export default {
 			} else {
 				_this.$emit('getSearchText', _this.searchText)
 
-				uni.getStorage({
-					key: 'search_cache',
-					success(res) {
-						let list = res.data
-						if (list.length > 9) {
-							for (let item of list) {
-								if (item == _this.searchText) {
-									return
-								}
-							}
-							list.pop()
-							list.unshift(_this.searchText)
-						} else {
-							for (let item of list) {
-								if (item == _this.searchText) {
-									return
-								}
-							}
-							list.unshift(_this.searchText)
-						}
-						_this.hList = list
-						uni.setStorage({
-							key: 'search_cache',
-							data: _this.hList,
-						})
-					},
-					fail() {
-						_this.hList = []
-						_this.hList.push(_this.searchText)
-						uni.setStorage({
-							key: 'search_cache',
-							data: _this.hList,
-						})
-						_this.$emit('getSearchText', _this.searchText)
-					},
-				})
+				// uni.getStorage({
+				// 	key: 'search_cache',
+				// 	success(res) {
+				// 		let list = res.data
+				// 		if (list.length > 9) {
+				// 			for (let item of list) {
+				// 				if (item == _this.searchText) {
+				// 					return
+				// 				}
+				// 			}
+				// 			list.pop()
+				// 			list.unshift(_this.searchText)
+				// 		} else {
+				// 			for (let item of list) {
+				// 				if (item == _this.searchText) {
+				// 					return
+				// 				}
+				// 			}
+				// 			list.unshift(_this.searchText)
+				// 		}
+				// 		// _this.hList = list
+				// 		// uni.setStorage({
+				// 		// 	key: 'search_cache',
+				// 		// 	data: _this.hList,
+				// 		// })
+				// 	},
+				// 	fail() {
+				// 		_this.hList = []
+				// 		_this.hList.push(_this.searchText)
+				// 		// uni.setStorage({
+				// 		// 	key: 'search_cache',
+				// 		// 	data: _this.hList,
+				// 		// })
+				// 		_this.$emit('getSearchText', _this.searchText)
+				// 	},
+				// })
 			}
 		},
 		keywordsClick(item) {
@@ -304,7 +353,7 @@ export default {
 		z-index: 10;
 	}
 	.cancle {
-        z-index: 10000;
+		z-index: 10000;
 		height: 32rpx;
 		line-height: 32rpx;
 		position: absolute;
@@ -401,9 +450,9 @@ export default {
 		// align-items: center;
 
 		// margin-left: 30rpx;
-    
+
 		.views {
-            display: inline-block;
+			display: inline-block;
 			margin-top: 20rpx;
 			width: calc(20% - 10px);
 			margin: 10px;
@@ -419,8 +468,8 @@ export default {
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
-            padding-left: 5rpx;
-            padding-right: 5rpx;
+			padding-left: 5rpx;
+			padding-right: 5rpx;
 		}
 	}
 }

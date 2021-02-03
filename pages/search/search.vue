@@ -30,7 +30,22 @@ export default {
     },
     
 	mounted() {
-		this.getHotSearch()
+        this.getHotSearch()
+ 
+        	uni.getStorage({
+				key: 'search_cache',
+				success(res) {
+                    console.log(res,"空")
+                },
+				fail(err) {
+                    console.log(err,"失败")
+					uni.setStorage({
+						key: 'search_cache',
+						data: []
+					})
+				},
+			})
+
 	},
 	methods: {
 		getSearchText(e) {

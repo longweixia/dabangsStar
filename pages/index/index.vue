@@ -21,10 +21,14 @@
 				src="../../static/home/searchBtn.png"
 			/>
 		</view>
+
 		<!-- 我的守护 -->
 		<view class="home-my-guard">
 			<!-- 周冠军 -->
-			<view class="week-area" v-if="current === 2">
+			<view
+				class="week-area"
+				v-if="current > 1 && swiperList[current].code == 'WEEK'"
+			>
 				<view class="row-title">
 					上周周榜冠军
 					<text class="row-name">
@@ -43,7 +47,10 @@
       /> -->
 			</view>
 			<!-- 月冠军 -->
-			<view class="week-area" v-if="current === 3">
+			<view
+				class="week-area"
+				v-if="current > 1 && swiperList[current].code == 'MONTH'"
+			>
 				<view class="row-title">
 					{{ monthNum + 1 }}月月榜冠军
 					<text class="row-name">
@@ -159,11 +166,7 @@
 						@click="routerStarDetail(item.id, item.name)"
 						>{{ item.starName }}</view
 					>
-					<view
-						class="val"
-						@click="routerStarDetail(item.id, item.name)"
-						>{{ item.totalVigourVal }}</view
-					>
+					<view class="val">{{ item.totalVigourVal }}</view>
 					<view class="btn-area" style="z-index: 10000">
 						<button
 							@getuserinfo="wxGetUserInfo(item.id)"
@@ -240,10 +243,7 @@
 						@click="routerStarDetail(item.id, item.name)"
 						>{{ item.starName || '无' }}</view
 					>
-					<view
-						class="val"
-						@click="routerStarDetail(item.id, item.name)"
-					>
+					<view class="val">
 						<view class="val-text">{{ item.totalVigourVal }}</view>
 						<img
 							src="../../static/home/hotVal.png"
@@ -522,7 +522,7 @@ export default {
 				this.selectMyGuard()
 				this.getRankTypeIndex(0)
 			}
-		
+
 		},
 		closeDabangTop(data) {
 			this.showModal = false
@@ -693,19 +693,35 @@ export default {
 		// 获取轮播
 		carouselList() {
 			this.$u.get('/home/carousel/list').then((res) => {
-				this.swiperList = res
-				if (this.swiperList && this.swiperList.length > 0) {
-					this.weekName = this.swiperList[2].starName
-					this.monthName = this.swiperList[3].starName
-				}
-			})
+                this.swiperList = res ||[]
+          
+                    this.swiperList.forEach((item,index) => {
+                    if(item.code == 'WEEK'){
+                        this.weekName = item.starName
+                    }else if(item.code == 'MONTH'){
+                        this.monthName = item.starName
+                    }
+                })
+            
+				// if (this.swiperList && this.swiperList.length > 0) {
+				// 	this.weekName = this.swiperList[2].starName
+				// 	this.monthName = this.swiperList[3].starName
+                // }
+
+            })
+
 		},
 		clickSwiper(index) {
 			if (index < 2) {
 				uni.navigateTo({
 					url: `/pages/index/SecondPage?current=${index}`,
 				})
-			}
+			}else{
+                	uni.navigateTo({
+					// url: `/pages/stail/center?id=${this.swiperList[index].starId}`,
+				   url: `/pages/starDetail/starDetail?id=${this.swiperList[index].starId}&name=${this.swiperList[index].starName}`,
+				})
+            }
 		},
 		routerSearch() {
 			uni.navigateTo({
@@ -1022,23 +1038,15 @@ export default {
 					background-color: transparent;
 
 					// 重置按钮完成
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					position: absolute;
-					right: 70rpx;
-                
-
-					height: 40rpx;
-					border: none;
-
-					font-size: 11px;
-					width: 98rpx;
+					position: relative;
+					top: -10rpx;
+					height: 42rpx;
+					line-height: 42rpx;
+					width: 100rpx;
 					padding: 0 10rpx;
-					border-radius: 42rpx;
+					border-radius: 23rpx;
 					text-align: center;
 					background: linear-gradient(to right, #f83a3a, #f7c18b);
-
 					color: #fff;
 				}
 				.btn::after {
