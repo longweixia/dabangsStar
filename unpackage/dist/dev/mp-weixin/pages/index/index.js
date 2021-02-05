@@ -823,7 +823,7 @@ __webpack_require__.r(__webpack_exports__);
     // 点击周榜/月榜
     getRankTypeIndex: function getRankTypeIndex(data) {
       this.flagWeek = data;
-      this.rankingList = [];
+      // this.rankingList = []
       this.getRankList(data);
     },
     getWeekOne: function getWeekOne(index) {var _this6 = this;

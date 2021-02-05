@@ -645,7 +645,7 @@ export default {
 		// 点击周榜/月榜
 		getRankTypeIndex(data) {
 			this.flagWeek = data
-			this.rankingList = []
+			// this.rankingList = []
 			this.getRankList(data)
 		},
 		getWeekOne(index) {
